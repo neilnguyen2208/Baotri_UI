@@ -1,0 +1,42 @@
+
+.categoryitem{
+    color: black;  
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: yellow 3px;
+    border-bottom: ridge 4px #1394f0;
+    background-color: white;
+}
+
+h4{
+    color: #1394f0;
+}
+
+i{
+    width: auto;
+    height: auto;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #1394f0;
+}
+
+i:hover{
+    padding: 8px;
+    border: solid green 2px;
+}
+
+a{
+    text-decoration: none;
+    text-decoration-color: #1394f0;
+}
+
+a:hover{
+    text-decoration: underline;
+    text-decoration-color: #1394f0;
+}
+
+p{
+    font-size: 16px;
+}
