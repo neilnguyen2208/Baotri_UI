@@ -1,4 +1,52 @@
 
-.content{
+.Home{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Home .Home_Header{
+    top:0px;
+    width: 100%;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
+}
+
+.Home .Content{
+    position: relative;
+    overflow: scroll;
+    width: 100%;
+    height: 90%;
     background-color: gray;
+    padding-top: 20px;
+}
+
+.Home .Content .Content_Row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    height: 90%;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.Home .Content .Home_Footer{
+    position: relative;
+    top: 90%;
+    background-color: darkorange;
+    height: 10%;
+    width: 100%;
+}
+
+.Home .Content .Content_Row .Item{
+    box-sizing: border-box;
+    list-style: none;
+    text-align: center;
+    width: 20%;
+    height: 240px;
+    margin: 2%;
 }

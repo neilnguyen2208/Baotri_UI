@@ -3,6 +3,7 @@ import CategoryItem from '../../components/CategoryItem/CategoryItem';
 import { Container, Col, Row } from 'reactstrap';
 import Header from "../../components/Header/Header.js";
 import './Home.css'
+import Footer from '../../components/Footer/Footer';
 
 class Home extends Component{
 
@@ -12,37 +13,47 @@ class Home extends Component{
             items:[{
                 src: "",
                 name: "English",
-                description: "Learning english for better future"
+                description: "Learning english for better future Learning english for better future"
             }, 
             {
                 src: "",
                 name: "English",
-                description: "Learning english for better future"
+                description: "Learning english for better future Learning english for better future"
             }, 
             {
                 src: "",
                 name: "English",
-                description: "Learning english for better future"
+                description: "Learning english for better future Learning english for better future"
+            },
+            {
+                src: "",
+                name: "English",
+                description: "Learning english for better future Learning english for better future"
             }, 
             {
                 src: "",
                 name: "English",
-                description: "Learning english for better future"
+                description: "Learning english for better future Learning english for better future"
+            },
+            {
+                src: "",
+                name: "English",
+                description: "Learning english for better future Learning english for better future"
             }, 
             {
                 src: "",
                 name: "English",
-                description: "Learning english for better future"
+                description: "Learning english for better future Learning english for better future"
+            },
+            {
+                src: "",
+                name: "English",
+                description: "Learning english for better future Learning english for better future"
             }, 
             {
                 src: "",
                 name: "English",
-                description: "Learning english for better future"
-            }, 
-            {
-                src: "",
-                name: "English",
-                description: "Learning english for better future"
+                description: "Learning english for better future Learning english for better future"
             }
         ]
         }
@@ -51,19 +62,24 @@ class Home extends Component{
     render(){
          let cards = this.state.items.map((item)=>{
              return(
-                 <Col sm="4" key={item.name}>
-                     <CategoryItem item={item}></CategoryItem>
-                 </Col>
+                <div className="Item">
+                    <CategoryItem item={item}></CategoryItem> 
+             </div>
              );
          })
         return(
-            <div>
-                <Header></Header>
-                <Container fluid={true} class="content">
-                    <Row xs="3">
-                        {cards}
-                    </Row>
-                </Container>
+            <div className="Home">
+                <div class="Home_Header">
+                    <Header></Header>
+                </div>
+                <div class="Content">
+                   <div className="Content_Row">
+                       {cards}
+                   </div>
+                   <div className="Home_Footer">
+                       <Footer></Footer>
+                   </div>
+                </div>
             </div>
         );
     }
