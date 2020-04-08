@@ -1,4 +1,19 @@
+.content {
+    background-color: #c4c4c4;
+}
 
-.content{
-    background-color: gray;
+.grammar_background {
+    position: relative;
+    left: 83px;
+    top: 150px;
+    width: 1200px;
+    max-width: 100%;
+    height: fit-content;
+    background-color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-width: 1px;
+    border-color: #c4c4c4;
+    border-style: solid;
+    padding-top: 0px;
 }

@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+.page_prev_title {
+    position: absolute;
+    width: 205px;
+    height: 40px;
+    left: 10px;
+    top: 20px;
+    line-height: 40px;
+    font-family: 'Open Sans' sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: right;
+    color: #000000;
+}
+
+.page_title_rectangle {
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    left: 225px;
+    top: 20px;
+    background: #211F60;
+}
+
+.page_main_title {
+    position: absolute;
+    width: 150px;
+    height: 40px;
+    left: 225px;
+    top: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    text-align: left;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 40px;
+    color: #FFFFff;
+}
