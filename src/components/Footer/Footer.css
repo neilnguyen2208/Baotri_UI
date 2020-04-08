@@ -1,0 +1,28 @@
+
+.Footer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-flow: wrap;
+    background-color: brown;
+}
+
+.Footer .FollowUs{
+    box-sizing: border-box;
+    list-style: none;
+    text-align: center;
+    width: 40%;
+    height: 100%;
+    margin: 2%;
+}
+
+.Footer .AboutUs{
+    box-sizing: border-box;
+    list-style: none;
+    text-align: center;
+    width: 40%;
+    height: 100%;
+    margin: 2%;
+}

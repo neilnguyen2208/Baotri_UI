@@ -1,70 +1,47 @@
-import React, {Component} from 'react'
+import React, { Component } from "react";
 import './Header.css'
-import { Redirect } from 'react-router-dom';
 
 class Header extends Component{
-
     constructor(props){
         super(props);
-        this.handleChatClick= handleChatClick.bind(this);
         this.state={
-            dropdownChatItem: [
-                {
-                    name: "Chat 1 to 1",
-                    link: "/"
-                },
-                {
-                    name: "Room chat",
-                    link: "/"
-                }
-            ]
+            profile_img_src: "https://scontent-xsp1-2.xx.fbcdn.net/v/t1.0-9/74614813_2350567138590702_6072388714871390208_n.jpg?_nc_cat=107&_nc_sid=09cbfe&_nc_ohc=iQ8i3VyfQzMAX_mQ6uy&_nc_ht=scontent-xsp1-2.xx&oh=406f413d0aeabb4cf2055bdd95c76144&oe=5EB28754"
         }
     }
 
     render(){
         return(
-            <div class="header">
-                <section class="header-grid-1">
-                    <section class="col-1">
-                        <div class="col-1-col-1">
-                            Learn<br></br>Eng
+            <header className="Header">
+                <nav className="Header_Navigation">
+                    <div className="Header_Logo">
+                        <a href="/">
+                            <img className="Header_Logo_Image" src="https://scontent-xsp1-2.xx.fbcdn.net/v/t1.0-9/74614813_2350567138590702_6072388714871390208_n.jpg?_nc_cat=107&_nc_sid=09cbfe&_nc_ohc=iQ8i3VyfQzMAX_mQ6uy&_nc_ht=scontent-xsp1-2.xx&oh=406f413d0aeabb4cf2055bdd95c76144&oe=5EB28754"></img>
+                        </a>
+                    </div>
+                    <div className="Header_Vertical_Line"></div>
+                    <div class="Header_Row">
+                        <div className="Header_Horizontal_Line"></div>
+                        <div className="Header_Item">
+                            <ul className="Item_LearnEnglish">
+                                <a href="/">LEARN ENGLISH</a>
+                            </ul>
+                            <ul className="Item_Vocabulary">
+                                <a href="/">VOCABULARY</a>
+                            </ul>
+                            <ul className="Item_Grammar">
+                                <a href="/">GRAMMAR</a>
+                            </ul>
+                            <ul className="Item_Chat">
+                                <a href="/">CHAT</a>
+                            </ul>
+                            <ul className="Item_Profile_Picture">
+                                <img src={this.state.profile_img_src}></img>
+                            </ul>
                         </div>
-                        <div class="col-1-col-2">
-                            ing<br></br>lish
-                        </div>
-                    </section>
-                    <section class="col-2">
-                        <div class="col-2-row-1">
-                        </div>
-                        <div class="col-2-row-2">
-                            <a href="/home"><label class="col-2-row-2-col-1">
-                                LEARNING ENGLISH
-                            </label></a>
-                            <a href="/home"><label class="col-2-row-2-col-2">
-                                VOCABULARY
-                            </label></a>
-                            <a href="/home"><label class="col-2-row-2-col-3">
-                                GRAMMAR
-                            </label></a>
-                            <a href="/home"><label class="col-2-row-2-col-4" onClick={handleChatClick}>
-                                CHAT
-                            </label></a>
-                            <label class="col-2-row-2-col-5" >
-                                
-                            </label>  
-                            <label class="col-2-row-2-col-6">
-                                <img src="https://scontent-sin6-1.xx.fbcdn.net/v/t1.0-9/74614813_2350567138590702_6072388714871390208_n.jpg?_nc_cat=107&_nc_sid=85a577&_nc_ohc=TC_YKdJGNtMAX8wE74f&_nc_ht=scontent-sin6-1.xx&oh=11afbfca5000e981b61ed546f8c768af&oe=5EAA9E54"></img>
-                            </label>  
-                        </div>     
-                    </section>
-                </section>
-            </div>
+                    </div>
+                </nav>
+            </header>
         );
     }
 }
-
-function handleChatClick(){
-    
-}
-
 export default Header;
