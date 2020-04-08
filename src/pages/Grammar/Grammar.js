@@ -61,9 +61,9 @@ class Grammar extends Component {
                 <Description content="Grammar is the mortar that holds the bricks of vocabulary together. Without good mortar bricks can come tumbling down and that can cause embarrassing misunderstandings. There is a common impression that learning English grammar is painful, but it is a lot easier than many other languages. Of course, English is more than just memorizing grammar rules, the grammar must be incorporated into your everyday use of the language. Theory and practice should always go hand in hand.">
                 </Description>
             </div>
-            <div ref={(elem) => this.CategoryList = elem}>
+            {/* <div ref={(elem) => this.CategoryList = elem}>
                 {this.state.totalHeight}
-            </div>
+            </div> */}
         </div>
         );
     }
