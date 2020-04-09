@@ -15,12 +15,21 @@
     left: 0px;
 }
 
+.Home .Content .Dock_Notification{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+}
+
 .Home .Content{
     position: relative;
-    overflow: scroll;
+    overflow-y:  scroll;
     width: 100%;
     height: 90%;
-    background-color: gray;
+    background-color: #f7f7f7;
     padding-top: 20px;
 }
 
@@ -29,24 +38,42 @@
     flex-direction: row;
     justify-content: space-around;
     flex-flow: wrap;
-    height: 90%;
-    width: 100%;
+    height: auto;
+    min-height: 65%;
+    width: 90%;
     margin-top: 10px;
+    margin-left: 3%;
+    border-right: solid blue 40px;
+    border-top: solid gray 1px;
+    border-left: solid gray 1px;
+    border-bottom: solid gray 1px;
+}
+
+.Home .Content .Notice{
+    width: 85%;
+    margin-left: 5%;
+    border-top: solid blue 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-bottom: solid gray 1px;
 }
 
 .Home .Content .Home_Footer{
     position: relative;
-    top: 90%;
+    bottom: 0px;
     background-color: darkorange;
     height: 10%;
     width: 100%;
+    padding-bottom: 5px;
 }
 
 .Home .Content .Content_Row .Item{
     box-sizing: border-box;
     list-style: none;
     text-align: center;
-    width: 20%;
+    width: 25%;
     height: 240px;
-    margin: 2%;
+    margin-top: 5%;
+    margin-left: 1%;
+    margin-bottom: 5%;
 }

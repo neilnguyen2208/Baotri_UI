@@ -12,48 +12,33 @@ class Home extends Component{
         this.state={
             items:[{
                 src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
+                name: "English Grammar",
+                description: "Your guide to English grammar. (Illustrated)"
             }, 
             {
                 src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
+                name: "English Vocabulary",
+                description: "Learn English vocabulary by topic. (Illustrated)"
             }, 
             {
                 src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
+                name: "English Q&A",
+                description: "What do you really know about England, the UK and the English language?"
             },
             {
                 src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
+                name: "English Listening",
+                description: "Tricky English pronunciation. With listening practice."
             }, 
             {
                 src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
+                name: "English Test",
+                description: "Have you really learnt what you think you have learnt?"
             },
             {
                 src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
-            }, 
-            {
-                src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
-            },
-            {
-                src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
-            }, 
-            {
-                src: "",
-                name: "English",
-                description: "Learning english for better future Learning english for better future"
+                name: "English Chat",
+                description: "We like to talk with you, and we like you to talk to each other. Practise your communication skills."
             }
         ]
         }
@@ -69,12 +54,24 @@ class Home extends Component{
          })
         return(
             <div className="Home">
-                <div class="Home_Header">
+                <div className="Home_Header">
                     <Header></Header>
                 </div>
-                <div class="Content">
+                <div className="Content">
+                    <div className="Dock_Notification">
+                        One of the most effective ways to improve your English Explorer a bit to find out what we do.
+                    </div>
                    <div className="Content_Row">
                        {cards}
+                   </div>
+                   <div className="Notice">
+                       <p>You should be open to learn new things.
+                           You should spend some months at the countries where English is spoken.
+                            You can find a boyfriend or agirl friend or at least a friend whose native language is English to practise your language. 
+                            You should keep a vocabulary notebook to record the words and expressions you have learned. 
+                            Reading is very helpful in language learning.You should read newspapers,magazines, and books. 
+                            Language learning is a process.You should revise regularly.
+                            You can record your voice while speaking English to a CD and listen and test yourself .Be your quide.</p>
                    </div>
                    <div className="Home_Footer">
                        <Footer></Footer>

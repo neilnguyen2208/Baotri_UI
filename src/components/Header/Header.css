@@ -1,19 +1,20 @@
 .Header{
-    position: fixed;
+    position: relative;
     width: 100%;
-    height: 10%;
-    background-color: aqua;
+    height: 100%;
+    /* background-color: aqua; */
     text-decoration-color: black;
     box-sizing: border-box;
+    overflow: visible;
 }
 
-.Header_Navigation{
+.Header .Header_Navigation{
     display: flex;
     height: 100%;
     align-self: center;
 }
 
-.Header_Logo{
+.Header .Header_Navigation .Header_Logo{
     position: relative;
     display: inline-block;
     width: 10%;
@@ -21,7 +22,7 @@
     padding-left: 10px;
 }
 
-.Header_Logo_Image{
+.Header .Header_Navigation .Header_Logo .Header_Logo_Image{
     display: block;
     position: absolute;
     width: 100%;
@@ -30,29 +31,28 @@
 }
 
 
-.Header_Vertical_Line{
+.Header .Header_Navigation .Header_Vertical_Line{
     margin-left: 50px;
     height: 100%;
     float: left; 
     border-left: solid black 1px; 
 }
 
-.Header_Row{
+.Header .Header_Navigation  .Header_Row{
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-.Header_Horizontal_Line{
+.Header .Header_Navigation  .Header_Row .Header_Horizontal_Line{
     position: absolute;
     border-bottom: solid black 1px;
     width: 100%;
     height: 30%;
 }
 
-.Header_Item{
+.Header .Header_Navigation  .Header_Row .Header_Item{
     position: absolute;
-    background-color: yellow;
     display: flex;
     width: 100%;
     align-items: center;
@@ -62,31 +62,34 @@
     left: 0px;
 }
 
-.Header_Item a{
+.Header .Header_Navigation  .Header_Row .Header_Item a{
     height: 100%;
     width: 100%;
     text-decoration-line: none;
     text-align: center;
+    color: black;
 }
 
-.Header_Item ul:hover a{
-    text-decoration-line: underline;
+.Header .Header_Navigation  .Header_Row .Header_Item ul:hover a{
+    text-decoration: underline;
     text-decoration-color: blue;
     color: blue;
 }
 
-.Header_Item ul{
+.Header .Header_Navigation  .Header_Row .Header_Item ul{
     margin: 0px;
     position: relative;
     height: 100%;
 }
 
-.Header_Item ul:hover{
+.Header .Header_Navigation  .Header_Row .Header_Item ul:hover{
     border-top: solid blue 3px !important;
     cursor: pointer;
 }
 
-[class*=Item_]{
+.Header .Header_Navigation  .Header_Row .Header_Item [class*=Item_]{
+    position: relative;
+    display: inline-block;
     width: 20%;
     margin: 0px;
     padding: 0px;
@@ -95,7 +98,80 @@
     text-align: center;
 }
 
-.Item_Profile_Picture{
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish {
+    align-items: center;
+    align-content: center;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item ul.Item_LearnEnglish:hover a {
+    text-decoration: none;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item ul.Item_Chat:hover a {
+    text-decoration: none;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 1;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown a:hover {
+    color: blue;
+    background-color: #f1f1f1;
+    text-decoration: underline;
+    text-decoration-color: blue;
+    cursor: pointer;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish:hover .Item_LearnEnglish_Dropdown{
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 1;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown a{
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown a:hover {
+    color: blue;
+    background-color: #f1f1f1;
+    text-decoration: underline;
+    text-decoration-color: blue;
+    cursor: pointer;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat:hover .Item_Chat_Dropdown{
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_Profile_Picture{
     position: relative;
     display: inline-block;
     align-self: center;
@@ -103,14 +179,15 @@
     height: 100%;
 }
 
-.Header_Item ul.Item_Profile_Picture:hover{
+.Header .Header_Navigation  .Header_Row .Header_Item ul.Item_Profile_Picture:hover{
     clear: both;
     border-top: 0px !important;
 }
 
-.Item_Profile_Picture img{
+.Header .Header_Navigation  .Header_Row .Header_Item .Item_Profile_Picture img{
     display: block;
     position: absolute;
+    background-color: black;
     width: 30%;
     height: 100%;
     top: 0px;

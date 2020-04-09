@@ -7,15 +7,54 @@
     justify-content: space-around;
     flex-flow: wrap;
     background-color: brown;
+    padding-top: 5px;
 }
 
 .Footer .FollowUs{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
     box-sizing: border-box;
     list-style: none;
-    text-align: center;
     width: 40%;
     height: 100%;
-    margin: 2%;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.Footer .FollowUs .Icon_Facebook{
+    width: 15%;
+    height: 80%;
+    top: 0px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: inherit;
+}
+
+.Footer .FollowUs .Icon_Twitter{
+    width: 15%;
+    height: 80%;
+    top: 0px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: inherit;
+}
+
+.Footer .FollowUs .Icon_Facebook .Icon_Facebook_Image{
+    position: relative;
+    display: block;
+    padding: 0px;
+    width: 60%;
+    height: 60%;
+}
+
+.Footer .FollowUs .Icon_Twitter .Icon_Twitter_Image{
+    position: relative;
+    display: block;
+    top: 0px;
+    width: 60%;
+    height: 60%;
 }
 
 .Footer .AboutUs{
@@ -24,5 +63,5 @@
     text-align: center;
     width: 40%;
     height: 100%;
-    margin: 2%;
+    margin-left: 2%;
 }
