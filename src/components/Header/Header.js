@@ -29,7 +29,7 @@ class Header extends Component{
                                 </div>
                             </ul>
                             <ul className="Item_Vocabulary">
-                                <a href="/">VOCABULARY</a>
+                                <a href="/vocabulary">VOCABULARY</a>
                             </ul>
                             <ul className="Item_Grammar">
                                 <a href="/grammar">GRAMMAR</a>

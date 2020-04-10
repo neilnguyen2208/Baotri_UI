@@ -34,6 +34,7 @@
 }
 
 .Home .Content .Content_Row{
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -49,13 +50,25 @@
     border-bottom: solid gray 1px;
 }
 
-.Home .Content .Notice{
+.Home .Content .Notice {
+    position: relative;
+    height: auto;
     width: 85%;
     margin-left: 5%;
     border-top: solid blue 2px;
     margin-top: 15px;
     margin-bottom: 15px;
     border-bottom: solid gray 1px;
+}
+
+.Home .Content .Notice p {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    margin: 0px;
+    top: 0px;
+    left: 0px;
 }
 
 .Home .Content .Home_Footer{

@@ -46,8 +46,14 @@
 }
 
 .About .Content .Content_Row p {
+    position: relative;
     padding-left: 10px;
     padding-right: 10px;
+    top: 0px;
+    left: 0px;
+    line-height: 15px;
+    height: auto;
+    width: auto;
 }
 
 .About .Content .About_Footer{
