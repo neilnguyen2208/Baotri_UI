@@ -8,9 +8,10 @@
     line-height: 40px;
     font-family: 'Open Sans' sans-serif;
     font-style: normal;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 24px;
     text-align: right;
+    align-items: center;
     color: #000000;
 }
 
@@ -36,4 +37,19 @@
     font-size: 24px;
     line-height: 40px;
     color: #FFFFff;
+}
+
+.page_title_bg {
+    background-color: white;
+    border-color: #c4c4c4;
+    border-style: solid;
+    border-radius: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 0px;
+    border-left-width: 1px;
+    border-top-width: 1px;
+    height: 100px;
+    width: 100%;
+    
+    /* box-shadow: 80px 0px 0px 0px black; */
 }

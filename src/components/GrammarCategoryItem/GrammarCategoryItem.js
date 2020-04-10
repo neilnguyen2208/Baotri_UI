@@ -1,23 +1,38 @@
 import React, { Component } from 'react';
-import { Container, Col, Row } from 'reactstrap';
-class Grammar extends Component {
+import "./GrammarCategoryItem.css"
+import GrammarCategoryListItem from "./GrammarCategoryListitem.js"
+class GrammarCategoryItem extends Component {
 
     constructor(listOfGrammarItem) {
         super();
-        this.state = {
 
+        this.state = {
+            items: [{
+                name: "Adjective",
+            },
+            {
+               name: "Verb",
+            }
+            ]
         }
+
     }
 
     render() {
+        let cards = this.state.items.map((item)=>{
+            return(
+               <div className="Item">
+                   <GrammarCategoryListItem item={item}></GrammarCategoryListItem> 
+            </div>
+            );
+        })
         return (
-            <div>
-
-
+            <div className="category_item">
+                {cards}
             </div>
         );
     }
 
 }
 
-export default Grammar;
+export default GrammarCategoryItem;
