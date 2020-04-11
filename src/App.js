@@ -11,8 +11,7 @@ import Home from './pages/Home/Home.js'
 import AboutUs from './pages/AboutUs/AboutUs';
 import Grammar from './pages/Grammar/Grammar';
 import EnglishVocabulary from './pages/EnglishVocabulary/EnglishVocabulary';
-
-
+import GrammarDetail from './pages/GrammarDetail/GrammarDetail.js'
 function App() {
   return (
     <div className="App">
@@ -33,10 +32,13 @@ function App() {
           <Route path="/grammar">
             <Grammar></Grammar>
           </Route>
+          <Route path="/grammar/grammar_detail">
+            <GrammarDetail />
+          </Route>
         </Switch>
       </Router>
     </div>
-    
+
   );
 }
 
