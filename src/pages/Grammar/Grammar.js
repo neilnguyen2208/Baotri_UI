@@ -13,32 +13,50 @@ class Grammar extends Component {
         super();
         this.state = {
             items: [{
-                name: "Adjective",
+                name: "ADJECTIVE",
             },
             {
-                name: "Verb",
-            }
-            ]
+                name: "VERB",
+            }]
         }
     }
 
     render() {
+
+        let cards = this.state.items.map((item) => {
+            return (
+                <div className="Item">
+                    <GrammarCategoryItem item={item}></GrammarCategoryItem>
+                </div>
+            );
+        })
+
         return (
-            <div>
-                <Header></Header>
-                <div className="grammar_main_port">
+            <div className="Grammar">
 
-                    <PageTitle prevTitle="Learning English" mainTitle="Grammar">
-                    </PageTitle>
+                <div className="Grammar_Header">
+                    <Header></Header>
+                </div>
+                <div className="Main_Port">
+                    <div className="Inline_Port">
+                        <PageTitle prevTitle="Learning English" mainTitle="Grammar"></PageTitle>
+                        <div className="Description">
+                            <Description content="Grammar is the mortar that holds the bricks of vocabulary together. Without good mortar bricks can come tumbling down and that can cause embarrassing misunderstandings. There is a common impression that learning English grammar is painful, but it is a lot easier than many other languages. Of course, English is more than just memorizing grammar rules, the grammar must be incorporated into your everyday use of the language. Theory and practice should always go hand in hand."></Description>
+                        </div>
+                        <div className="decoration_insert_left_right_border"></div>
+                        <div className="grammar_category_port">
+                            <div className="category_item">
+                                {cards}
 
+                            </div>
 
-                    <Description content="Grammar is the mortar that holds the bricks of vocabulary together. Without good mortar bricks can come tumbling down and that can cause embarrassing misunderstandings. There is a common impression that learning English grammar is painful, but it is a lot easier than many other languages. Of course, English is more than just memorizing grammar rules, the grammar must be incorporated into your everyday use of the language. Theory and practice should always go hand in hand.">
-                    </Description>
-                    <div className="grammar_category_port">
-                        <GrammarCategoryItem></GrammarCategoryItem>
+                        </div>
                     </div>
-                </div></div>
-
+                </div>
+                <div className="grammar_footer">
+                    <Footer ></Footer>
+                </div>
+            </div>
         );
     }
 

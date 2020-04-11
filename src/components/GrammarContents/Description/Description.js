@@ -5,8 +5,8 @@ class Description extends React.Component {
 
     render() {
         return (
-            <div >
-                <p className="content">{this.props.content}</p>
+            <div className="content" >
+                {this.props.content}
             </div>
         );
 
