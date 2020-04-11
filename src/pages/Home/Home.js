@@ -7,35 +7,41 @@ import Footer from '../../components/Footer/Footer';
 
 class Home extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state={
             items:[{
+                id: 1,
                 src: "",
                 name: "English Grammar",
                 description: "Your guide to English grammar. (Illustrated)"
             }, 
             {
+                id: 2,
                 src: "",
                 name: "English Vocabulary",
                 description: "Learn English vocabulary by topic. (Illustrated)"
             }, 
             {
+                id: 3,
                 src: "",
                 name: "English Q&A",
                 description: "What do you really know about England, the UK and the English language?"
             },
             {
+                id: 4,
                 src: "",
                 name: "English Listening",
                 description: "Tricky English pronunciation. With listening practice."
             }, 
             {
+                id: 5,
                 src: "",
                 name: "English Test",
                 description: "Have you really learnt what you think you have learnt?"
             },
             {
+                id: 6,
                 src: "",
                 name: "English Chat",
                 description: "We like to talk with you, and we like you to talk to each other. Practise your communication skills."
@@ -47,7 +53,7 @@ class Home extends Component{
     render(){
          let cards = this.state.items.map((item)=>{
              return(
-                <div className="Item">
+                <div className="Item" key={item.id}>
                     <CategoryItem item={item}></CategoryItem> 
              </div>
              );
