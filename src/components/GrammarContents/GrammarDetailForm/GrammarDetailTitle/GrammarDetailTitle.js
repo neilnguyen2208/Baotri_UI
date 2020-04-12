@@ -3,12 +3,11 @@ import "./GrammarDetailTitle.css"
 class GrammarDetailTitle extends Component {
     render() {
         return (
-            <div className="page_title_bg">
-                <div className="page_prev_title">{this.props.prevTitle}</div>
-                <div className="page_title_rectangle"></div>
-                <div className="page_main_title">{this.props.mainTitle}</div>
+            <div className="Grammar_Detail_Title">
+                <div className="Title">{this.props.name}</div>
+                <div className="grammar_detail_title_background"></div>
             </div>
-            )
+        )
     }
 }
 export default GrammarDetailTitle;

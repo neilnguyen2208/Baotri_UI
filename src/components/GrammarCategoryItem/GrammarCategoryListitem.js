@@ -24,18 +24,7 @@ class GrammarListCategoryItem extends Component {
                     <div class="grammar_category_list_item_name">{this.props.item.name}</div>
                     {/* </Link> */}
                 </a>
-                {/* <Switch>
-                    {/* <Route exact path="{path}">
-                        <Grammar/>
-                    </Route> */}
-                {/* <Switch>
-                    {/* <Router path={`/grammar`}>
-                        <Grammar />
-                    </Router> */}
-                {/* <Route path={`/grammar/grammar_detail`}>
-                        <GrammarDetail />
-                    </Route> */}
-                {/* </Switch> */}
+               
             </div>
         )
     }

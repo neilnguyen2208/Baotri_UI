@@ -1,33 +1,25 @@
-.Grammar{
+.Grammar_Detail{
     width: 100%;
     height: fit-content;
     position: absolute;
     /* background: orchid; */
 }
 
-.Grammar .Main_Port {
+.Grammar_Detail .Outline_Port {
     position: relative;
     top: 270px;
     height: fit-content;
     
 }
 
-.Grammar .Grammar_Header{
+.Grammar_Detail .Grammar_Detail_Header{
     width: 100%;
     top: 0px;
     height: fit-content;
     position: relative;
 }
 
-.grammar_title_port {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #000;
-}
-
-.Grammar .Inline_Port {
+.Grammar_Detail .Inline_Port {
     top: 0px;
     position: relative;
     left: 6%;
@@ -38,7 +30,8 @@
     padding-top: 0px;
 }
 
-.grammar_category_port {
+
+.Grammar_Detail .Content {
     position: relative;
     padding-left: 4%;
     padding-right: 4%;
@@ -82,7 +75,7 @@
     margin-bottom: 350px;
 }
 
-.grammar_footer {
+.Grammar_Detail .Grammar_Footer {
     margin-top: 20px;
     top: 270px;
     position: relative;
@@ -91,8 +84,7 @@
     width: 100%;
 }
 
-.Grammar .Description {
-   
+.Grammar_Detail .Description {
     position: relative;
     height: fit-content;
 }
