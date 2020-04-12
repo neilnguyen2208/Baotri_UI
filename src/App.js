@@ -12,10 +12,15 @@ import AboutUs from './pages/AboutUs/AboutUs';
 import Grammar from './pages/Grammar/Grammar';
 import EnglishVocabulary from './pages/EnglishVocabulary/EnglishVocabulary';
 import GrammarDetail from './pages/GrammarDetail/GrammarDetail.js'
+import history from './components/history.js'
+import EnglishListening from './pages/EnglishListening/EnglishListening';
+import PageTitle from './components/PageTitle/PageTitle';
+
+
 function App() {
   return (
     <div className="App">
-      <Router>
+      <Router history={history}>
         <Switch>
           <Route path="/" exact={true}>
             <Home></Home>
@@ -29,11 +34,14 @@ function App() {
           <Route path="/vocabulary">
             <EnglishVocabulary></EnglishVocabulary>
           </Route>
-          <Route path="/grammar">
+          <Route path="/grammar" exact={true}>
             <Grammar></Grammar>
           </Route>
           <Route path="/grammar/grammar_detail">
             <GrammarDetail />
+          </Route>
+          <Route path="/listening">
+            <EnglishListening></EnglishListening>
           </Route>
         </Switch>
       </Router>

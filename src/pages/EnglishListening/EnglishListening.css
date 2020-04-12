@@ -1,5 +1,5 @@
 
-.Vocabulary {
+.Listening {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -7,7 +7,7 @@
     padding: 0px;
 }
 
-.Vocabulary .Vocabulary_Header{
+.Listening .Listening_Header{
     top:0px;
     width: 100%;
     height: 10%;
@@ -15,7 +15,7 @@
     left: 0px;
 }
 
-.Vocabulary .Content{
+.Listening .Content{
     position: relative;
     overflow-y:  scroll;
     width: 100%;
@@ -24,17 +24,17 @@
     padding-top: 20px;
 }
 
-.Vocabulary .Content .Dock_Notification{
+.Listening .Content .Dock_Notification{
     position: relative;
     width: 100%;
     height: 10%;
-    padding-left: 15px;
+    padding: 15px;
     display: flex;
     align-items: center;
     background-color: gray;
 }
 
-.Vocabulary .Content .Content_Row{
+.Listening .Content .Content_Row{
     height: auto;
     min-height: 80%;
     width: 90%;
@@ -46,7 +46,7 @@
     border-bottom: solid gray 1px;
 }
 
-/* .Vocabulary .Content .Content_Row p {
+/* .Listening .Content .Content_Row p {
     position: relative;
     padding-left: 10px;
     padding-right: 10px;
@@ -57,7 +57,7 @@
     width: auto;
 } */
 
-.Vocabulary .Content .Content_Row .Content_Row_Header {
+.Listening .Content .Content_Row .Content_Row_Header {
     position: relative;
     display: flex;
     width: 100%;
@@ -67,11 +67,11 @@
     margin-top: 10px;
     margin-left: 5px;
 }
-.Vocabulary .Content .Content_Row .Content_Row_Header .Header_Bold {
+.Listening .Content .Content_Row .Content_Row_Header .Header_Bold {
     background-color: blue;
 }
 
-.Vocabulary .Content .Content_Row .Content_Row_Title {
+.Listening .Content .Content_Row .Content_Row_Title {
     position: relative;
     display: inline-block;
     width: 100%;
@@ -84,7 +84,7 @@
     text-align: center;
 }
 
-.Vocabulary .Content .Content_Row .Content_Row_Items {
+.Listening .Content .Content_Row .Content_Row_Items {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -97,7 +97,7 @@
     margin-left: 3%;
 }
 
-.Vocabulary .Content .Content_Row .Content_Row_Items .Item {
+.Listening .Content .Content_Row .Content_Row_Items .Item {
     box-sizing: border-box;
     list-style: none;
     text-align: center;
@@ -109,7 +109,7 @@
 }
 
 
-.Vocabulary .Content .Vocabulary_Footer{
+.Listening .Content .Listening_Footer{
     position: relative;
     background-color: darkorange;
     height: 10%;
