@@ -8,11 +8,16 @@ class GrammarCategoryItem extends Component {
         this.state = {
             items: [{
                 name: "Comparative",
+                link_to: "grammar_detail"
             },
             {
                 name: "Superative",
+                link_to: "grammar_detail"
             },
-            { name: "Order" }
+            {
+                name: "Order",
+                link_to: "grammar_detail"
+            }
             ]
         }
     }

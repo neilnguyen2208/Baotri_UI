@@ -3,12 +3,21 @@ import "./PageTitle.css"
 class PageTitle extends Component {
     render() {
         return (
-            <div className="page_title_bg">
-                <div className="page_prev_title">{this.props.prevTitle}</div>
-                <div className="page_title_rectangle"></div>
-                <div className="page_main_title">{this.props.mainTitle}</div>
+            <div className="Page_Title">
+                <tr className="page_title_layout">
+                    <th>
+                        <div className="Page_Prev_Title">
+                            {this.props.prevTitle}
+                        </div>
+                    </th>
+                    <th className="page_title_sub_layout">
+                        <div className="Page_Main_Title">
+                            {this.props.mainTitle}
+                        </div>
+                    </th>
+                </tr>
             </div>
-            )
+        )
     }
 }
 export default PageTitle;
