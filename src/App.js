@@ -13,6 +13,7 @@ import Grammar from './pages/Grammar/Grammar';
 import EnglishVocabulary from './pages/EnglishVocabulary/EnglishVocabulary';
 import history from './components/history.js'
 import EnglishListening from './pages/EnglishListening/EnglishListening';
+import Login from './pages/Login/Login';
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
       <Router history={history}>
         <Switch>
           <Route path="/" exact={true}>
-            <Home></Home>
+            <Login></Login>
           </Route>
           <Route path="/home">
             <Home></Home>

@@ -11,37 +11,46 @@ class EnglishListening extends Component{
         this.state = {
             items: [
                 {
+                    id: 1,
                     name: "Type of Listening"
                 },
                 {
+                    id: 2,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 3,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 4,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 5,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 6,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 7,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 8,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 9,
                     name: "Type of Listening"
                 }
             ]
@@ -52,7 +61,7 @@ class EnglishListening extends Component{
 
         let cards = this.state.items.map((item)=>{
             return(
-                <div className="Item">
+                <div className="Item" key={item.id}>
                     <EnglishVocabularyItem item={item}></EnglishVocabularyItem>
                 </div>
             );

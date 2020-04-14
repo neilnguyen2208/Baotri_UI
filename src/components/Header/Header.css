@@ -18,6 +18,7 @@
     position: relative;
     display: inline-block;
     width: 10%;
+    min-width: 100px;
     height: 100%;
     padding-left: 10px;
 }
@@ -65,6 +66,7 @@
 .Header .Header_Navigation  .Header_Row .Header_Item a{
     height: 100%;
     width: 100%;
+    font-size: 14px;
     text-decoration-line: none;
     text-align: center;
     color: black;
@@ -72,8 +74,8 @@
 
 .Header .Header_Navigation  .Header_Row .Header_Item ul:hover a{
     text-decoration: underline;
-    text-decoration-color: blue;
-    color: blue;
+    text-decoration-color: #000066;
+    color: #000066;
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item ul{
@@ -83,7 +85,7 @@
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item ul:hover{
-    border-top: solid blue 3px !important;
+    border-top: solid #000066 3px !important;
     cursor: pointer;
 }
 
@@ -122,15 +124,15 @@
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown a{
     color: black;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     display: block;
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown a:hover {
-    color: blue;
+    color: #000066;
     background-color: #f1f1f1;
     text-decoration: underline;
-    text-decoration-color: blue;
+    text-decoration-color: #000066;
     cursor: pointer;
 }
 
@@ -152,15 +154,15 @@
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown a{
     color: black;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     display: block;
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown a:hover {
-    color: blue;
+    color: #000066;
     background-color: #f1f1f1;
     text-decoration: underline;
-    text-decoration-color: blue;
+    text-decoration-color: #000066;
     cursor: pointer;
 }
 
@@ -190,6 +192,8 @@
     background-color: black;
     width: 30%;
     height: 100%;
+    min-width: 50px;
+    min-height: 40px;
     top: 0px;
     right: 0px;
     margin-right: 10px;
