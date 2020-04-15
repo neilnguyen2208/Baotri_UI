@@ -2,13 +2,27 @@ import React, { Component } from "react";
 import './Header.css'
 import mainLogo from '../../resources/logo.png'
 import profilIcon from '../../resources/account_icon.png'
+import { Redirect, withRouter } from "react-router-dom";
+import { isLogin } from "../../pages/Login/Login.js";
+
 
 class Header extends Component{
     constructor(props){
         super(props);
     }
 
+    handleLogOut = ()=>{
+        localStorage.removeItem('token');
+        console.log('logout')
+        this.setState({})
+    }
+
+
+
     render(){
+        const isAuthenticated = isLogin();
+        if(!isAuthenticated)
+            return <Redirect to='/'></Redirect>
         return(
             <header className="Header">
                 <nav className="Header_Navigation">
@@ -24,7 +38,7 @@ class Header extends Component{
                             <ul className="Item_LearnEnglish">
                                 <a href="#">LEARN ENGLISH</a>
                                 <div className="Item_LearnEnglish_Dropdown">
-                                    <a href="/">Home</a>
+                                    <a href="/home">Home</a>
                                     <a href="/aboutus">About Us</a>
                                 </div>
                             </ul>
@@ -42,7 +56,11 @@ class Header extends Component{
                                 </div>
                             </ul>
                             <ul className="Item_Profile_Picture">
-                                <img src={profilIcon}></img>
+                                <lable><img src={profilIcon}></img></lable>
+                                <div className="Item_Profile_Picture_Dropdown">
+                                    <a href="/home">Profile</a>
+                                    <a href="/" onClick={this.handleLogOut}>Log Out</a>
+                                </div>
                             </ul>
                         </div>
                     </div>
@@ -51,4 +69,4 @@ class Header extends Component{
         );
     }
 }
-export default Header;
+export default withRouter(Header);

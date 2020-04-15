@@ -3,11 +3,12 @@ import Header from "../../components/Header/Header.js";
 import './EnglishListening.css'
 import Footer from '../../components/Footer/Footer';
 import EnglishVocabularyItem from '../../components/EnglishVocabularyItem/EnglishVocabularyItem.js';
+import { withRouter } from 'react-router-dom';
 
 class EnglishListening extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             items: [
                 {
@@ -55,6 +56,8 @@ class EnglishListening extends Component{
                 }
             ]
         }
+        // const path = window.location.pathname;
+        // console.log('path: ' + path);
     }
 
     render(){
@@ -94,4 +97,4 @@ class EnglishListening extends Component{
 
 }
 
-export default EnglishListening;
+export default withRouter(EnglishListening);

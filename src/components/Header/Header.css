@@ -112,7 +112,7 @@
 .Header .Header_Navigation  .Header_Row .Header_Item ul.Item_Chat:hover a {
     text-decoration: none;
 }
-
+/* 
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown {
     display: none;
     position: absolute;
@@ -142,7 +142,9 @@
     width: 100%;
     min-height: 100%;
 }
+ */
 
+/* 
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown {
     display: none;
     position: absolute;
@@ -171,13 +173,53 @@
     flex-direction: column;
     width: 100%;
     min-height: 100%;
+} */
+
+
+.Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_'] [class*='Item_'] {
+    display: none;
+    position: absolute;
+    background-color: white;
+    padding-top: 10px;
+    z-index: 1;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_'] .Item_Profile_Picture_Dropdown {
+    display: none;
+    position: absolute;
+    padding-top: 10px;
+    top: 100%;
+    z-index: 1;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_'] [class*='Item_'] a{
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_'] [class*='Item_'] a:hover {
+    color: #000066;
+    background-color: #f1f1f1;
+    text-decoration: underline;
+    text-decoration-color: #000066;
+    cursor: pointer;
+}
+
+.Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_']:hover [class*='Item_']{
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100%;
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_Profile_Picture{
     position: relative;
     display: inline-block;
     align-self: center;
-    width: 20%;
+    margin-left: 10px;
+    width: 5%;
     height: 100%;
 }
 
@@ -190,11 +232,10 @@
     display: block;
     position: absolute;
     background-color: black;
-    width: 30%;
+    width: 100%;
     height: 100%;
     min-width: 50px;
     min-height: 40px;
     top: 0px;
     right: 0px;
-    margin-right: 10px;
 }

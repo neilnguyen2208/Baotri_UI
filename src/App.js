@@ -4,7 +4,7 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link
+  Link,
 } from 'react-router-dom'
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home.js'
@@ -23,26 +23,29 @@ function App() {
     <div className="App">
       <Router history={history}>
         <Switch>
-          <Route path="/" exact={true}>
+          <Route path="/" exact>
             <Login></Login>
           </Route>
-          <Route path="/home">
+          <Route path="/home" exact>
             <Home></Home>
           </Route>
-          <Route path="/aboutus">
+          <Route path="/aboutus" exact>
             <AboutUs></AboutUs>
           </Route>
-          <Route path="/vocabulary">
+          <Route path="/vocabulary" exact>
             <EnglishVocabulary></EnglishVocabulary>
           </Route>
-          <Route path="/grammar" exact={true}>
+          <Route path="/grammar" exact>
             <Grammar></Grammar>
           </Route>
-          <Route path="/grammar/grammar_detail">
+          <Route path="/grammar/grammar_detail" exact>
             <GrammarDetail />
           </Route>
-          <Route path="/listening">
+          <Route path="/listening" exact>
             <EnglishListening></EnglishListening>
+          </Route>
+          <Route path="/home/:id">
+              <EnglishListening></EnglishListening>
           </Route>
         </Switch>
       </Router>

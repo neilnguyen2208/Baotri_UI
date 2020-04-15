@@ -3,6 +3,7 @@ import Header from "../../components/Header/Header.js";
 import './EnglishVocabulary.css'
 import Footer from '../../components/Footer/Footer';
 import EnglishVocabularyItem from '../../components/EnglishVocabularyItem/EnglishVocabularyItem.js';
+import { withRouter } from 'react-router-dom';
 
 class EnglishVocabulary extends Component{
 
@@ -94,4 +95,4 @@ class EnglishVocabulary extends Component{
 
 }
 
-export default EnglishVocabulary;
+export default withRouter(EnglishVocabulary);

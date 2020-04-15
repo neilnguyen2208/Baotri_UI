@@ -6,7 +6,7 @@ import Footer from "../../components/Footer/Footer.js";
 import Description from "../../components/GrammarContents/Description/Description.js"
 import PageTitle from "../../components/PageTitle/PageTitle.js"
 import GrammarDetailSubTitle from "../../components/GrammarContents/GrammarDetailSubTitle/GrammarDetailSubTitle.js"
-import GrammarDetailTitle from "../../components/GrammarContents/GrammarDetailTitle/GrammarDetailTitle.js"
+import GrammarDetailTitle from '../../components/GrammarContents/GrammarDetailForm/GrammarDetailTitle/GrammarDetailTitle.js'
 class GrammarDetail extends Component {
     constructor(props) {
         super();
