@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-.grammar_category_list_item_name {
-    /* position: absolute; */
+.Grammar_Category_List_Item .Item_Name {
+    position: relative;
     width: 95.45%;
-    height: 30px;
+    height: 20px;
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 700;
@@ -10,13 +10,14 @@
     padding-left: 4.55%;
     vertical-align: top;
     font-size: 16px;
-    line-height: 30px;
+    line-height: 20px;
     color: #363636;
     text-align: left;
+    padding-top: 5px;
     height: fit-content;
 }
 
-.decoration_left_right_border {
+.Grammar_Category_List_Item .decoration_left_right_border {
     position: absolute;
     width: 100%;
     height: 30px;
@@ -29,14 +30,13 @@
     margin-top: 0%;
 }
 
-.grammar_category_list_item {
+.Grammar_Category_List_Item {
     width: fit-content;
-    height: 30px;
     text-decoration: unset;
     background: gray;
 }
 
-.decoration_line {
+.Grammar_Category_List_Item .decoration_line {
     position: absolute;
     width: 90.9%;
     height:25px;
@@ -49,7 +49,7 @@
     border-style: solid;
 }
 
-.decoration_headline {
+.Grammar_Category_List_Item .decoration_headline {
     position: absolute;
     width: 5px;
     margin-left: 1.82%;

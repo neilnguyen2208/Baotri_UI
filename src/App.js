@@ -15,7 +15,7 @@ import GrammarDetail from './pages/GrammarDetail/GrammarDetail.js'
 import history from './components/history.js'
 import EnglishListening from './pages/EnglishListening/EnglishListening';
 import PageTitle from './components/PageTitle/PageTitle';
-
+import UserAccountManagement from "./pages/UserAccountManagement/UserAccountManagement.js"
 
 function App() {
   return (
@@ -42,6 +42,9 @@ function App() {
           </Route>
           <Route path="/listening">
             <EnglishListening></EnglishListening>
+          </Route>
+          <Route path="/user">
+            <UserAccountManagement></UserAccountManagement>
           </Route>
         </Switch>
       </Router>

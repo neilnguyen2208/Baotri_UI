@@ -8,7 +8,6 @@
 } */
 
 .Grammar_Detail_Title .Title {
-    margin-top: 10px;
     position: relative;
     width: 50%;
     height: 40px;
@@ -25,6 +24,7 @@
 }
 
 .Grammar_Detail_Title {
+    padding-top: 10px;
     position: relative;
     background-color: white;
     border-color: #c4c4c4;

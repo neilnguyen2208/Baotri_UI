@@ -5,7 +5,7 @@
     /* background: orchid; */
 }
 
-.Grammar .Main_Port {
+.Grammar .Grammar_Main_Port {
     position: relative;
     top: 270px;
     height: fit-content;
@@ -27,7 +27,7 @@
     background: #000;
 }
 
-.Grammar .Inline_Port {
+.Grammar .Grammar_Inline_Port {
     top: 0px;
     position: relative;
     left: 6%;

@@ -1,25 +1,23 @@
-.Grammar_Detail{
+.Grammar_Detail {
     width: 100%;
     height: fit-content;
     position: absolute;
-    /* background: orchid; */
 }
 
-.Grammar_Detail .Outline_Port {
+.Grammar_Detail .Grammar_Detail_Outline_Port {
     position: relative;
     top: 270px;
     height: fit-content;
-    
 }
 
-.Grammar_Detail .Grammar_Detail_Header{
+.Grammar_Detail .Grammar_Detail_Header {
     width: 100%;
     top: 0px;
     height: fit-content;
     position: relative;
 }
 
-.Grammar_Detail .Inline_Port {
+.Grammar_Detail .Grammar_Detail_Inline_Port {
     top: 0px;
     position: relative;
     left: 6%;
@@ -30,8 +28,7 @@
     padding-top: 0px;
 }
 
-
-.Grammar_Detail .Content {
+.Grammar_Detail .Grammar_Detail_Content {
     position: relative;
     padding-left: 4%;
     padding-right: 4%;
@@ -47,9 +44,10 @@
     border-right-width: 1px;
     border-color: #c4c4c4;
     border-style: solid;
+    padding-bottom: 10px;
 }
 
-.decoration_insert_left_right_border {
+.Grammar_Detail .decoration_insert_left_right_border {
     width: 100%;
     height: 20px;
     border-top-width: 0px;
@@ -61,21 +59,7 @@
     border-style: solid;
 }
 
-.decoration_insert_end_border {
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 20px;
-    border-top-width: 0px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-color: #c4c4c4;
-    border-style: solid;
-    margin-bottom: 350px;
-}
-
-.Grammar_Detail .Grammar_Footer {
+.Grammar_Detail .Grammar_Detail_Footer {
     margin-top: 20px;
     top: 270px;
     position: relative;
@@ -84,7 +68,20 @@
     width: 100%;
 }
 
-.Grammar_Detail .Description {
+.Grammar_Detail .Grammar_Detail_Description {
     position: relative;
     height: fit-content;
+}
+
+.Grammar_Detail .Grammar_Detail_Outline_Port .Grammar_Detail_Inline_Port .Grammar_Detail_Content .decoration_below_border {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: ffffff;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 0px;
+    border-bottom: 1px;
+    border-color: #c4c4c4;
+    border-style: solid;
 }

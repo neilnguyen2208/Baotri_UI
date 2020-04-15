@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-.category_item {
+.Grammar_Category_Item {
     position: relative;
     width: 100%;
     height: fit-content;
@@ -8,7 +8,7 @@
     /* background: greenyellow; */
 }
 
-.category_item_name {
+.Grammar_Category_Item .Item_Name {
     position: relative;
     width: 98.18%;
     padding-bottom: 5px;
@@ -27,7 +27,7 @@
     border-style: solid;
 }
 
-.decoration_above_line {
+.Grammar_Category_Item .decoration_above_line {
     position: relative;
     width: 100%;
     height: 5px;
@@ -40,7 +40,7 @@
     border-style: solid;
 }
 
-.decoration_below_border {
+.Grammar_Category_Item .decoration_below_border {
     position: relative;
     width: 100%;
     height: 10px;

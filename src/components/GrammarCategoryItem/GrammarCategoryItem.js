@@ -31,10 +31,10 @@ class GrammarCategoryItem extends Component {
             );
         })
         return (
-            <div className="category_item">
+            <div className="Grammar_Category_Item">
                 <div className="decoration_above_line"></div>
-                <div className="category_item_name">{this.props.item.name}</div>
-                <div className="category_item_sub_item">{cards}</div>
+                <div className="Item_Name">{this.props.item.name}</div>
+                <div className="Sub_Items">{cards}</div>
                 <div className="decoration_below_border"></div>
                 <div className="decoration_below_line"></div>
             </div>
