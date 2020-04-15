@@ -3,56 +3,68 @@ import Header from "../../components/Header/Header.js";
 import './EnglishListening.css'
 import Footer from '../../components/Footer/Footer';
 import EnglishVocabularyItem from '../../components/EnglishVocabularyItem/EnglishVocabularyItem.js';
+import { withRouter } from 'react-router-dom';
 
 class EnglishListening extends Component{
 
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
         this.state = {
             items: [
                 {
+                    id: 1,
                     name: "Type of Listening"
                 },
                 {
+                    id: 2,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 3,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 4,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 5,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 6,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 7,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 8,
                     name: "Type of Listening"
                 }
                 ,
                 {
+                    id: 9,
                     name: "Type of Listening"
                 }
             ]
         }
+        // const path = window.location.pathname;
+        // console.log('path: ' + path);
     }
 
     render(){
 
         let cards = this.state.items.map((item)=>{
             return(
-                <div className="Item">
+                <div className="Item" key={item.id}>
                     <EnglishVocabularyItem item={item}></EnglishVocabularyItem>
                 </div>
             );
@@ -85,4 +97,4 @@ class EnglishListening extends Component{
 
 }
 
-export default EnglishListening;
+export default withRouter(EnglishListening);

@@ -40,10 +40,11 @@
     width: 90%;
     margin-top: 10px;
     margin-left: 3%;
-    border-right: solid blue 40px;
+    border-right: solid #000066 40px;
     border-top: solid gray 1px;
     border-left: solid gray 1px;
     border-bottom: solid gray 1px;
+    margin-bottom: 10px;
 }
 
 .About .Content .Content_Row p {

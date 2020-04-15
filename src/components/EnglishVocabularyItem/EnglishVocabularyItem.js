@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './EnglishVocabularyItem.css'
-import { BrowserRouter as Router, Link, Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { BrowserRouter as Router, Link, Switch, Route, Redirect, useHistory, withRouter } from "react-router-dom";
 import history from '../history.js'
 
 class EnglishVocabularyItem extends Component{
@@ -19,11 +19,9 @@ class EnglishVocabularyItem extends Component{
     }
 
     handleClick (event, category){
-        history.push("/home");
-        window.location.reload();
-        console.log(this.props);
+        this.props.history.push("/home");
     }
     
 }
 
-export default EnglishVocabularyItem;
+export default withRouter(EnglishVocabularyItem);
