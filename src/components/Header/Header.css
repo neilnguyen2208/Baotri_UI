@@ -5,7 +5,7 @@
     /* background-color: aqua; */
     text-decoration-color: black;
     box-sizing: border-box;
-    overflow: visible;
+    /* overflow: visible; */
 }
 
 .Header .Header_Navigation{
@@ -112,69 +112,6 @@
 .Header .Header_Navigation  .Header_Row .Header_Item ul.Item_Chat:hover a {
     text-decoration: none;
 }
-/* 
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown {
-    display: none;
-    position: absolute;
-    background-color: white;
-    padding-top: 10px;
-    z-index: 1;
-}
-
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown a{
-    color: black;
-    text-decoration: none;
-    font-size: 16px;
-    display: block;
-}
-
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish .Item_LearnEnglish_Dropdown a:hover {
-    color: #000066;
-    background-color: #f1f1f1;
-    text-decoration: underline;
-    text-decoration-color: #000066;
-    cursor: pointer;
-}
-
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish:hover .Item_LearnEnglish_Dropdown{
-    display: block;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100%;
-}
- */
-
-/* 
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown {
-    display: none;
-    position: absolute;
-    background-color: white;
-    padding-top: 10px;
-    z-index: 1;
-}
-
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown a{
-    color: black;
-    text-decoration: none;
-    font-size: 16px;
-    display: block;
-}
-
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat .Item_Chat_Dropdown a:hover {
-    color: #000066;
-    background-color: #f1f1f1;
-    text-decoration: underline;
-    text-decoration-color: #000066;
-    cursor: pointer;
-}
-
-.Header .Header_Navigation  .Header_Row .Header_Item .Item_Chat:hover .Item_Chat_Dropdown{
-    display: block;
-    flex-direction: column;
-    width: 100%;
-    min-height: 100%;
-} */
-
 
 .Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_'] [class*='Item_'] {
     display: none;
@@ -195,7 +132,7 @@
 .Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_'] [class*='Item_'] a{
     color: black;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 14px;
     display: block;
 }
 

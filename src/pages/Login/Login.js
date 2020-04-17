@@ -12,37 +12,17 @@ class Login extends Component {
             signup: false,
             forgot_pasword: false,
             username: "",
-            password: ""
+            password: "",
+            email: "",
+            displayname: ""
         }
         this.handleUsernameChange.bind(this);
         this.handlePasswordChange.bind(this);
-        this.handleButtonLoginClick.bind(this);
-    }
-
-    handleUsernameChange = (event) =>{
-        this.setState(
-            {
-                username: event.target.value
-            }
-        )
-    }
-
-    handlePasswordChange = (event) =>{
-        this.setState(
-            {
-                password: event.target.value
-            }
-        )
-    }
-
-    handleButtonLoginClick = async (event)=> {
-        event.preventDefault();
-        console.log('username: '+this.state.username + 'password: '+this.state.password);
-        // let response = await fetch('api/v1/1');
-        // let content = await response.json();
-        // console.log(content);
-        localStorage.setItem('token', 'zcdalshfkabckxbsiladhosadklhndsaldkbk,sacb');
-        this.setState({});
+        this.handleDisplayNameChange.bind(this);
+        this.handleEmailChange.bind(this);
+        this.handleClick.bind(this);
+        this.handleLoginClick.bind(this);
+        this.handleSignupClick.bind(this);
     }
 
     render(){
@@ -50,7 +30,7 @@ class Login extends Component {
         const isAuthenticated = isLogin();
         if(isAuthenticated){
             console.log('true');
-            return <Redirect to="/home"></Redirect>
+            return <Redirect to = "/home"></Redirect>
         }
         return(
            <div className="Login">
@@ -61,19 +41,26 @@ class Login extends Component {
                 <div className="RightSide">
                     <div className="Right_Bound">
                         <div className="Top_Nav">
-                            <button className="Login_Button">Login</button>
-                            <button className="SignUp_Button">Sign Up</button>
+                            <button className="Login_Button" onClick={this.handleLoginClick}>Login</button>
+                            <button className="SignUp_Button" onClick={this.handleSignupClick}>Sign Up</button>
                         </div>
                         <div className="Form">
                             {
                                 login? 
-                                <div className="Login">
+                                <div className="Login-Form">
                                     <input type="text" placeholder="Username" onChange={this.handleUsernameChange}></input>
                                     <input type="text" placeholder="Password" onChange={this.handlePasswordChange}></input>
-                                    <button onClick={this.handleButtonLoginClick}>Login</button>
+                                    <a href='./home'>Forgot Password? Click Here.</a>
+                                    <button onClick={this.handleClick}>Login</button>
                                 </div>
                                 : signup?
-                                <div>Sign Up</div>
+                                <div className="Login-Form">
+                                    <input type="text" placeholder="Username" onChange={this.handleUsernameChange}></input>
+                                    <input type="text" placeholder="Email" onChange={this.handleEmailChange}></input>
+                                    <input type="text" placeholder="Display Name" onChange={this.handleDisplayNameChange}></input>
+                                    <input type="text" placeholder="Password" onChange={this.handlePasswordChange}></input>
+                                    <button onClick={this.handleClick}>Sign Up</button>
+                                </div>
                                 : <div>Forgot Password</div>
                             }
                         </div>
@@ -83,6 +70,65 @@ class Login extends Component {
            </div>
         );
     }
+
+    handleUsernameChange = (event) =>{
+        this.setState(
+            {
+                username: event.target.value
+            }
+        )
+    }
+    
+    handlePasswordChange = (event) =>{
+        this.setState(
+            {
+                password: event.target.value
+            }
+        )
+    }
+    
+    handleClick = async (event)=> {
+        event.preventDefault();
+        console.log('username: '+this.state.username + 'password: '+this.state.password);
+        localStorage.setItem('token', 'zcdalshfkabckxbsiladhosadklhndsaldkbk,sacb');
+        this.setState({});
+    }
+    
+    handleEmailChange = (event) => {
+        event.preventDefault();
+        this.setState(
+            {
+                email: event.target.value
+            }
+        )
+    }
+    
+    handleDisplayNameChange = (event) =>{
+        event.preventDefault();
+        this.setState(
+            {
+                displayname: event.target.value
+            }
+        )
+    }
+    
+    handleLoginClick = ()=>{
+        this.setState({
+            login: true,
+            signup: false,
+            forgot_pasword: false
+        })
+    }
+    
+    handleSignupClick =()=>{
+        this.setState({
+            login: false,
+            signup: true,
+            forgot_pasword: false
+        })
+    }
+
+
 }
 
 export function  isLogin(){

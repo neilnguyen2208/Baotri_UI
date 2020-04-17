@@ -5,6 +5,7 @@
     background-color: gray;
     width: 100%;
     height: 100%;
+    min-width: 1000px;
 }
 
 .Login .Content {
@@ -82,7 +83,7 @@
     border-radius: 0px 0px 5% 5%;
 }
 
-.Login .Content .RightSide .Right_Bound .Form .Login {
+.Login .Content .RightSide .Right_Bound .Form .Login-Form {
     position: relative;
     display: flex !important;
     flex-direction: column;
@@ -94,22 +95,30 @@
     right: 5%;
 }
 
-.Login .Content .RightSide .Right_Bound .Form .Login input {
+.Login .Content .RightSide .Right_Bound .Form .Login-Form input {
+    position: relative;
     margin-bottom: 10px;
     min-height: 30px;
     padding-left: 10px;
     font-size: 14px;
 }
 
-.Login .Content .RightSide .Right_Bound .Form .Login button {
+.Login .Content .RightSide .Right_Bound .Form .Login-Form a {
+    position: relative;
+    margin-bottom: 10px;
+    color: #000066;
+}
+
+.Login .Content .RightSide .Right_Bound .Form .Login-Form button {
+    position: relative;
     align-self: center;
-    min-height: 30px;
+    min-height: 40px;
     min-width: 100px;
     background-color: #000066;
     color: white;
     font-size: 20px;
 }
 
-.Login .Content .RightSide .Right_Bound .Form .Login button:hover {
+.Login .Content .RightSide .Right_Bound .Form .Login-Form button:hover {
     border: solid 1px gray;
 }
