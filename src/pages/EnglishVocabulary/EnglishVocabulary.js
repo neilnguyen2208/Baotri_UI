@@ -3,7 +3,8 @@ import Header from "../../components/Header/Header.js";
 import './EnglishVocabulary.css'
 import Footer from '../../components/Footer/Footer';
 import EnglishVocabularyItem from '../../components/EnglishVocabularyItem/EnglishVocabularyItem.js';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
+import { isLogin } from '../Login/Login.js';
 
 class EnglishVocabulary extends Component{
 
@@ -67,6 +68,11 @@ class EnglishVocabulary extends Component{
                 </div>
             );
         })
+
+        let islogin = isLogin();
+        
+        if(!isLogin)
+            return  <Redirect path='/'></Redirect>
 
         return(
             <div className="Vocabulary">
