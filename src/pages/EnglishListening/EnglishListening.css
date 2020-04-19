@@ -5,7 +5,10 @@
     height: 100%;
     margin: 0px;
     padding: 0px;
+    background-color: #f7f7f7;
+    overflow-x: hidden;
     min-width: 1000px;
+    font-family: Open Sans;
 }
 
 .Listening .Listening_Header{
@@ -18,7 +21,6 @@
 
 .Listening .Content{
     position: relative;
-    overflow-y:  scroll;
     width: 100%;
     height: 90%;
     background-color: #f7f7f7;
@@ -40,7 +42,7 @@
     min-height: 80%;
     width: 90%;
     margin-top: 10px;
-    margin-left: 3%;
+    margin-left: 4%;
     border-right: solid #000066 40px;
     border-top: solid gray 1px;
     border-left: solid gray 1px;

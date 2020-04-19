@@ -64,6 +64,8 @@
 
 .Login .Content .RightSide .Right_Bound .Top_Nav .Login_Button {
     position: absolute;
+    font-family: Barlow Condensed;
+    font-size: 20px;
     left: 5%;
     width: 45%;
     height: 100%;
@@ -71,6 +73,8 @@
 
 .Login .Content .RightSide .Right_Bound .Top_Nav .SignUp_Button {
     position: absolute;
+    font-family: Barlow Condensed;
+    font-size: 20px;
     width: 45%;
     height: 100%;
     left: 50%;
@@ -100,6 +104,7 @@
     margin-bottom: 10px;
     min-height: 30px;
     padding-left: 10px;
+    font-family: Barlow;
     font-size: 14px;
 }
 
@@ -112,11 +117,13 @@
 .Login .Content .RightSide .Right_Bound .Form .Login-Form button {
     position: relative;
     align-self: center;
-    min-height: 40px;
+    font-family: Barlow Condensed;
+    min-height: 30px;
     min-width: 100px;
     background-color: #000066;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .Login .Content .RightSide .Right_Bound .Form .Login-Form button:hover {

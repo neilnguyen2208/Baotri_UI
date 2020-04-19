@@ -1,0 +1,30 @@
+
+.EnglishVocabularyLessonItem {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    border-bottom: solid #000066 5px;
+    border-top:  solid gray 1px;
+    border-left:  solid gray 1px;
+    border-right:  solid gray 1px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #211F60;
+}
+
+.EnglishVocabularyLessonItem:hover {
+    color: #000066;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #000066;
+}
+
+.EnglishVocabularyLessonItem img {
+    position: relative;
+    top: 0px;
+    height: 60%;
+    width: 100%;
+}
+

@@ -21,8 +21,11 @@ class Header extends Component{
 
     render(){
         const isAuthenticated = isLogin();
+        let loginOrLogOut;
         if(!isAuthenticated)
-            return <Redirect to='/'></Redirect>
+            loginOrLogOut = <a href='/login'>Log In</a> ;
+        else 
+            loginOrLogOut = <a href="/" onClick={this.handleLogOut}>Log Out</a>;
         return(
             <header className="Header">
                 <nav className="Header_Navigation">
@@ -36,9 +39,9 @@ class Header extends Component{
                         <div className="Header_Horizontal_Line"></div>
                         <div className="Header_Item">
                             <ul className="Item_LearnEnglish">
-                                <a href="#">LEARN ENGLISH</a>
+                                <a href="/">LEARN ENGLISH</a>
                                 <div className="Item_LearnEnglish_Dropdown">
-                                    <a href="/home">Home</a>
+                                    <a href="/">Home</a>
                                     <a href="/aboutus">About Us</a>
                                 </div>
                             </ul>
@@ -56,10 +59,10 @@ class Header extends Component{
                                 </div>
                             </ul>
                             <ul className="Item_Profile_Picture">
-                                <lable><img src={profilIcon}></img></lable>
+                                <img src={profilIcon}></img>
                                 <div className="Item_Profile_Picture_Dropdown">
-                                    <a href="/home">Profile</a>
-                                    <a href="/" onClick={this.handleLogOut}>Log Out</a>
+                                    <a href="/">Profile</a>
+                                    {loginOrLogOut}
                                 </div>
                             </ul>
                         </div>

@@ -70,10 +70,10 @@ class EnglishListening extends Component{
                 </div>
             );
         })
-        let islogin = isLogin();
+        // let islogin = isLogin();
         
-        if(!isLogin)
-            return  <Redirect path='/'></Redirect>
+        // if(!isLogin)
+        //     return  <Redirect path='/'></Redirect>
 
         return(
             <div className="Listening">

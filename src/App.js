@@ -17,16 +17,18 @@ import EnglishListening from './pages/EnglishListening/EnglishListening';
 import Login from './pages/Login/Login';
 import PageTitle from './components/PageTitle/PageTitle';
 import UserAccountManagement from "./pages/UserAccountManagement/UserAccountManagement.js"
-// import Form from "./pages/UserAccountManagement/UserAccountManagement.js"
+import EnglishVocabularyLesson from './pages/EnglishVocabularyLesson/EnglishVocabularyLesson.js';
+import EnglishVocabularyLessonDetail from './pages/EnglishVocabularyLessonDetail/EnglishVocabularyLessonDetail.js';
+
 function App() {
   return (
     <div className="App">
       <Router history={history}>
         <Switch>
-          <Route path="/" exact>
+          <Route path="/login" exact>
             <Login></Login>
           </Route>
-          <Route path="/home" exact>
+          <Route path="/" exact>
             <Home></Home>
           </Route>
           <Route path="/aboutus" exact>
@@ -34,6 +36,12 @@ function App() {
           </Route>
           <Route path="/vocabulary" exact>
             <EnglishVocabulary></EnglishVocabulary>
+          </Route>
+          <Route path="/vocabulary/:id" exact>
+            <EnglishVocabularyLesson></EnglishVocabularyLesson>
+          </Route>
+          <Route path="/vocabulary/:id/:id">
+            <EnglishVocabularyLessonDetail></EnglishVocabularyLessonDetail>
           </Route>
           <Route path="/grammar" exact>
             <Grammar></Grammar>

@@ -14,46 +14,46 @@ class EnglishVocabulary extends Component{
             items: [
                 {
                     id: 1,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 },
                 {
                     id: 2,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
                 ,
                 {
                     id: 3,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
                 ,
                 {
                     id: 4,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
                 ,
                 {
                     id: 5,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
                 ,
                 {
                     id: 6,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
                 ,
                 {
                     id: 7,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
                 ,
                 {
                     id: 8,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
                 ,
                 {
                     id: 9,
-                    name: "Type of Vocabulary",
+                    title: "Type of Vocabulary",
                 }
             ]
         }
@@ -69,10 +69,10 @@ class EnglishVocabulary extends Component{
             );
         })
 
-        let islogin = isLogin();
+        // let islogin = isLogin();
         
-        if(!isLogin)
-            return  <Redirect path='/'></Redirect>
+        // if(!isLogin)
+        //     return  <Redirect path='/'></Redirect>
 
         return(
             <div className="Vocabulary">

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import './EnglishVocabularyItem.css'
-import { BrowserRouter as Router, Link, Switch, Route, Redirect, useHistory, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, withRouter } from "react-router-dom";
 import history from '../history.js'
 
 class EnglishVocabularyItem extends Component{
@@ -10,16 +10,18 @@ class EnglishVocabularyItem extends Component{
     }
 
     render() {
-        const {name} = this.props.item;
+        const {title} = this.props.item;
         return (
             <button className = "EnglishVocabularyItem" onClick={this.handleClick}>                
-                {name}
+                {title}
             </button>
         );
     }
 
     handleClick (event, category){
-        this.props.history.push("/home");
+        let toPath = "/vocabulary/" + this.props.item.id;
+        console.log(toPath);
+        this.props.history.push(toPath, {title: this.props.item.title});
     }
     
 }

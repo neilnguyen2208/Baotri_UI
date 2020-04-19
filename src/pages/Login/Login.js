@@ -30,7 +30,7 @@ class Login extends Component {
         const isAuthenticated = isLogin();
         if(isAuthenticated){
             console.log('true');
-            return <Redirect to = "/home"></Redirect>
+            return <Redirect to = "/"></Redirect>
         }
         return(
            <div className="Login">
