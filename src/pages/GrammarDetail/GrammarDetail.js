@@ -15,12 +15,9 @@ class GrammarDetail extends Component {
         super();
         this.name = "COMPARATIVE";
     }
-
     render() {
-
         return (
             <div className="Grammar_Detail">
-
                 <div className="Grammar_Detail_Header">
                     <Header></Header>
                 </div>

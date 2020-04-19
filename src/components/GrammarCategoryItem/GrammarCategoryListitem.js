@@ -15,16 +15,14 @@ class GrammarListCategoryItem extends Component {
     render() {
 
         return (
-            <div>
-                <a className="Grammar_Category_List_Item" href="/grammar/grammar_detail">
-                    <div className="decoration_headline"></div>
-                    <div className="decoration_left_right_border"></div>
-                    <div className="decoration_line"></div>
-                    <div class="Item_Name">{this.props.item.name}</div>
+            <a className="Grammar_Category_List_Item" href="/grammar/grammar_detail">
+                <div className="decoration_headline"></div>
+                <div className="decoration_left_right_border"></div>
+                <div className="decoration_line"></div>
+                <div class="Item_Name">{this.props.item.name}</div>
+            </a >
 
-                </a>
 
-            </div>
         )
     }
 }
