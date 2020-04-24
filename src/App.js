@@ -19,6 +19,7 @@ import PageTitle from './components/PageTitle/PageTitle';
 import UserAccountManagement from "./pages/UserAccountManagement/UserAccountManagement.js"
 import EnglishVocabularyLesson from './pages/EnglishVocabularyLesson/EnglishVocabularyLesson.js';
 import EnglishVocabularyLessonDetail from './pages/EnglishVocabularyLessonDetail/EnglishVocabularyLessonDetail.js';
+import EnglishWordItem from './components/EnglishWordItem/EnglishWordItem';
 
 function App() {
   return (
@@ -40,7 +41,7 @@ function App() {
           <Route path="/vocabulary/:id" exact>
             <EnglishVocabularyLesson></EnglishVocabularyLesson>
           </Route>
-          <Route path="/vocabulary/:id/:id">
+          <Route path="/vocabulary/:id/:id" exact>
             <EnglishVocabularyLessonDetail></EnglishVocabularyLessonDetail>
           </Route>
           <Route path="/grammar" exact>

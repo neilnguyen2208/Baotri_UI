@@ -8,16 +8,17 @@ class CategoryItem extends Component{
     }
 
     render() {
+        const {item} = this.props;
         return (
             <div className = "CategoryItem">
-                <a className="Link" href = "./">
+                <a className="Link" href = {item.src}>
                     <i className = "Icon">
                         <img className="Icon_Image" src={vocabularyIcon}></img>
                     </i>
-                    <h4 className="Title">{this.props.item.name ? this.props.item.name : "Home"}</h4>
+                    <h4 className="Title">{item.name ? item.name : "Home"}</h4>
                 </a>
                 <p className="Description">
-                    {this.props.item.description ? this.props.item.description : "Description"}
+                    {item.description ? item.description : "Description"}
                 </p>
             </div>
         );

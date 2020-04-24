@@ -1,3 +1,150 @@
 .EnglishVocabularyLessonDetail {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: #f7f7f7;
+    overflow-x: hidden;
+    min-width: 1000px;
+    font-family: Open Sans;
+}
+
+.EnglishVocabularyLessonDetail .EnglishVocabularyLessonDetail_Header{
+    top:0px;
+    width: 100%;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
+}
+
+.EnglishVocabularyLessonDetail .Content{
+    position: relative;
+    width: 100%;
+    height: 90%;
+    background-color: #f7f7f7;
+    padding-top: 20px;
+}
+
+.EnglishVocabularyLessonDetail .Content .Dock_Notification{
+    position: relative;
+    width: 100%;
+    height: 10%;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
     background-color: gray;
 }
+
+.EnglishVocabularyLessonDetail .Content .Content_Row{
+    height: auto;
+    min-height: 80%;
+    width: 90%;
+    margin-top: 10px;
+    margin-left: 4%;
+    border-right: solid #000066 40px;
+    border-top: solid gray 1px;
+    border-left: solid gray 1px;
+    border-bottom: solid gray 1px;
+    margin-bottom: 10px;
+}
+
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Header {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 5%;
+    padding-left: 10px;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Header .Header_Bold {
+    background-color: #000066;
+    color: white;
+}
+
+.EnglishVocabularyLessonDetail .Content .Content_Row_Title {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: #000066;
+    color: white;
+    padding-left: 10px;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Items {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    flex-flow: wrap;
+    height: auto;
+    align-content: center;
+    min-height: 85%;
+    width: 60%;
+    margin-top: 10px;
+    left: 20%;
+    align-content: center;
+}
+
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Items .Content_Row_Control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    vertical-align: top;
+    max-height: 35px;
+}
+
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Items .Content_Row_Control .Prev {
+    width: 10%;
+    height: 30px;
+    align-self: start;
+    justify-self: left;
+    outline: none;
+}
+
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Items .Content_Row_Control .Class_Title {
+    width: 10%;
+    align-self: start;
+    justify-self: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #211F60;
+}
+
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Items .Content_Row_Control .Next {
+    width: 10%;
+    height: 30px;
+    align-self: start;
+    justify-self: right;
+}
+
+.EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Items .Item {
+    box-sizing: border-box;
+    list-style: none;
+    text-align: center;
+    width: 100%;
+    min-height: 45px;
+    margin-top: 5px;
+    margin-left: 5%;
+}
+
+
+.EnglishVocabularyLessonDetail .Content .EnglishVocabularyLessonDetail_Footer{
+    position: relative;
+    background-color: darkorange;
+    height: 10%;
+    min-height: 10%;
+    width: 100%;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    bottom: 0px;
+}
+
