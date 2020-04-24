@@ -1,8 +1,9 @@
 .Grammar{
-    width: 100%;
-    height: fit-content;
     position: absolute;
-    /* background: orchid; */
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 .Grammar .Grammar_Main_Port {
@@ -12,11 +13,21 @@
     
 }
 
-.Grammar .Grammar_Header{
-    width: 100%;
-    top: 0px;
-    height: fit-content;
+.Grammar .Dock_Notification{
     position: relative;
+    width: 100%;
+    height: 10%;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+}
+.Grammar .Grammar_Header{
+    top:0px;
+    width: 100%;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
 }
 
 .grammar_title_port {

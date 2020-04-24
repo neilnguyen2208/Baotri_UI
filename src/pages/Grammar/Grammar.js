@@ -10,7 +10,7 @@ import PageTitle from "../../components/PageTitle/PageTitle.js"
 class Grammar extends Component {
     constructor(props) {
         super();
-       
+
         this.state = {
             items: [{
                 name: "ADJECTIVE",
@@ -39,6 +39,10 @@ class Grammar extends Component {
 
                 <div className="Grammar_Header">
                     <Header></Header>
+                </div>
+
+                <div className="Dock_Notification">
+                    One of the most effective ways to improve your English Explorer a bit to find out what we do.
                 </div>
                 <div className="Grammar_Main_Port">
                     <div className="Grammar_Inline_Port">

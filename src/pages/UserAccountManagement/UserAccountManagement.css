@@ -1,7 +1,9 @@
 .User_Account_Management {
-    width: 100%;
-    height: fit-content;
     position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 .User_Account_Management .User_Account_Management_Outline_Port {
@@ -11,10 +13,21 @@
 }
 
 .User_Account_Management .User_Account_Management_Header {
-    width: 100%;
     top: 0px;
-    height: fit-content;
+    width: 100%;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
+}
+
+.User_Account_Management .Dock_Notification {
     position: relative;
+    width: 100%;
+    height: 10%;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    background-color: gray;
 }
 
 .User_Account_Management .User_Account_Management_Inline_Port {
@@ -59,72 +72,342 @@
     border-color: #c4c4c4;
     border-style: solid;
 }
-/* 
-*, *::before, *::after {
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap');
+.User_Menu {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    width: 98.34%;
+    padding-top: 10px;
+    height: fit-content;
+    border-left: 1px;
+    border-top: 0px;
+    border-right: 1px;
+    border-bottom: 0px;
+    border-color: #c4c4c4;
+    border-style: solid;
+    padding-left: 0.83%;
+    padding-right: 0.83%;
+}
+
+.User_Menu .User_Menu_User_Info_Port {
     box-sizing: border-box;
-    
+    width: 35%;
+    height: fit-content;
+    max-width: 300px;
+    min-width: 300px;
 }
 
-body {
-    color: #272727;
-    font-family: 'Quicksand', serif;
-    font-style: normal;
-    font-weight: 400;
-    letter-spacing: 0;
-    padding: 1rem;
-}
-
-.main {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-img {
-    height: auto;
-    max-width: 100%;
-    vertical-align: middle;
-}
-
-.btn {
-    color: #ffffff;
-    padding: 0.8rem;
-    font-size: 14px;
-    text-transform: uppercase;
-    border-radius: 4px;
-    font-weight: 400;
-    display: block;
+.User_Menu .User_Info_Port {
+    display: flex;
     width: 100%;
+    border-left: 1px;
+    border-top: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-color: #c4c4c4;
+    border-style: solid;
+    height: fit-content;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.User_Menu .User_Menu_Port {
+    height: fit-content;
+    margin-top: 10px;
+    padding: 10px;
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-color: #c4c4c4;
+    border-top: 5px #211F60;
+    border-style: solid;
+    font-family: 'Barlow Condensed', 'san-serif';
+    font-weight: 500;
+    font-size: 20px;
+    color: #363636;
+}
+
+.User_Menu .User_Show_Info_Port {
+    box-sizing: border-box;
+    height: fit-content;
+    padding-bottom: 10px;
+    border-top: 5px #211f60;
+    border-left: 1px #c4c4c4;
+    border-right: 1px #c4c4c4;
+    border-bottom: 1px #c4c4c4;
+    border-style: solid;
+    min-width: max-content;
+}
+
+.User_Menu .User_Menu_User_Info_Port .User_Info_Port .Avatar_Port {
+    position: relative;
+    padding-bottom: 80px;
+    overflow: hidden;
+    width: 80px;
+    background: #000;
+    background-origin: border-box;
+}
+
+.User_Menu .User_Menu_User_Info_Port .User_Info_Port .User_Name_Gmail_Port {
+    margin-left: 10px;
+    position: relative;
+    width: fit-content;
+}
+
+.User_Menu .Avatar {
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.User_Menu .User_Name {
+    position: relative;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    align-items: center;
+    color: #211F60;
+}
+
+.User_Menu .Gmail {
+    width: 190px;
+    position: relative;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 22px;
+    align-items: center;
+    color: #363636;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.User_Menu .Logout_Btn {
+    box-sizing: border-box;
+    width: 80px;
+    height: 25px;
+    vertical-align: auto;
+    text-align: center;
+    border-radius: 5px;
+    background: #211f60;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    border: #FFFFFF;
+}
+
+.User_Menu .Logout_Btn:hover {
     cursor: pointer;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: transparent;
+    opacity: 90%;
 }
 
-.cards {
+.User_Menu .User_Menu_Port .Btn_Element {
+    align-self: center;
+    width: 8px;
+    height: 8px;
+    padding-right: 5px;
+}
+
+.User_Menu .User_Menu_Port .Menu_Item {
     display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    flex-direction: row;
+    line-height: 30px;
 }
 
-.cards_item {
+.User_Menu .User_Menu_Port .Menu_Item:hover {
+    color: white;
+    background: #c4c4c4;
+    cursor: pointer;
+}
+
+.User_Menu .User_Show_Info_Sub_Port {
+    min-width: 300px;
+    width: 55%;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    border: 1px #c4c4c4 solid;
+    margin-top: 10px;
+}
+
+.User_Menu .User_Show_Info_Port .Label {
+    font-family: Barlow Condensed;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
     display: flex;
-    padding: 1rem;
+    align-items: center;
+    text-align: right;
+    color: #363636;
 }
 
-@media (min-width: 40rem) {
-    .cards_item {
-        width: 50%;
+.User_Menu .User_Show_Info_Port .Remind_Port {
+    font-family: Barlow Condensed;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    color: #363636;
+}
+
+.User_Menu .User_Show_Info_Port .Save_Change_Remind_Btn_Port {
+    margin-top: 5px;
+    display: flex;
+}
+
+.User_Menu .User_Show_Info_Port .toggle-switch-checkbox {
+    width: 20px;
+    height: 20px;
+    background: #363636;
+    transform: scale(1.2);
+}
+
+.User_Menu .User_Show_Info_Port .Save_Change_Remind_Btn {
+    margin: auto;
+    box-sizing: border-box;
+    width: 120px;
+    height: 25px;
+    vertical-align: auto;
+    border-radius: 5px;
+    background: #211f60;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    border: #FFFFFF;
+    text-align: center;
+}
+
+.User_Menu .User_Show_Info_Port .Save_Change_Remind_Btn:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.User_Menu .User_Show_Info_Port .Changable_Input {
+    width: 100%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #211F60;
+}
+
+.User_Menu .User_Show_Info_Port .Display_Name_Port .Display_Name_Input:hover, :focus {
+    background: #c4c4c4;
+}
+
+.User_Menu .User_Show_Info_Port .Unchangable_Input {
+    width: 100%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #363636;
+    background: #c4c4c4;
+}
+
+.User_Menu .Save_Change_Info_Btn_Port {
+    display: flex;
+}
+
+.User_Menu .Save_Change_Info_Btn {
+    margin: auto;
+    box-sizing: border-box;
+    width: 120px;
+    height: 25px;
+    vertical-align: auto;
+    border-radius: 5px;
+    background: #211f60;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    border: #FFFFFF;
+    text-align: center;
+}
+
+.User_Menu .Save_Change_Info_Btn:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+@media (min-width: 0px) {
+    .User_Menu {
+        flex-direction: column;
+    }
+    .User_Menu .User_Menu_User_Info_Port {
+        width: 100%;
+        max-width: 100%;
+        margin: auto;
+    }
+    .User_Menu .User_Show_Info_Port {
+        width: 100%;
+        margin-left: 0;
+        max-width: 100%;
+        margin: auto;
+        margin-top: 10px;
     }
 }
 
-@media (min-width: 56rem) {
-    .cards_item {
-        width: 33.3333%;
+@media (min-width: 800px) {
+    .User_Menu {
+        flex-direction: row;
+    }
+    .User_Menu .User_Menu_User_Info_Port {
+        margin-top: 0px;
+        display: 100%;
+        max-width: 300px;
+    }
+    .User_Menu .User_Show_Info_Port {
+        margin-left: 0.844%;
+        margin-top: 0px;
+        max-width: 100%;
+        display: 100%;
     }
 }
 
-.card {
-    background-color: white;
-   
-} */
+@media (min-width: 1000px) {
+    .User_Menu {
+        flex-direction: row;
+    }
+    .User_Menu .User_Show_Info_Port {
+        width: 100%;
+        max-width: 100%;
+    }
+}
