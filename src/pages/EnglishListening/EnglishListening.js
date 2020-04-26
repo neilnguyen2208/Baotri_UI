@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import Header from "../../components/Header/Header.js";
 import './EnglishListening.css'
 import Footer from '../../components/Footer/Footer';
-import EnglishVocabularyItem from '../../components/EnglishVocabularyItem/EnglishVocabularyItem.js';
 import { withRouter, Redirect } from 'react-router-dom';
 import { isLogin } from "../../pages/Login/Login.js";
+import EnglishListeningItem from '../../components/EnglishListeningItem/EnglishListeningItem.js';
 
 class EnglishListening extends Component{
 
@@ -14,46 +14,46 @@ class EnglishListening extends Component{
             items: [
                 {
                     id: 1,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 },
                 {
                     id: 2,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
                 ,
                 {
                     id: 3,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
                 ,
                 {
                     id: 4,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
                 ,
                 {
                     id: 5,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
                 ,
                 {
                     id: 6,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
                 ,
                 {
                     id: 7,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
                 ,
                 {
                     id: 8,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
                 ,
                 {
                     id: 9,
-                    name: "Type of Listening"
+                    title: "Type of Listening"
                 }
             ]
         }
@@ -66,7 +66,7 @@ class EnglishListening extends Component{
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <EnglishVocabularyItem item={item}></EnglishVocabularyItem>
+                    <EnglishListeningItem item={item}></EnglishListeningItem>
                 </div>
             );
         })

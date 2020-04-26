@@ -93,9 +93,10 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: left;
     flex-flow: wrap;
     height: auto;
+    align-content: center;
     min-height: 85%;
     width: 90%;
     margin-top: 10px;
@@ -106,11 +107,11 @@
     box-sizing: border-box;
     list-style: none;
     text-align: center;
-    width: 40%;
+    width: 45%;
     height: 45px;
-    margin-top: 5%;
-    margin-left: 1%;
-    margin-bottom: 5%;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-bottom: 5px;
 }
 
 

@@ -1,0 +1,51 @@
+.EnglishWordItem {
+    border-top: solid 1px gray;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+    padding: 5px;
+}
+
+.EnglishWordItem .LeftSide {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.EnglishWordItem .LeftSide .Name {
+    position: relative;
+    width: 50%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.EnglishWordItem .LeftSide .Pronunciation_Sound {
+    position: relative;
+    width: 50%;
+}
+
+.EnglishWordItem .LeftSide .Pronunciation_Sound .Pronunciation {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.EnglishWordItem .LeftSide .Pronunciation_Sound .Sound {
+    align-content: center;
+    width: 30px;
+    height: 30px;
+    background: url('../../resources/speaker.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    border: none;
+}
+
+.EnglishWordItem .LeftSide .Pronunciation_Sound .Sound:hover {
+    cursor: pointer;
+}
+
+.EnglishWordItem .RightSide {
+    position: relative;
+    width: 50%;
+}
