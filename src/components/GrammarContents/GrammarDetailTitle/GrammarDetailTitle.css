@@ -1,11 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
-/* .Grammar_Detail .grammar_detail_title_background {
-    position: relative;
-    width: 150px;
-    height: 40px;
-    align-items: center;
-    background: #211F60;
-} */
 
 .Grammar_Detail_Title .Title {
     position: relative;
@@ -26,14 +19,6 @@
 .Grammar_Detail_Title {
     padding-top: 10px;
     position: relative;
-    background-color: white;
-    border-color: #c4c4c4;
-    border-style: solid;
-    border-radius: 0px;
-    border-right-width: 1px;
-    border-bottom-width: 0px;
-    border-left-width: 1px;
-    border-top-width: 0px;
     height: fit-content;
     padding-bottom: 20px;
     width: 100%;

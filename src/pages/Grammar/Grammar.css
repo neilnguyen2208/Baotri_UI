@@ -1,4 +1,4 @@
-.Grammar{
+.Grammar {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -6,14 +6,15 @@
     padding: 0px;
 }
 
-.Grammar .Grammar_Main_Port {
-    position: relative;
-    top: 270px;
-    height: fit-content;
-    
+.Grammar .Grammar_Header {
+    top: 0px;
+    width: 100%;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
 }
 
-.Grammar .Dock_Notification{
+.Grammar .Dock_Notification {
     position: relative;
     width: 100%;
     height: 10%;
@@ -22,88 +23,42 @@
     align-items: center;
     background-color: gray;
 }
-.Grammar .Grammar_Header{
-    top:0px;
-    width: 100%;
-    height: 10%;
-    bottom: 0px;
-    left: 0px;
-}
 
-.grammar_title_port {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #000;
-}
-
-.Grammar .Grammar_Inline_Port {
-    top: 0px;
+.Grammar .Grammar_Main_Port {
     position: relative;
+    top: 270px;
+    height: fit-content;
+    border-color: #c4c4c4;
+    border-style: solid;
+    border-radius: 0px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    border-top-width: 1px;
     left: 6%;
     width: 88%;
-    height: fit-content;
-    /* background-color: yellow; */
-    background-repeat: no-repeat;
-    padding-top: 0px;
 }
 
-.grammar_category_port {
+.Grammar .Description {
     position: relative;
-    padding-left: 4%;
-    padding-right: 4%;
-    top: 0px;
+    left: 4%;
+    width: 92%;
+}
+
+.Grammar_Category_Port {
+    position: relative;
+    left: 4%;
     width: 92%;
     height: fit-content;
-    /* background-color: green; */
     background-position: center;
     background-repeat: no-repeat;
-    border-top-width: 0px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-color: #c4c4c4;
-    border-style: solid;
 }
 
-.decoration_insert_left_right_border {
-    width: 100%;
-    height: 20px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-color: #c4c4c4;
-    /* border-color: tomato; */
-    border-style: solid;
-}
-
-.decoration_insert_end_border {
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 20px;
-    border-top-width: 0px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-color: #c4c4c4;
-    border-style: solid;
-    margin-bottom: 350px;
-}
-
-.grammar_footer {
+.Grammar_Footer {
     margin-top: 20px;
     top: 270px;
     position: relative;
     bottom: 0px;
     height: 10%;
     width: 100%;
-}
-
-.Grammar .Description {
-   
-    position: relative;
-    height: fit-content;
 }

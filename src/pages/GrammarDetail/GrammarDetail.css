@@ -1,31 +1,38 @@
 .Grammar_Detail {
-    width: 100%;
-    height: fit-content;
     position: absolute;
-}
-
-.Grammar_Detail .Grammar_Detail_Outline_Port {
-    position: relative;
-    top: 270px;
-    height: fit-content;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 .Grammar_Detail .Grammar_Detail_Header {
-    width: 100%;
     top: 0px;
-    height: fit-content;
-    position: relative;
+    width: 100%;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
 }
 
-.Grammar_Detail .Grammar_Detail_Inline_Port {
-    top: 0px;
+.Grammar_Detail .Dock_Notification {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+}
+
+.Grammar_Detail .Grammar_Detail_Main_Port {
+    top: 100px;
     position: relative;
     left: 6%;
     width: 88%;
     height: fit-content;
-    /* background-color: yellow; */
     background-repeat: no-repeat;
     padding-top: 0px;
+    border: 1px solid #c4c4c4;
 }
 
 .Grammar_Detail .Grammar_Detail_Content {
@@ -35,28 +42,7 @@
     top: 0px;
     width: 92%;
     height: fit-content;
-    /* background-color: green; */
-    background-position: center;
-    background-repeat: no-repeat;
-    border-top-width: 0px;
-    border-bottom-width: 1px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-color: #c4c4c4;
-    border-style: solid;
     padding-bottom: 10px;
-}
-
-.Grammar_Detail .decoration_insert_left_right_border {
-    width: 100%;
-    height: 20px;
-    border-top-width: 0px;
-    border-bottom-width: 0px;
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-color: #c4c4c4;
-    /* border-color: tomato; */
-    border-style: solid;
 }
 
 .Grammar_Detail .Grammar_Detail_Footer {
@@ -71,9 +57,11 @@
 .Grammar_Detail .Grammar_Detail_Description {
     position: relative;
     height: fit-content;
+    left: 4%;
+    width: 92%;
 }
 
-.Grammar_Detail .Grammar_Detail_Outline_Port .Grammar_Detail_Inline_Port .Grammar_Detail_Content .decoration_below_border {
+.Grammar_Detail .Grammar_Detail_Content .Below_Border {
     position: relative;
     width: 100%;
     height: 10px;

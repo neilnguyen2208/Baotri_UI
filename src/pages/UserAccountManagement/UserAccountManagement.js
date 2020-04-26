@@ -148,20 +148,25 @@ class UserAccountManagement extends Component {
 
         return (
             <div className="User_Account_Management">
+                {/* Header */}
                 <div className="User_Account_Management_Header">
                     <Header></Header>
                 </div>
 
+                {/* Notification below header */}
                 <div className="Dock_Notification">
                     One of the most effective ways to improve your English Explorer a bit to find out what we do.
                 </div>
-                <div className="User_Account_Management_Outline_Port">
-                    <div className="User_Account_Management_Inline_Port">
+                
+                
+                <div className="User_Account_Management_Main_Port"> {/* width = 100%, contain all content */}
+                    <div className="User_Account_Management_Inline_Port"> 
                         <div> <PageTitle prevTitle="Edit your" mainTitle="Profile"></PageTitle></div>
-
-
                         <div className="User_Menu">
+                            {/* User menu + user info port */}
                             <div className="User_Menu_User_Info_Port">
+
+                                {/* Show info of account */}
                                 <div className="User_Info_Port">
                                     <div className="Avatar_Port">
                                         <img className="Avatar" src={this.state.avatarUrl} />
@@ -179,6 +184,7 @@ class UserAccountManagement extends Component {
                                     </div>
 
                                 </div>
+                                {/* User Menu*/}
                                 <div className="User_Menu_Port">
                                     <div className="Menu_Item" onClick={this.handleUpdate}>
                                         <img className="Btn_Element" src={btn_element}></img>
@@ -195,12 +201,9 @@ class UserAccountManagement extends Component {
                                     </div>
                                 </div>
                             </div>
+                            {/* Show content of menu item */}
                             {view}
                         </div>
-
-
-                        <div className="decoration_insert_left_right_border"></div>
-                        <div className="decoration_below_border"></div>
                     </div>
                 </div>
                 <div className="User_Account_Management_Footer">

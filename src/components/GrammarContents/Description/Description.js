@@ -5,8 +5,9 @@ class Description extends React.Component {
 
     render() {
         return (
-            <div className="content" >
-                {this.props.content}
+            // Không đặt là Description để các className khác không bị trùng.
+            <div className="Description_Content" >            
+                    {this.props.content}
             </div>
         );
 

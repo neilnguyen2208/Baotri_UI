@@ -30,13 +30,6 @@
 .Page_Title {
     padding-top: 20px;
     background-color: white;
-    border-color: #c4c4c4;
-    border-style: solid;
-    border-radius: 0px;
-    border-right-width: 1px;
-    border-bottom-width: 0px;
-    border-left-width: 1px;
-    border-top-width: 1px;
     height: fit-content;
     padding-bottom: 20px;
     width: 100%;
