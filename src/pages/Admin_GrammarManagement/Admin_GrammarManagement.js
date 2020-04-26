@@ -36,13 +36,10 @@ class Admin_GrammarManagement extends Component {
 
     render() {
         let items;
-        
+
         items = this.state.items.map((item) => {
             return (
-                <div className="Admin_Grammar_Category_Port">
-                   
-                    <Admin_GrammarCategoryItem item={item}></Admin_GrammarCategoryItem>
-                </div>
+                <Admin_GrammarCategoryItem item={item}></Admin_GrammarCategoryItem>
             );
         })
 
@@ -108,9 +105,12 @@ class Admin_GrammarManagement extends Component {
                         </div>
 
                         {/* Menu_Main_Show_Port */}
+
                         <div className="Menu_Main_Show_Port">
-                        <Admin_AddGrammarCategoryItem></Admin_AddGrammarCategoryItem>
-                            {items}
+                            <div className="Admin_Grammar_Category_Port">
+                                <Admin_AddGrammarCategoryItem></Admin_AddGrammarCategoryItem>
+                                {items}
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+.Admin_Grammar_Category_List_Item {
+    width: fit-content;
+    text-decoration: unset;
+}
+
+.Admin_Grammar_Category_List_Item .List_Item_Name {
+    position: relative;
+    width: 95.45%;
+    height: 20px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    padding-left: 4.55%;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 20px;
+    color: #363636;
+    text-align: left;
+    padding-top: 5px;
+    height: fit-content;
+}
+
+.Admin_Grammar_Category_List_Item .List_Item_Name:hover {
+    background: #211F60;
+    color: white;
+    cursor: pointer;
+}
+
+.Admin_Grammar_Category_List_Item .decoration_left_right_border {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    color: #c4c4c4;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 0px;
+    border-top: 0px;
+    border-style: solid;
+    margin-top: 0%;
+}
+
+.Admin_Grammar_Category_List_Item .decoration_line {
+    position: absolute;
+    width: 90.9%;
+    height: 25px;
+    margin-left: 4.55%;
+    color: #c4c4c4;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 1px;
+    border-top: 0px;
+    border-style: solid;
+}
+
+.Admin_Grammar_Category_List_Item .decoration_headline {
+    position: absolute;
+    width: 5px;
+    margin-left: 1.82%;
+    height: 30px;
+    background: #211F60;
+}
