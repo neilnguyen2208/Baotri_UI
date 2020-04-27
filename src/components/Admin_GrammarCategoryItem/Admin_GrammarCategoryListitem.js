@@ -11,18 +11,17 @@ import {
 import GrammarDetail from '../../pages/GrammarDetail/GrammarDetail';
 import Home from '../../pages/Home/Home';
 import Grammar from '../../pages/Grammar/Grammar';
+import EditDeleteBtnGroup from '../../components/EditDeleteBtnGroup/EditDeleteBtnGroup.js'
 class Admin_GrammarCategoryListItem extends Component {
     render() {
 
         return (
-            <a className="Admin_Grammar_Category_List_Item" href="/grammar/grammar_detail">
-                <div className="decoration_headline"></div>
-                <div className="decoration_left_right_border"></div>
-                <div className="decoration_line"></div>
-                <div class="List_Item_Name">{this.props.item.name}</div>
-            </a >
-
-
+            <div className="Admin_Grammar_Category_List_Item" >
+                <a class="Admin_Grammar_Category_List_Item_Name" href="/grammar/a">{this.props.item.name}</a>
+                <div className="Admin_Grammar_Category_List_Item_Edit_Delete_Port">
+                    <EditDeleteBtnGroup ></EditDeleteBtnGroup>
+                </div>
+            </div >
         )
     }
 }

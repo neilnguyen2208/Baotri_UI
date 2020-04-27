@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./Admin_GrammarCategoryItem.css"
 import Admin_GrammarCategoryListItem from "./Admin_GrammarCategoryListitem.js"
+import Admin_AddGrammarCategoryListItem from "./Admin_AddGrammarCategoryListItem.js"
 class Admin_GrammarCategoryItem extends Component {
 
     constructor(listOfGrammarItem) {
@@ -35,6 +36,7 @@ class Admin_GrammarCategoryItem extends Component {
                 <div className="decoration_above_line"></div>
                 <div className="Item_Name">{this.props.item.name}</div>
                 <div className="Sub_Items">{cards}</div>
+                <Admin_AddGrammarCategoryListItem></Admin_AddGrammarCategoryListItem>
                 <div className="decoration_below_border"></div>
                 <div className="decoration_below_line"></div>
             </div>
