@@ -20,7 +20,9 @@ import UserAccountManagement from "./pages/UserAccountManagement/UserAccountMana
 import EnglishVocabularyLesson from './pages/EnglishVocabularyLesson/EnglishVocabularyLesson.js';
 import EnglishVocabularyLessonDetail from './pages/EnglishVocabularyLessonDetail/EnglishVocabularyLessonDetail.js';
 import Admin_GrammarManagement from './pages/Admin_GrammarManagement/Admin_GrammarManagement.js'
-import EnglishWordItem from './components/EnglishWordItem/EnglishWordItem';
+import EnglishVocabularyManagement from './pages/Management/EnglishVocabularyManagement/EnglishVocabularyManagement';
+import LessonManagement from './pages/Management/LessonManagement/LessonManagement';
+import DetailManagement from './pages/Management/DetailManagement/DetailManagement';
 
 function App() {
   return (
@@ -62,6 +64,15 @@ function App() {
           </Route>
           <Route path="/admin/grammar" exact>
             <Admin_GrammarManagement></Admin_GrammarManagement>
+          </Route>
+          <Route path="/admin/vocabulary" exact>
+            <EnglishVocabularyManagement></EnglishVocabularyManagement>
+          </Route>
+          <Route path="/admin/vocabulary/:id" exact>
+            <LessonManagement></LessonManagement>
+          </Route>
+          <Route path="/admin/vocabulary/:id/:id" exact>
+            <DetailManagement></DetailManagement>
           </Route>
         </Switch>
       </Router>

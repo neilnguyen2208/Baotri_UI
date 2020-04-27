@@ -1,0 +1,59 @@
+
+.LessonManagementItem {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 2px;
+    border-bottom: solid #000066 5px;
+    border-top:  solid gray 1px;
+    border-left:  solid gray 1px;
+    border-right:  solid gray 1px;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    color: #211F60;
+}
+
+.LessonManagementItem:hover {
+    color: #000066;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #000066;
+}
+
+.LessonManagementItem img {
+    position: relative;
+    top: 0px;
+    height: 60%;
+    width: 100%;
+}
+
+.LessonManagementItem .Top_Control {
+    align-content: flex-end;
+    display: flex;
+    float: right;
+    flex-direction: row;
+    right: 0px;
+    margin-bottom: 5px;
+}
+
+.LessonManagementItem .Top_Control .Edit {
+    background-image: url("../../../../resources/edit_btn.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    outline: none;
+}
+
+.LessonManagementItem .Top_Control .Delete {
+    background-image: url("../../../../resources/delete_btn.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    margin-left: 5px;
+}

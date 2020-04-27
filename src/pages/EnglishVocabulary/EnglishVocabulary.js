@@ -5,6 +5,7 @@ import Footer from '../../components/Footer/Footer';
 import EnglishVocabularyItem from '../../components/EnglishVocabularyItem/EnglishVocabularyItem.js';
 import { withRouter, Redirect } from 'react-router-dom';
 import { isLogin } from '../Login/Login.js';
+import PageTitle from '../../components/PageTitle/PageTitle.js';
 
 class EnglishVocabulary extends Component{
 
@@ -84,7 +85,8 @@ class EnglishVocabulary extends Component{
                         One of the most effective ways to improve your English Explorer a bit to find out what we do.
                     </div>
                    <div className="Content_Row">
-                        <div className="Content_Row_Header">Learn English<div className="Header_Bold"> Vocabulary</div></div>
+                        {/* <div className="Content_Row_Header">Learn English<div className="Header_Bold"> Vocabulary</div></div> */}
+                        <PageTitle prevTitle="Learn English" mainTitle="Vocabulary"></PageTitle>
                         <div className="Content_Row_Title">Choose a Category</div>
                         <div className="Content_Row_Items">
                            {cards}

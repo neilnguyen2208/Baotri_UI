@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import './EnglishVocabularyManagement.css';
-import { withRouter } from 'react-router-dom';
-import VocabularyManagementItem from '../Components/VocabularyManagementItem/VocabularyManagementItem';
+import './LessonManagement.css'
+import { withRouter, Redirect } from 'react-router-dom';
+import '../Components/LessonManagementItem/LessonManagementItem'
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
+import LessonManagementItem from '../Components/LessonManagementItem/LessonManagementItem';
 import PageTitle from '../../../components/PageTitle/PageTitle';
 
-class EnglishVocabularyManagement extends Component {
+class LessonManagement extends Component {
     constructor(props) {
         super(props);
         this.handleAdd = this.handleAdd.bind(this);
@@ -14,46 +15,30 @@ class EnglishVocabularyManagement extends Component {
             items: [
                 {
                     id: 1,
-                    title: "Type of Vocabulary",
+                    title: "Type of Class",
                 },
                 {
                     id: 2,
-                    title: "Type of Vocabulary",
+                    title: "Type of Class",
                 }
                 ,
                 {
                     id: 3,
-                    title: "Type of Vocabulary",
+                    title: "Type of Class",
                 }
                 ,
                 {
                     id: 4,
-                    title: "Type of Vocabulary",
-                }
-                ,
+                    title: "Type of Class",
+                },
                 {
                     id: 5,
-                    title: "Type of Vocabulary",
+                    title: "Type of Class",
                 }
                 ,
                 {
                     id: 6,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 7,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 8,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 9,
-                    title: "Type of Vocabulary",
+                    title: "Type of Class",
                 }
             ],
             userinfo: {
@@ -65,27 +50,34 @@ class EnglishVocabularyManagement extends Component {
     }
     render() {
 
+        let title = "";
+        try {
+            title = this.props.location.state.title ? this.props.location.state.title : "";   
+        } catch (error) {
+            return <Redirect to="/admin/vocabulary"></Redirect>
+        }
+            
+        console.log("title: "+ title);
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <VocabularyManagementItem item={item}></VocabularyManagementItem>
+                    <LessonManagementItem item={item}></LessonManagementItem>
                 </div>
             );
         })
 
         let userinfo = this.state.userinfo;
-
         return(
-            <div className="VocabularyManagement">
-                <div className="VocabularyManagement_Header">
+            <div className="LessonManagement">
+                <div className="LessonManagement_Header">
                     <Header></Header>
                 </div>
                 <div className="Content">
                     <div className="Dock_Notification">
                         One of the most effective ways to improve your English Explorer a bit to find out what we do.
                     </div>
-                   <div className="Content_Row">
-                        {/* <div className="Content_Row_Header">Manage <div className="Header_Bold"> Your Page</div></div> */}
+                    <div className="Content_Row">
+                        {/* <div className="Content_Row_Header">Manage<div className="Header_Bold"> Your Page</div></div> */}
                         <PageTitle prevTitle="Manage" mainTitle="Your page"></PageTitle>
                         <div className="UserInfo">
                             <div className="Avatar">
@@ -123,14 +115,14 @@ class EnglishVocabularyManagement extends Component {
                                 Chat Manager
                             </div>
                         </div>
-                        <div className="Content_Row_Title">Choose a Category</div>
+                        <div className="Content_Row_Title">{title? title: "Class Name"}</div>
                         <div className="Content_Row_Items">
-                            <div className="Item Add" onClick={this.handleAdd}>+ Thêm danh mục</div>
-                           {cards}
+                            <div className="Item Add" onClick={this.handleAdd}>+ Add Lesson</div>
+                            {cards}
                         </div>
-                   </div>
-                   <div className="VocabularyManagement_Footer">
-                       <Footer></Footer>
+                    </div>
+                    <div className="LessonManagement_Footer">
+                        <Footer></Footer>
                     </div>
                 </div>
             </div>
@@ -142,4 +134,4 @@ class EnglishVocabularyManagement extends Component {
     }
 }
 
-export default withRouter(EnglishVocabularyManagement);
+export default withRouter(LessonManagement);

@@ -5,6 +5,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import EnglishWordItem from '../../components/EnglishWordItem/EnglishWordItem';
 import { Button } from 'reactstrap';
+import PageTitle from '../../components/PageTitle/PageTitle';
 
 class EnglishVocabularyLessonDetail extends Component {
     constructor(props) {
@@ -71,7 +72,8 @@ class EnglishVocabularyLessonDetail extends Component {
                         One of the most effective ways to improve your English Explorer a bit to find out what we do.
                     </div>
                    <div className="Content_Row">
-                        <div className="Content_Row_Header">Learn English<div className="Header_Bold"> Vocabulary</div></div>
+                        {/* <div className="Content_Row_Header">Learn English<div className="Header_Bold"> Vocabulary</div></div> */}
+                        <PageTitle prevTitle="Learn English" mainTitle="Vocabulary"></PageTitle>
                         <div className="Content_Row_Items">
                         <div className="Item Content_Row_Title">{title? title: "Lesson Name"}</div>
                         <div className="Item Content_Row_Control">

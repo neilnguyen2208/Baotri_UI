@@ -1,0 +1,82 @@
+.LessonDetailManagementItem {
+    border-top: solid 1px gray;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+    padding: 5px;
+}
+
+.LessonDetailManagementItem .LeftSide {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+}
+
+.LessonDetailManagementItem .LeftSide .Name {
+    position: relative;
+    width: 50%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.LessonDetailManagementItem .LeftSide .Pronunciation_Sound {
+    position: relative;
+    width: 50%;
+}
+
+.LessonDetailManagementItem .LeftSide .Pronunciation_Sound .Pronunciation {
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.LessonDetailManagementItem .LeftSide .Pronunciation_Sound .Sound {
+    align-content: center;
+    width: 30px;
+    height: 30px;
+    background: url('../../../../resources/speaker.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    border: none;
+}
+
+.LessonDetailManagementItem .LeftSide .Pronunciation_Sound .Sound:hover {
+    cursor: pointer;
+}
+
+.LessonDetailManagementItem .RightSide {
+    position: relative;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.LessonDetailManagementItem .RightSide .Control {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+ 
+.LessonDetailManagementItem .RightSide .Edit {
+    background-image: url("../../../../resources/edit_btn.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 50%;
+    outline: none;
+}
+
+.LessonDetailManagementItem .RightSide .Delete {
+    background-image: url("../../../../resources/delete_btn.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 50%;
+    outline: none;
+    margin-left: 5px;
+}

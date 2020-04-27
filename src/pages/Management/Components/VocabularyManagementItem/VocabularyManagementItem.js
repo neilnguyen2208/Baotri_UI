@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
 import './VocabularyManagementItem.css'
 import { BrowserRouter as Router, Redirect, withRouter } from "react-router-dom";
-import history from '../history.js'
 
 class VocabularyManagementItem extends Component{
     constructor(props){
@@ -12,14 +11,22 @@ class VocabularyManagementItem extends Component{
     render() {
         const {title} = this.props.item;
         return (
-            <button className = "EnglishVocabularyItem" onClick={this.handleClick}>                
-                {title}
-            </button>
+            <div className = "ManagementItem">
+                <div className="LeftSide">
+                    <button className = "_Item" onClick={this.handleClick}>                
+                        {title}
+                    </button>
+                </div>
+                <div className="RightSide">
+                    <button className="Edit"></button>
+                    <button className="Delete"></button>
+                </div>
+            </div>
         );
     }
 
     handleClick (event, category){
-        let toPath = "/vocabulary/" + this.props.item.id;
+        let toPath = "/admin/vocabulary/" + this.props.item.id;
         console.log(toPath);
         this.props.history.push(toPath, {title: this.props.item.title});
     }

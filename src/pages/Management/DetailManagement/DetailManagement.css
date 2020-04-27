@@ -1,5 +1,4 @@
-
-.VocabularyManagement {
+.DetailManagement {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -11,7 +10,7 @@
     font-family: Open Sans;
 }
 
-.VocabularyManagement .VocabularyManagement_Header{
+.DetailManagement .DetailManagement_Header{
     top:0px;
     width: 100%;
     height: 10%;
@@ -19,7 +18,7 @@
     left: 0px;
 }
 
-.VocabularyManagement .Content{
+.DetailManagement .Content{
     position: relative;
     width: 100%;
     height: 90%;
@@ -27,7 +26,7 @@
     padding-top: 20px;
 }
 
-.VocabularyManagement .Content .Dock_Notification{
+.DetailManagement .Content .Dock_Notification{
     position: relative;
     width: 100%;
     height: 10%;
@@ -37,7 +36,7 @@
     background-color: gray;
 }
 
-.VocabularyManagement .Content .Content_Row{
+.DetailManagement .Content .Content_Row{
     height: auto;
     min-height: 80%;
     width: 90%;
@@ -50,18 +49,7 @@
     margin-bottom: 10px;
 }
 
-/* .VocabularyManagement .Content .Content_Row p {
-    position: relative;
-    padding-left: 10px;
-    padding-right: 10px;
-    top: 0px;
-    left: 0px;
-    line-height: 15px;
-    height: auto;
-    width: auto;
-} */
-
-.VocabularyManagement .Content .Content_Row .Content_Row_Header {
+.DetailManagement .Content .Content_Row .Content_Row_Header {
     position: relative;
     display: flex;
     width: 100%;
@@ -71,25 +59,12 @@
     margin-top: 10px;
     margin-left: 5px;
 }
-.VocabularyManagement .Content .Content_Row .Content_Row_Header .Header_Bold {
+.DetailManagement .Content .Content_Row .Content_Row_Header .Header_Bold {
     background-color: #000066;
     color: white;
 }
 
-.VocabularyManagement .Content .Content_Row .Content_Row_Title {
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    height: 5%;
-    padding-left: 10px;
-    font-size: 24px;
-    margin-top: 10px;
-    margin-left: 5px;
-    align-self: center;
-    text-align: center;
-}
-
-.VocabularyManagement .Content .Content_Row .UserInfo {
+.DetailManagement .Content .Content_Row .UserInfo {
     display: flex;
     width: 300px;
     border-left: 1px;
@@ -104,7 +79,7 @@
     margin: 10px;
 }
 
-.VocabularyManagement .Content .Content_Row .UserInfo .Avatar {
+.DetailManagement .Content .Content_Row .UserInfo .Avatar {
     position: relative;
     padding-bottom: 80px;
     overflow: hidden;
@@ -113,33 +88,35 @@
     background-origin: border-box;
 }
 
-.VocabularyManagement .Content .Content_Row .UserInfo .Avatar img {
+.DetailManagement .Content .Content_Row .UserInfo .Avatar img {
     position: absolute;
     min-width: 100%;
     min-height: 100%;
 }
 
-.VocabularyManagement .Content .Content_Row .UserInfo .UserDetail {
+.DetailManagement .Content .Content_Row .UserInfo .UserDetail {
     padding-left: 10px;
 }
 
-.VocabularyManagement .Content .Content_Row .UserInfo .UserDetail .DisplayName {
+.DetailManagement .Content .Content_Row .UserInfo .UserDetail .DisplayName {
     font-weight: bold;
 }
 
-.VocabularyManagement .Content .Content_Row .UserInfo .UserDetail .LogoutButton {
+.DetailManagement .Content .Content_Row .UserInfo .UserDetail .LogoutButton {
     background-color: #000066;
     color: white;
     font-size: 16px;
     margin-top: 5px;
 }
 
-.VocabularyManagement .Content .Content_Row .Menu {
+
+
+.DetailManagement .Content .Content_Row .Menu {
     display: flex;
     border-bottom: 5px #211f60 solid;
 }
 
-.VocabularyManagement .Content .Content_Row .MenuItem {
+.DetailManagement .Content .Content_Row .MenuItem {
     width: fit-content;
     padding-right: 20px;
     padding-left: 20px;
@@ -152,13 +129,27 @@
     color: #363636;
 }
 
-.VocabularyManagement .Content .Content_Row .MenuItem:hover {
+.DetailManagement .Content .Content_Row .MenuItem:hover {
     color: white;
     background: #211F60;
     cursor: pointer;
 }
 
-.VocabularyManagement .Content .Content_Row .Content_Row_Items {
+.DetailManagement .Content .Content_Row_Title {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    background-color: #000066;
+    color: white;
+    padding-left: 10px;
+    font-size: 24px;
+    margin-top: 10px;
+    margin-left: 5px;
+    text-align: center;
+}
+
+
+.DetailManagement .Content .Content_Row .Content_Row_Items {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -167,33 +158,61 @@
     height: auto;
     align-content: center;
     min-height: 85%;
-    width: 90%;
+    width: 60%;
     margin-top: 10px;
-    margin-left: 3%;
+    left: 20%;
+    align-content: center;
     margin-bottom: 10px;
 }
 
-.VocabularyManagement .Content .Content_Row .Content_Row_Items .Item {
+.DetailManagement .Content .Content_Row .Content_Row_Items .Content_Row_Control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    vertical-align: top;
+    max-height: 35px;
+}
+
+.DetailManagement .Content .Content_Row .Content_Row_Items .Content_Row_Control .Prev {
+    width: 10%;
+    height: 30px;
+    align-self: start;
+    justify-self: left;
+    outline: none;
+}
+
+.DetailManagement .Content .Content_Row .Content_Row_Items .Content_Row_Control .Class_Title {
+    width: 10%;
+    align-self: start;
+    justify-self: center;
+    font-weight: bold;
+    font-size: 20px;
+    color: #211F60;
+}
+
+.DetailManagement .Content .Content_Row .Content_Row_Items .Content_Row_Control .Next {
+    width: 10%;
+    height: 30px;
+    align-self: start;
+    justify-self: right;
+}
+
+.DetailManagement .Content .Content_Row .Content_Row_Items .Item {
     box-sizing: border-box;
     list-style: none;
     text-align: center;
-    width: 45%;
-    height: 45px;
+    width: 100%;
+    min-height: 45px;
     margin-top: 5px;
     margin-left: 5%;
-    margin-bottom: 5px;
 }
 
-.VocabularyManagement .Content .Content_Row .Content_Row_Items .Add {
-    border-top: solid 1px gray;
-    border-left: solid 1px gray;
-    border-right: solid 1px gray;
-    border-bottom: solid 5px #000066;
-    text-align: center;
-    vertical-align: middle;
+.DetailManagement .Content .Content_Row .Content_Row_Items .Add {
+    border: solid 1px gray;
 }
 
-.VocabularyManagement .Content .VocabularyManagement_Footer{
+.DetailManagement .Content .DetailManagement_Footer{
     position: relative;
     background-color: darkorange;
     height: 10%;
@@ -203,3 +222,4 @@
     margin-bottom: 0px;
     bottom: 0px;
 }
+

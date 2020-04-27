@@ -1,59 +1,47 @@
 import React, {Component} from 'react';
-import './EnglishVocabularyManagement.css';
-import { withRouter } from 'react-router-dom';
-import VocabularyManagementItem from '../Components/VocabularyManagementItem/VocabularyManagementItem';
+import './DetailManagement.css';
+import { withRouter, Redirect } from 'react-router-dom';
+import '../Components/VocabularyManagementItem/VocabularyManagementItem';
 import Header from '../../../components/Header/Header';
+import { Button } from 'reactstrap';
 import Footer from '../../../components/Footer/Footer';
+import LessonDetailManagementItem from '../Components/LesonDetailManagementItem/LessonDetailManagementItem';
 import PageTitle from '../../../components/PageTitle/PageTitle';
 
-class EnglishVocabularyManagement extends Component {
+class DetailManagement extends Component {
     constructor(props) {
         super(props);
         this.handleAdd = this.handleAdd.bind(this);
+        this.audio = new Audio("");
         this.state = {
             items: [
-                {
-                    id: 1,
-                    title: "Type of Vocabulary",
+                { 
+                    id: 1, 
+                    name: "Name",
+                    sound: "http://soundbible.com/mp3/Boat%20Horn-SoundBible.com-15322206.mp3",
+                    pronunciation: "Pronunciation",
+                    meaning:"The meaning of this word. The meaning of this word. The meaning of this word"
                 },
-                {
-                    id: 2,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 3,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 4,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 5,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 6,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 7,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 8,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 9,
-                    title: "Type of Vocabulary",
+                { 
+                    id: 2, 
+                    name: "Name",
+                    sound: "http://soundbible.com/mp3/Murder_at_Quarry-Ghost_Rider-849689243.mp3",
+                    pronunciation: "Pronunciation",
+                    meaning:"The meaning of this word. The meaning of this word. The meaning of this word"
+                },
+                { 
+                    id: 3, 
+                    name: "Name",
+                    sound: "http://soundbible.com/mp3/Airplane_Fly_Over-Mike_Koenig-1062933207.mp3",
+                    pronunciation: "Pronunciation",
+                    meaning: "The meaning of this word. The meaning of this word. The meaning of this word"
+                },
+                { 
+                    id: 4, 
+                    name: "Name",
+                    sound: "http://soundbible.com/mp3/Fisher%20Cat-SoundBible.com-2044465299.mp3",
+                    pronunciation: "Pronunciation",
+                    meaning:"The meaning of this word. The meaning of this word. The meaning of this word"
                 }
             ],
             userinfo: {
@@ -63,21 +51,29 @@ class EnglishVocabularyManagement extends Component {
             }
         }
     }
+
     render() {
 
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <VocabularyManagementItem item={item}></VocabularyManagementItem>
+                    <LessonDetailManagementItem item={item} audio={this.audio}></LessonDetailManagementItem>
                 </div>
             );
         })
 
+        let title = "";
+        try {
+            title = this.props.location.state.title ? this.props.location.state.title : "";   
+        } catch (error) {
+            return <Redirect to="/admin/vocabulary/1"></Redirect>
+        }
+
         let userinfo = this.state.userinfo;
 
         return(
-            <div className="VocabularyManagement">
-                <div className="VocabularyManagement_Header">
+            <div className="DetailManagement">
+                 <div className="DetailManagement_Header">
                     <Header></Header>
                 </div>
                 <div className="Content">
@@ -85,7 +81,7 @@ class EnglishVocabularyManagement extends Component {
                         One of the most effective ways to improve your English Explorer a bit to find out what we do.
                     </div>
                    <div className="Content_Row">
-                        {/* <div className="Content_Row_Header">Manage <div className="Header_Bold"> Your Page</div></div> */}
+                        {/* <div className="Content_Row_Header">Manage<div className="Header_Bold"> Your Page</div></div> */}
                         <PageTitle prevTitle="Manage" mainTitle="Your page"></PageTitle>
                         <div className="UserInfo">
                             <div className="Avatar">
@@ -123,18 +119,23 @@ class EnglishVocabularyManagement extends Component {
                                 Chat Manager
                             </div>
                         </div>
-                        <div className="Content_Row_Title">Choose a Category</div>
                         <div className="Content_Row_Items">
-                            <div className="Item Add" onClick={this.handleAdd}>+ Thêm danh mục</div>
+                        <div className="Item Content_Row_Title">{title? title: "Lesson Name"}</div>
+                        <div className="Item Content_Row_Control">
+                            <Button className="Prev">Prev</ Button>
+                            <label className="Class_Title">Title</label>
+                            <Button className="Next">Next</Button>
+                        </div>
                            {cards}
+                           <div className="Item Add" onClick={this.handleAdd}>+ Thêm từ vựng</div>
                         </div>
                    </div>
-                   <div className="VocabularyManagement_Footer">
+                   <div className="DetailManagement_Footer">
                        <Footer></Footer>
-                    </div>
+                   </div>
                 </div>
             </div>
-        )
+        );
     }
 
     handleAdd () {
@@ -142,4 +143,4 @@ class EnglishVocabularyManagement extends Component {
     }
 }
 
-export default withRouter(EnglishVocabularyManagement);
+export default withRouter(DetailManagement);

@@ -1,19 +1,64 @@
-
-.VocabularyManagementItem {
+.ManagementItem {
     position: relative;
-    width: 100%;
-    height: 100%;
+    display: flex;
+    flex-direction: row;
     border-bottom: solid #000066 5px;
     border-top:  solid gray 1px;
     border-left:  solid gray 1px;
     border-right:  solid gray 1px;
+}
+
+button {
+    border: none;
+    background-color: inherit;
+}
+
+.ManagementItem .LeftSide {
+    width: 90%;
+    height: 100%;
+    background-color: #efefef;
+}
+
+.ManagementItem .RightSide {
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    background-color: #efefef;
+    margin-top: 5px;
+}
+
+.ManagementItem .RightSide .Edit {
+    background-image: url("../../../../resources/edit_btn.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 50%;
+    outline: none;
+}
+
+.ManagementItem .RightSide .Delete {
+    background-image: url("../../../../resources/delete_btn.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 50%;
+    outline: none;
+    margin-left: 5px;
+}
+
+.ManagementItem .LeftSide ._Item {
+    position: relative;
+    width: 100%;
+    height: 100%;
     padding: 10px;
     text-align: center;
     font-size: 20px;
     color: #211F60;
 }
 
-.VocabularyManagementItem:hover {
+.ManagementItem .LeftSide ._Item:hover {
     color: #000066;
     cursor: pointer;
     text-decoration: underline;
