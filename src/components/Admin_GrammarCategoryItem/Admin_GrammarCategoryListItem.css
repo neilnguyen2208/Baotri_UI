@@ -3,8 +3,6 @@
     width: 100%;
     text-decoration: unset;
     display: flex;
-    border-left: 1px solid #c4c4c4;
-    border-right: 1px solid #c4c4c4;
 }
 
 .Admin_Grammar_Category_List_Item .Admin_Grammar_Category_List_Item_Name {
@@ -26,7 +24,7 @@
     text-decoration: none;
 }
 
-.Admin_Grammar_Category_List_Item .Admin_Grammar_Category_List_Item_Name:active{
+.Admin_Grammar_Category_List_Item .Admin_Grammar_Category_List_Item_Name:active {
     display: block;
 }
 

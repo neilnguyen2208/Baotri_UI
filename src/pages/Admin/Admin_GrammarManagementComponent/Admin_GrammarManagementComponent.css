@@ -1,0 +1,26 @@
+.Admin_GrammarManagement {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Admin_GrammarManagement .Admin_GrammarManagement_Main_Port {
+    top: 100px;
+    position: relative;
+    left: 6%;
+    width: 88%;
+    height: fit-content;
+    background-repeat: no-repeat;
+    padding-top: 0px;
+    border: 1px #c4c4c4 solid;
+}
+
+.Menu_Main_Port .Menu_Main_Show_Port {
+    height: fit-content;
+    border: #c4c4c4 solid 1px;
+    border-top: 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

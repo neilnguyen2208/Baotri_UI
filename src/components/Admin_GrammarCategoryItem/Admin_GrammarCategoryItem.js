@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "./Admin_GrammarCategoryItem.css"
 import Admin_GrammarCategoryListItem from "./Admin_GrammarCategoryListitem.js"
 import Admin_AddGrammarCategoryListItem from "./Admin_AddGrammarCategoryListItem.js"
+import EditDeleteBtnGroup from "../EditDeleteBtnGroup/EditDeleteBtnGroup"
 class Admin_GrammarCategoryItem extends Component {
 
     constructor(listOfGrammarItem) {
@@ -24,7 +25,7 @@ class Admin_GrammarCategoryItem extends Component {
     }
 
     render() {
-        let cards = this.state.items.map((item) => {
+        let grammarItemLists = this.state.items.map((item) => {
             return (
                 <div className="Item">
                     <Admin_GrammarCategoryListItem item={item}></Admin_GrammarCategoryListItem>
@@ -33,12 +34,14 @@ class Admin_GrammarCategoryItem extends Component {
         })
         return (
             <div className="Admin_Grammar_Category_Item">
-                <div className="decoration_above_line"></div>
-                <div className="Item_Name">{this.props.item.name}</div>
-                <div className="Sub_Items">{cards}</div>
+                <div className="Admin_Grammar_Category_Item_Name_Manage_Port">
+                    <div className="Admin_Grammar_Category_Item_Name">{this.props.item.name}</div>
+                    <div className="Admin_Grammar_Category_Item_Btn_Group">
+                        <EditDeleteBtnGroup></EditDeleteBtnGroup>
+                    </div>
+                </div>
+                {grammarItemLists}
                 <Admin_AddGrammarCategoryListItem></Admin_AddGrammarCategoryListItem>
-                <div className="decoration_below_border"></div>
-                <div className="decoration_below_line"></div>
             </div>
         );
     }

@@ -19,7 +19,7 @@ import PageTitle from './components/PageTitle/PageTitle';
 import UserAccountManagement from "./pages/UserAccountManagement/UserAccountManagement.js"
 import EnglishVocabularyLesson from './pages/EnglishVocabularyLesson/EnglishVocabularyLesson.js';
 import EnglishVocabularyLessonDetail from './pages/EnglishVocabularyLessonDetail/EnglishVocabularyLessonDetail.js';
-import Admin_GrammarManagement from './pages/Admin_GrammarManagement/Admin_GrammarManagement.js'
+import Admin from './pages/Admin/Admin'
 import EnglishVocabularyManagement from './pages/Management/EnglishVocabularyManagement/EnglishVocabularyManagement';
 import LessonManagement from './pages/Management/LessonManagement/LessonManagement';
 import DetailManagement from './pages/Management/DetailManagement/DetailManagement';
@@ -62,9 +62,9 @@ function App() {
           <Route path="/home/:id">
             <EnglishListening></EnglishListening>
           </Route>
-          <Route path="/admin/grammar" exact>
-            <Admin_GrammarManagement></Admin_GrammarManagement>
-          </Route>
+          <Route path="/admin" exact>
+            <Admin></Admin>
+          </Route>        
           <Route path="/admin/vocabulary" exact>
             <EnglishVocabularyManagement></EnglishVocabularyManagement>
           </Route>

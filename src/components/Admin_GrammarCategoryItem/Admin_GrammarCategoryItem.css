@@ -1,14 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
 .Admin_Grammar_Category_Item {
     position: relative;
     width: 100%;
     height: fit-content;
     margin-bottom: 80px;
+    border: 1px #c4c4c4 solid;
+    border-top: 5px #211f60 solid;
+    padding-top: 3px;
+    padding-bottom: 10px;
 }
 
-.Admin_Grammar_Category_Item .Item_Name {
+.Admin_Grammar_Category_Item_Name_Manage_Port {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Admin_Grammar_Category_Item .Admin_Grammar_Category_Item_Name {
     position: relative;
-    width: 98.18%;
     padding-bottom: 5px;
     padding-left: 1.82%;
     font-family: Open Sans;
@@ -16,24 +24,9 @@
     font-weight: bold;
     font-size: 20px;
     line-height: 30px;
-    color: #211F60;
-    border-bottom: 0px;
-    border-left: 1px;
-    border-right: 1px;
-    border-color: #c4c4c4;
-    border-top: 5px #211F60;
-    border-style: solid;
+    color: #211f60;
 }
 
-.Admin_Grammar_Category_Item .decoration_below_border {
-    position: relative;
-    width: 100%;
-    height: 10px;
-    background: ffffff;
-    border-left: 1px;
-    border-right: 1px;
-    border-top: 0px;
-    border-bottom: 1px;
-    border-color: #c4c4c4;
-    border-style: solid;
+.Admin_Grammar_Category_Item_Btn_Group {
+    margin-right: 5%;
 }
