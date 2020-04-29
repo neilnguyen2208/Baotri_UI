@@ -157,10 +157,8 @@ class UserAccountManagement extends Component {
                 <div className="Dock_Notification">
                     One of the most effective ways to improve your English Explorer a bit to find out what we do.
                 </div>
-                
-                
                 <div className="User_Account_Management_Main_Port"> {/* width = 100%, contain all content */}
-                    <div className="User_Account_Management_Inline_Port"> 
+                    <div className="User_Account_Management_Inline_Port">
                         <div> <PageTitle prevTitle="Edit your" mainTitle="Profile"></PageTitle></div>
                         <div className="User_Menu">
                             {/* User menu + user info port */}

@@ -4,6 +4,9 @@ import './Admin.css'
 import Footer from "../../components/Footer/Footer.js";
 import PageTitle from "../../components/PageTitle/PageTitle.js"
 import Admin_GrammarManagementComponent from "./Admin_GrammarManagementComponent/Admin_GrammarManagementComponent"
+import Admin_AccountCenterComponent from "./Admin_AccountCenterComponent/Admin_AccountCenterComponent"
+
+
 //default: account center
 
 class Admin extends Component {
@@ -18,13 +21,12 @@ class Admin extends Component {
                 "gmail": "dongnv.since1999@gmail.com",
                 "password_length": 10
             },
-            //To choose which will be show in account center
-            isUpdateInfo: false,
-            isChangePass: false,
 
             //To choose which main component will be show
-            isAccountCenter: false,
-            isGrammarManager: true,
+            isAccountCenter: true,
+            handleAccountCenterBG: "#ffffff",
+
+            isGrammarManager: false,
             isVocabularyManager: false,
             isListeningManager: false,
             isUserManager: false,
@@ -38,6 +40,11 @@ class Admin extends Component {
     handleAccountCenter = () => {
         this.state.isGrammarManager = false;
         this.state.isAccountCenter = true;
+        this.setState(this.state);
+    }
+
+    handleAccountCenterTouch = () => {
+        this.state.handleAccountCenterBG = "#211f60";
         this.setState(this.state);
     }
 
@@ -74,6 +81,14 @@ class Admin extends Component {
         if (this.state.isGrammarManager) {
             mainManagementComponent = <Admin_GrammarManagementComponent />
         }
+        else
+            if (this.state.isAccountCenter) {
+                mainManagementComponent = <Admin_AccountCenterComponent />
+            }
+
+
+
+
         return (
             <div className="Admin">
                 {/* Header Area */}
@@ -107,12 +122,12 @@ class Admin extends Component {
                     <div className="Admin_Horizontal_Menu_Bar_Main_Management_Port">
                         {/* Menu bar */}
                         <div className="Admin_Horizontal_Menu_Bar">
-                            <div className="First_Menu_Item" onClick={this.handleAccountCenter}> Account Center</div>
-                            <div className="Menu_Item" onClick={this.handleGrammarManager}>Grammar Manager</div>
-                            <div className="Menu_Item" onClick={this.handleVocabularyManager}>Vocabulary Manager</div>
-                            <div className="Menu_Item" onClick={this.handleListeningManager}>Listening Manager</div>
-                            <div className="Menu_Item" onClick={this.handleUserManager}>User Manager</div>
-                            <div className="Menu_Item" onClick={this.handleChatManager}>Chat Manager</div>
+                            <div className="Admin_Horizontal_Menu_Item" tabIndex="1" onClick={this.handleAccountCenter}>Account Center</div>
+                            <div className="Admin_Horizontal_Menu_Item" tabIndex="2" onClick={this.handleGrammarManager}>Grammar Manager</div>
+                            <div className="Admin_Horizontal_Menu_Item" tabIndex="3" onClick={this.handleVocabularyManager}>Vocabulary Manager</div>
+                            <div className="Admin_Horizontal_Menu_Item" tabIndex="4" onClick={this.handleListeningManager}>Listening Manager</div>
+                            <div className="Admin_Horizontal_Menu_Item" tabIndex="5" onClick={this.handleUserManager}>User Manager</div>
+                            <div className="Admin_Horizontal_Menu_Item" tabIndex="6" onClick={this.handleChatManager}>Chat Manager</div>
                         </div>
 
                         {/* Menu_Main_Show_Port */}

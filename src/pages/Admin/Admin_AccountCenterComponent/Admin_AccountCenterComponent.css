@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap");
+
+.Admin_Account_Center {
+    display: flex;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Menu {
+    height: fit-content;
+    margin-top: 10px;
+    padding: 10px;
+    position: relative;
+    box-sizing: border-box;
+    border-left: 1px;
+    border-right: 1px;
+    border-bottom: 1px;
+    border-color: #c4c4c4;
+    border-top: 5px #211f60;
+    border-style: solid;
+    font-family: "Barlow Condensed", "san-serif";
+    font-weight: 500;
+    font-size: 20px;
+    color: #363636;
+    width: 25%;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Menu_Item {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    padding-top: 5px;
+    height: fit-content;
+    user-select: none;
+    border: 1px white solid;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Menu_Item:hover {
+    border: 1px #c4c4c4 solid;
+    cursor: pointer;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Menu_Item:active {
+    background: #c4c4c4;
+    cursor: pointer;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Btn_Element {
+    align-self: center;
+    width: 8px;
+    height: 8px;
+    padding-right: 5px;
+}
+
+.Admin_Account_Center_Show_Info_Port {
+    box-sizing: border-box;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    border: 1px #c4c4c4 solid;
+    margin-top: 10px;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Show_Info_Sub_Port {
+    box-sizing: border-box;
+    margin: auto;
+    background: white;
+    padding: 10px;
+    border: 1px #c4c4c4 solid;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Label {
+    font-family: Barlow Condensed;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #363636;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Changable_Input {
+    width: 100%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #211f60;
+}
+
+.Admin_Account_Center_Changable_Input:hover,
+:focus {
+    background: #c4c4c4;
+}
+
+.Admin_Account_Center .Admin_Account_Center_Unchangable_Input {
+    width: 100%;
+    padding: 6px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #363636;
+    background: #c4c4c4;
+}
+
+.Admin_Account_Center_Save_Change_Info_Btn_Port {
+    display: flex;
+}
+
+.Admin_Account_Center_Save_Change_Info_Btn {
+    margin: auto;
+    box-sizing: border-box;
+    width: 120px;
+    height: 25px;
+    vertical-align: auto;
+    border-radius: 5px;
+    background: #211f60;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+    color: #ffffff;
+    border: #ffffff;
+    text-align: center;
+}

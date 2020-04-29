@@ -3,10 +3,10 @@
     display: flex;
 }
 
-
 .Root_Edit_Delete_Btn_Group .Root_Edit_Btn {
     width: 25px;
     height: 25px;
+
     left: 0;
 }
 
@@ -18,7 +18,7 @@
 .Root_Edit_Delete_Btn_Group .Root_Edit_Btn:active {
     opacity: 80%;
     cursor: pointer;
-    
+    border-radius: 20px;
 }
 
 .Root_Edit_Delete_Btn_Group .Root_Delete_Btn {
@@ -35,5 +35,5 @@
 .Root_Edit_Delete_Btn_Group .Root_Delete_Btn:active {
     opacity: 80%;
     cursor: pointer;
-    margin: 1px;
+    border-radius: 20px;
 }
