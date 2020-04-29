@@ -5,6 +5,7 @@ import VocabularyManagementItem from '../Components/VocabularyManagementItem/Voc
 import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import PageTitle from '../../../components/PageTitle/PageTitle';
+import AdminMenu from '../../../components/AdminMenu/AdminMenu';
 
 class EnglishVocabularyManagement extends Component {
     constructor(props) {
@@ -103,26 +104,7 @@ class EnglishVocabularyManagement extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="Menu">
-                            <div className="MenuItem">
-                                Account Center
-                            </div>
-                            <div className="MenuItem">
-                                Grammar Manager
-                            </div>
-                            <div className="MenuItem">
-                                Vocabulary Manager
-                            </div>
-                            <div className="MenuItem">
-                                Listening Manager
-                            </div>
-                            <div className="MenuItem">
-                                User Manager
-                            </div>
-                            <div className="MenuItem">
-                                Chat Manager
-                            </div>
-                        </div>
+                        <AdminMenu></AdminMenu>
                         <div className="Content_Row_Title">Choose a Category</div>
                         <div className="Content_Row_Items">
                             <div className="Item Add" onClick={this.handleAdd}>+ Thêm danh mục</div>

@@ -7,6 +7,7 @@ import { Button } from 'reactstrap';
 import Footer from '../../../components/Footer/Footer';
 import LessonDetailManagementItem from '../Components/LesonDetailManagementItem/LessonDetailManagementItem';
 import PageTitle from '../../../components/PageTitle/PageTitle';
+import AdminMenu from '../../../components/AdminMenu/AdminMenu';
 
 class DetailManagement extends Component {
     constructor(props) {
@@ -99,26 +100,7 @@ class DetailManagement extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="Menu">
-                            <div className="MenuItem">
-                                Account Center
-                            </div>
-                            <div className="MenuItem">
-                                Grammar Manager
-                            </div>
-                            <div className="MenuItem">
-                                Vocabulary Manager
-                            </div>
-                            <div className="MenuItem">
-                                Listening Manager
-                            </div>
-                            <div className="MenuItem">
-                                User Manager
-                            </div>
-                            <div className="MenuItem">
-                                Chat Manager
-                            </div>
-                        </div>
+                        <AdminMenu></AdminMenu>
                         <div className="Content_Row_Items">
                         <div className="Item Content_Row_Title">{title? title: "Lesson Name"}</div>
                         <div className="Item Content_Row_Control">

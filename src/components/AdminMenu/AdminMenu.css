@@ -1,0 +1,33 @@
+
+.Menu {
+    display: flex;
+    border-bottom: 5px #211f60 solid;
+    padding-left: 10px;
+}
+
+.MenuItem {
+    width: fit-content;
+    padding-right: 20px;
+    padding-left: 20px;
+    font-family: 'Barlow Condensed', 'san-serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    color: #363636;
+}
+
+.MenuItem:hover {
+    background: #211F60;
+    cursor: pointer;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: white;
+}
