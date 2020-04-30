@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import './Admin_GrammarManagement.css'
-import Header from "../../components/Header/Header.js";
-import Footer from "../../components/Footer/Footer.js";
-import PageTitle from "../../components/PageTitle/PageTitle.js"
-import Admin_Menu from '../../components/AdminMenu/AdminMenu';
-import Admin_AddGrammarCategoryItem from './Admin_GrammarCategoryItem/Admin_AddGrammarCategoryItem';
-import Admin_GrammarCategoryItem from './Admin_GrammarCategoryItem/Admin_GrammarCategoryItem'
+import Header from "../../../components/Header/Header.js";
+import Footer from "../../../components/Footer/Footer.js";
+import PageTitle from "../../../components/PageTitle/PageTitle.js"
+import Admin_Menu from '../../../components/AdminMenu/AdminMenu';
+import Admin_AddGrammarCategoryItem from '../Admin_GrammarManagementComponents/Admin_AddGrammarCategoryItem';
+import Admin_GrammarCategoryItem from '../Admin_GrammarManagementComponents/Admin_GrammarCategoryItem'
 
 class Admin_GrammarManagement extends Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class Admin_GrammarManagement extends Component {
                 <div className="Admin_Grammar_Management_Dock_Notification">
                     One of the most effective ways to improve your English Explorer a bit to find out what we do.
                 </div>
-                
+
                 {/* Body Area */}
                 <div className="Admin_Grammar_Management_Main_Port">
 

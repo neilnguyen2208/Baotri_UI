@@ -7,7 +7,7 @@ class Admin_GrammarCategoryListItem extends Component {
 
         return (
             <div className="Admin_Grammar_Category_List_Item" >
-                <a class="Admin_Grammar_Category_List_Item_Name" href="admin/grammar/:id">{this.props.item.name}</a>
+                <a class="Admin_Grammar_Category_List_Item_Name" href="/admin/grammar/:id">{this.props.item.name}</a>
                 <div className="Admin_Grammar_Category_List_Item_Edit_Delete_Port">
                     <EditDeleteBtnGroup ></EditDeleteBtnGroup>
                 </div>

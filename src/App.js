@@ -22,7 +22,9 @@ import Admin_AccountCenter from './pages/Admin_AccountCenter/Admin_AccountCenter
 import EnglishVocabularyManagement from './pages/Management/EnglishVocabularyManagement/EnglishVocabularyManagement';
 import LessonManagement from './pages/Management/LessonManagement/LessonManagement';
 import DetailManagement from './pages/Management/DetailManagement/DetailManagement';
-import Admin_GrammarManagement from "./pages/Admin_GrammarManagement/Admin_GrammarManagement"
+import Admin_GrammarManagement from "./pages/Admin_GrammarManagement/Admin_GrammarManagement/Admin_GrammarManagement"
+import Admin_GrammarDetailManagement from "./pages/Admin_GrammarManagement/Admin_GrammarDetailManagement/Admin_GrammarDetailManagement"
+
 function App() {
   return (
     <div className="App">
@@ -63,10 +65,13 @@ function App() {
           </Route>
           <Route path="/admin/" exact>
             <Admin_AccountCenter></Admin_AccountCenter>
-          </Route>     
+          </Route>
           <Route path="/admin/grammar" exact>
             <Admin_GrammarManagement></Admin_GrammarManagement>
-          </Route>    
+          </Route>
+          <Route path="/admin/grammar/:id" exact>
+            <Admin_GrammarDetailManagement></Admin_GrammarDetailManagement>
+          </Route>
           <Route path="/admin/vocabulary" exact>
             <EnglishVocabularyManagement></EnglishVocabularyManagement>
           </Route>

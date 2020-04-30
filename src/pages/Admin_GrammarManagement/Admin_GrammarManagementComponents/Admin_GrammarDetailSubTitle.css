@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap');
+.Grammar_Detail_Sub_Title {
+    position: relative;
+    width: 100%;
+    height: fit-content;
+}
+
+.Grammar_Detail_Sub_Title .Title {
+    position: relative;
+    width: 98.18%;
+    padding-bottom: 5px;
+    padding-left: 1.82%;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 30px;
+    color: #211F60;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 1px;
+    border-right: 1px;
+    border-color: #c4c4c4;
+    border-style: solid;
+}
+
+.Grammar_Detail_Sub_Title .decoration_above_line {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background: #211f60;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-left: 1px;
+    border-right: 1px;
+    border-color: #211F60;
+    border-style: solid;
+}
+
+.Grammar_Detail_Sub_Title .decoration_below_border {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: ffffff;
+    border-left: 1px;
+    border-right: 1px;
+    border-top: 0px;
+    border-bottom: 1px;
+    border-color: #c4c4c4;
+    border-style: solid;
+}
