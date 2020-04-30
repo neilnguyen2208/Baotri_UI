@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import "./Admin_AddGrammarCategoryItem.css"
-// import Admin_AddGrammarCategoryListItem from "./Admin_AddGrammarCategoryListitem.js"
+
 class Admin_AddGrammarCategoryItem extends Component {
 
-    constructor(listOfGrammarItem) {
-        super();
+    constructor(props) {
+        super(props);
 
     }
 

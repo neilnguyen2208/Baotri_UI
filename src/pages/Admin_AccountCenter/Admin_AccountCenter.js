@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
-import './Admin_AccountCenterComponent.css'
-import btn_element from '../../../resources/btn_element.png'
+import './Admin_AccountCenter.css'
+import btn_element from '../../resources/btn_element.png'
+import Footer from "../../components/Footer/Footer.js";
+import PageTitle from "../../components/PageTitle/PageTitle.js"
+import Header from "../../components/Header/Header.js";
+import Admin_Menu from '../../components/AdminMenu/AdminMenu';
 
 class Admin_AccountCenterComponent extends Component {
     constructor(props) {
@@ -14,12 +18,7 @@ class Admin_AccountCenterComponent extends Component {
             "userName": "tesla",
             "gmail": "dongnv.since1999@gmail.com",
             "password_length": 10,
-
         }
-    }
-
-    handleLogout = () => {
-        //logout
     }
 
     handleUpdateOption = () => {
@@ -102,21 +101,48 @@ class Admin_AccountCenterComponent extends Component {
 
         return (
             <div className="Admin_Account_Center">
-                <div className="Admin_Account_Center_Menu">
-                    <div className="Admin_Account_Center_Menu_Item" onClick={this.handleUpdateOption}>
-                        <img className="Admin_Account_Center_Btn_Element" src={btn_element}></img>
-                        <div> Update infomation</div>
-                    </div>
-                    <div className="Admin_Account_Center_Menu_Item" onClick={this.handleChangePassOption}>
-                        <img className="Admin_Account_Center_Btn_Element" src={btn_element}></img>
-                        <div>Change password</div>
+
+                {/* Header Area */}
+                <div className="Admin_Account_Center_Header">
+                    <Header></Header>
+                </div>
+
+                <div className="Admin_Account_Center_Dock_Notification">
+                    One of the most effective ways to improve your English Explorer a bit to find out what we do.
+                </div>
+
+                {/* Body Area */}
+                <div className="Admin_Account_Center_Main_Port">
+
+                    {/* Page Title */}
+                    <PageTitle prevTitle="Manage" mainTitle="Your page"></PageTitle>
+                    <div className="Admin_Account_Center_Horizontal_Menu_Bar_Main_Management_Port">
+                        <Admin_Menu />
+
+                        {/* Menu_Main_Show_Port */}
+                        <div className="Admin_Account_Center_Management_Port">
+                            <div className="Admin_Account_Center_Menu">
+                                <div className="Admin_Account_Center_Menu_Item" onClick={this.handleUpdateOption}>
+                                    <img className="Admin_Account_Center_Btn_Element" src={btn_element}></img>
+                                    <div> Update infomation</div>
+                                </div>
+                                <div className="Admin_Account_Center_Menu_Item" onClick={this.handleChangePassOption}>
+                                    <img className="Admin_Account_Center_Btn_Element" src={btn_element}></img>
+                                    <div>Change password</div>
+                                </div>
+                            </div>
+                            <div className="Admin_Account_Center_Show_Info_Port">
+                                {view}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div className="Admin_Account_Center_Show_Info_Port">
-                    {view}
+                <div className="Admin_Account_Center_Footer">
+                    <Footer ></Footer>
                 </div>
             </div>
+
 
         );
     }

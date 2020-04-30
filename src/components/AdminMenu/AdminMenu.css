@@ -1,25 +1,24 @@
-
-.Menu {
+.Admin_Horizontal_Menu_Bar {
     display: flex;
     border-bottom: 5px #211f60 solid;
-    padding-left: 10px;
 }
 
-.MenuItem {
+.Admin_Horizontal_Menu_Item {
     width: fit-content;
     padding-right: 20px;
     padding-left: 20px;
-    font-family: 'Barlow Condensed', 'san-serif';
+    font-family: "Barlow Condensed", "san-serif";
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
     display: flex;
     align-items: center;
     color: #363636;
+    user-select: none;
 }
 
-.MenuItem:hover {
-    background: #211F60;
+.Admin_Horizontal_Menu_Item:hover {
+    background: #211f60;
     cursor: pointer;
 }
 
@@ -30,4 +29,89 @@ a {
 
 a:hover {
     color: white;
+}
+
+/* Admin Info Port: contain: avatar, display name, gmail and logout button */
+.Admin_Info_Port {
+    display: flex;
+    width: 300px;
+    border: 1px #c4c4c4 solid;
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.Admin_Info_Port .Admin_Avatar {
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
+}
+
+.Admin_Info_Port .Admin_User_Name_Gmail_Port {
+    margin-left: 10px;
+    position: relative;
+    width: fit-content;
+    height: 80px;
+}
+
+.Admin_Info_Port .Admin_Gmail {
+    width: 190px;
+    position: relative;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    align-items: center;
+    line-height: 20px;
+    color: #363636;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.Admin_Info_Port .Admin_User_Name {
+    position: relative;
+    width: 190px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    align-items: center;
+    color: #211f60;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.Admin_Info_Port .Admin_Logout_Btn {
+    margin-top: 5px;
+    box-sizing: border-box;
+    width: 80px;
+    height: 25px;
+    vertical-align: auto;
+    text-align: center;
+    border-radius: 5px;
+    background: #211f60;
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #ffffff;
+    border: #ffffff;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px #211f60 solid;
+    outline: none;
+}
+
+.Admin_Info_Port .Admin_Logout_Btn:hover {
+    cursor: pointer;
+    opacity: 90%;
+}
+
+.Admin_Info_Port .Admin_Logout_Btn:active {
+    cursor: pointer;
+    opacity: 90%;
+    border: 1px #ffffff solid;
 }

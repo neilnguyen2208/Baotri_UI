@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import "./Admin_GrammarCategoryItem.css"
-import Admin_GrammarCategoryListItem from "./Admin_GrammarCategoryListitem.js"
+import Admin_GrammarCategoryListItem from "./Admin_GrammarCategoryListItem.js"
 import Admin_AddGrammarCategoryListItem from "./Admin_AddGrammarCategoryListItem.js"
-import EditDeleteBtnGroup from "../EditDeleteBtnGroup/EditDeleteBtnGroup"
+import EditDeleteBtnGroup from "../../../components/EditDeleteBtnGroup/EditDeleteBtnGroup"
+
 class Admin_GrammarCategoryItem extends Component {
 
     constructor(listOfGrammarItem) {

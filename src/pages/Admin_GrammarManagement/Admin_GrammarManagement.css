@@ -1,0 +1,63 @@
+.Admin_Grammar_Management {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Admin_Grammar_Management_Header {
+    top: 0px;
+    width: 100%;
+    height: 10%;
+    bottom: 0px;
+    left: 0px;
+}
+
+.Admin_Grammar_Management .Admin_Grammar_Management_Dock_Notification {
+    position: relative;
+    width: 100%;
+    height: 10%;
+    padding-left: 15px;
+    display: flex;
+    align-items: center;
+    background-color: gray;
+}
+
+.Admin_Grammar_Management_Main_Port {
+    top: 100px;
+    position: relative;
+    left: 6%;
+    width: 88%;
+    height: fit-content;
+    background-repeat: no-repeat;
+    padding-top: 0px;
+    border: 1px #c4c4c4 solid;
+}
+
+.Admin_Grammar_Management_Horizontal_Menu_Bar_Main_Management_Port {
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+.Admin_Grammar_Management_Port {
+    height: fit-content;
+    border: #c4c4c4 solid 1px;
+    border-top: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    min-height: 800px;
+}
+
+.Admin_Grammar_Management_Footer {
+    margin-top: 20px;
+    top: 100px;
+    position: relative;
+    bottom: 0px;
+    height: 10%;
+    width: 100%;
+}

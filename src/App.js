@@ -15,15 +15,14 @@ import GrammarDetail from './pages/GrammarDetail/GrammarDetail.js'
 import history from './components/history.js'
 import EnglishListening from './pages/EnglishListening/EnglishListening';
 import Login from './pages/Login/Login';
-import PageTitle from './components/PageTitle/PageTitle';
 import UserAccountManagement from "./pages/UserAccountManagement/UserAccountManagement.js"
 import EnglishVocabularyLesson from './pages/EnglishVocabularyLesson/EnglishVocabularyLesson.js';
 import EnglishVocabularyLessonDetail from './pages/EnglishVocabularyLessonDetail/EnglishVocabularyLessonDetail.js';
-import Admin from './pages/Admin/Admin'
+import Admin_AccountCenter from './pages/Admin_AccountCenter/Admin_AccountCenter'
 import EnglishVocabularyManagement from './pages/Management/EnglishVocabularyManagement/EnglishVocabularyManagement';
 import LessonManagement from './pages/Management/LessonManagement/LessonManagement';
 import DetailManagement from './pages/Management/DetailManagement/DetailManagement';
-
+import Admin_GrammarManagement from "./pages/Admin_GrammarManagement/Admin_GrammarManagement"
 function App() {
   return (
     <div className="App">
@@ -62,9 +61,12 @@ function App() {
           <Route path="/home/:id">
             <EnglishListening></EnglishListening>
           </Route>
-          <Route path="/admin" exact>
-            <Admin></Admin>
-          </Route>        
+          <Route path="/admin/" exact>
+            <Admin_AccountCenter></Admin_AccountCenter>
+          </Route>     
+          <Route path="/admin/grammar" exact>
+            <Admin_GrammarManagement></Admin_GrammarManagement>
+          </Route>    
           <Route path="/admin/vocabulary" exact>
             <EnglishVocabularyManagement></EnglishVocabularyManagement>
           </Route>
