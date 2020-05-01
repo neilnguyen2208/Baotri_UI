@@ -7,7 +7,7 @@ class Admin_GrammarDescription extends React.Component {
     render() {
         return (
             // Không đặt là Description để các className khác không bị trùng.
-            <div className="Description_Content" >
+            <div className="Admin_Description_Content" >
                 {this.props.content}
                 <EditDeleteBtnGroup />
             </div>

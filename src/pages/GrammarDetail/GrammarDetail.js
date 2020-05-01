@@ -7,15 +7,115 @@ import Description from "../../components/GrammarContents/Description/Descriptio
 import PageTitle from "../../components/PageTitle/PageTitle.js"
 import GrammarDetailSubTitle from "../../components/GrammarContents/GrammarDetailSubTitle/GrammarDetailSubTitle.js"
 import GrammarDetailTitle from "../../components/GrammarContents/GrammarDetailTitle/GrammarDetailTitle.js"
-import GrammarFormExample from "../../components/GrammarContents/GrammarFormDetails/GrammarFormExample/GrammarFormExample.js"
-import GrammarFormNote from "../../components/GrammarContents/GrammarFormDetails/GrammarFormNote/GrammarFormNote.js"
-import GrammarForm from "../../components/GrammarContents/GrammarFormDetails/GrammarForm/GrammarForm.js"
+import GrammarFormDetail from "../../components/GrammarContents/GrammarFormDetail/GrammarFormDetail/GrammarFormDetail"
+
 class GrammarDetail extends Component {
     constructor(props) {
-        super();
-        this.name = "COMPARATIVE";
+        super(props);
+        this.state = {
+            "id": 19,
+            "title": "Comparative",
+            "description": "When we compare things, people or even ideas we look at what makes them different from each other",
+            "categoryID": 1,
+            "forms": [
+                {
+                    "examples": [
+                        {
+                            "id": 15,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        },
+                        {
+                            "id": 85,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": 47,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        },
+                        {
+                            "id": 67,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        }
+                    ],
+                    "forms": [
+                        {
+                            "id": 98,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -r to the end of the word",
+                            "how": "wide - wider"
+                        },
+                        {
+                            "id": 76,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -a to the end of the word",
+                            "how": "wide - wider"
+                        }
+                    ],
+                    "id": 79,
+                    "title": "Forming the comparative",
+                    "how": "wide-wider"
+                },
+                {
+                    "examples": [
+                        {
+                            "id": 79,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        },
+                        {
+                            "id": 55,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": 76,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        },
+                        {
+                            "id": 98,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        }
+                    ],
+                    "forms": [
+                        {
+                            "id": 98,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -r to the end of the word",
+                            "how": "wide - wider"
+                        },
+                        {
+                            "id": 76,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -a to the end of the word",
+                            "how": "wide - wider"
+                        }
+                    ],
+                    "id": 58,
+                    "title": "Forming the comparative"
+                }
+            ]
+        }
     }
+
     render() {
+        let grammarFormDetailList = this.state.forms.map((form) =>
+            <GrammarFormDetail
+                example_list={form.examples}
+                note_list={form.notes}
+                form_list={form.forms}
+            ></GrammarFormDetail>
+        );
+
         return (
             <div className="Grammar_Detail">
 
@@ -29,10 +129,8 @@ class GrammarDetail extends Component {
 
                     <PageTitle prevTitle="Learning English" mainTitle="Grammar"></PageTitle>
 
-
-
                     <div className="Title">
-                        <GrammarDetailTitle name={this.name}></GrammarDetailTitle>
+                        <GrammarDetailTitle name={this.state.title}></GrammarDetailTitle>
                     </div>
 
                     <div className="Grammar_Detail_Description">
@@ -40,19 +138,9 @@ class GrammarDetail extends Component {
                     </div>
                     <div className="Grammar_Detail_Content">
                         <div className="SubTitle" >
-                            <GrammarDetailSubTitle name={this.name}></GrammarDetailSubTitle>
+                            <GrammarDetailSubTitle name={this.state.title}></GrammarDetailSubTitle>
                             <div className="Grammar_Detail_Form">
-                                <div className="Example">
-                                    <GrammarFormExample example_image_url="https://i.imgur.com/q54xYo3.png" example_content={
-                                        <div>The man on the left is <b>taller</b> than the man on the right.<br /> The man on the right is <b>shorter</b> than the man on the left.</div>}>
-                                    </GrammarFormExample>
-                                </div>
-                                <div className="Grammar_Detail_Note">
-                                    <GrammarFormNote noteContent="Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared. "></GrammarFormNote>
-                                </div>
-                                <div className="Grammar_Detail_Form_Content">
-                                    <GrammarForm formTitle="FORM OF COMPARATIVE:" useCase="Words of one syllable" usage="Add -r to the end of the word" how="wide-wider" ></GrammarForm>
-                                </div>
+                                {grammarFormDetailList}
                             </div>
                         </div>
                         <div className="Below_Border"></div>

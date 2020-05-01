@@ -1,8 +1,6 @@
-.Grammar_Form_Note {
-    margin-top: 0px;
+.Admin_Grammar_Form_Note {
     width: 95.45%;
     padding-top: 10px;
-    padding-bottom: 10px;
     height: fit-content;
     border-left: 1px;
     border-top: 0px;
@@ -11,19 +9,28 @@
     border-color: #c4c4c4;
     border-style: solid;
     padding-left: 4.55%;
+    display: flex;
+    justify-content: space-between;
+}
+.Admin_Grammar_Form_Note_Port {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 3%;
+    height: fit-content;
 }
 
-.Grammar_Form_Note .Grammar_Note_Content {
-    text-align: center;
+.Admin_Grammar_Form_Note .Admin_Grammar_Note_Content {
+    padding-left: 3%;
+    text-align: left;
     position: relative;
     line-height: 20px;
     width: 100%;
 }
 
-.decoration_note_text {
+.admin_decoration_note_text {
     background: #211f60;
     position: relative;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-style: bold;
     font-weight: 700;
     width: fit-content;
@@ -32,4 +39,8 @@
     border-color: #211f60;
     font-size: 14px;
     color: #ffffff;
+}
+
+.Admin_Grammar_Form_Note_Btn_Group {
+    padding-right: 3%;
 }

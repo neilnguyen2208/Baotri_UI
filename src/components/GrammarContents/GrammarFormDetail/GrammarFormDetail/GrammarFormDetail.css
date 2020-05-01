@@ -1,28 +1,22 @@
-.Admin_Grammar_Form {
-    display: flex;
-    justify-content: space-between;
+.Grammar_Form {
+    margin-top: 0px;
+    width: 90.9%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: fit-content;
     border-left: 1px;
     border-top: 0px;
     border-right: 1px;
     border-bottom: 0px;
     border-color: #c4c4c4;
     border-style: solid;
-    width: 100%;
-}
-
-.Admin_Grammar_Form_Port {
-    margin-top: 0px;
-    width: 90.9%;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: fit-content;
     padding-left: 4.55%;
     padding-right: 4.55%;
 }
 
-.Admin_Grammar_Form .Admin_Grammar_Form_Title {
+.Grammar_Form .Grammar_Form_Title {
     position: relative;
-    font-family: "Open Sans";
+    font-family: 'Open Sans';
     font-style: bold;
     font-weight: 700;
     width: fit-content;
@@ -30,7 +24,7 @@
     font-size: 14px;
 }
 
-.Admin_Grammar_Form .Admin_Grammar_Form_Content {
+.Grammar_Form .Grammar_Form_Content {
     margin-top: 10px;
     border-top: 1px;
     border-right: 0px;
@@ -41,7 +35,7 @@
     text-align: center;
     position: relative;
     line-height: 20px;
-    font-family: "Open Sans";
+    font-family: 'Open Sans';
     font-style: normal;
     font-weight: 300;
     height: fit-content;
@@ -49,35 +43,31 @@
     padding-bottom: 10px;
 }
 
-.admin_grammar_form_layout {
+.grammar_form_layout {
     text-align: center;
-    font-family: "Open Sans";
+    font-family: 'Open Sans';
     font-style: normal;
     font-weight: 300;
     width: 100%;
 }
 
-.Admin_Grammar_Form_UseCase {
+.Grammar_Form_UseCase {
     width: 30%;
-    font-family: "Open Sans";
+    font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
 }
 
-.Admin_Grammar_Form_Usage {
+.Grammar_Form_Usage {
     width: 40%;
-    font-family: "Open Sans";
+    font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
 }
 
-.Admin_Grammar_Form_How {
+.Grammar_Form_How {
     width: 30%;
-    font-family: "Open Sans";
+    font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
-}
-
-.Admin_Grammar_Form_Btn_Group {
-    padding-right: 3%;
 }

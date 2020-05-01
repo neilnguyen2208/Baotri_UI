@@ -5,16 +5,115 @@ import Footer from "../../../components/Footer/Footer.js";
 import PageTitle from "../../../components/PageTitle/PageTitle.js"
 import Admin_Menu from '../../../components/AdminMenu/AdminMenu';
 import Admin_GrammarDescription from '../Admin_GrammarManagementComponents/Admin_GrammarDescription'
+import Admin_GrammarDetailSubTitle from "../Admin_GrammarManagementComponents/Admin_GrammarDetailSubTitle"
+import Admin_GrammarDetailTitle from "../Admin_GrammarManagementComponents/Admin_GrammarDetailTitle"
+import Admin_GrammarFormDetail from "../Admin_GrammarManagementComponents/Admin_GrammarFormDetail"
+
 class Admin_GrammarDetailManagement extends Component {
     constructor(props) {
-        super();
+        super(props);
         this.state = {
-            "description": "The superlative is used to say what thing, person, or idea has the most of a particular quality within a group or of its kind. Superlative adjectives normally come before any other adjectives."
+            "id": 19,
+            "title": "Comparative",
+            "description": "When we compare things, people or even ideas we look at what makes them different from each other",
+            "categoryID": 1,
+            "forms": [
+                {
+                    "examples": [
+                        {
+                            "id": 15,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        },
+                        {
+                            "id": 85,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": 47,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        },
+                        {
+                            "id": 67,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        }
+                    ],
+                    "forms": [
+                        {
+                            "id": 98,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -r to the end of the word",
+                            "how": "wide - wider"
+                        },
+                        {
+                            "id": 76,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -a to the end of the word",
+                            "how": "wide - wider"
+                        }
+                    ],
+                    "id": 79,
+                    "title": "Forming the comparative",
+                    "how": "wide-wider"
+                },
+                {
+                    "examples": [
+                        {
+                            "id": 79,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        },
+                        {
+                            "id": 55,
+                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                        }
+                    ],
+                    "notes": [
+                        {
+                            "id": 76,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        },
+                        {
+                            "id": 98,
+                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                        }
+                    ],
+                    "forms": [
+                        {
+                            "id": 98,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -r to the end of the word",
+                            "how": "wide - wider"
+                        },
+                        {
+                            "id": 76,
+                            "title": "FORM OF COMPARATIVE:",
+                            "usecase": "Words of one syllable",
+                            "usage": "Add -a to the end of the word",
+                            "how": "wide - wider"
+                        }
+                    ],
+                    "id": 58,
+                    "title": "Forming the comparative"
+                }
+            ]
         }
     }
-
     render() {
-
+        let adminGrammarFormDetailList = this.state.forms.map((form) =>
+            <Admin_GrammarFormDetail
+                example_list={form.examples}
+                note_list={form.notes}
+                form_list={form.forms}
+            ></Admin_GrammarFormDetail>
+        );
         return (
             <div className="Admin_Grammar_Detail_Management">
 
@@ -37,7 +136,10 @@ class Admin_GrammarDetailManagement extends Component {
 
                         {/* Menu_Main_Show_Port */}
                         <div className="Admin_Grammar_Detail_Management_Port">
+                            <Admin_GrammarDetailTitle name={this.state.title}></Admin_GrammarDetailTitle>
                             <Admin_GrammarDescription content={this.state.description} />
+                            <Admin_GrammarDetailSubTitle name={this.state.title}></Admin_GrammarDetailSubTitle>
+                            {adminGrammarFormDetailList}
                         </div>
                     </div>
                 </div>

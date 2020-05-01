@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import "./GrammarDetailTitle.css"
-class GrammarDetailTitle extends Component {
+import "./Admin_GrammarDetailTitle.css"
+class Admin_GrammarDetailTitle extends Component {
     render() {
         return (
             <div className="Grammar_Detail_Title">
@@ -10,6 +10,4 @@ class GrammarDetailTitle extends Component {
         )
     }
 }
-export default GrammarDetailTitle;
-
-//<span><b>{this.props.prevTitle}</b>{this.props.mainTitle}</span>
+export default Admin_GrammarDetailTitle;
