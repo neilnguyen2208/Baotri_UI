@@ -41,8 +41,8 @@ class AdminMenu extends Component {
                     <div >
                         <a className="Admin_Horizontal_Menu_Item">Listening Manager</a>
                     </div>
-                    <div className="Admin_Horizontal_Menu_Item">
-                        <a className="Admin_Horizontal_Menu_Item">User Manager</a>
+                    <div className="Admin_Horizontal_Menu_Item" >
+                        <a href='/admin/user' className="Admin_Horizontal_Menu_Item">User Manager</a>
                     </div>
                     <div className="Admin_Horizontal_Menu_Item">
                         Chat Manager

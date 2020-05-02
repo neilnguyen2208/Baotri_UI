@@ -8,7 +8,8 @@ import Admin_GrammarDescription from '../Admin_GrammarManagementComponents/Admin
 import Admin_GrammarDetailSubTitle from "../Admin_GrammarManagementComponents/Admin_GrammarDetailSubTitle"
 import Admin_GrammarDetailTitle from "../Admin_GrammarManagementComponents/Admin_GrammarDetailTitle"
 import Admin_GrammarFormDetail from "../Admin_GrammarManagementComponents/Admin_GrammarFormDetail"
-
+import Admin_AddGrammarFormDetail from "../Admin_GrammarManagementComponents/Admin_AddGrammarFormDetail"
+import Admin_AddGrammarCategoryItem from '../Admin_GrammarManagementComponents/Admin_AddGrammarCategoryItem';
 class Admin_GrammarDetailManagement extends Component {
     constructor(props) {
         super(props);
@@ -139,7 +140,11 @@ class Admin_GrammarDetailManagement extends Component {
                             <Admin_GrammarDetailTitle name={this.state.title}></Admin_GrammarDetailTitle>
                             <Admin_GrammarDescription content={this.state.description} />
                             <Admin_GrammarDetailSubTitle name={this.state.title}></Admin_GrammarDetailSubTitle>
-                            {adminGrammarFormDetailList}
+
+                            <div className="Admin_Grammar_Form_Detail_List_Management_Port">
+                                {adminGrammarFormDetailList}
+                            </div>
+                            <Admin_AddGrammarFormDetail></Admin_AddGrammarFormDetail>
                         </div>
                     </div>
                 </div>

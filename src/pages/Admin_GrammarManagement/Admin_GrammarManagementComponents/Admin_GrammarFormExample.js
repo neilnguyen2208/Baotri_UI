@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import "./Admin_GrammarFormExample.css"
 import "../../../components/EditDeleteBtnGroup/EditDeleteBtnGroup"
-import EditDeleteBtnGroup from '../../../components/EditDeleteBtnGroup/EditDeleteBtnGroup';
+import edit_btn from "../../../resources/edit_btn.png"
+import delete_btn from "../../../resources/delete_btn.png"
+
 class Admin_GrammarFormExample extends Component {
     render() {
         return (
@@ -17,8 +19,9 @@ class Admin_GrammarFormExample extends Component {
                         {this.props.example_content}
                     </div>
                 </div>
-                <div className = "Admin_Grammar_Example_Btn_Group">
-                    <EditDeleteBtnGroup></EditDeleteBtnGroup>
+                <div className="Admin_Grammar_Example_Btn_Group">
+                    <img className="Admin_Grammar_Example_Edit_Btn" src={edit_btn} />
+                    <img className="Admin_Grammar_Example_Delete_Btn" src={delete_btn} />
                 </div>
             </div>
         )

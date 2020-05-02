@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React from 'react';
 import './App.css';
 import {
@@ -24,7 +25,8 @@ import LessonManagement from './pages/Management/LessonManagement/LessonManageme
 import DetailManagement from './pages/Management/DetailManagement/DetailManagement';
 import Admin_GrammarManagement from "./pages/Admin_GrammarManagement/Admin_GrammarManagement/Admin_GrammarManagement"
 import Admin_GrammarDetailManagement from "./pages/Admin_GrammarManagement/Admin_GrammarDetailManagement/Admin_GrammarDetailManagement"
-
+import Admin_UserManagement from "./pages/Admin_UserManagement/Admin_UserManagement"
+import Admin_UserDetailManagement from "./pages/Admin_UserManagement/Admin_UserDetailManagement"
 function App() {
   return (
     <div className="App">
@@ -71,6 +73,12 @@ function App() {
           </Route>
           <Route path="/admin/grammar/:id" exact>
             <Admin_GrammarDetailManagement></Admin_GrammarDetailManagement>
+          </Route>
+          <Route path="/admin/user" exact>
+            <Admin_UserManagement></Admin_UserManagement>
+          </Route>
+          <Route path="/admin/user/:id" exact>
+            <Admin_UserDetailManagement></Admin_UserDetailManagement>
           </Route>
           <Route path="/admin/vocabulary" exact>
             <EnglishVocabularyManagement></EnglishVocabularyManagement>

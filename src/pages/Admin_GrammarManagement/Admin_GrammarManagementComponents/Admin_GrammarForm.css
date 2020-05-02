@@ -30,34 +30,18 @@
     font-size: 14px;
 }
 
-.Admin_Grammar_Form .Admin_Grammar_Form_Content {
-    margin-top: 10px;
-    border-top: 1px;
-    border-right: 0px;
-    border-left: 0px;
-    border-bottom: 0px;
-    border-color: #c4c4c4;
-    border-style: solid;
-    text-align: center;
-    position: relative;
-    line-height: 20px;
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 300;
-    height: fit-content;
-    line-height: 20px;
-    padding-bottom: 10px;
-}
-
 .admin_grammar_form_layout {
+    display: flex;
     text-align: center;
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 300;
-    width: 100%;
+    padding: 3%;
 }
 
 .Admin_Grammar_Form_UseCase {
+    padding-top: 10px;
+    border-top: 1px #c4c4c4 solid;
     width: 30%;
     font-family: "Open Sans";
     font-style: normal;
@@ -65,19 +49,58 @@
 }
 
 .Admin_Grammar_Form_Usage {
+    border-top: 1px #c4c4c4 solid;
     width: 40%;
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
+    padding-top: 10px;
 }
 
 .Admin_Grammar_Form_How {
+    border-top: 1px #c4c4c4 solid;
     width: 30%;
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
+    padding-top: 10px;
 }
 
 .Admin_Grammar_Form_Btn_Group {
-    padding-right: 3%;
+   margin-right: 5%;
+   width: 65px;
+   display: flex;
+}
+
+.Admin_Grammar_Form_Edit_Btn {
+    width: 25px;
+    height: 25px;
+    left: 0;
+}
+
+.Admin_Grammar_Form_Edit_Btn:hover {
+    opacity: 90%;
+    cursor: pointer;
+}
+
+.Admin_Grammar_Form_Edit_Btn:active {
+    opacity: 80%;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.Admin_Grammar_Form_Delete_Btn {
+    width: 25px;
+    height: 25px;
+    margin-left: 15px;
+}
+
+.Admin_Grammar_Form_Delete_Btn:hover {
+    opacity: 90%;
+    cursor: pointer;
+}
+
+.Admin_Grammar_Form_Delete_Btn:active {
+    opacity: 80%;
+    cursor: pointer;
+    border-radius: 20px;
 }

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import "./Admin_GrammarCategoryItem.css"
 import Admin_GrammarCategoryListItem from "./Admin_GrammarCategoryListItem.js"
 import Admin_AddGrammarCategoryListItem from "./Admin_AddGrammarCategoryListItem.js"
-import EditDeleteBtnGroup from "../../../components/EditDeleteBtnGroup/EditDeleteBtnGroup"
-
+import edit_btn from "../../../resources/edit_btn.png"
+import delete_btn from "../../../resources/delete_btn.png"
 class Admin_GrammarCategoryItem extends Component {
 
     constructor(listOfGrammarItem) {
@@ -38,7 +38,8 @@ class Admin_GrammarCategoryItem extends Component {
                 <div className="Admin_Grammar_Category_Item_Name_Manage_Port">
                     <div className="Admin_Grammar_Category_Item_Name">{this.props.item.name}</div>
                     <div className="Admin_Grammar_Category_Item_Btn_Group">
-                        <EditDeleteBtnGroup></EditDeleteBtnGroup>
+                        <img className="Admin_Grammar_Category_Item_Edit_Btn" src={edit_btn} />
+                        <img className="Admin_Grammar_Category_Item_Delete_Btn" src={delete_btn} />
                     </div>
                 </div>
                 {grammarItemLists}

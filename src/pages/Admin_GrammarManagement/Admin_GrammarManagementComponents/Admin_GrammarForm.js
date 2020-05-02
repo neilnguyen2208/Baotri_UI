@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import "./Admin_GrammarForm.css"
 import "../../../components/EditDeleteBtnGroup/EditDeleteBtnGroup"
-import EditDeleteBtnGroup from '../../../components/EditDeleteBtnGroup/EditDeleteBtnGroup';
+import edit_btn from "../../../resources/edit_btn.png"
+import delete_btn from "../../../resources/delete_btn.png"
 class Admin_GrammarForm extends Component {
     render() {
         return (
@@ -9,23 +10,22 @@ class Admin_GrammarForm extends Component {
                 <div className="Admin_Grammar_Form_Port">
                     <div className="Admin_Grammar_Form_Title">{this.props.formTitle}</div>
                     <div className="Admin_Grammar_Form_Content">
-                        <table className="admin_grammar_form_layout">
-                            <tr>
-                                <th className="Admin_Grammar_Form_UseCase">
-                                    {this.props.useCase}
-                                </th>
-                                <th className="Admin_Grammar_Form_Usage">
-                                    {this.props.usage}
-                                </th>
-                                <th className="Admin_Grammar_Form_How">
-                                    {this.props.how}
-                                </th>
-                            </tr>
-                        </table>
+                        <div className="admin_grammar_form_layout">
+                            <div className="Admin_Grammar_Form_UseCase">
+                                {this.props.useCase}
+                            </div>
+                            <div className="Admin_Grammar_Form_Usage">
+                                {this.props.usage}
+                            </div>
+                            <div className="Admin_Grammar_Form_How">
+                                {this.props.how}
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className="Admin_Grammar_Form_Btn_Group">
-                    <EditDeleteBtnGroup></EditDeleteBtnGroup>
+                    <img className="Admin_Grammar_Form_Edit_Btn" src={edit_btn} />
+                    <img className="Admin_Grammar_Form_Delete_Btn" src={delete_btn} />
                 </div>
             </div>
         )
