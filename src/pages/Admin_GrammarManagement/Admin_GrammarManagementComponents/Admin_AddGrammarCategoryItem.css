@@ -54,3 +54,9 @@
     color: white;
     border: white 1px solid;
 }
+
+.Add_Grammar_Category_Form
+{
+    margin: auto;
+    max-width: 400px;
+}

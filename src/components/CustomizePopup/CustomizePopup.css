@@ -1,0 +1,25 @@
+.Customize_Popup {
+    display: flex;
+    border: none;
+    outline: none;
+}
+
+.Popup_Title_Bar {
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 5px solid #211f60;
+    margin-bottom: 10px;
+}
+
+.Popup_Title {
+    background: #211f60;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    font-family:  Open Sans;
+    font-size: 16;
+    font-weight: 700;
+    line-height: 30px;
+}

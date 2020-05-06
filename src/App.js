@@ -53,9 +53,7 @@ function App() {
           <Route path="/grammar" exact>
             <Grammar></Grammar>
           </Route>
-          <Route path="/grammar/:id" exact>
-            <GrammarDetail />
-          </Route>
+          <Route path="/grammar/:id" exact component={GrammarDetail} />
           <Route path="/listening" exact>
             <EnglishListening></EnglishListening>
           </Route>

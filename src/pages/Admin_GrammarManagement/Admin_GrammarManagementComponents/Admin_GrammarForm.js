@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import "./Admin_GrammarForm.css"
-import "../../../components/EditDeleteBtnGroup/EditDeleteBtnGroup"
 import edit_btn from "../../../resources/edit_btn.png"
 import delete_btn from "../../../resources/delete_btn.png"
 class Admin_GrammarForm extends Component {

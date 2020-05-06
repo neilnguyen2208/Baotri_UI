@@ -13,16 +13,17 @@ class GrammarFormDetail extends Component {
             <GrammarFormNote noteContent={note_item.content}></GrammarFormNote>
         );
 
-        let grammarDetailFormList = this.props.form_list.map((form_item) =>
-            <GrammarForm formTitle={form_item.title} useCase={form_item.usecase} usage={form_item.usage} how={form_item.how} ></GrammarForm>
-        );
+        // let grammarDetailFormList = this.props.form_list.map((form_item) =>
+        //     <GrammarForm formTitle={form_item.title} useCase={form_item.usecase} usage={form_item.usage} how={form_item.how} ></GrammarForm>
+        // );
 
         return (
             <div >
                 <div className="Grammar_Form_Detail">
                     {grammarDetailExampleList}
                     {grammarDetailNoteList}
-                    {grammarDetailFormList}
+                    {/* {grammarDetailFormList} */}
+                    <GrammarForm formTitle={this.props.title} useCase={this.props.usecase} usage={this.props.usage} how={this.props.how} />
                 </div>
             </div>
         )

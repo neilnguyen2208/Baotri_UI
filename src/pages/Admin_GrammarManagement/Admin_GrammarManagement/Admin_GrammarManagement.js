@@ -23,6 +23,11 @@ class Admin_GrammarManagement extends Component {
         }
     }
 
+    handleAddGrammarCategoryItem = () =>
+    {
+        console.log("addItem");
+    }
+
     render() {
         let items;
         items = this.state.items.map((item) => {
@@ -50,7 +55,6 @@ class Admin_GrammarManagement extends Component {
                     <PageTitle prevTitle="Manage" mainTitle="Your page"></PageTitle>
                     <div className="Admin_Grammar_Management_Horizontal_Menu_Bar_Main_Management_Port">
                         <Admin_Menu />
-
                         {/* Menu_Main_Show_Port */}
                         <div className="Admin_Grammar_Management_Port">
                             <Admin_AddGrammarCategoryItem></Admin_AddGrammarCategoryItem>

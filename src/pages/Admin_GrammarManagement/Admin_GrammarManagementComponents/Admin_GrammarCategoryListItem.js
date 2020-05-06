@@ -9,9 +9,9 @@ class Admin_GrammarCategoryListItem extends Component {
         return (
             <div className="Admin_Grammar_Category_List_Item" >
                 <a class="Admin_Grammar_Category_List_Item_Name" href="/admin/grammar/:id">{this.props.item.name}</a>
-                <div className="Admin_Grammar_Category_List_Item_Btn_Group">
-                    <img className="Admin_Grammar_Category_List_Item_Edit_Btn" src={edit_btn} />
-                    <img className="Admin_Grammar_Category_List_Item_Delete_Btn" src={delete_btn} />
+                <div className="Edit_Delete_Btn_Group">
+                    <img className="Edit_Btn" src={edit_btn} />
+                    <img className="Delete_Btn" src={delete_btn} />
                 </div>
             </div >
         )

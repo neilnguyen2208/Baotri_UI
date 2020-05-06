@@ -11,22 +11,55 @@ class Grammar extends Component {
     constructor(props) {
         super();
 
-        this.state = {
-            items: [{
-                name: "ADJECTIVE",
-            },
-            {
-                name: "VERB",
-            },
-            {
-                name: "VERB",
-            }]
+        this.state =
+        {
+            items:
+                [
+                    {
+                        "id": 0,
+                        "name": "Parent Category 1",
+                        "subCategory":
+                        [
+                            {
+
+                            },
+                            {
+
+                            },
+                            {
+                                
+                            }
+                        ]
+                    },
+                    {
+                        "id": 0,
+                        "name": "Parent Category 2"
+                    },
+                    {
+                        "id": 0,
+                        "name": "Parent Category 3"
+                    }
+                ]
         }
+
+    }
+
+    fetchGrammarCategoryList() {
+        // fetch('https://private-anon-58bcdf7810-englishlearndevteam.apiary-mock.com/api/v1/grammar/categories')
+        // .then(items => items.json())
+        // .then((data) => {
+        //     this.setState({ items: data })
+        // })
+        // .catch(console.log)
+    }
+
+    componentDidMount() {
+        this.fetchGrammarCategoryList();
     }
 
     render() {
 
-        let cards = this.state.items.map((item) => {
+        let items = this.state.items.map((item) => {
             return (
                 <div className="Item">
                     <GrammarCategoryItem item={item}></GrammarCategoryItem>
@@ -51,7 +84,7 @@ class Grammar extends Component {
                         </div>
                         <div className="Grammar_Category_Port">
                             <div className="category_item">
-                                {cards}
+                                {items}
                             </div>
 
                         </div>

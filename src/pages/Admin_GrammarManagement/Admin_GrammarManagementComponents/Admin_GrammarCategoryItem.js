@@ -37,9 +37,9 @@ class Admin_GrammarCategoryItem extends Component {
             <div className="Admin_Grammar_Category_Item">
                 <div className="Admin_Grammar_Category_Item_Name_Manage_Port">
                     <div className="Admin_Grammar_Category_Item_Name">{this.props.item.name}</div>
-                    <div className="Admin_Grammar_Category_Item_Btn_Group">
-                        <img className="Admin_Grammar_Category_Item_Edit_Btn" src={edit_btn} />
-                        <img className="Admin_Grammar_Category_Item_Delete_Btn" src={delete_btn} />
+                    <div className="Edit_Delete_Btn_Group">
+                        <img className="Edit_Btn" src={edit_btn} />
+                        <img className="Delete_Btn" src={delete_btn} />
                     </div>
                 </div>
                 {grammarItemLists}

@@ -3,40 +3,41 @@ import "./GrammarCategoryItem.css"
 import GrammarCategoryListItem from "./GrammarCategoryListitem.js"
 class GrammarCategoryItem extends Component {
 
-    constructor(listOfGrammarItem) {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            items: [{
-                name: "Comparative",
-                link_to: "grammar_detail"
-            },
-            {
-                name: "Superative",
-                link_to: "grammar_detail"
-            },
-            {
-                name: "Order",
-                link_to: "grammar_detail"
-            }
+            listGrammars: [
+                {
+                    
+                }
             ]
+
         }
     }
 
+    componentDidMount() {
+        this.fetchGrammarCategoryList();
+    }
+
+    fetchGrammarCategoryList() {
+        fetch('https://private-anon-58bcdf7810-englishlearndevteam.apiary-mock.com/api/v1/grammar/categories/id')
+            .then(listGrammars => listGrammars.json())
+            .then((listGrammars) => {
+                this.setState({ listGrammars: listGrammars })
+            })
+            .catch(console.log)
+    }
+
     render() {
-        let cards = this.state.items.map((item) => {
+        let cards = this.state.listGrammars.map((subItem) => {
             return (
-                <div className="Item">
-                    <GrammarCategoryListItem item={item}></GrammarCategoryListItem>
-                </div>
+                <GrammarCategoryListItem item={subItem}></GrammarCategoryListItem>
             );
         })
         return (
             <div className="Grammar_Category_Item">
-                <div className="decoration_above_line"></div>
-                <div className="Item_Name">{this.props.item.name}</div>
-                <div className="Sub_Items">{cards}</div>
-                <div className="decoration_below_border"></div>
-                <div className="decoration_below_line"></div>
+                <div className="Grammar_Category_Item_Name">{this.props.item.name}</div>
+                <div className="Grammar_Category_Item_Sub_Items">{cards}</div>
             </div>
         );
     }

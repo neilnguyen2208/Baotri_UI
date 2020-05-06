@@ -13,106 +13,107 @@ class GrammarDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "id": 19,
-            "title": "Comparative",
-            "description": "When we compare things, people or even ideas we look at what makes them different from each other",
-            "categoryID": 1,
-            "forms": [
-                {
-                    "examples": [
+            grammarDetail: {
+                "id": "",
+                "title": "Comparative",
+                "description": "When we compare things, people or even ideas we look at what makes them different from each other",
+                "categoryID": 1,
+                "forms":
+                    [
                         {
-                            "id": 15,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                        },
-                        {
-                            "id": 85,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                        }
-                    ],
-                    "notes": [
-                        {
-                            "id": 47,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        },
-                        {
-                            "id": 67,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        }
-                    ],
-                    "forms": [
-                        {
-                            "id": 98,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -r to the end of the word",
-                            "how": "wide - wider"
-                        },
-                        {
-                            "id": 76,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -a to the end of the word",
-                            "how": "wide - wider"
-                        }
-                    ],
-                    "id": 79,
-                    "title": "Forming the comparative",
-                    "how": "wide-wider"
-                },
-                {
-                    "examples": [
-                        {
+                            "examples": [
+                                {
+                                    "id": 15,
+                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                                },
+                                {
+                                    "id": 85,
+                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                                }
+                            ],
+                            "notes": [
+                                {
+                                    "id": 47,
+                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                                },
+                                {
+                                    "id": 67,
+                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                                }
+                            ],
+                            "forms": [
+                                {
+                                    "id": 98,
+                                    "title": "FORM OF COMPARATIVE:",
+                                    "usecase": "Words of one syllable",
+                                    "usage": "Add -r to the end of the word",
+                                    "how": "wide - wider"
+                                },
+                                {
+                                    "id": 76,
+                                    "title": "FORM OF COMPARATIVE:",
+                                    "usecase": "Words of one syllable",
+                                    "usage": "Add -a to the end of the word",
+                                    "how": "wide - wider"
+                                }
+                            ],
                             "id": 79,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                            "title": "Forming the comparative",
+                            "how": "wide-wider"
                         },
                         {
-                            "id": 55,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                            "examples": [
+                                {
+                                    "id": 79,
+                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                                },
+                                {
+                                    "id": 55,
+                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
+                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
+                                }
+                            ],
+                            "notes": [
+                                {
+                                    "id": 76,
+                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                                },
+                                {
+                                    "id": 98,
+                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
+                                }
+                            ],
+                            "id": 58,
+                            "title": "Forming the comparative"
                         }
-                    ],
-                    "notes": [
-                        {
-                            "id": 76,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        },
-                        {
-                            "id": 98,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        }
-                    ],
-                    "forms": [
-                        {
-                            "id": 98,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -r to the end of the word",
-                            "how": "wide - wider"
-                        },
-                        {
-                            "id": 76,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -a to the end of the word",
-                            "how": "wide - wider"
-                        }
-                    ],
-                    "id": 58,
-                    "title": "Forming the comparative"
-                }
-            ]
+                    ]
+            }
         }
     }
 
+    fetchGrammarDetail() {
+        var requestDetailId = this.props.match.params.id;
+        fetch('https://private-anon-58bcdf7810-englishlearndevteam.apiary-mock.com/api/v1/grammar/' + requestDetailId)
+            .then(grammarDetail => grammarDetail.json())
+            .then((data) => {
+                this.setState({ grammarDetail: data })
+            })
+            .catch(console.log)
+    }
+
+    componentDidMount() {
+        this.fetchGrammarDetail();
+    }
+
     render() {
-        let grammarFormDetailList = this.state.forms.map((form) =>
+        let grammarFormDetailList = this.state.grammarDetail.forms.map((detail) =>
             <GrammarFormDetail
-                example_list={form.examples}
-                note_list={form.notes}
-                form_list={form.forms}
+                example_list={detail.examples}
+                note_list={detail.notes}
+                // form={detail.forms}
             ></GrammarFormDetail>
         );
 
@@ -124,21 +125,21 @@ class GrammarDetail extends Component {
                 </div>
                 <div className="Dock_Notification">
                     One of the most effective ways to improve your English Explorer a bit to find out what we do.
-                    </div>
+                </div>
                 <div className="Grammar_Detail_Main_Port">
 
                     <PageTitle prevTitle="Learning English" mainTitle="Grammar"></PageTitle>
 
                     <div className="Title">
-                        <GrammarDetailTitle name={this.state.title}></GrammarDetailTitle>
+                        <GrammarDetailTitle name={this.state.grammarDetail.title}></GrammarDetailTitle>
                     </div>
 
                     <div className="Grammar_Detail_Description">
-                        <Description content="Grammar is the mortar that holds the bricks of vocabulary together. Without good mortar bricks can come tumbling down and that can cause embarrassing misunderstandings. There is a common impression that learning English grammar is painful, but it is a lot easier than many other languages. Of course, English is more than just memorizing grammar rules, the grammar must be incorporated into your everyday use of the language. Theory and practice should always go hand in hand."></Description>
+                        <Description content={this.state.grammarDetail.description}></Description>
                     </div>
                     <div className="Grammar_Detail_Content">
                         <div className="SubTitle" >
-                            <GrammarDetailSubTitle name={this.state.title}></GrammarDetailSubTitle>
+                            <GrammarDetailSubTitle name={this.state.grammarDetail.title}></GrammarDetailSubTitle>
                             <div className="Grammar_Detail_Form">
                                 {grammarFormDetailList}
                             </div>

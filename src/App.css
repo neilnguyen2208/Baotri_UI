@@ -1,6 +1,128 @@
-.App{
+.App {
   top: 0px;
   bottom: 0px;
   width: 100%;
   height: 100%;
+}
+
+.Edit_Delete_Btn_Group {
+  margin-right: 5%;
+  width: 65px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Edit_Btn {
+  width: 25px;
+  height: 25px;
+  left: 0;
+}
+
+.Edit_Btn:hover {
+  opacity: 90%;
+  cursor: pointer;
+}
+
+.Edit_Btn:active {
+  opacity: 80%;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.Delete_Btn {
+  width: 25px;
+  height: 25px;
+}
+
+.Delete_Btn:hover {
+  opacity: 90%;
+  cursor: pointer;
+}
+
+.Delete_Btn:active {
+  opacity: 80%;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.Simple_Changable_Text_Input {
+  width: 100%;
+  padding: 3px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Open Sans;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  color: #363636;
+}
+
+.Blue_Changable_Text_Input {
+  width: 100%;
+  padding: 6px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #211f60;
+}
+
+.Simple_Label {
+  font-family: Barlow Condensed;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color: #363636;
+}
+
+.Blue_Button {
+  margin: auto;
+  box-sizing: border-box;
+  width: 120px;
+  height: 25px;
+  vertical-align: auto;
+  border-radius: 5px;
+  background: #211f60;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  color: #ffffff;
+  border: #ffffff;
+  text-align: center;
+  display: flex;
+}
+
+.Simple_Text_Area {
+  width: 100%;
+  padding: 3px 10px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Open Sans;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 25px;
+  display: flex;
+  align-items: center;
+  color: #363636;
 }

@@ -28,7 +28,7 @@ class UserItem extends Component {
     render() {
 
         return (
-            <div className="User_Item" onClick= {this.handleClickUserItem}>
+            <div className="User_Item" onClick={this.handleClickUserItem}>
                 <div className="User_Item_Left_Port">
                     <div className="User_Item_Avatar_Port">
                         <img className="User_Item_Avatar" src={this.props.avatar_url}></img>
@@ -47,9 +47,9 @@ class UserItem extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="User_Item_Btn_Group">
-                    <img className="User_Item_Edit_Btn" src={edit_btn} onClick={this.handleEditUser} />
-                    <img className="User_Item_Delete_Btn" src={delete_btn} onClick={this.handleBanUser} />
+                <div className="Edit_Delete_Btn_Group">
+                    <img className="Edit_Btn" src={edit_btn} onClick={this.handleEditUser} />
+                    <img className="Delete_Btn" src={delete_btn} onClick={this.handleBanUser} />
                 </div>
             </div>
         );
