@@ -6,75 +6,38 @@ import Header from '../../../components/Header/Header';
 import Footer from '../../../components/Footer/Footer';
 import PageTitle from '../../../components/PageTitle/PageTitle';
 import AdminMenu from '../../../components/AdminMenu/AdminMenu';
+import NewVocabularyType from '../Components/NewVocabularyType/NewVocabularyType';
+import Popup from 'reactjs-popup';
 
 class EnglishVocabularyManagement extends Component {
     constructor(props) {
         super(props);
-        this.handleAdd = this.handleAdd.bind(this);
         this.state = {
             items: [
-                {
-                    id: 1,
-                    title: "Type of Vocabulary",
-                },
-                {
-                    id: 2,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 3,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 4,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 5,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 6,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 7,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 8,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 9,
-                    title: "Type of Vocabulary",
-                }
             ],
-            userinfo: {
-                src: "https://salt.tikicdn.com/ts/categoryblock/c3/01/eb/41ed16d900533ddf279c3bd795b51a90.png",
-                displayname: "NVA",
-                gmail : "nva@gmail.com"
-            }
+            showPopup: false
         }
+    }
+
+    componentDidMount() {
+        fetch(window.location.pathname.replace("admin", "api/v1"))
+          .then(response => response.json())
+          // ...then we update the users state
+          .then(data =>
+           this.setState({
+               items: data
+           })
+          );
     }
     render() {
 
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <VocabularyManagementItem item={item}></VocabularyManagementItem>
+                    <VocabularyManagementItem item={item} handleDelete = {this.deleteVocabularyType.bind(this)} handleEdit = {this.editVocabularyType.bind(this)}></VocabularyManagementItem>
                 </div>
             );
         })
-
-        let userinfo = this.state.userinfo;
 
         return(
             <div className="VocabularyManagement">
@@ -86,28 +49,11 @@ class EnglishVocabularyManagement extends Component {
                         One of the most effective ways to improve your English Explorer a bit to find out what we do.
                     </div>
                    <div className="Content_Row">
-                        {/* <div className="Content_Row_Header">Manage <div className="Header_Bold"> Your Page</div></div> */}
                         <PageTitle prevTitle="Manage" mainTitle="Your page"></PageTitle>
-                        <div className="UserInfo">
-                            <div className="Avatar">
-                                <img className="Avatar" src={userinfo.src} />
-                            </div>
-                            <div className="UserDetail">
-                                <div className="DisplayName">
-                                    {userinfo.displayname}
-                                </div>
-                                <div className="Gmail">
-                                    {userinfo.gmail}
-                                </div>
-                                <div className="Logout">
-                                    <button className="LogoutButton">Logout</button>
-                                </div>
-                            </div>
-                        </div>
                         <AdminMenu></AdminMenu>
                         <div className="Content_Row_Title">Choose a Category</div>
                         <div className="Content_Row_Items">
-                            <div className="Item Add" onClick={this.handleAdd}>+ Thêm danh mục</div>
+                            <div className="Item Add" onClick={this.showAddPopup.bind(this)}>+ Thêm danh mục</div>
                            {cards}
                         </div>
                    </div>
@@ -115,12 +61,38 @@ class EnglishVocabularyManagement extends Component {
                        <Footer></Footer>
                     </div>
                 </div>
+                {
+                    this.state.showPopup ? <NewVocabularyType type ={this.type?this.type:null} handleSave ={this.saveNewVocabularyType.bind(this)} closePopup = {this.showAddPopup.bind(this)}></NewVocabularyType>
+                    : null
+                }
             </div>
         )
     }
 
-    handleAdd () {
-        alert("Clicked");
+    showAddPopup () {
+        this.setState({
+            showPopup: !this.state.showPopup
+        })
+    }
+
+    saveNewVocabularyType (item) {
+        if(item.title != "")
+            this.state.items.push(item);
+        this.setState({
+            showPopup: !this.state.showPopup
+        })
+    }
+
+    deleteVocabularyType (item) {
+        if(window.confirm("Are yor want to delete this type?")){
+            this.state.item = this.state.items.splice(this.state.items.indexOf(item), 1);
+            this.setState();
+        }
+    }
+
+    editVocabularyType(item) {
+        this.type = item;
+        this.setState();
     }
 }
 

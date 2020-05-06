@@ -13,53 +13,21 @@ class EnglishVocabulary extends Component{
         super(props);
         this.state = {
             items: [
-                {
-                    id: 1,
-                    title: "Type of Vocabulary",
-                },
-                {
-                    id: 2,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 3,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 4,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 5,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 6,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 7,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 8,
-                    title: "Type of Vocabulary",
-                }
-                ,
-                {
-                    id: 9,
-                    title: "Type of Vocabulary",
-                }
+                
             ]
         }
     }
 
+    componentDidMount() {
+            fetch('/api/v1' + window.location.pathname)
+              .then(response => response.json())
+              // ...then we update the users state
+              .then(data =>
+               this.setState({
+                   items: data
+               })
+              );
+    }
     render(){
 
         let cards = this.state.items.map((item)=>{

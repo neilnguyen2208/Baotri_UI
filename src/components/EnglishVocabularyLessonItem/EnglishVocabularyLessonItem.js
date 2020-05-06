@@ -21,7 +21,7 @@ class EnglishVocabularyLessonItem extends Component{
         const {title} = this.props.item;
         return (
             <button className = "EnglishVocabularyLessonItem" onClick={this.handleClick}>   
-                <img src={logo}></img>             
+                <img src={this.props.item.imageURL}></img>             
                 {title}
             </button>
         );
@@ -29,9 +29,9 @@ class EnglishVocabularyLessonItem extends Component{
 
     handleClick (event, category){
         let title = this.props.item.title.split(' ').join('');
-        let toPath = decodeURI("/vocabulary/" + this.props.item.id + "/"+ title);
+        let toPath = decodeURI("/vocabLessons/" + this.props.item.id);
         // const toPath="/vocabulary/id/id";
-        this.props.history.push(toPath, {title: this.props.item.title});
+        this.props.history.push(toPath, {title: this.props.item.title, id: this.props.item.id});
     }
     
 }

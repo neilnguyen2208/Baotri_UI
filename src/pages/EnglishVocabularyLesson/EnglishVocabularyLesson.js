@@ -11,45 +11,17 @@ class EnglishVocabularyLesson extends Component {
         super(props);
         this.state = {
             items: [
-                {
-                    id: 1,
-                    title: "Type of Class",
-                },
-                {
-                    id: 2,
-                    title: "Type of Class",
-                }
-                ,
-                {
-                    id: 3,
-                    title: "Type of Class",
-                }
-                ,
-                {
-                    id: 4,
-                    title: "Type of Class",
-                },
-                {
-                    id: 5,
-                    title: "Type of Class",
-                }
-                ,
-                {
-                    id: 6,
-                    title: "Type of Class",
-                }
             ]
         }
     }
 
-    // async componentDidMount(){
-    //     const response = await fetch(window.location.pathname);
-    //     const result = await response.json();
-    //     console.log(result);
-    //     this.setState({
-    //         items: result
-    //     });
-    // }
+    componentDidMount() {
+        fetch('/api/v1' + window.location.pathname)
+        .then(respone => respone.json())
+        .then(
+            data => this.setState({items: data})
+        )
+    }
 
     render(){
         

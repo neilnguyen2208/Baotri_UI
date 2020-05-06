@@ -23,7 +23,7 @@ class LessonManagementItem extends Component{
                     <button className="Edit"></button>
                     <button className="Delete"></button>
                 </div>
-                <img src={logo}></img>             
+                <img src= {this.props.item.imageURL}></img>             
                 {title}
             </button>
         );
@@ -31,7 +31,7 @@ class LessonManagementItem extends Component{
 
     handleClick (event, category){
         let title = this.props.item.title.split(' ').join('');
-        let toPath = decodeURI("/admin/vocabulary/" + this.props.item.id + "/"+ title);
+        let toPath = decodeURI("/admin/vocabLessons/" + this.props.item.id);
         // const toPath="/vocabulary/id/id";
         this.props.history.push(toPath, {title: this.props.item.title});
     }

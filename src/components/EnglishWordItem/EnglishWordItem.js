@@ -6,10 +6,9 @@ import speaker from '../../resources/speaker.svg';
 class EnglishWordItem extends Component {
     constructor(props) {
         super(props);
-        this.url = this.props.item.sound;
+        this.url = this.props.item.spellingAudioURL;
         this.audio = this.props.audio;
         this.isPlayingAudio = false;
-        this.handlePlaySound = this.handlePlaySound.bind(this);
     }
 
     render() {
@@ -18,25 +17,25 @@ class EnglishWordItem extends Component {
             <div className="EnglishWordItem">
                 <div className="LeftSide">
                     <div className="Name">
-                        {item.name}
+                        {item.content}
                     </div>
                     <div className="Pronunciation_Sound">
                         <div className="Pronunciation">
-                            {item.pronunciation}
+                            {item.spelling}
                         </div>
-                        <button className="Sound" onClick={this.handlePlaySound}>
+                        <button className="Sound" onClick={this.handlePlaySound.bind(this)}>
                         </button>
                     </div>
                 </div>
                 <div className="RightSide">
-                    {item.meaning}
+                    {item.description}
                 </div>
             </div>
         )
     }
-    handlePlaySound =()=>{
+    handlePlaySound(){
         this.audio.pause();
-        if(this.audio.src == this.props.item.sound){
+        if(this.audio.src == this.props.item.spellingAudioURL){
             if(this.audio.currentTime==0){
                 this.audio.play();
             }

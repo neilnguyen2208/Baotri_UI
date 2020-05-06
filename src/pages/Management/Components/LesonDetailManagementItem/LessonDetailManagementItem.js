@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 class LessonDetailManagementItem extends Component {
     constructor(props) {
         super(props);
-        this.url = this.props.item.sound;
+        this.url = this.props.item.spellingAudioURL;
         this.audio = this.props.audio;
         this.isPlayingAudio = false;
         this.handlePlaySound = this.handlePlaySound.bind(this);
@@ -17,21 +17,21 @@ class LessonDetailManagementItem extends Component {
             <div className="LessonDetailManagementItem">
                 <div className="LeftSide">
                     <div className="Name">
-                        {item.name}
+                        {item.content}
                     </div>
                     <div className="Pronunciation_Sound">
                         <div className="Pronunciation">
-                            {item.pronunciation}
+                            {item.spelling}
                         </div>
                         <button className="Sound" onClick={this.handlePlaySound}>
                         </button>
                     </div>
                 </div>
                 <div className="RightSide">
-                    {item.meaning}
+                    <div className="Meaning">{item.description}</div>
                     <div className="Control">
                         <button className="Edit"></button>
-                        <button className="Delete"></button>
+                        <button className="Delete" onClick={this.props.handleDelete(this.props.item)}></button>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@ class LessonDetailManagementItem extends Component {
     }
     handlePlaySound =()=>{
         this.audio.pause();
-        if(this.audio.src == this.props.item.sound){
+        if(this.audio.src == this.props.item.spellingAudioURL){
             if(this.audio.currentTime==0){
                 this.audio.play();
             }

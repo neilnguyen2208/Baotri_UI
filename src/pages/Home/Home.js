@@ -18,7 +18,7 @@ class Home extends Component {
             },
             {
                 id: 2,
-                src: "/vocabulary",
+                src: "/vocabCategories",
                 name: "English Vocabulary",
                 description: "Learn English vocabulary by topic. (Illustrated)"
             },

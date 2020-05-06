@@ -6,7 +6,7 @@ import history from '../history.js'
 class EnglishVocabularyItem extends Component{
     constructor(props){
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.handleClick = this.handleClick.bind(this);        
     }
 
     render() {
@@ -19,11 +19,10 @@ class EnglishVocabularyItem extends Component{
     }
 
     handleClick (event, category){
-        let toPath = "/vocabulary/" + this.props.item.id;
+        let toPath = "/vocabCategories/" + this.props.item.id;
         console.log(toPath);
-        this.props.history.push(toPath, {title: this.props.item.title});
+        this.props.history.push(toPath, {title: this.props.item.title, id: this.props.item.id});
     }
-    
 }
 
 export default withRouter(EnglishVocabularyItem);

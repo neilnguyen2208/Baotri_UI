@@ -79,62 +79,6 @@
     margin: 10px;
 }
 
-.DetailManagement .Content .Content_Row .UserInfo .Avatar {
-    position: relative;
-    padding-bottom: 80px;
-    overflow: hidden;
-    width: 80px;
-    background: #000;
-    background-origin: border-box;
-}
-
-.DetailManagement .Content .Content_Row .UserInfo .Avatar img {
-    position: absolute;
-    min-width: 100%;
-    min-height: 100%;
-}
-
-.DetailManagement .Content .Content_Row .UserInfo .UserDetail {
-    padding-left: 10px;
-}
-
-.DetailManagement .Content .Content_Row .UserInfo .UserDetail .DisplayName {
-    font-weight: bold;
-}
-
-.DetailManagement .Content .Content_Row .UserInfo .UserDetail .LogoutButton {
-    background-color: #000066;
-    color: white;
-    font-size: 16px;
-    margin-top: 5px;
-}
-
-
-
-.DetailManagement .Content .Content_Row .Menu {
-    display: flex;
-    border-bottom: 5px #211f60 solid;
-}
-
-.DetailManagement .Content .Content_Row .MenuItem {
-    width: fit-content;
-    padding-right: 20px;
-    padding-left: 20px;
-    font-family: 'Barlow Condensed', 'san-serif';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    color: #363636;
-}
-
-.DetailManagement .Content .Content_Row .MenuItem:hover {
-    color: white;
-    background: #211F60;
-    cursor: pointer;
-}
-
 .DetailManagement .Content .Content_Row_Title {
     position: relative;
     display: inline-block;

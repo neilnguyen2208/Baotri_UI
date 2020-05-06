@@ -13,36 +13,16 @@ class EnglishVocabularyLessonDetail extends Component {
         this.audio = new Audio("");
         this.state = {
             items: [
-                { 
-                    id: 1, 
-                    name: "Name",
-                    sound: "http://soundbible.com/mp3/Boat%20Horn-SoundBible.com-15322206.mp3",
-                    pronunciation: "Pronunciation",
-                    meaning:"The meaning of this word. The meaning of this word. The meaning of this word"
-                },
-                { 
-                    id: 2, 
-                    name: "Name",
-                    sound: "http://soundbible.com/mp3/Murder_at_Quarry-Ghost_Rider-849689243.mp3",
-                    pronunciation: "Pronunciation",
-                    meaning:"The meaning of this word. The meaning of this word. The meaning of this word"
-                },
-                { 
-                    id: 3, 
-                    name: "Name",
-                    sound: "http://soundbible.com/mp3/Airplane_Fly_Over-Mike_Koenig-1062933207.mp3",
-                    pronunciation: "Pronunciation",
-                    meaning: "The meaning of this word. The meaning of this word. The meaning of this word"
-                },
-                { 
-                    id: 4, 
-                    name: "Name",
-                    sound: "http://soundbible.com/mp3/Fisher%20Cat-SoundBible.com-2044465299.mp3",
-                    pronunciation: "Pronunciation",
-                    meaning:"The meaning of this word. The meaning of this word. The meaning of this word"
-                }
             ]
         }
+    }
+
+    componentDidMount() {
+        fetch('/api/v1' + window.location.pathname)
+        .then(respone => respone.json())
+        .then(data => this.setState({
+            items: data
+        }))
     }
 
     render() {

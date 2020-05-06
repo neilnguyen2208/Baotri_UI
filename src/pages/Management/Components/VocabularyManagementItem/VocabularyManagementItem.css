@@ -32,8 +32,8 @@ button {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 50%;
-    height: 50%;
+    width: 20px;
+    height: 20px;
     outline: none;
 }
 
@@ -42,8 +42,8 @@ button {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 50%;
-    height: 50%;
+    width: 20px;
+    height: 20px;
     outline: none;
     margin-left: 5px;
 }

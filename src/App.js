@@ -41,13 +41,13 @@ function App() {
           <Route path="/aboutus" exact>
             <AboutUs></AboutUs>
           </Route>
-          <Route path="/vocabulary" exact>
+          <Route path="/vocabCategories" exact>
             <EnglishVocabulary></EnglishVocabulary>
           </Route>
-          <Route path="/vocabulary/:id" exact>
+          <Route path="/vocabCategories/:id" exact>
             <EnglishVocabularyLesson></EnglishVocabularyLesson>
           </Route>
-          <Route path="/vocabulary/:id/:id" exact>
+          <Route path="/vocabLessons/:id" exact>
             <EnglishVocabularyLessonDetail></EnglishVocabularyLessonDetail>
           </Route>
           <Route path="/grammar" exact>
@@ -78,13 +78,13 @@ function App() {
           <Route path="/admin/user/:id" exact>
             <Admin_UserDetailManagement></Admin_UserDetailManagement>
           </Route>
-          <Route path="/admin/vocabulary" exact>
+          <Route path="/admin/vocabCategories" exact>
             <EnglishVocabularyManagement></EnglishVocabularyManagement>
           </Route>
-          <Route path="/admin/vocabulary/:id" exact>
+          <Route path="/admin/vocabCategories/:id" exact>
             <LessonManagement></LessonManagement>
           </Route>
-          <Route path="/admin/vocabulary/:id/:id" exact>
+          <Route path="/admin/vocabLessons/:id" exact>
             <DetailManagement></DetailManagement>
           </Route>
         </Switch>
