@@ -11,46 +11,22 @@ class Grammar extends Component {
     constructor(props) {
         super();
 
-        this.state =
-        {
-            items:
+        this.state = {
+            "grammarCategories":
                 [
-                    {
-                        "id": 0,
-                        "name": "Parent Category 1",
-                        "subCategory":
-                        [
-                            {
 
-                            },
-                            {
-
-                            },
-                            {
-                                
-                            }
-                        ]
-                    },
-                    {
-                        "id": 0,
-                        "name": "Parent Category 2"
-                    },
-                    {
-                        "id": 0,
-                        "name": "Parent Category 3"
-                    }
                 ]
         }
-
     }
 
     fetchGrammarCategoryList() {
-        // fetch('https://private-anon-58bcdf7810-englishlearndevteam.apiary-mock.com/api/v1/grammar/categories')
-        // .then(items => items.json())
-        // .then((data) => {
-        //     this.setState({ items: data })
-        // })
-        // .catch(console.log)
+        fetch('/api/v1' + '/grammarCategories')
+            .then(response => response.json())
+            .then(data =>
+                this.setState({
+                    grammarCategories : data
+                })
+            );
     }
 
     componentDidMount() {
@@ -59,16 +35,19 @@ class Grammar extends Component {
 
     render() {
 
-        let items = this.state.items.map((item) => {
+        let items = this.state.grammarCategories.map((item) => {
             return (
                 <div className="Item">
                     <GrammarCategoryItem item={item}></GrammarCategoryItem>
+                    
                 </div>
             );
         })
 
         return (
+
             <div className="Grammar">
+
                 <div className="Grammar_Header">
                     <Header></Header>
                 </div>

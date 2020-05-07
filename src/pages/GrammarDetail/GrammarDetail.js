@@ -13,93 +13,23 @@ class GrammarDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            grammarDetail: {
-                "id": "",
+            grammarDetails: {
+                "id": 1,
                 "title": "Comparative",
-                "description": "When we compare things, people or even ideas we look at what makes them different from each other",
                 "categoryID": 1,
-                "forms":
-                    [
-                        {
-                            "examples": [
-                                {
-                                    "id": 15,
-                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                                },
-                                {
-                                    "id": 85,
-                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                                }
-                            ],
-                            "notes": [
-                                {
-                                    "id": 47,
-                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                                },
-                                {
-                                    "id": 67,
-                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                                }
-                            ],
-                            "forms": [
-                                {
-                                    "id": 98,
-                                    "title": "FORM OF COMPARATIVE:",
-                                    "usecase": "Words of one syllable",
-                                    "usage": "Add -r to the end of the word",
-                                    "how": "wide - wider"
-                                },
-                                {
-                                    "id": 76,
-                                    "title": "FORM OF COMPARATIVE:",
-                                    "usecase": "Words of one syllable",
-                                    "usage": "Add -a to the end of the word",
-                                    "how": "wide - wider"
-                                }
-                            ],
-                            "id": 79,
-                            "title": "Forming the comparative",
-                            "how": "wide-wider"
-                        },
-                        {
-                            "examples": [
-                                {
-                                    "id": 79,
-                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                                },
-                                {
-                                    "id": 55,
-                                    "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                                    "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                                }
-                            ],
-                            "notes": [
-                                {
-                                    "id": 76,
-                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                                },
-                                {
-                                    "id": 98,
-                                    "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                                }
-                            ],
-                            "id": 58,
-                            "title": "Forming the comparative"
-                        }
-                    ]
+                "description": "When we compare things...",
+                "forms": []
             }
         }
     }
 
+
     fetchGrammarDetail() {
         var requestDetailId = this.props.match.params.id;
-        fetch('https://private-anon-58bcdf7810-englishlearndevteam.apiary-mock.com/api/v1/grammar/' + requestDetailId)
-            .then(grammarDetail => grammarDetail.json())
+        fetch('/api/v1/grammar/' + requestDetailId)
+            .then(response => response.json())
             .then((data) => {
-                this.setState({ grammarDetail: data })
+                this.setState({ grammarDetails: data })
             })
             .catch(console.log)
     }
@@ -109,11 +39,14 @@ class GrammarDetail extends Component {
     }
 
     render() {
-        let grammarFormDetailList = this.state.grammarDetail.forms.map((detail) =>
+        let grammarFormDetailList = this.state.grammarDetails.forms.map((detail) =>
             <GrammarFormDetail
                 example_list={detail.examples}
                 note_list={detail.notes}
-                // form={detail.forms}
+                title={detail.title}
+                usage = {detail.usage}
+                useCase = {detail.useCase}
+                how = {detail.how}
             ></GrammarFormDetail>
         );
 
@@ -131,15 +64,15 @@ class GrammarDetail extends Component {
                     <PageTitle prevTitle="Learning English" mainTitle="Grammar"></PageTitle>
 
                     <div className="Title">
-                        <GrammarDetailTitle name={this.state.grammarDetail.title}></GrammarDetailTitle>
+                        <GrammarDetailTitle name={this.state.grammarDetails.title}></GrammarDetailTitle>
                     </div>
 
                     <div className="Grammar_Detail_Description">
-                        <Description content={this.state.grammarDetail.description}></Description>
+                        <Description content={this.state.grammarDetails.description}></Description>
                     </div>
                     <div className="Grammar_Detail_Content">
                         <div className="SubTitle" >
-                            <GrammarDetailSubTitle name={this.state.grammarDetail.title}></GrammarDetailSubTitle>
+                            <GrammarDetailSubTitle name={this.state.grammarDetails.title}></GrammarDetailSubTitle>
                             <div className="Grammar_Detail_Form">
                                 {grammarFormDetailList}
                             </div>
