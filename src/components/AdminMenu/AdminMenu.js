@@ -36,7 +36,7 @@ class AdminMenu extends Component {
                         <a href='/admin/grammar' className="Admin_Horizontal_Menu_Item">Grammar Manager</a>
                     </div>
                     <div >
-                        <a href='/admin/vocabulary' className="Admin_Horizontal_Menu_Item">Vocabulary Manager</a>
+                        <a href='/admin/vocabCategories' className="Admin_Horizontal_Menu_Item">Vocabulary Manager</a>
                     </div>
                     <div >
                         <a className="Admin_Horizontal_Menu_Item">Listening Manager</a>
