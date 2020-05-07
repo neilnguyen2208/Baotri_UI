@@ -6,13 +6,13 @@ class GrammarFormExample extends Component {
             <div>
                 <div className="Grammar_Form_Example">
                     <div className="decoration_example_text">For example:</div>
-                    <div className="Grammar_Example_Image_Port">
+                    {/* <div className="Grammar_Example_Image_Port"> */}
                         <div className="Grammar_Example_Image">
-                            <img src={this.props.example_image_url} />
+                            <img  className="Grammar_Example_Image" src={this.props.example_image_url} />
                         </div>
-                    </div>
+                    {/* </div> */}
                     <div className="Grammar_Example_Sentences">
-                        {this.props.example_content}
+                        <div dangerouslySetInnerHTML={ {__html: this.props.example_content} } />
                     </div>
                 </div>
             </div>

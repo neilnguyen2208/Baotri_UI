@@ -15,10 +15,10 @@ class GrammarFormDetail extends Component {
         return (
             <div >
                 <div className="Grammar_Form_Detail">
+                    <GrammarForm formTitle={this.props.title} useCase={this.props.useCase} usage={this.props.usage} how={this.props.how} />
                     {grammarDetailExampleList}
                     {grammarDetailNoteList}
 
-                    <GrammarForm formTitle={this.props.title} useCase={this.props.useCase} usage={this.props.usage} how={this.props.how} />
                 </div>
             </div>
         )
