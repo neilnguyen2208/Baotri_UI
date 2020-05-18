@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Container, Col, Row } from 'reactstrap';
 import Header from "../../components/Header/Header.js";
 import './GrammarDetail.css'
 import Footer from "../../components/Footer/Footer.js";
@@ -39,14 +38,14 @@ class GrammarDetail extends Component {
     }
 
     render() {
-        let grammarFormDetailList = this.state.grammarDetails.forms.map((detail) =>
+        let grammarFormDetailList = this.state.grammarDetails.forms.map((formDetail) =>
             <GrammarFormDetail
-                example_list={detail.examples}
-                note_list={detail.notes}
-                title={detail.title}
-                usage = {detail.usage}
-                useCase = {detail.useCase}
-                how = {detail.how}
+                example_list={formDetail.examples}
+                note_list={formDetail.notes}
+                title={formDetail.title}
+                usage = {formDetail.usage}
+                useCase = {formDetail.useCase}
+                how = {formDetail.how}
             ></GrammarFormDetail>
         );
 

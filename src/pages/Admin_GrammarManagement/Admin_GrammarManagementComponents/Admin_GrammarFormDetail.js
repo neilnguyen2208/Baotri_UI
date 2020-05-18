@@ -14,16 +14,13 @@ class Admin_GrammarFormDetail extends Component {
             <Admin_GrammarFormNote noteContent={note_item.content}></Admin_GrammarFormNote>
         );
 
-        let grammarDetailFormList = this.props.form_list.map((form_item) =>
-            <Admin_GrammarForm formTitle={form_item.title} useCase={form_item.usecase} usage={form_item.usage} how={form_item.how} ></Admin_GrammarForm>
-        );
 
         return (
             <div >
                 <div className="Admin_Grammar_Form_Detail">
                     {grammarDetailExampleList}
                     {grammarDetailNoteList}
-                    {grammarDetailFormList}
+                    <Admin_GrammarForm formTitle={this.props.title} useCase={this.props.useCase} usage={this.props.usage} how={this.props.how} ></Admin_GrammarForm>
                 </div>
             </div>
         )

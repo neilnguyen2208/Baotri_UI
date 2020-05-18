@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import delete_btn from '../../../resources/delete_btn.png'
 import './Admin_GrammarDetailManagement.css'
 import Header from "../../../components/Header/Header.js";
 import Footer from "../../../components/Footer/Footer.js";
@@ -8,111 +9,77 @@ import Admin_GrammarDescription from '../Admin_GrammarManagementComponents/Admin
 import Admin_GrammarDetailSubTitle from "../Admin_GrammarManagementComponents/Admin_GrammarDetailSubTitle"
 import Admin_GrammarDetailTitle from "../Admin_GrammarManagementComponents/Admin_GrammarDetailTitle"
 import Admin_GrammarFormDetail from "../Admin_GrammarManagementComponents/Admin_GrammarFormDetail"
-import Admin_AddGrammarFormDetail from "../Admin_GrammarManagementComponents/Admin_AddGrammarFormDetail"
-import Admin_AddGrammarCategoryItem from '../Admin_GrammarManagementComponents/Admin_AddGrammarCategoryItem';
+import Popup from 'reactjs-popup'
 class Admin_GrammarDetailManagement extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "id": 19,
-            "title": "Comparative",
-            "description": "When we compare things, people or even ideas we look at what makes them different from each other",
-            "categoryID": 1,
-            "forms": [
-                {
-                    "examples": [
-                        {
-                            "id": 15,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                        },
-                        {
-                            "id": 85,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                        }
-                    ],
-                    "notes": [
-                        {
-                            "id": 47,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        },
-                        {
-                            "id": 67,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        }
-                    ],
-                    "forms": [
-                        {
-                            "id": 98,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -r to the end of the word",
-                            "how": "wide - wider"
-                        },
-                        {
-                            "id": 76,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -a to the end of the word",
-                            "how": "wide - wider"
-                        }
-                    ],
-                    "id": 79,
-                    "title": "Forming the comparative",
-                    "how": "wide-wider"
-                },
-                {
-                    "examples": [
-                        {
-                            "id": 79,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                        },
-                        {
-                            "id": 55,
-                            "content": "The man on the left is taller than the man on the right \n The man on the right is shorter than the man on the left",
-                            "imageURL": "https://i.imgur.com/NqXb5vv.gif"
-                        }
-                    ],
-                    "notes": [
-                        {
-                            "id": 76,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        },
-                        {
-                            "id": 98,
-                            "content": "Have you noticed that when we are comparing two things like this we put than between the adjective and the thing being compared"
-                        }
-                    ],
-                    "forms": [
-                        {
-                            "id": 98,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -r to the end of the word",
-                            "how": "wide - wider"
-                        },
-                        {
-                            "id": 76,
-                            "title": "FORM OF COMPARATIVE:",
-                            "usecase": "Words of one syllable",
-                            "usage": "Add -a to the end of the word",
-                            "how": "wide - wider"
-                        }
-                    ],
-                    "id": 58,
-                    "title": "Forming the comparative"
-                }
-            ]
+            grammarDetails: {
+                "id": "",
+                "title": "",
+                "description": "",
+                "categoryID": "",
+                "forms": [
+                    {
+                        "id": "",
+                        "title": "",
+                        "usage": "",
+                        "useCase": "",
+                        "how": "",
+                        "examples": [
+                            {
+                                "id": "",
+                                "content": "",
+                                "imageURL": ""
+                            }
+                        ],
+                        "notes": [
+                            {
+                                "id": "",
+                                "content": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            "isAddGrammarFormPopupOpen": false,
         }
     }
+
+    fetchGrammarDetail() {
+        let requestDetailId = this.props.match.params.id;
+        fetch('/api/v1/grammar/' + requestDetailId)
+            .then(response => response.json())
+            .then((data) => {
+                this.setState({ grammarDetails: data })
+            })
+            .catch(console.log);
+    }
+
+    componentDidMount() {
+        this.fetchGrammarDetail();
+    }
+
+    // handle open/close popups:
+    openUpdateGrammarCategoryPopupHandler = () => {
+        this.state.isUpdateGrammarCategoryPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeUpdateGrammarCategoryPopupHandler = () => {
+        this.state.isUpdateGrammarCategoryPopupOpen = false;
+        this.setState(this.state);
+    }
+
     render() {
-        let adminGrammarFormDetailList = this.state.forms.map((form) =>
+        let adminGrammarFormDetails = this.state.grammarDetails.forms.map((formDetail) =>
             <Admin_GrammarFormDetail
-                example_list={form.examples}
-                note_list={form.notes}
-                form_list={form.forms}
+                example_list={formDetail.examples}
+                note_list={formDetail.notes}
+                title={formDetail.title}
+                usage={formDetail.usage}
+                useCase={formDetail.useCase}
+                how={formDetail.how}
             ></Admin_GrammarFormDetail>
         );
         return (
@@ -137,14 +104,55 @@ class Admin_GrammarDetailManagement extends Component {
 
                         {/* Menu_Main_Show_Port */}
                         <div className="Admin_Grammar_Detail_Management_Port">
-                            <Admin_GrammarDetailTitle name={this.state.title}></Admin_GrammarDetailTitle>
-                            <Admin_GrammarDescription content={this.state.description} />
-                            <Admin_GrammarDetailSubTitle name={this.state.title}></Admin_GrammarDetailSubTitle>
+                            <Admin_GrammarDetailTitle name={this.state.grammarDetails.title}></Admin_GrammarDetailTitle>
+                            <Admin_GrammarDescription content={this.state.grammarDetails.description} />
+                            <Admin_GrammarDetailSubTitle name={this.state.grammarDetails.title}></Admin_GrammarDetailSubTitle>
 
                             <div className="Admin_Grammar_Form_Detail_List_Management_Port">
-                                {adminGrammarFormDetailList}
+                                {adminGrammarFormDetails}
                             </div>
-                            <Admin_AddGrammarFormDetail></Admin_AddGrammarFormDetail>
+
+
+                            <div className="Admin_Add_Grammar_Form_Port">
+                                {/* Popup to fill info of new Grammar category: title, description */}
+                                <Popup modal trigger={
+                                    <div className="Admin_Add_Grammar_Form_Button">
+                                        + Add Grammar A Form
+                                    </div>
+                                   
+                                }
+                                    open={this.state.isAddGrammarFormPopupOpen}
+                                    onOpen={this.openAddGrammarFormPopupHandler}
+                                    closeOnDocumentClick = {false}
+                                >
+                                    <div className="Customize_Popup">
+                                        <div className="Popup_Title_Bar">
+                                            <div className="Popup_Title">ADD GRAMMAR FORM:</div>
+                                            <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarFormPopupHandler} />
+                                        </div>
+                                    </div>
+                                    <form className="Add_Grammar_Category_Form" onSubmit={this.addGrammarFormHandler} >
+                                        <div className="Simple_Label">Form title:</div>
+                                        <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeGrammarFormTitleHandler} />
+                                        <div className="Simple_Label">Usage:</div>
+                                        <input className="Simple_Changable_Text_Input" type="text" name='description' onChange={this.changeGrammarFormDescriptionHandler} />
+                                        <div className="Simple_Label">Use case:</div>
+                                        <input className="Simple_Changable_Text_Input" type="text" name='description' onChange={this.changeGrammarFormDescriptionHandler} />
+                                        <div className="Simple_Label">How to use:</div>
+                                        <input className="Simple_Changable_Text_Input" type="text" name='description' onChange={this.changeGrammarFormDescriptionHandler} />
+
+                                        <div className="Height_10px" />
+                                        <div className="Justify_Content_Space_Between">
+                                            <input className="White_Button" type="button" value="+ Example"></input>
+                                            <input className="White_Button" type="button" value="+ Note"></input>
+                                        </div>
+                                        <div className="Height_10px" />
+                                        <input className="Blue_Button" type="submit" value="Save"></input>
+                                    </form>
+                                </Popup>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>

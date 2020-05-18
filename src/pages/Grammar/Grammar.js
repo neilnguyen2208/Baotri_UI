@@ -65,7 +65,6 @@ class Grammar extends Component {
                             <div className="category_item">
                                 {items}
                             </div>
-
                         </div>
                     </div>
                 </div>
