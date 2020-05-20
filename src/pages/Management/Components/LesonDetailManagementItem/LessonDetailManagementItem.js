@@ -30,7 +30,7 @@ class LessonDetailManagementItem extends Component {
                 <div className="RightSide">
                     <div className="Meaning">{item.description}</div>
                     <div className="Control">
-                        <button className="Edit" onClick = {this.props.handleEdit(this,this.props.item)}></button>
+                        <button className="Edit" onClick = {this.props.handleEdit(this.props.item)}></button>
                         <button className="Delete" onClick={this.props.handleDelete(this.props.item)}></button>
                     </div>
                 </div>
