@@ -69,9 +69,7 @@ function App() {
           <Route path="/admin/grammar" exact>
             <Admin_GrammarManagement></Admin_GrammarManagement>
           </Route>
-          <Route path="/admin/grammar/:id" exact>
-            <Admin_GrammarDetailManagement></Admin_GrammarDetailManagement>
-          </Route>
+          <Route path="/admin/grammar/:id" exact component={Admin_GrammarDetailManagement}/>
           <Route path="/admin/user" exact>
             <Admin_UserManagement></Admin_UserManagement>
           </Route>

@@ -62,3 +62,58 @@
     height: 10%;
     width: 100%;
 }
+
+.Admin_Add_Grammar_Form_Port{
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 30px;
+    color: #211f60;
+    border-left: 1px;
+    border-right: 1px;
+    border-color: #c4c4c4;
+    border-top: 5px #211f60;
+    border-bottom: 1px #c4c4c4;
+    border-style: solid;
+    text-align: center;
+    padding-top: 5px;
+    margin-bottom: 20px;
+}
+
+.Admin_Add_Grammar_Form_Port:hover {
+    box-shadow: 0px 0px 5px 1px #c4c4c4;
+}
+
+.Admin_Add_Grammar_Form_Button {
+    position: relative;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 30px;
+    color: #211f60;
+    border: #c4c4c4 1px solid;
+    text-align: center;
+    width: fit-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    margin: auto;
+    user-select: none;
+}
+
+.Admin_Add_Grammar_Form_Button:hover {
+    background: #211f60;
+    color: white;
+    border: #211f60 1px solid;
+}
+
+.Admin_Add_Grammar_Form_Button:active {
+    background: #211f60;
+    color: white;
+    border: white 1px solid;
+}

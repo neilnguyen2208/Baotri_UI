@@ -1,4 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap");
+
+.Admin_Description {
+    display: flex;
+}
+
 .Admin_Description_Content {
     position: relative;
     font-family: "Open Sans";
@@ -9,9 +14,8 @@
     color: #363636;
     text-align: left;
     padding-bottom: 10px;
-    width: 100%;
-    display: flex;
     justify-content: space-between;
+    width: fit-content;
 }
 
 @media screen and (max-width: 1100px) {
@@ -24,44 +28,4 @@
     .Admin_Description_Content {
         font-size: 16px;
     }
-}
-
-
-.Admin_Grammar_Description_Btn_Group {
-    margin-right: 5%;
-    width: 65px;
-    display: flex;
-}
-
-.Admin_Grammar_Description_Edit_Btn {
-    width: 25px;
-    height: 25px;
-    left: 0;
-}
-
-.Admin_Grammar_Description_Edit_Btn:hover {
-    opacity: 90%;
-    cursor: pointer;
-}
-
-.Admin_Grammar_Description_Edit_Btn:active {
-    opacity: 80%;
-    cursor: pointer;
-    border-radius: 20px;
-}
-.Admin_Grammar_Description_Delete_Btn {
-    width: 25px;
-    height: 25px;
-    margin-left: 15px;
-}
-
-.Admin_Grammar_Description_Delete_Btn:hover {
-    opacity: 90%;
-    cursor: pointer;
-}
-
-.Admin_Grammar_Description_Delete_Btn:active {
-    opacity: 80%;
-    cursor: pointer;
-    border-radius: 20px;
 }

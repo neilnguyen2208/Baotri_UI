@@ -10,25 +10,24 @@ class GrammarCategoryItem extends Component {
                 "id": "",
                 "title": "",
                 "description": "",
-                "docGrammarContentSummary": [                 
+                "docGrammarContentSummary": [    
+                    {
+
+                    }             
                 ]
             }
         }
     }
 
     componentDidMount() {
-        //this.fetchGrammarCategoryList();
         this.state.item = this.props.item;
         this.setState(this.state);
     }
 
-    fetchGrammarCategoryList() {
-    }
-
     render() {
-        let cards = this.state.item.docGrammarContentSummary.map((subItem) => {
+        let cards = this.state.item.docGrammarContentSummary.map((contentSummary) => {
             return (
-                <GrammarCategoryListItem item={subItem}></GrammarCategoryListItem>
+                <GrammarCategoryListItem item={contentSummary}></GrammarCategoryListItem>
             );
         })
         return (

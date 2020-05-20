@@ -22,9 +22,9 @@ class Admin_GrammarForm extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="Admin_Grammar_Form_Btn_Group">
-                    <img className="Admin_Grammar_Form_Edit_Btn" src={edit_btn} />
-                    <img className="Admin_Grammar_Form_Delete_Btn" src={delete_btn} />
+                <div className="Edit_Delete_Btn_Group">
+                    <img className="Edit_Btn" src={edit_btn} />
+                    <img className="Delete_Btn" src={delete_btn} />
                 </div>
             </div>
         )
