@@ -14,14 +14,14 @@ class NewVocabularyClass extends Component {
         }
     }
     render() {
-        let word = this.props.word;
+        let newClass = this.props.newClass;
         return(
             <div className="NewVocabularyClass">
                 <div className="NewVocabularyClassInner">
                     <label>Add New Class</label>
-                    <input className="Name" type="text" onChange={this.handleNameChange} placeholder="Name " defaultValue={word ? word.title : ""}></input>
-                    <input className="ImageURL" type="text" onChange={this.handleImageURLChange} placeholder="Image URL" defaultValue={word ? word.imageURL : ""}></input>
-                    <button className="Save" onClick={ word ? ()=>this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
+                    <input className="Name" type="text" onChange={this.handleNameChange} placeholder="Name " defaultValue={newClass ? newClass.title : ""}></input>
+                    <input className="ImageURL" type="text" onChange={this.handleImageURLChange} placeholder="Image URL" defaultValue={newClass ? newClass.imageURL : ""}></input>
+                    <button className="Save" onClick={ newClass ? ()=>this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
                     <button className="Close" onClick={this.props.closePopup}>Close</button>
                 </div>
             </div>
@@ -31,7 +31,9 @@ class NewVocabularyClass extends Component {
     handleNameChange(e) {
         this.setState(
             {
-                item: { id: this.state.item.id, title: e.target.value, imageURL: this.state.item.imageURL}
+                item: { id: this.state.item.id,
+                title: e.target.value, 
+                imageURL: this.state.item.imageURL}
             }
         )
     }
@@ -39,7 +41,9 @@ class NewVocabularyClass extends Component {
     handleImageURLChange(e) {
         this.setState(
             {
-                item: { id: this.state.item.id, title: this.state.item.title, imageURL: e.target.value}
+                item: { id: this.state.item.id, 
+                title: this.state.item.title, 
+                imageURL: e.target.value}
             }
         )
     }

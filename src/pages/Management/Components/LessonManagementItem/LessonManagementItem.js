@@ -18,14 +18,16 @@ class LessonManagementItem extends Component{
     render() {
         const {title} = this.props.item;
         return (
-            <button className = "LessonManagementItem" onClick={this.handleClick}>
+            <div className = "LessonManagementItem">
                 <div className="Top_Control">
-                    <button className="Edit"></button>
-                    <button className="Delete"></button>
-                </div>
-                <img src= {this.props.item.imageURL}></img>             
-                {title}
-            </button>
+                        <button className="Edit" onClick = {() =>this.props.handleEdit(this.props.item)}></button>
+                        <button className="Delete" onClick = {() => this.props.handleDelete(this.props.item)}></button>
+                    </div>
+                <button className = "Content" onClick={this.handleClick}>
+                    <img src= {this.props.item.imageURL}></img>             
+                    <div className = "Title">{title}</div>
+                </button>
+            </div>
         );
     }
 

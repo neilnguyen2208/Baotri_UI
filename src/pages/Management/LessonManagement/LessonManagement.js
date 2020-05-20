@@ -18,8 +18,8 @@ class LessonManagement extends Component {
             showPopup: false
         }
     }
-    componentDidMount() {
-        fetch(window.location.pathname.replace("admin", "api/v1"))
+    async componentDidMount() {
+        await fetch(window.location.pathname.replace("admin", "api/v1"))
           .then(response => response.json())
           // ...then we update the users state
           .then(data =>
@@ -30,18 +30,19 @@ class LessonManagement extends Component {
     }
     render() {
 
+        console.log(this.state.items);
         let title = "";
         try {
             title = this.props.location.state.title ? this.props.location.state.title : "";   
         } catch (error) {
-            return <Redirect to="/admin/vocabulary"></Redirect>
+            return <Redirect to="/admin/vocabCategories"></Redirect>
         }
             
         console.log("title: "+ title);
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <LessonManagementItem item={item}></LessonManagementItem>
+                    <LessonManagementItem handleDelete={this.deleteVocabularyLesson.bind(this)}  handleEdit={this.editVocabularyLesson.bind(this)} item={item}></LessonManagementItem>
                 </div>
             );
         })
@@ -69,7 +70,7 @@ class LessonManagement extends Component {
                     </div>
                 </div>
                 {
-                    this.state.showPopup ? <NewVocabularyClass handleSave ={this.saveNewVocabularyClass.bind(this)} closePopup={this.showAddPopup.bind(this)}></NewVocabularyClass>
+                    this.state.showPopup ? <NewVocabularyClass newClass = {this.newClass} handleEdit={this.editVocabularyLesson.bind(this)} handleSave ={this.saveNewVocabularyClass.bind(this)} closePopup={this.showAddPopup.bind(this)}></NewVocabularyClass>
                     : null
                 }
             </div>
@@ -81,13 +82,32 @@ class LessonManagement extends Component {
             showPopup: !this.state.showPopup
         })
     }
-
+    
     saveNewVocabularyClass (item) {
         if(item.title != "")
             this.state.items.push(item);
         this.setState({
             showPopup: !this.state.showPopup
         })
+    }
+
+    deleteVocabularyLesson (item) {
+        if(window.confirm("Are yor want to delete this lesson?")){
+            this.state.items.splice(this.state.items.indexOf(item), 1);
+            console.log(this.state.items);
+            this.setState({
+                items:  this.state.items
+            });
+        }
+    }
+
+    async editVocabularyLesson(item) {
+        this.newClass = item;
+        //await fetch()
+        console.log(item);
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
     }
 }
 

@@ -62,7 +62,7 @@ class EnglishVocabularyManagement extends Component {
                     </div>
                 </div>
                 {
-                    this.state.showPopup ? <NewVocabularyType type ={this.type?this.type:null} handleSave ={this.saveNewVocabularyType.bind(this)} closePopup = {this.showAddPopup.bind(this)}></NewVocabularyType>
+                    this.state.showPopup ? <NewVocabularyType handleEdit={this.editVocabularyType.bind(this)} type ={this.type?this.type:null} handleSave ={this.saveNewVocabularyType.bind(this)} closePopup = {this.showAddPopup.bind(this)}></NewVocabularyType>
                     : null
                 }
             </div>
@@ -85,14 +85,21 @@ class EnglishVocabularyManagement extends Component {
 
     deleteVocabularyType (item) {
         if(window.confirm("Are yor want to delete this type?")){
-            this.state.item = this.state.items.splice(this.state.items.indexOf(item), 1);
-            this.setState();
+            this.state.items.splice(this.state.items.indexOf(item), 1);
+            console.log(this.state.items);
+            this.setState({
+                items:  this.state.items
+            });
         }
     }
 
-    editVocabularyType(item) {
+    async editVocabularyType(item) {
         this.type = item;
-        this.setState();
+        //await fetch()
+        console.log(item);
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
     }
 }
 

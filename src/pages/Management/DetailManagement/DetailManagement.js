@@ -21,15 +21,15 @@ class DetailManagement extends Component {
         }
     }
 
-    componentDidMount() {
-        fetch(window.location.pathname.replace("admin", "api/v1"))
+    async componentDidMount() {
+        await fetch(window.location.pathname.replace("admin", "api/v1"))
           .then(response => response.json())
-          // ...then we update the users state
           .then(data =>
            this.setState({
                items: data
            })
           );
+        console.log("items: " + this.state.items);
     }
 
     render() {
@@ -46,7 +46,7 @@ class DetailManagement extends Component {
         try {
             title = this.props.location.state.title ? this.props.location.state.title : "";   
         } catch (error) {
-            return <Redirect to="/admin/vocabulary/1"></Redirect>
+            return <Redirect to="/admin/vocabCategories"></Redirect>
         }
 
         return(
@@ -92,15 +92,22 @@ class DetailManagement extends Component {
     }
 
     saveNewVocabulary (item) {
+        console.log(this.state.items);
         if(item.title != "")
             this.state.items.push(item);
+            console.log(this.state.items);
+        this.setState({
+            showPopup: !this.state.showPopup
+        })
+    }
+
+    editVocabulary (item) {
         this.setState({
             showPopup: !this.state.showPopup
         })
     }
 
     deleteVocabulary (item) {
-        console.log(item);
         this.state.items.splice(item);
         this.setState();
     }

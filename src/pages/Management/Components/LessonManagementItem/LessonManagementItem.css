@@ -8,24 +8,40 @@
     border-top:  solid gray 1px;
     border-left:  solid gray 1px;
     border-right:  solid gray 1px;
-    padding: 10px;
     text-align: center;
     font-size: 16px;
     color: #211F60;
 }
 
-.LessonManagementItem:hover {
+.LessonManagementItem .Content {
+    position: relative;
+    width: 100%;
+    height: 80%;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 16px;
+    color: #211F60;
+}
+
+.LessonManagementItem .Content:hover {
     color: #000066;
     cursor: pointer;
     text-decoration: underline;
     text-decoration-color: #000066;
 }
 
-.LessonManagementItem img {
+.LessonManagementItem .Content img {
     position: relative;
-    top: 0px;
     height: 60%;
+    width: 80%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.LessonManagementItem .Content .Title {
+    position: relative;
     width: 100%;
+    height: 20%;
 }
 
 .LessonManagementItem .Top_Control {
@@ -34,7 +50,7 @@
     float: right;
     flex-direction: row;
     right: 0px;
-    margin-bottom: 5px;
+    margin-right: 5px;
 }
 
 .LessonManagementItem .Top_Control .Edit {

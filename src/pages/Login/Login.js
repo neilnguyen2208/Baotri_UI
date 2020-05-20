@@ -13,8 +13,10 @@ class Login extends Component {
             forgot_pasword: false,
             username: "",
             password: "",
+            repassword: "",
             email: "",
-            displayname: ""
+            displayname: "",
+            isCorrectPassword: true
         }
         this.handleUsernameChange.bind(this);
         this.handlePasswordChange.bind(this);
@@ -23,13 +25,13 @@ class Login extends Component {
         this.handleClick.bind(this);
         this.handleLoginClick.bind(this);
         this.handleSignupClick.bind(this);
+        this.canSignUp.bind(this);
     }
 
     render(){
         const {login, signup, forgot_pasword} = this.state;
         const isAuthenticated = isLogin();
         if(isAuthenticated){
-            console.log('true');
             return <Redirect to = "/"></Redirect>
         }
         return(
@@ -49,8 +51,8 @@ class Login extends Component {
                                 login? 
                                 <div className="Login-Form">
                                     <input type="text" placeholder="Username" onChange={this.handleUsernameChange}></input>
-                                    <input type="text" placeholder="Password" onChange={this.handlePasswordChange}></input>
-                                    <a href='./home'>Forgot Password? Click Here.</a>
+                                    <input type="password" placeholder="Password" onChange={this.handlePasswordChange}></input>
+                                    <a href='./'>Forgot Password? Click Here.</a>
                                     <button onClick={this.handleClick}>Login</button>
                                 </div>
                                 : signup?
@@ -58,8 +60,10 @@ class Login extends Component {
                                     <input type="text" placeholder="Username" onChange={this.handleUsernameChange}></input>
                                     <input type="text" placeholder="Email" onChange={this.handleEmailChange}></input>
                                     <input type="text" placeholder="Display Name" onChange={this.handleDisplayNameChange}></input>
-                                    <input type="text" placeholder="Password" onChange={this.handlePasswordChange}></input>
-                                    <button onClick={this.handleClick}>Sign Up</button>
+                                    <input type="password" placeholder="Password" onChange={this.handlePasswordChange}></input>
+                                    <input type="password" placeholder="Retype Password" onChange={this.handleRePasswordChange}></input>
+                                    {this.state.isCorrectPassword ? "" : <label>Password not match or missing information!</label>}
+                                    <button onClick={this.handleClick}>Sign Up</button>                                    
                                 </div>
                                 : <div>Forgot Password</div>
                             }
@@ -85,15 +89,70 @@ class Login extends Component {
                 password: event.target.value
             }
         )
+
+    }
+
+    handleRePasswordChange = (event) => {
+        this.setState(
+            {
+                repassword: event.target.value
+            }
+        )
     }
     
     handleClick = async (event)=> {
         event.preventDefault();
-        console.log('username: '+this.state.username + 'password: '+this.state.password);
-        localStorage.setItem('token', 'zcdalshfkabckxbsiladhosadklhndsaldkbk,sacb');
-        this.setState({});
+        if(this.state.login) {
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: this.state.username, password: this.state.password })
+            };
+            console.log(requestOptions);
+            fetch('api/v1/auth/login', requestOptions)
+            .then(response => response.json())
+            .then((data) => {
+                localStorage.setItem("token", data.accessToken);
+                console.log(data.accessToken);
+                let jwtParsed = parseJwt(data.accessToken);
+                console.log("jwt" + jwtParsed.username);
+            })
+            .then(()=> this.setState({}));
+        }
+        //sign up
+        else {
+            //password and retype password not match
+            if(this.canSignUp) {
+                this.setState({
+                    isCorrectPassword: false
+                })
+            }
+            else {
+                const requestOptions = {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username: this.state.username, password: this.state.password,  })
+                };
+                console.log(requestOptions);
+                fetch('api/v1/auth/register', requestOptions)
+                .then(response => response.json())
+                .then((data) => {
+                    localStorage.setItem("token", data.accessToken);
+                    console.log(data.accessToken);
+                    let jwtParsed = parseJwt(data.accessToken);
+                    console.log("jwt" + jwtParsed);
+                })
+                .then(()=> this.setState({}));
+            }
+        }
     }
     
+    canSignUp () {
+        return this.state.password != this.state.repassword || 
+        !this.state.email || !this.state.displayname
+        || !this.state.password || this.state.repassword;
+    }
+
     handleEmailChange = (event) => {
         event.preventDefault();
         this.setState(
@@ -135,5 +194,15 @@ export function  isLogin(){
     const token = localStorage.getItem('token');
     return token && token.length>10;
 }
+
+export function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload).toString();
+};
 
 export default withRouter(Login);

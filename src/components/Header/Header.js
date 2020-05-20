@@ -38,6 +38,9 @@ class Header extends Component{
                     <div className="Header_Row">
                         <div className="Header_Horizontal_Line"></div>
                         <div className="Header_Item">
+                            <ul className="Item_Manage">
+                                {isAuthenticated ? <a href="/admin">Manage</a>:""}
+                            </ul>
                             <ul className="Item_LearnEnglish">
                                 <a href="/">LEARN ENGLISH</a>
                                 <div className="Item_LearnEnglish_Dropdown">
