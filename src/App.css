@@ -234,15 +234,15 @@
 }
 
 .Justify_Content_Space_Between_Border {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
   border-left: 1px #c4c4c4 solid;
   border-right: 1px #c4c4c4 solid;
 }
 
 .Height_30px_Border {
+  width: 100%;
   height: 30px;
   border-left: 1px #c4c4c4 solid;
   border-right: 1px #c4c4c4 solid;
@@ -250,6 +250,7 @@
 
 .Height_10px_Border {
   height: 10px;
+  width: 100%;
   border-left: 1px #c4c4c4 solid;
   border-right: 1px #c4c4c4 solid;
 }

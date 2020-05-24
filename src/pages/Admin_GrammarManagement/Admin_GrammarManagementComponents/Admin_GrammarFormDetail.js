@@ -250,7 +250,9 @@ class Admin_GrammarFormDetail extends Component {
                     </Popup>
 
                     <div className="Height_10px_Border" />
+
                     {grammarDetailNoteList}
+                    
                     <div className="Height_10px_Border" />
                     {/* Popup for adding grammar note: */}
                     <Popup modal trigger={
@@ -275,7 +277,7 @@ class Admin_GrammarFormDetail extends Component {
                                 <div className="Align_Center">
                                     <input className="Blue_Button" type="submit" value="Add Note"></input>
                                 </div>
-                                <div className="Height_10px" />
+                                <div className="Height_10px_Border" />
                             </form>
                         </React.Fragment>
                     </Popup>

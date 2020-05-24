@@ -13,6 +13,7 @@ import Popup from 'reactjs-popup'
 class Admin_GrammarDetailManagement extends Component {
     constructor(props) {
         super(props);
+        this.notifyContent = "";
         this.state = {
             GrammarForm_CreateDTO: {
                 "id": "",
@@ -47,6 +48,7 @@ class Admin_GrammarDetailManagement extends Component {
                 ]
             },
             "isAddGrammarFormPopupOpen": false,
+            "isNotifyPopupOpen": false
 
         }
     }
@@ -67,14 +69,14 @@ class Admin_GrammarDetailManagement extends Component {
     }
 
     //POST new grammar form to serve
-    addGrammarFormHandler = e => {
+    addGrammarForm = e => {
         e.preventDefault();
         //lấy token từ localStorage:
         let token = localStorage.token;
 
-        var requestFormID = this.props.match.id;
+        var requestFormID = this.props.match.params.id;
         //POST yêu cầu server thêm form ngữ pháp"
-
+        console.log(requestFormID);
         console.log(JSON.stringify(this.state.GrammarForm_CreateDTO));
         fetch('/api/v1/grammar/' + requestFormID + '/forms',
             {
@@ -87,13 +89,9 @@ class Admin_GrammarDetailManagement extends Component {
             }
         )
             .then(response => {
-                console.log(response)
-                response.json();
-            })
-            .then(data => {
-                if (data) { }
-                else {
-                    //check điều kiện đó mà
+                if (response.status === 200 || response.status === 204) {
+                    this.notifyContent = "Add grammar form success!";
+                    this.openNotifyPopupHandler();
                 }
             })
             .catch(error => {
@@ -166,7 +164,7 @@ class Admin_GrammarDetailManagement extends Component {
                                                 <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarFormPopupHandler} />
                                             </div>
                                         </div>
-                                        <form className="Popup_Form_Max_Size" onSubmit={this.addGrammarFormHandler} >
+                                        <form className="Popup_Form_Max_Size" onSubmit={this.addGrammarForm} >
                                             <div className="Simple_Label">Form title:</div>
                                             <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeAddGrammarFormTitleHandler} />
                                             <div className="Simple_Label">Usage:</div>
@@ -185,10 +183,28 @@ class Admin_GrammarDetailManagement extends Component {
                         </div>
                     </div>
                 </div>
+                <Popup
+                    open={this.state.isNotifyPopupOpen}
+                    onOpen={this.openNotifyPopupHandler}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Height_30px" />
+                        <div className="Align_Center">
+                            <div className="Simple_Label">
+                                {this.notifyContent}
+                            </div>
+                            <div className="Height_30px" />
+                            <button className="Blue_Button" onClick={this.closeNotifyPopupHandlerAndReload}>OK</button>
+                            
+                        </div>
+                        
+                    </React.Fragment>
+                </Popup>
                 <div className="Admin_Grammar_Detail_Management_Footer">
                     <Footer ></Footer>
                 </div>
-            </div>
+            </div >
 
         );
     }
@@ -219,6 +235,21 @@ class Admin_GrammarDetailManagement extends Component {
     changeAddGrammarFormHowHandler = e => {
         this.state.GrammarForm_CreateDTO.how = e.target.value;
         console.log(this.state.GrammarForm_CreateDTO.how);
+    }
+    closeNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    closeNotifyPopupHandlerAndReload = () => {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
+        window.location.reload();
+    }
+
+    openNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = true;
+        this.setState(this.state);
     }
 }
 

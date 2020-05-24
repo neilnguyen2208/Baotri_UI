@@ -11,6 +11,7 @@ class Admin_GrammarCategoryItem extends Component {
 
     constructor(props) {
         super(props);
+        this.notifyContent = "";
         this.state = {
             GrammarCategory_UpdateDTO: {
                 "id": "",
@@ -18,9 +19,9 @@ class Admin_GrammarCategoryItem extends Component {
                 "description": "",
                 "docGrammarContentSummary": [
                     {
-                        "grammarID":"",
-                        "grammarTitle":"",
-                        "grammarDescription":""
+                        "grammarID": "",
+                        "grammarTitle": "",
+                        "grammarDescription": ""
                     }
                 ]
             },
@@ -28,11 +29,13 @@ class Admin_GrammarCategoryItem extends Component {
                 "id": "",
                 "title": "",
                 "description": "",
+                "categoryID": "",
                 "forms": []
             },
             "isUpdateGrammarCategoryPopupOpen": false,
             "isVerifyDeleteGrammarCategoryPopupOpen": false,
             "isAddGrammarContentSummaryPopupOpen": false,
+            "isNotifyPopupOpen": false
         }
     }
 
@@ -54,7 +57,7 @@ class Admin_GrammarCategoryItem extends Component {
     }
 
     //PUT Grammar Category Item
-    submitUpdateGrammarCategory = e => {
+    updateGrammarCategory = e => {
         e.preventDefault();
         let token = localStorage.token;
         console.log(this.state.GrammarCategory_UpdateDTO);
@@ -63,20 +66,14 @@ class Admin_GrammarCategoryItem extends Component {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    // 'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarCategory_UpdateDTO)
             }
         )
             .then(response => {
-                console.log(response)
-                response.json();
-            })
-            .then(data => {
-                if (data) { }
-                else {
-                    //check điều kiện đó mà
-                }
+                //    if(response.status === 20
+                console.log(response);
             })
             .catch(error => {
                 console.log(error);
@@ -88,11 +85,12 @@ class Admin_GrammarCategoryItem extends Component {
         e.preventDefault();
         // console.log(this.props.item.id);
         let token = localStorage.token;
+
         fetch('api/v1/grammarCategories/' + this.state.GrammarCategory_UpdateDTO.id, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             },
 
         })
@@ -107,31 +105,24 @@ class Admin_GrammarCategoryItem extends Component {
         //delete xong có làm gì không thì không biết, đằng nào cũng delete xong đâu :D
     }
 
-    //POST Grammar Content Summary
-    changeAddGrammarContentSummaryTitleHandler = e => {
-        this.state.GrammarContentSummary_CreateDTO.title = e.target.value;
-        console.log(this.state.GrammarContentSummary_CreateDTO);
-    }
-
-    changeAddGrammarContentSummaryDescriptionHandler = e => {
-        this.state.GrammarContentSummary_CreateDTO.description = e.target.value;
-        console.log(this.state.GrammarContentSummary_CreateDTO);
-    }
-
-    postGrammarContentSummaryHandler = e => {
+    //POST Grammar Content Summary // bug
+    addGrammarContentSummary = e => {
         e.preventDefault();
         // console.log(this.props.item.id);
         let token = localStorage.token;
-        fetch('api/v1/grammarCategories/' + this.props.item.id + '/grammar', {
+        this.state.GrammarContentSummary_CreateDTO.categoryID = this.props.item.id;
+        console.log(this.state.GrammarContentSummary_CreateDTO);
+        fetch('/api/v1/grammarCategories/' + this.props.item.id + '/grammar', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             },
-            body: this.GrammarContentSummary_CreateDTO
+            body: JSON.stringify(this.state.GrammarContentSummary_CreateDTO)
         })
             .then(response => {
                 console.log(response)
+
             })
             .catch(error => {
                 console.log(error);
@@ -140,37 +131,6 @@ class Admin_GrammarCategoryItem extends Component {
         this.closeAddGrammarContentSummaryPopup();
     }
 
-    //handler open close popup
-    //handle close and open close add Grammar Category Popup:
-    openUpdateGrammarCategoryPopupHandler = () => {
-        this.state.isUpdateGrammarCategoryPopupOpen = true;
-        this.setState(this.state);
-    }
-
-    closeUpdateGrammarCategoryPopupHandler = () => {
-        this.state.isUpdateGrammarCategoryPopupOpen = false;
-        this.setState(this.state);
-    }
-
-    //handle close and open close verify popup
-    openVerifyDeleteGrammarCategoryPopup = () => {
-        this.state.isVerifyDeleteGrammarCategoryPopupOpen = true;
-        this.setState(this.state);
-    }
-    closeVerifyDeleteGrammarCategoryPopup = () => {
-        this.state.isVerifyDeleteGrammarCategoryPopupOpen = false;
-        this.setState(this.state);
-    }
-
-    //handle close and open add grammar lession popup:
-    openAddGrammarContentSummaryPopup = () => {
-        this.state.isAddGrammarContentSummaryPopupOpen = true;
-        this.setState(this.state);
-    }
-    closeAddGrammarContentSummaryPopup = () => {
-        this.state.isAddGrammarContentSummaryPopupOpen = false;
-        this.setState(this.state);
-    }
 
     render() {
         //
@@ -206,14 +166,14 @@ class Admin_GrammarCategoryItem extends Component {
                                         <img className="Delete_Btn" src={delete_btn} onClick={this.closeUpdateGrammarCategoryPopupHandler} />
                                     </div>
                                 </div>
-                                <form className="Popup_Form_Max_Size" onSubmit={this.submitUpdateGrammarCategory} >
+                                <form className="Popup_Form_Max_Size" onSubmit={this.updateGrammarCategory} >
 
                                     <div className="Simple_Label">Title:</div>
                                     <input className="Simple_Changable_Text_Input" defaultValue={title} name={title} type="text" onChange={this.changeUpdateGrammarCategoryTitleHandler} />
                                     <div className="Simple_Label">Description:</div>
                                     <textarea className="Simple_Text_Area" defaultValue={description} name={description} onChange={this.changeUpdateGrammarCategoryDescriptionHandler} />
                                     <div className="Align_Center">
-                                        <input className="Blue_Button" type="submit" value="Update"></input>
+                                        <input className="Blue_Button" type="submit" value="Update" />
                                     </div>
                                 </form>
                             </React.Fragment>
@@ -260,7 +220,7 @@ class Admin_GrammarCategoryItem extends Component {
 
                     {/* Popup to fill info of new Grammar category: title, description */}
                     <Popup modal trigger={
-                        <div className="Admin_Add_Grammar_Category_List_Item_Name">+ Add Grammar Lession</div>
+                        <div className="Admin_Add_Grammar_Category_List_Item_Name">+ Add Grammar Lesson</div>
                     }
                         open={this.state.isAddGrammarContentSummaryPopupOpen}
                         onOpen={this.openAddGrammarContentSummaryPopup}
@@ -269,11 +229,11 @@ class Admin_GrammarCategoryItem extends Component {
                         <React.Fragment>
                             <div className="Customize_Popup">
                                 <div className="Popup_Title_Bar">
-                                    <div className="Popup_Title">ADD A GRAMMAR LESSION:</div>
+                                    <div className="Popup_Title">ADD A GRAMMAR LESSON:</div>
                                     <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarContentSummaryPopup} />
                                 </div>
                             </div>
-                            <form className="Popup_Form_Max_Size" onSubmit={this.postGrammarContentSummaryHandler} >
+                            <form className="Popup_Form_Max_Size" onSubmit={this.addGrammarContentSummary} >
                                 <div className="Simple_Label">Title:</div>
                                 <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeAddGrammarContentSummaryTitleHandler} />
                                 <div className="Simple_Label">Description:</div>
@@ -285,8 +245,85 @@ class Admin_GrammarCategoryItem extends Component {
                         </React.Fragment>
                     </Popup>
                 </div>
+
+                {/* Notify Popup */}
+                <Popup modal
+                    open={this.state.isNotifyPopupOpen}
+                    onOpen={this.openNotifyPopup}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Customize_Popup">
+                            <div className="Popup_Title_Bar">
+                                <div className="Popup_Title">ADD A GRAMMAR LESSON:</div>
+                                <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarContentSummaryPopup} />
+                            </div>
+                        </div>
+                        <form className="Popup_Form_Max_Size" onSubmit={this.addGrammarContentSummary} >
+                            <div className="Simple_Label">Title:</div>
+                            <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeAddGrammarContentSummaryTitleHandler} />
+                            <div className="Simple_Label">Description:</div>
+                            <textarea className="Simple_Text_Area" name='description' onChange={this.changeAddGrammarContentSummaryDescriptionHandler} />
+                            <div className="Align_Center">
+                                <input className="Blue_Button" type="submit" value="Save"></input>
+                            </div>
+                        </form>
+                    </React.Fragment>
+                </Popup>
             </div >
         );
+    }
+
+    //handler open close popup
+    //handle close and open close add Grammar Category Popup:
+    openUpdateGrammarCategoryPopupHandler = () => {
+        this.state.isUpdateGrammarCategoryPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeUpdateGrammarCategoryPopupHandler = () => {
+        this.state.isUpdateGrammarCategoryPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    //handle close and open close verify popup
+    openVerifyDeleteGrammarCategoryPopup = () => {
+        this.state.isVerifyDeleteGrammarCategoryPopupOpen = true;
+        this.setState(this.state);
+    }
+    closeVerifyDeleteGrammarCategoryPopup = () => {
+        this.state.isVerifyDeleteGrammarCategoryPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    //handle close and open add grammar lesson popup:
+    openAddGrammarContentSummaryPopup = () => {
+        this.state.isAddGrammarContentSummaryPopupOpen = true;
+        this.setState(this.state);
+    }
+    closeAddGrammarContentSummaryPopup = () => {
+        this.state.isAddGrammarContentSummaryPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    changeAddGrammarContentSummaryTitleHandler = e => {
+        this.state.GrammarContentSummary_CreateDTO.title = e.target.value;
+        console.log(this.state.GrammarContentSummary_CreateDTO);
+    }
+
+    changeAddGrammarContentSummaryDescriptionHandler = e => {
+        this.state.GrammarContentSummary_CreateDTO.description = e.target.value;
+        console.log(this.state.GrammarContentSummary_CreateDTO);
+    }
+
+    openNotifyPopup() {
+        this.state.isNotifyPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    openNotifyPopup() {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
     }
 
 }

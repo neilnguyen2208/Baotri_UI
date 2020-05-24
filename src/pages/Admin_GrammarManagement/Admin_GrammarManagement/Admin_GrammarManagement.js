@@ -74,12 +74,6 @@ class Admin_GrammarManagement extends Component {
                 console.log(response)
                 response.json();
             })
-            .then(data => {
-                if (data) { }
-                else {
-                    //check điều kiện đó mà
-                }
-            })
             .catch(error => {
                 console.log(error);
             })

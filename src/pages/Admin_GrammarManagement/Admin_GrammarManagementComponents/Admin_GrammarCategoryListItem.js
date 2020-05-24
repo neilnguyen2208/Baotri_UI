@@ -4,6 +4,8 @@ import edit_btn from "../../../resources/edit_btn.png"
 import delete_btn from "../../../resources/delete_btn.png"
 import Popup from 'reactjs-popup'
 
+//Thuc hien cap nhat va xoa mot bai grammar
+
 class Admin_GrammarCategoryListItem extends Component {
 
     constructor(props) {
@@ -46,12 +48,17 @@ class Admin_GrammarCategoryListItem extends Component {
             .then(response => {
                 console.log("Success: ");
                 console.log(response);
-                if (response.status === 200) {
-                    this.notifyContent = "Update grammar content summary done!";
+                if (response.status === 200 || response.status === 204) {
+                    this.notifyContent = "Update grammar content summary success!";
+                    this.openNotifyPopupHandler();
+                }
+                else {
+                    this.notifyContent = "Update grammar content summary failed!";
                     this.openNotifyPopupHandler();
                 } // window.location.reload();
             })
             .catch(error => {
+
                 console.log("Error:" + error);
             })
 
@@ -61,18 +68,24 @@ class Admin_GrammarCategoryListItem extends Component {
     deleteGrammarDetail = e => {
         e.preventDefault();
         let token = localStorage.token;
-        fetch('api/v1/grammar/' + this.props.item.grammarID, {
+        fetch('/api/v1/grammar/' + this.props.item.grammarID, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                // 'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {
-                console.log(response)
+                console.log(response);
+                if (response.status === 200 || response.status === 204) {
+                    this.notifyContent = "Delete grammar content summary success!";
+                    this.openNotifyPopupHandler();
+                }
             })
             .catch(error => {
                 console.log(error);
+                this.notifyContent = "Delete grammar content summary failed!";
+                this.openNotifyPopupHandler();
             })
 
         this.closeDeleteGrammarDetailPopupHandler();
@@ -98,7 +111,7 @@ class Admin_GrammarCategoryListItem extends Component {
                         >
                             <React.Fragment>                            <div className="Customize_Popup">
                                 <div className="Popup_Title_Bar">
-                                    <div className="Popup_Title">UPDATE GRAMMAR LESSION:</div>
+                                    <div className="Popup_Title">UPDATE GRAMMAR LESSON:</div>
                                     <img className="Delete_Btn" src={delete_btn} onClick={this.closeUpdateGrammarDetailPopupHandler} />
                                 </div>
                             </div>
@@ -128,7 +141,7 @@ class Admin_GrammarCategoryListItem extends Component {
                                     <img className="Delete_Btn" src={delete_btn} onClick={this.closeDeleteGrammarDetailPopupHandler} />
                                 </div>
                                 <div className="Height_30px"></div>
-                                <div className="Simple_Label">  Do you want to delete this grammar lession?</div>
+                                <div className="Simple_Label">  Do you want to delete this grammar lesson?</div>
                                 <div className="Height_30px"></div>
                                 <div className="Justify_Content_Space_Between">
                                     <button className="Blue_Button" onClick={this.deleteGrammarDetail}>
