@@ -17,7 +17,11 @@ class Admin_GrammarCategoryItem extends Component {
                 "title": "",
                 "description": "",
                 "docGrammarContentSummary": [
-                    {}
+                    {
+                        "grammarID":"",
+                        "grammarTitle":"",
+                        "grammarDescription":""
+                    }
                 ]
             },
             GrammarContentSummary_CreateDTO: {
@@ -174,11 +178,9 @@ class Admin_GrammarCategoryItem extends Component {
         let description = this.state.GrammarCategory_UpdateDTO.description;
 
         //render grammar summary contents
-        let grammarItemLists = this.state.GrammarCategory_UpdateDTO.docGrammarContentSummary.map((contentSummary) => {
-            return (            
-                    <Admin_GrammarCategoryListItem parent_ID = {this.state.GrammarCategory_UpdateDTO.id} item={contentSummary}></Admin_GrammarCategoryListItem>              
-            );
-        })
+        let grammarItemLists = this.state.GrammarCategory_UpdateDTO.docGrammarContentSummary.map(contentSummary =>
+            <Admin_GrammarCategoryListItem key={contentSummary.grammarID} parent_ID={this.state.GrammarCategory_UpdateDTO.id} item={contentSummary}></Admin_GrammarCategoryListItem>
+        )
 
         return (
             <div className="Admin_Grammar_Category_Item">
@@ -190,20 +192,21 @@ class Admin_GrammarCategoryItem extends Component {
                     <div className="Edit_Delete_Btn_Group">
 
                         {/* Popup for Updating Grammar Category */}
-                        <div className="Edit_Port">
-                            <Popup modal trigger={
-                                <img className="Edit_Btn" src={edit_btn} />}
-                                open={this.state.isUpdateGrammarCategoryPopupOpen}
-                                onOpen={this.openUpdateGrammarCategoryPopupHandler}
-                                closeOnDocumentClick = {false}
-                            >
+
+                        <Popup modal trigger={
+                            <img className="Edit_Btn" src={edit_btn} />}
+                            open={this.state.isUpdateGrammarCategoryPopupOpen}
+                            onOpen={this.openUpdateGrammarCategoryPopupHandler}
+                            closeOnDocumentClick={false}
+                        >
+                            <React.Fragment>
                                 <div className="Customize_Popup">
                                     <div className="Popup_Title_Bar">
                                         <div className="Popup_Title">UPDATE GRAMMAR CATEGORY:</div>
                                         <img className="Delete_Btn" src={delete_btn} onClick={this.closeUpdateGrammarCategoryPopupHandler} />
                                     </div>
                                 </div>
-                                <form className="Add_Grammar_Category_Form" onSubmit={this.submitUpdateGrammarCategory} >
+                                <form className="Popup_Form_Max_Size" onSubmit={this.submitUpdateGrammarCategory} >
 
                                     <div className="Simple_Label">Title:</div>
                                     <input className="Simple_Changable_Text_Input" defaultValue={title} name={title} type="text" onChange={this.changeUpdateGrammarCategoryTitleHandler} />
@@ -213,8 +216,9 @@ class Admin_GrammarCategoryItem extends Component {
                                         <input className="Blue_Button" type="submit" value="Update"></input>
                                     </div>
                                 </form>
-                            </Popup>
-                        </div>
+                            </React.Fragment>
+                        </Popup>
+
 
                         {/* Popup for Deleting Grammar Category  */}
                         <div className="Delete_Port">
@@ -222,25 +226,27 @@ class Admin_GrammarCategoryItem extends Component {
                                 <img className="Delete_Btn" src={delete_btn} />}
                                 open={this.state.isVerifyDeleteGrammarCategoryPopupOpen}
                                 onOpen={this.openVerifyDeleteGrammarCategoryPopup}
-                                closeOnDocumentClick = {false}
+                                closeOnDocumentClick={false}
                             >
-                                <div className="Align_Center">
-                                    <div className="Align_Right">
-                                        <img className="Delete_Btn" src={delete_btn} onClick={this.closeVerifyDeleteGrammarCategoryPopup} />
-                                    </div>
-                                    <div className="Height_30px"></div>
-                                    <div className="Simple_Label">  Do you want to delete this grammar category?</div>
-                                    <div className="Height_30px"></div>
-                                    <div className="Justify_Content_Space_Between">
-                                        <button className="Blue_Button" onClick={this.deleteGrammarCategoryHandler}>
-                                            Verify
+                                <React.Fragment>
+                                    <div className="Align_Center">
+                                        <div className="Align_Right">
+                                            <img className="Delete_Btn" src={delete_btn} onClick={this.closeVerifyDeleteGrammarCategoryPopup} />
+                                        </div>
+                                        <div className="Height_30px"></div>
+                                        <div className="Simple_Label">  Do you want to delete this grammar category?</div>
+                                        <div className="Height_30px"></div>
+                                        <div className="Justify_Content_Space_Between">
+                                            <button className="Blue_Button" onClick={this.deleteGrammarCategoryHandler}>
+                                                Verify
                                     </button>
-                                        <button className="Red_Button" onClick={this.closeVerifyDeleteGrammarCategoryPopup}>
-                                            Cancel
+                                            <button className="Red_Button" onClick={this.closeVerifyDeleteGrammarCategoryPopup}>
+                                                Cancel
                                     </button>
+                                        </div>
+                                        <div className="Height_10px"></div>
                                     </div>
-                                    <div className="Height_10px"></div>
-                                </div>
+                                </React.Fragment>
                             </Popup>
                         </div>
                     </div>
@@ -258,23 +264,25 @@ class Admin_GrammarCategoryItem extends Component {
                     }
                         open={this.state.isAddGrammarContentSummaryPopupOpen}
                         onOpen={this.openAddGrammarContentSummaryPopup}
-                        closeOnDocumentClick = {false}
+                        closeOnDocumentClick={false}
                     >
-                        <div className="Customize_Popup">
-                            <div className="Popup_Title_Bar">
-                                <div className="Popup_Title">ADD A GRAMMAR LESSION:</div>
-                                <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarContentSummaryPopup} />
+                        <React.Fragment>
+                            <div className="Customize_Popup">
+                                <div className="Popup_Title_Bar">
+                                    <div className="Popup_Title">ADD A GRAMMAR LESSION:</div>
+                                    <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarContentSummaryPopup} />
+                                </div>
                             </div>
-                        </div>
-                        <form className="Add_Grammar_Category_Content_Summary_Form" onSubmit={this.postGrammarContentSummaryHandler} >
-                            <div className="Simple_Label">Title:</div>
-                            <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeAddGrammarContentSummaryTitleHandler} />
-                            <div className="Simple_Label">Description:</div>
-                            <textarea className="Simple_Text_Area" name='description' onChange={this.changeAddGrammarContentSummaryDescriptionHandler} />
-                            <div className="Align_Center">
-                                <input className="Blue_Button" type="submit" value="Save"></input>
-                            </div>
-                        </form>
+                            <form className="Popup_Form_Max_Size" onSubmit={this.postGrammarContentSummaryHandler} >
+                                <div className="Simple_Label">Title:</div>
+                                <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeAddGrammarContentSummaryTitleHandler} />
+                                <div className="Simple_Label">Description:</div>
+                                <textarea className="Simple_Text_Area" name='description' onChange={this.changeAddGrammarContentSummaryDescriptionHandler} />
+                                <div className="Align_Center">
+                                    <input className="Blue_Button" type="submit" value="Save"></input>
+                                </div>
+                            </form>
+                        </React.Fragment>
                     </Popup>
                 </div>
             </div >

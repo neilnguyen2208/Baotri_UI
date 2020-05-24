@@ -14,6 +14,17 @@ class Admin_GrammarDetailManagement extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            GrammarForm_CreateDTO: {
+                "id": "",
+                "title": "",
+                "usage": "",
+                "useCase": "",
+                "how": "",
+                "examples": [
+                ],
+                "notes": [
+                ]
+            },
             grammarDetails: {
                 "id": "",
                 "title": "",
@@ -27,22 +38,16 @@ class Admin_GrammarDetailManagement extends Component {
                         "useCase": "",
                         "how": "",
                         "examples": [
-                            {
-                                "id": "",
-                                "content": "",
-                                "imageURL": ""
-                            }
+
                         ],
                         "notes": [
-                            {
-                                "id": "",
-                                "content": ""
-                            }
+
                         ]
                     }
                 ]
             },
             "isAddGrammarFormPopupOpen": false,
+
         }
     }
 
@@ -51,7 +56,8 @@ class Admin_GrammarDetailManagement extends Component {
         fetch('/api/v1/grammar/' + requestDetailId)
             .then(response => response.json())
             .then((data) => {
-                this.setState({ grammarDetails: data })
+                this.state.grammarDetails = data;
+                this.setState(this.state);
             })
             .catch(console.log);
     }
@@ -60,27 +66,55 @@ class Admin_GrammarDetailManagement extends Component {
         this.fetchGrammarDetail();
     }
 
-    // handle open/close popups:
-    openUpdateGrammarCategoryPopupHandler = () => {
-        this.state.isUpdateGrammarCategoryPopupOpen = true;
-        this.setState(this.state);
-    }
+    //POST new grammar form to serve
+    addGrammarFormHandler = e => {
+        e.preventDefault();
+        //lấy token từ localStorage:
+        let token = localStorage.token;
 
-    closeUpdateGrammarCategoryPopupHandler = () => {
-        this.state.isUpdateGrammarCategoryPopupOpen = false;
-        this.setState(this.state);
+        var requestFormID = this.props.match.id;
+        //POST yêu cầu server thêm form ngữ pháp"
+
+        console.log(JSON.stringify(this.state.GrammarForm_CreateDTO));
+        fetch('/api/v1/grammar/' + requestFormID + '/forms',
+            {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(this.state.GrammarForm_CreateDTO)
+            }
+        )
+            .then(response => {
+                console.log(response)
+                response.json();
+            })
+            .then(data => {
+                if (data) { }
+                else {
+                    //check điều kiện đó mà
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     render() {
-        let adminGrammarFormDetails = this.state.grammarDetails.forms.map((formDetail) =>
-            <Admin_GrammarFormDetail
-                example_list={formDetail.examples}
-                note_list={formDetail.notes}
-                title={formDetail.title}
-                usage={formDetail.usage}
-                useCase={formDetail.useCase}
-                how={formDetail.how}
-            ></Admin_GrammarFormDetail>
+        let adminGrammarFormDetails = this.state.grammarDetails.forms.map((formDetail) => {
+            return (
+                <Admin_GrammarFormDetail
+                    key={formDetail.id}
+                    form_ID={formDetail.id}
+                    example_list={formDetail.examples}
+                    note_list={formDetail.notes}
+                    title={formDetail.title}
+                    usage={formDetail.usage}
+                    useCase={formDetail.useCase}
+                    how={formDetail.how}
+                ></Admin_GrammarFormDetail>);
+        }
         );
         return (
             <div className="Admin_Grammar_Detail_Management">
@@ -117,42 +151,37 @@ class Admin_GrammarDetailManagement extends Component {
                                 {/* Popup to fill info of new Grammar category: title, description */}
                                 <Popup modal trigger={
                                     <div className="Admin_Add_Grammar_Form_Button">
-                                        + Add Grammar A Form
+                                        + Add a grammar form
                                     </div>
-                                   
+
                                 }
                                     open={this.state.isAddGrammarFormPopupOpen}
                                     onOpen={this.openAddGrammarFormPopupHandler}
-                                    closeOnDocumentClick = {false}
+                                    closeOnDocumentClick={false}
                                 >
-                                    <div className="Customize_Popup">
-                                        <div className="Popup_Title_Bar">
-                                            <div className="Popup_Title">ADD GRAMMAR FORM:</div>
-                                            <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarFormPopupHandler} />
+                                    <React.Fragment>
+                                        <div className="Customize_Popup">
+                                            <div className="Popup_Title_Bar">
+                                                <div className="Popup_Title">ADD GRAMMAR FORM:</div>
+                                                <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarFormPopupHandler} />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <form className="Add_Grammar_Category_Form" onSubmit={this.addGrammarFormHandler} >
-                                        <div className="Simple_Label">Form title:</div>
-                                        <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeGrammarFormTitleHandler} />
-                                        <div className="Simple_Label">Usage:</div>
-                                        <input className="Simple_Changable_Text_Input" type="text" name='description' onChange={this.changeGrammarFormDescriptionHandler} />
-                                        <div className="Simple_Label">Use case:</div>
-                                        <input className="Simple_Changable_Text_Input" type="text" name='description' onChange={this.changeGrammarFormDescriptionHandler} />
-                                        <div className="Simple_Label">How to use:</div>
-                                        <input className="Simple_Changable_Text_Input" type="text" name='description' onChange={this.changeGrammarFormDescriptionHandler} />
+                                        <form className="Popup_Form_Max_Size" onSubmit={this.addGrammarFormHandler} >
+                                            <div className="Simple_Label">Form title:</div>
+                                            <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeAddGrammarFormTitleHandler} />
+                                            <div className="Simple_Label">Usage:</div>
+                                            <input className="Simple_Changable_Text_Input" type="text" onChange={this.changeAddGrammarFormUsageHandler} />
+                                            <div className="Simple_Label">Use case:</div>
+                                            <input className="Simple_Changable_Text_Input" type="text" onChange={this.changeAddGrammarFormUsecaseHandler} />
+                                            <div className="Simple_Label">How to use:</div>
+                                            <input className="Simple_Changable_Text_Input" type="text" onChange={this.changeAddGrammarFormHowHandler} />
 
-                                        <div className="Height_10px" />
-                                        <div className="Justify_Content_Space_Between">
-                                            <input className="White_Button" type="button" value="+ Example"></input>
-                                            <input className="White_Button" type="button" value="+ Note"></input>
-                                        </div>
-                                        <div className="Height_10px" />
-                                        <input className="Blue_Button" type="submit" value="Save"></input>
-                                    </form>
+                                            <div className="Height_10px" />
+                                            <input className="Blue_Button" type="submit" value="Save"></input>
+                                        </form>
+                                    </React.Fragment>
                                 </Popup>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -164,6 +193,33 @@ class Admin_GrammarDetailManagement extends Component {
         );
     }
 
+    openAddGrammarFormPopupHandler = () => {
+        this.state.isAddGrammarFormPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeAddGrammarFormPopupHandler = () => {
+        this.state.isAddGrammarFormPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    //Handler change popup input
+    changeAddGrammarFormTitleHandler = e => {
+        this.state.GrammarForm_CreateDTO.title = e.target.value;
+        console.log(this.state.GrammarForm_CreateDTO.title);
+    }
+    changeAddGrammarFormUsageHandler = e => {
+        this.state.GrammarForm_CreateDTO.usage = e.target.value;
+        console.log(this.state.GrammarForm_CreateDTO.usage);
+    }
+    changeAddGrammarFormUsecaseHandler = e => {
+        this.state.GrammarForm_CreateDTO.useCase = e.target.value;
+        console.log(this.state.GrammarForm_CreateDTO.useCase);
+    }
+    changeAddGrammarFormHowHandler = e => {
+        this.state.GrammarForm_CreateDTO.how = e.target.value;
+        console.log(this.state.GrammarForm_CreateDTO.how);
+    }
 }
 
 export default Admin_GrammarDetailManagement;

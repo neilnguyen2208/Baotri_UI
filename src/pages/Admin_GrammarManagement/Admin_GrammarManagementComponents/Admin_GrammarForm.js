@@ -1,9 +1,131 @@
 import React, { Component } from 'react';
 import "./Admin_GrammarForm.css"
+import Popup from 'reactjs-popup'
 import edit_btn from "../../../resources/edit_btn.png"
 import delete_btn from "../../../resources/delete_btn.png"
+
+//show form and handler update, delete a form:
 class Admin_GrammarForm extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            GrammarForm_UpdateDTO: {
+                "id": "",
+                "title": null,
+                "usage": null,
+                "useCase": null,
+                "how": null,
+                "examples": null,
+                "notes": null
+            },
+            "isUpdateGrammarFormPopupOpen": false,
+            "isVerifyDeleteGrammarFormPopupOpen": false
+        }
+    }
+
+    //initial value for grammar form:
+    componentDidMount() {
+        this.state.GrammarForm_UpdateDTO.id = this.props.form_ID;
+        // this.state.GrammarForm_UpdateDTO.title = this.props.formTitle;
+        // this.state.GrammarForm_UpdateDTO.useCase = this.props.useCase;
+        // this.state.GrammarForm_UpdateDTO.usage = this.props.usage;
+        // this.state.GrammarForm_UpdateDTO.how = this.props.how;
+    }
+
+    //PATCH grammar form to serve
+    updateGrammarFormHandler = e => {
+        e.preventDefault();
+        //lấy token từ localStorage:
+        let token = localStorage.token;
+
+        fetch('/api/v1/grammarForms/' + this.props.form_ID,
+            {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(this.state.GrammarForm_UpdateDTO)
+            }
+        )
+            .then(response => {
+                console.log(response)
+                response.json();
+                this.closeUpdateGrammarFormPopupHandler();
+                window.location.reload();
+            })
+            .then(data => {
+                if (data) { }
+                else {
+                    //check điều kiện đó mà
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+    }
+
+    //DELETE grammar form
+    deleteGrammarFormHandler = e => {
+        e.preventDefault();
+        //lấy token từ localStorage:
+        let token = localStorage.token;
+
+        fetch('/api/v1/grammarForms/' + this.props.form_ID,
+            {
+                method: "DELETE",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            }
+        )
+            .then(response => {
+                console.log(response)
+                response.json();
+                this.closeVerifyDeleteGrammarFormPopupHandler();
+                window.location.reload();
+            })
+            .then(data => {
+                if (data) { }
+                else {
+
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
+        // this.closeVerifyDeleteGrammarFormPopupHandler();
+
+    }
+
+
+    //handle for popup
+    openUpdateGrammarFormPopupHandler = () => {
+        this.state.isUpdateGrammarFormPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeUpdateGrammarFormPopupHandler = () => {
+        this.state.isUpdateGrammarFormPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    openVerifyDeleteGrammarFormPopupHandler = () => {
+        this.state.isVerifyDeleteGrammarFormPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeVerifyDeleteGrammarFormPopupHandler = () => {
+        this.state.isVerifyDeleteGrammarFormPopupOpen = false;
+        this.setState(this.state);
+    }
+
     render() {
+
+        // let
         return (
             <div className="Admin_Grammar_Form">
                 <div className="Admin_Grammar_Form_Port">
@@ -22,13 +144,92 @@ class Admin_GrammarForm extends Component {
                         </div>
                     </div>
                 </div>
+
                 <div className="Edit_Delete_Btn_Group">
-                    <img className="Edit_Btn" src={edit_btn} />
-                    <img className="Delete_Btn" src={delete_btn} />
+                    <Popup modal trigger={
+                        <img className="Edit_Btn" src={edit_btn} />}
+                        open={this.state.isUpdateGrammarFormPopupOpen}
+                        onOpen={this.openUpdateGrammarFormPopupHandler}
+                        closeOnDocumentClick={false}
+                    >
+                        <React.Fragment>
+                            <div className="Customize_Popup">
+                                <div className="Popup_Title_Bar">
+                                    <div className="Popup_Title">UPDATE GRAMMAR FORM:</div>
+                                    <img className="Delete_Btn" src={delete_btn} onClick={this.closeUpdateGrammarFormPopupHandler} />
+                                </div>
+                            </div>
+                            <form className="Popup_Form_Max_Size" onSubmit={this.updateGrammarFormHandler} >
+                                <div className="Simple_Label">Form title:</div>
+                                <input className="Simple_Changable_Text_Input" type="text" defaultValue={this.props.formTitle} onChange={this.changeUpdateGrammarFormTitleHandler} />
+                                <div className="Simple_Label">Usage:</div>
+                                <input className="Simple_Changable_Text_Input" type="text" defaultValue={this.props.usage} onChange={this.changeUpdateGrammarFormUsageHandler} />
+                                <div className="Simple_Label">Use case:</div>
+                                <input className="Simple_Changable_Text_Input" type="text" defaultValue={this.props.useCase} onChange={this.changeUpdateGrammarFormUsecaseHandler} />
+                                <div className="Simple_Label">How to use:</div>
+                                <input className="Simple_Changable_Text_Input" type="text" defaultValue={this.props.how} onChange={this.changeUpdateGrammarFormHowHandler} />
+
+                                <div className="Height_10px" ></div>
+                                <div className="Align_Center">
+                                    <input className="Blue_Button" type="submit" value="Save"></input>
+                                </div>
+                                <div className="Height_10px" />
+                            </form>
+                        </React.Fragment>
+                    </Popup>
+
+                    <Popup modal trigger={
+                        <img className="Delete_Btn" src={delete_btn} />}
+                        open={this.state.isVerifyDeleteGrammarFormPopupOpen}
+                        onOpen={this.openVerifyDeleteGrammarFormPopupHandler}
+                        closeOnDocumentClick={false}
+                    >
+                        <div className="Align_Center">
+                            <div className="Align_Right">
+                                <img className="Delete_Btn" src={delete_btn} onClick={this.closeVerifyDeleteGrammarFormPopupHandler} />
+                            </div>
+                            <div className="Height_30px"></div>
+                            <div className="Simple_Label">  Do you want to delete this form (include your notes and your examples)?</div>
+                            <div className="Height_30px"></div>
+                            <div className="Justify_Content_Space_Between">
+                                <button className="Blue_Button" onClick={this.deleteGrammarFormHandler}>
+                                    Verify
+                                    </button>
+                                <button className="Red_Button" onClick={this.closeVerifyDeleteGrammarFormPopupHandler}>
+                                    Cancel
+                                    </button>
+                            </div>
+                            <div className="Height_10px"></div>
+                        </div>
+                    </Popup>
+
                 </div>
             </div>
+
         )
     }
+
+    //Handler for input change:
+    changeUpdateGrammarFormTitleHandler = e => {
+        this.state.formTitle = e.target.value;
+        this.setState(this.state);
+    }
+
+    changeUpdateGrammarFormUsageHandler = e => {
+        this.state.usage = e.target.value;
+        this.setState(this.state);
+    }
+
+    changeUpdateGrammarFormUsecaseHandler = e => {
+        this.state.useCase = e.target.value;
+        this.setState(this.state);
+    }
+
+    changeUpdateGrammarFormHowHandler = e => {
+        this.state.how = e.target.value;
+        this.setState(this.state);
+    }
+
 }
 
 export default Admin_GrammarForm;

@@ -14,19 +14,10 @@ import delete_btn from '../../../resources/delete_btn.png'
 class Admin_GrammarManagement extends Component {
     constructor(props) {
         super();
-
+        this.notifyContent = "";
         this.state = {
             "grammarCategories":
                 [
-                    // {
-                    //     "id": "",
-                    //     "title": "",
-                    //     "description": "",
-                    //     "docGrammarContentSummary":
-                    //         [
-
-                    //         ]
-                    // }
                 ],
             GrammarCategory_CreateDTO: {
                 "id": "",
@@ -36,7 +27,8 @@ class Admin_GrammarManagement extends Component {
                     [
                     ]
             },
-            "isPopupOpen": false,
+            "isAddGrammarCategoryPopupOpen": false,
+            "isNotifyPopupOpen": false
         }
     }
 
@@ -48,43 +40,32 @@ class Admin_GrammarManagement extends Component {
 
     //hàm lấy danh sách grammar.
     fetchGrammarCategoryList() {
-        fetch('/api/v1/grammarCategories',{
+        fetch('/api/v1/grammarCategories', {
             method: "GET"
         })
             .then(response => response.json())
-            .then(response =>
-                this.setState({
-                    grammarCategories: response
-                })
+            .then(response => {
+                this.state.grammarCategories = response;
+                this.setState(this.state);
+            }
             );
     }
 
-    // POST data to server: create an grammar category
-    changeTitleHandler = e => {
-        this.state.GrammarCategory_CreateDTO.title = e.target.value;
-        console.log(this.state.GrammarCategory_CreateDTO);
-
-    }
-
-    changeDescriptionHandler = e => {
-        this.state.GrammarCategory_CreateDTO.description = e.target.value;
-        console.log(this.state.GrammarCategory_CreateDTO);
-    }
-
-    submitHandler = e => {
+    //hàm xử lý sự kiện thêm một grammar category
+    addGrammarCategory = e => {
         e.preventDefault();
 
         //lấy token từ localStorage:
         let token = localStorage.token;
 
         //POST yêu cầu server thêm danh mục ngữ pháp.
-        console.log(JSON.stringify(this.state.GrammarCategory_CreateDTO));
+
         fetch('/api/v1/grammarCategories',
             {
-                method: "POST",
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    //     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarCategory_CreateDTO)
             }
@@ -104,17 +85,6 @@ class Admin_GrammarManagement extends Component {
             })
     }
 
-    //handle close and open close add Grammar Category Popup:
-    openHandler = () => {
-        this.state.isPopupOpen = true;
-        this.setState(this.state);
-    }
-
-    closeHandler = () => {
-        this.state.isPopupOpen = false;
-        this.setState(this.state);
-    }
-
     render() {
 
         //bind data to post
@@ -122,12 +92,9 @@ class Admin_GrammarManagement extends Component {
         let description = this.state.GrammarCategory_CreateDTO.description;
 
         //list of grammar category item
-        let items;
-        items = this.state.grammarCategories.map((item) => {
-            return (
-                <Admin_GrammarCategoryItem item={item}></Admin_GrammarCategoryItem>
-            );
-        })
+        let items = this.state.grammarCategories.map(item =>
+            <Admin_GrammarCategoryItem key={item.id} item={item}></Admin_GrammarCategoryItem>
+        );
 
         return (
             <div className="Admin_Grammar_Management">
@@ -146,8 +113,10 @@ class Admin_GrammarManagement extends Component {
 
                     {/* Page Title */}
                     <PageTitle prevTitle="Manage" mainTitle="Your page"></PageTitle>
+
                     <div className="Admin_Grammar_Management_Horizontal_Menu_Bar_Main_Management_Port">
                         <Admin_Menu />
+
                         {/* Menu_Main_Show_Port */}
                         <div className="Admin_Grammar_Management_Port">
 
@@ -158,24 +127,25 @@ class Admin_GrammarManagement extends Component {
                                 <Popup modal trigger={
                                     <div className="Admin_Add_Grammar_Category_Item_Name">+ Add Grammar Category</div>
                                 }
-                                    open={this.state.isPopupOpen}
-                                    onOpen={this.openHandler}
-                                    closeOnDocumentClick = {false}
+                                    open={this.state.isAddGrammarCategoryPopupOpen}
+                                    onOpen={this.openAddGrammarCategoryPopupHandler}
+                                    closeOnDocumentClick={false}
                                 >
-                                    <div className="Customize_Popup">
-                                        <div className="Popup_Title_Bar">
-                                            <div className="Popup_Title">ADD GRAMMAR CATEGORY:</div>
-                                            <img className="Delete_Btn" src={delete_btn} onClick={this.closeHandler} />
+                                    <React.Fragment>
+                                        <div className="Customize_Popup">
+                                            <div className="Popup_Title_Bar">
+                                                <div className="Popup_Title">ADD GRAMMAR CATEGORY:</div>
+                                                <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarCategoryPopupHandler} />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <form className="Add_Grammar_Category_Form" onSubmit={this.submitHandler} >
-                                        <div className="Simple_Label">Title:</div>
-                                        <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeTitleHandler} />
-                                        <div className="Simple_Label">Description:</div>
-                                        <textarea className="Simple_Text_Area" name='description' onChange={this.changeDescriptionHandler} />
-                                        <input className="Blue_Button" type="submit" value="Save"></input>
-                                    </form>
-
+                                        <form className="Add_Grammar_Category_Form" onSubmit={this.addGrammarCategory} >
+                                            <div className="Simple_Label">Title:</div>
+                                            <input className="Simple_Changable_Text_Input" name='title' type="text" onChange={this.changeTitleHandler} />
+                                            <div className="Simple_Label">Description:</div>
+                                            <textarea className="Simple_Text_Area" name='description' onChange={this.changeDescriptionHandler} />
+                                            <input className="Blue_Button" type="submit" value="Save"></input>
+                                        </form>
+                                    </React.Fragment>
                                 </Popup>
 
                             </div>
@@ -194,6 +164,25 @@ class Admin_GrammarManagement extends Component {
         );
     }
 
+    // POST data to server: create an grammar category
+    changeTitleHandler = e => {
+        this.state.GrammarCategory_CreateDTO.title = e.target.value;
+    }
+
+    changeDescriptionHandler = e => {
+        this.state.GrammarCategory_CreateDTO.description = e.target.value;
+    }
+
+    //handle close and open close add Grammar Category Popup:
+    openAddGrammarCategoryPopupHandler = () => {
+        this.state.isAddGrammarCategoryPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeAddGrammarCategoryPopupHandler = () => {
+        this.state.isAddGrammarCategoryPopupOpen = false;
+        this.setState(this.state);
+    }
 }
 
 export default Admin_GrammarManagement;

@@ -25,6 +25,7 @@
     font-size: 24px;
     line-height: 40px;
     color: white;
+    background: #211f60;
 }
 
 .Page_Title {
@@ -33,6 +34,7 @@
     height: fit-content;
     padding-bottom: 20px;
     width: 100%;
+    display: flex;
 }
 
 @media screen and (max-width: 1100px) {

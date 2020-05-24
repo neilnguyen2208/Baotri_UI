@@ -5,6 +5,10 @@
   height: 100%;
 }
 
+.a {
+  outline: 0;
+}
+
 .Edit_Delete_Btn_Group {
   margin-right: 5%;
   display: flex;
@@ -108,6 +112,21 @@
   border: #ffffff;
   text-align: center;
   margin: auto;
+  outline: none !important;
+}
+
+.Blue_Button:hover {
+  opacity: 90%;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.Blue_Button:active {
+  opacity: 80%;
+  cursor: pointer;
+  border-radius: 20px;
+  background: #211f60;
+  outline: none !important;
 }
 
 .White_Button {
@@ -128,6 +147,20 @@
   outline: none;
 }
 
+.White_Button:hover {
+  opacity: 90%;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.White_Button:active {
+  opacity: 80%;
+  cursor: pointer;
+  border-radius: 20px;
+  background: white;
+  outline: none !important;
+}
+
 .Red_Button {
   box-sizing: border-box;
   width: 120px;
@@ -143,6 +176,20 @@
   border: #ffffff;
   text-align: center;
   margin: auto;
+}
+
+.Red_Button:hover {
+  opacity: 90%;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.Red_Button:active {
+  opacity: 80%;
+  cursor: pointer;
+  border-radius: 20px;
+  background: #fe3a3a;
+  outline: none !important;
 }
 
 .Simple_Text_Area {
@@ -184,4 +231,30 @@
   justify-content: space-between;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.Justify_Content_Space_Between_Border {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-left: 1px #c4c4c4 solid;
+  border-right: 1px #c4c4c4 solid;
+}
+
+.Height_30px_Border {
+  height: 30px;
+  border-left: 1px #c4c4c4 solid;
+  border-right: 1px #c4c4c4 solid;
+}
+
+.Height_10px_Border {
+  height: 10px;
+  border-left: 1px #c4c4c4 solid;
+  border-right: 1px #c4c4c4 solid;
+}
+
+.Popup_Form_Max_Size {
+  max-width: 400px;
+  margin: auto;
 }
