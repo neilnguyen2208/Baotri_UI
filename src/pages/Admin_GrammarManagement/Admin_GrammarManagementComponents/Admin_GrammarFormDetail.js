@@ -12,10 +12,11 @@ class Admin_GrammarFormDetail extends Component {
 
     constructor(props) {
         super(props);
+        this.notifyContent = "";
         this.state = {
             GrammarExamples_PutDTO: [
                 {
-                    "id": "",
+                    "id": null,
                     "content": "",
                     "imageURL": ""
                 }
@@ -35,9 +36,8 @@ class Admin_GrammarFormDetail extends Component {
                 "content": ""
             },
             "isAddGrammarExamplePopupOpen": false,
-            "isUpdateGrammarExamplePopupOpen": false,
-            "isVerifyDeleteGrammarExamplePopupOpen": false,
             "isAddGrammarNotePopupOpen": false,
+            "isNotifyPopUpOpen": false
         }
     }
 
@@ -51,9 +51,9 @@ class Admin_GrammarFormDetail extends Component {
         //push example to the list
         e.preventDefault();
         this.state.GrammarExamples_PutDTO.push(this.state.GrammarExample_CreateDTO);
-        console.log(this.state.GrammarNotes_PutDTO === this.props.note_list);
-        console.log(this.state.GrammarExamples_PutDTO);
-        let requestFormID = this.props.form_ID;
+        console.log(JSON.stringify(this.state.GrammarExamples_PutDTO));
+        let requestFormID = parseInt(this.props.form_ID, 10);
+        console.log(requestFormID);
         //get token to request to server
         let token = localStorage.token;
 
@@ -62,102 +62,63 @@ class Admin_GrammarFormDetail extends Component {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    // 'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify(this.state.GrammarExample_PutDTO)
+                body: JSON.stringify(this.state.GrammarExamples_PutDTO)
             }
-        ).then(response => {
-            console.log(response)
-            response.json();
-        })
-            .then(data => {
-                if (data) { }
-                else {
-                    //check điều kiện đó mà
+        )
+            .then(response => {
+                console.log(response);
+                if (response.status === 200 || response.status === 204) {
+                    this.notifyContent = "Add grammar example success!";
+                    this.openNotifyPopupHandler();
+                    return;
                 }
+                this.notifyContent = "Add grammar example failed!";
+                this.openNotifyPopupHandler();
             })
             .catch(error => {
                 console.log(error);
             })
 
-        this.closeAddGrammarExamplePopupHandler();
-        window.location.reload();
+
+        // window.location.reload();
     }
 
     addGrammarNote = e => {
         //push note to the list
         e.preventDefault();
         this.state.GrammarNotes_PutDTO.push(this.state.GrammarNote_CreateDTO);
-        this.setState(this.state);
-        let requestFormID = this.props.form_ID;
+        console.log(JSON.stringify(this.state.GrammarNotes_PutDTO));
+
+        let requestFormID = parseInt(this.props.form_ID, 10);
+        console.log(requestFormID);
         //get token to request to server
         let token = localStorage.token;
 
-        fetch('/api/v1/grammarForms/' + requestFormID + '/notes',
+        fetch('/api/v1/grammarForms/' + requestFormID + '/notes/',
             {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    // 'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify(this.state.GrammarNote_PutDTO)
+                body: JSON.stringify(this.state.GrammarNotes_PutDTO)
             }
-        ).then(response => {
-            console.log(response)
-            response.json();
-        })
-            .then(data => {
-                if (data) { }
-                else {
-                    //check điều kiện đó mà
+        )
+            .then(response => {
+                console.log(response);
+                if (response.status === 200 || response.status === 204) {
+                    this.notifyContent = "Add grammar note success!";
+                    this.openNotifyPopupHandler();
+                    return;
                 }
+                this.notifyContent = "Add grammar note failed!";
+                this.openNotifyPopupHandler();
             })
             .catch(error => {
                 console.log(error);
             })
-
-        this.closeAddGrammarNotePopupHandler();
-        window.location.reload();
-    }
-
-    updateGrammarExample = (e, id) => {
-
-        //push note to the list
-        e.preventDefault();
-        this.setState(this.state);
-        let requestFormID = this.props.form_ID;
-        //get token to request to server
-        let token = localStorage.token;
-
-        //Update current item in PutDTO:
-        // this.state.GrammarExamples_PutDTO[id].content = this.state.GrammarExample_UpdateDTO.content;
-        // this.state.GrammarExamples_PutDTO[id].imageURL = this.state.GrammarExample_UpdateDTO.imageURL;
-
-        fetch('/api/v1/grammarForms/' + requestFormID + '/examples',
-            {
-                method: "PUT",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(this.state.GrammarExamples_PutDTO)
-            }
-        ).then(response => {
-            console.log(response)
-            response.json();
-        })
-            .then(data => {
-                if (data) { }
-                else {
-                    //check điều kiện đó mà
-                }
-            })
-            .catch(error => {
-                console.log(error);
-            })
-
-        this.closeUpdateGrammarExamplePopupHandler();
-        // window.location.reload();
     }
 
     render() {
@@ -165,57 +126,35 @@ class Admin_GrammarFormDetail extends Component {
         // let grammarLog = this.props.example_list.map(t => console.log(t.id));
 
         let grammarDetailExampleList = this.props.example_list.map(example_item =>
-            <div className="Admin_Grammar_Form_Example" key={example_item.id}>
-                <div className="Admin_Grammar_Form_Example_Show_Port">
-                    <div className="admin_decoration_example_text">For example:</div>
-                    <div className="Admin_Grammar_Example_Image_Port">
-                        <img className="Admin_Grammar_Example_Image" src={example_item.imageURL} />
-                    </div>
-                    <div className="Admin_Grammar_Example_Sentences">
-                        <div dangerouslySetInnerHTML={{ __html: example_item.content }} />
-                    </div>
-                </div>
-                <div className="Edit_Delete_Btn_Group" >
-
-                    <Popup modal trigger={
-                        <img className="Edit_Btn" src={edit_btn} />
-                    }
-                        open={this.state.isUpdateGrammarExamplePopupOpen}
-                        onOpen={() => this.openUpdateGrammarExamplePopupHandler(example_item.id)}
-                        closeOnDocumentClick={false}>
-                        <React.Fragment>
-                            <div className="Customize_Popup">
-                                <div className="Popup_Title_Bar">
-                                    <div className="Popup_Title">UPDATE EXAMPLE:</div>
-                                    <img className="Delete_Btn" src={delete_btn} onClick={this.closeUpdateGrammarExamplePopupHandler} />
-                                </div>
-                            </div>
-                            <form className="Popup_Form_Max_Size" onSubmit={(e) => this.updateGrammarExample(e, example_item.id)} >
-                                <div className="Simple_Label">Example content:</div>
-                                <input className="Simple_Changable_Text_Input" type="text" defaultValue={example_item.content} onChange={e => this.changeUpdateGrammarExampleContentHandler(e, example_item.id)} />
-                                <div className="Simple_Label">Example image url:</div>
-                                <input className="Simple_Changable_Text_Input" type="text" defaultValue={example_item.imageURL} onChange={e => this.changeUpdateGrammarExampleImageURLHandler(e, example_item.id)} />
-                                <div className="Height_10px" ></div>
-                                <div className="Align_Center">
-                                    <input className="Blue_Button" type="submit" value="Save"></input>
-                                </div>
-                                <div className="Height_10px" />
-                            </form>
-                        </React.Fragment>
-                    </Popup>
-                    <img className="Delete_Btn" src={delete_btn} />
-                </div>
-            </div>
+            <Admin_GrammarFormExample
+                key={example_item.id}
+                example_form_ID={this.props.form_ID}
+                example_image_url={example_item.imageURL}
+                example_content={example_item.content}
+                example_id={example_item.id}
+                example_PutDTO={this.props.example_list}
+            ></Admin_GrammarFormExample>
         );
 
         let grammarDetailNoteList = this.props.note_list.map((note_item) =>
-            <Admin_GrammarFormNote key={note_item.id} noteContent={note_item.content}></Admin_GrammarFormNote>
+            <Admin_GrammarFormNote
+                key={note_item.id}
+                note_content={note_item.content}
+                note_id={note_item.id}
+                note_form_ID={this.props.form_ID}
+                note_PutDTO={this.props.note_list}
+            >
+            </Admin_GrammarFormNote>
         );
 
         return (
             <div>
                 <div className="Admin_Grammar_Form_Detail">
+
+                    {/* Render các công thức của một form: */}
                     <Admin_GrammarForm form_ID={this.props.form_ID} formTitle={this.props.title} useCase={this.props.useCase} usage={this.props.usage} how={this.props.how} ></Admin_GrammarForm>
+
+                    {/* render các example của một form */}
                     {grammarDetailExampleList}
                     <div className="Height_10px_Border" />
                     {/* Popup for adding grammar example: */}
@@ -251,8 +190,9 @@ class Admin_GrammarFormDetail extends Component {
 
                     <div className="Height_10px_Border" />
 
+                    {/* render các note của form */}
                     {grammarDetailNoteList}
-                    
+
                     <div className="Height_10px_Border" />
                     {/* Popup for adding grammar note: */}
                     <Popup modal trigger={
@@ -283,6 +223,27 @@ class Admin_GrammarFormDetail extends Component {
                     </Popup>
                 </div>
                 <div className="Height_10px" />
+
+                {/* Notify Popup */}
+                <Popup modal
+                    open={this.state.isNotifyPopupOpen}
+                    onOpen={this.openNotifyPopup}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Align_Center">
+                            <div className="Height_30px"></div>
+                            <div className="Simple_Label">{this.notifyContent}</div>
+                            <div className="Height_30px"></div>
+                            <div className="Justify_Content_Space_Between">
+                                <button className="Blue_Button" onClick={this.closeNotifyPopupHandlerAndReload}>
+                                    OK
+                                </button>
+                            </div>
+                            <div className="Height_10px"></div>
+                        </div>
+                    </React.Fragment>
+                </Popup>
             </div>
         )
     }
@@ -324,6 +285,10 @@ class Admin_GrammarFormDetail extends Component {
     //Popup for grammar update example:
     openUpdateGrammarExamplePopupHandler = (id) => {
         this.state.isUpdateGrammarExamplePopupOpen = true;
+        this.state.GrammarExample_UpdateDTO = {
+            "content": "",
+            "imageURL": ""
+        };
         this.setState(this.state);
     }
     closeUpdateGrammarExamplePopupHandler = () => {
@@ -381,6 +346,23 @@ class Admin_GrammarFormDetail extends Component {
     closeVerifyDeleteGrammarNotePopupHandler = () => {
         this.state.isVerifyDeleteNotePopupOpen = false;
         this.setState(this.state);
+    }
+
+    ///Notify Popup
+    openNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    closeNotifyPopupHandlerAndReload = () => {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
+        window.location.reload();
     }
 
 }

@@ -163,9 +163,6 @@ class Admin_GrammarCategoryListItem extends Component {
                         closeOnDocumentClick={false}
                     >
                         <div className="Align_Center">
-                            <div className="Align_Right">
-                                <img className="Delete_Btn" src={delete_btn} onClick={this.closeNotifyPopupHandler} />
-                            </div>
                             <div className="Height_30px"></div>
                             <div className="Simple_Label">{this.notifyContent}</div>
                             <div className="Height_30px"></div>

@@ -9,9 +9,10 @@ class Admin_GrammarForm extends Component {
 
     constructor(props) {
         super(props);
+        this.notifyContent = "";
         this.state = {
             GrammarForm_UpdateDTO: {
-                "id": "",
+                "id": null,
                 "title": null,
                 "usage": null,
                 "useCase": null,
@@ -20,46 +21,45 @@ class Admin_GrammarForm extends Component {
                 "notes": null
             },
             "isUpdateGrammarFormPopupOpen": false,
-            "isVerifyDeleteGrammarFormPopupOpen": false
+            "isVerifyDeleteGrammarFormPopupOpen": false,
+            "isNotifyPopupOpen": false
         }
     }
 
     //initial value for grammar form:
     componentDidMount() {
         this.state.GrammarForm_UpdateDTO.id = this.props.form_ID;
-        // this.state.GrammarForm_UpdateDTO.title = this.props.formTitle;
-        // this.state.GrammarForm_UpdateDTO.useCase = this.props.useCase;
-        // this.state.GrammarForm_UpdateDTO.usage = this.props.usage;
-        // this.state.GrammarForm_UpdateDTO.how = this.props.how;
+        this.state.GrammarForm_UpdateDTO.title = this.props.formTitle;
+        this.state.GrammarForm_UpdateDTO.useCase = this.props.useCase;
+        this.state.GrammarForm_UpdateDTO.usage = this.props.usage;
+        this.state.GrammarForm_UpdateDTO.how = this.props.how;
     }
 
     //PATCH grammar form to serve
-    updateGrammarFormHandler = e => {
+    updateGrammarForm = e => {
         e.preventDefault();
         //lấy token từ localStorage:
         let token = localStorage.token;
-
+        console.log(JSON.stringify(this.state.GrammarForm_UpdateDTO));
         fetch('/api/v1/grammarForms/' + this.props.form_ID,
             {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    // 'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarForm_UpdateDTO)
             }
         )
             .then(response => {
-                console.log(response)
-                response.json();
-                this.closeUpdateGrammarFormPopupHandler();
-                window.location.reload();
-            })
-            .then(data => {
-                if (data) { }
-                else {
-                    //check điều kiện đó mà
+                console.log(response);
+                if (response.status === 200 || response.status === 204) {
+                    this.notifyContent = "Update grammar form success!";
+                    this.openNotifyPopupHandler();
+                    return;
                 }
+                this.notifyContent = "Update grammar form failed!";
+                this.openNotifyPopupHandler();
             })
             .catch(error => {
                 console.log(error);
@@ -68,7 +68,7 @@ class Admin_GrammarForm extends Component {
     }
 
     //DELETE grammar form
-    deleteGrammarFormHandler = e => {
+    deleteGrammarForm = e => {
         e.preventDefault();
         //lấy token từ localStorage:
         let token = localStorage.token;
@@ -78,21 +78,19 @@ class Admin_GrammarForm extends Component {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    // 'Authorization': `Bearer ${token}`
                 }
             }
         )
             .then(response => {
-                console.log(response)
-                response.json();
-                this.closeVerifyDeleteGrammarFormPopupHandler();
-                window.location.reload();
-            })
-            .then(data => {
-                if (data) { }
-                else {
-
+                console.log(response);
+                if (response.status === 200 || response.status === 204) {
+                    this.notifyContent = "Delete grammar form success!";
+                    this.openNotifyPopupHandler();
+                    return;
                 }
+                this.notifyContent = "Delete grammar form failed!";
+                this.openNotifyPopupHandler();
             })
             .catch(error => {
                 console.log(error);
@@ -102,34 +100,13 @@ class Admin_GrammarForm extends Component {
     }
 
 
-    //handle for popup
-    openUpdateGrammarFormPopupHandler = () => {
-        this.state.isUpdateGrammarFormPopupOpen = true;
-        this.setState(this.state);
-    }
-
-    closeUpdateGrammarFormPopupHandler = () => {
-        this.state.isUpdateGrammarFormPopupOpen = false;
-        this.setState(this.state);
-    }
-
-    openVerifyDeleteGrammarFormPopupHandler = () => {
-        this.state.isVerifyDeleteGrammarFormPopupOpen = true;
-        this.setState(this.state);
-    }
-
-    closeVerifyDeleteGrammarFormPopupHandler = () => {
-        this.state.isVerifyDeleteGrammarFormPopupOpen = false;
-        this.setState(this.state);
-    }
-
     render() {
 
         // let
         return (
             <div className="Admin_Grammar_Form">
                 <div className="Admin_Grammar_Form_Port">
-                    <div className="Admin_Grammar_Form_Title">{this.props.formTitle}</div>
+                    <div className="Admin_Grammar_Form_Title">{this.state.GrammarForm_UpdateDTO.title}</div>
                     <div className="Admin_Grammar_Form_Content">
                         <div className="admin_grammar_form_layout">
                             <div className="Admin_Grammar_Form_UseCase">
@@ -159,7 +136,7 @@ class Admin_GrammarForm extends Component {
                                     <img className="Delete_Btn" src={delete_btn} onClick={this.closeUpdateGrammarFormPopupHandler} />
                                 </div>
                             </div>
-                            <form className="Popup_Form_Max_Size" onSubmit={this.updateGrammarFormHandler} >
+                            <form className="Popup_Form_Max_Size" onSubmit={this.updateGrammarForm} >
                                 <div className="Simple_Label">Form title:</div>
                                 <input className="Simple_Changable_Text_Input" type="text" defaultValue={this.props.formTitle} onChange={this.changeUpdateGrammarFormTitleHandler} />
                                 <div className="Simple_Label">Usage:</div>
@@ -192,7 +169,7 @@ class Admin_GrammarForm extends Component {
                             <div className="Simple_Label">  Do you want to delete this form (include your notes and your examples)?</div>
                             <div className="Height_30px"></div>
                             <div className="Justify_Content_Space_Between">
-                                <button className="Blue_Button" onClick={this.deleteGrammarFormHandler}>
+                                <button className="Blue_Button" onClick={this.deleteGrammarForm}>
                                     Verify
                                     </button>
                                 <button className="Red_Button" onClick={this.closeVerifyDeleteGrammarFormPopupHandler}>
@@ -202,31 +179,93 @@ class Admin_GrammarForm extends Component {
                             <div className="Height_10px"></div>
                         </div>
                     </Popup>
-
                 </div>
+
+                {/* Notify Popup */}
+                <Popup modal
+                    open={this.state.isNotifyPopupOpen}
+                    onOpen={this.openNotifyPopup}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <Popup modal
+                            open={this.state.isNotifyPopupOpen}
+                            onOpen={this.openNotifyPopupHandler}
+                            closeOnDocumentClick={false}
+                        >
+                            <div className="Align_Center">
+                                <div className="Height_30px"></div>
+                                <div className="Simple_Label">{this.notifyContent}</div>
+                                <div className="Height_30px"></div>
+                                <div className="Justify_Content_Space_Between">
+                                    <button className="Blue_Button" onClick={this.closeNotifyPopupHandlerAndReload}>
+                                        OK
+                                </button>
+                                </div>
+                                <div className="Height_10px"></div>
+                            </div>
+                        </Popup>
+                    </React.Fragment>
+                </Popup>
             </div>
 
         )
     }
 
+    //handle for popup
+    openUpdateGrammarFormPopupHandler = () => {
+        this.state.isUpdateGrammarFormPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeUpdateGrammarFormPopupHandler = () => {
+        this.state.isUpdateGrammarFormPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    openVerifyDeleteGrammarFormPopupHandler = () => {
+        this.state.isVerifyDeleteGrammarFormPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeVerifyDeleteGrammarFormPopupHandler = () => {
+        this.state.isVerifyDeleteGrammarFormPopupOpen = false;
+        this.setState(this.state);
+    }
+    closeNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    openNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeNotifyPopupHandlerAndReload = () => {
+        this.state.isNotifyPopupOpen = true;
+        this.setState(this.state);
+        window.location.reload();
+    }
+
     //Handler for input change:
     changeUpdateGrammarFormTitleHandler = e => {
-        this.state.formTitle = e.target.value;
+        this.state.GrammarForm_UpdateDTO.title = e.target.value;
         this.setState(this.state);
     }
 
     changeUpdateGrammarFormUsageHandler = e => {
-        this.state.usage = e.target.value;
+        this.state.GrammarForm_UpdateDTO.usage = e.target.value;
         this.setState(this.state);
     }
 
     changeUpdateGrammarFormUsecaseHandler = e => {
-        this.state.useCase = e.target.value;
+        this.state.GrammarForm_UpdateDTO.useCase = e.target.value;
         this.setState(this.state);
     }
 
     changeUpdateGrammarFormHowHandler = e => {
-        this.state.how = e.target.value;
+        this.state.GrammarForm_UpdateDTO.how = e.target.value;
         this.setState(this.state);
     }
 

@@ -144,7 +144,6 @@ class Admin_GrammarDetailManagement extends Component {
                                 {adminGrammarFormDetails}
                             </div>
 
-
                             <div className="Admin_Add_Grammar_Form_Port">
                                 {/* Popup to fill info of new Grammar category: title, description */}
                                 <Popup modal trigger={

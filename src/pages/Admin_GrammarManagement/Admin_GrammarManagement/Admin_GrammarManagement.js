@@ -9,8 +9,8 @@ import Admin_GrammarCategoryItem from '../Admin_GrammarManagementComponents/Admi
 import CustomizePopup from "../../../components/CustomizePopup/CustomizePopup"
 import Popup from 'reactjs-popup'
 import delete_btn from '../../../resources/delete_btn.png'
-//import axios from 'axios'
 
+//Thuc hien thao them mot category:
 class Admin_GrammarManagement extends Component {
     constructor(props) {
         super();
@@ -20,12 +20,12 @@ class Admin_GrammarManagement extends Component {
                 [
                 ],
             GrammarCategory_CreateDTO: {
-                "id": "",
+                "id": null,
                 "title": "",
                 "description": "",
                 "docGrammarContentSummary":
-                    [
-                    ]
+                    null
+
             },
             "isAddGrammarCategoryPopupOpen": false,
             "isNotifyPopupOpen": false
@@ -71,8 +71,15 @@ class Admin_GrammarManagement extends Component {
             }
         )
             .then(response => {
-                console.log(response)
-                response.json();
+                console.log(response);
+                if (response.status === 200) {
+                    this.notifyContent = "Add grammar category success!";
+                    this.openNotifyPopupHandler();
+                }
+                else {
+                    this.notifyContent = "Add grammar category fail!";
+                    this.openNotifyPopupHandler();
+                }
             })
             .catch(error => {
                 console.log(error);
@@ -150,6 +157,26 @@ class Admin_GrammarManagement extends Component {
                         </div>
                     </div>
                 </div>
+                {/*Notify Popup */}
+                <Popup modal
+                    open={this.state.isNotifyPopupOpen}
+                    onOpen={this.openNotifyPopupHandler}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Align_Center">
+                            <div className="Height_30px"></div>
+                            <div className="Simple_Label">{this.notifyContent}</div>
+                            <div className="Height_30px"></div>
+                            <div className="Justify_Content_Space_Between">
+                                <button className="Blue_Button" onClick={this.closeNotifyPopupHandlerAndReload}>
+                                    OK
+                                </button>
+                            </div>
+                            <div className="Height_10px"></div>
+                        </div>
+                    </React.Fragment>
+                </Popup>
                 <div className="Admin_Grammar_Management_Footer">
                     <Footer ></Footer>
                 </div>
@@ -176,6 +203,22 @@ class Admin_GrammarManagement extends Component {
     closeAddGrammarCategoryPopupHandler = () => {
         this.state.isAddGrammarCategoryPopupOpen = false;
         this.setState(this.state);
+    }
+
+    openNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeNotifyPopupHandler = () => {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    closeNotifyPopupHandlerAndReload = () => {
+        this.state.isNotifyPopupOpen = false;
+        this.setState(this.state);
+        window.location.reload();
     }
 }
 
