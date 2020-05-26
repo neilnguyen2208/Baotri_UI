@@ -21,8 +21,8 @@ class DetailManagement extends Component {
         }
     }
 
-    async componentDidMount() {
-        await fetch(window.location.pathname.replace("admin", "api/v1"))
+    componentDidMount() {
+        fetch(window.location.pathname.replace("admin", "api/v1"))
           .then(response => response.json())
           .then(data =>
            this.setState({
@@ -37,7 +37,7 @@ class DetailManagement extends Component {
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <LessonDetailManagementItem item={item} audio={this.audio} handleDelete={this.deleteVocabulary.bind(this)}></LessonDetailManagementItem>
+                    <LessonDetailManagementItem item={item} audio={this.audio} handleDelete={this.deleteVocabulary.bind(this)} handleEdit={this.editVocabulary.bind(this)}></LessonDetailManagementItem>
                 </div>
             );
         })
@@ -86,23 +86,27 @@ class DetailManagement extends Component {
 
     
     showAddPopup () {
+        console.log(this.state.items);
         this.setState({
+            items: this.state.items,
             showPopup: !this.state.showPopup
         })
     }
 
     saveNewVocabulary (item) {
-        console.log(this.state.items);
+        console.log("vocab: " + this.state.items);
         if(item.title != "")
             this.state.items.push(item);
             console.log(this.state.items);
         this.setState({
+            items: this.state.items,
             showPopup: !this.state.showPopup
         })
     }
 
     editVocabulary (item) {
         this.setState({
+            items: this.state.items,
             showPopup: !this.state.showPopup
         })
     }

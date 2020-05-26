@@ -7,7 +7,7 @@ class NewVocabularyType extends Component {
         this.state = {
             item: {
                 id: 1,
-                title: "" 
+                title:""
             }
         }
     }
@@ -16,7 +16,7 @@ class NewVocabularyType extends Component {
             <div className="NewVocabularyType">
                 <div className="NewVocabularyTypeInner">
                     <label>Add New Vocabulary Type</label>
-                    <input className="Name" type="text" onChange={this.handleNameChange} placeholder="Name of new Vocabulary Type" defaultValue = {this.props.type!=null ? this.props.type.title :""}></input>
+                    <input className="Name" type="text" onChange={this.handleNameChange} placeholder="Name of new Vocabulary Category" defaultValue = {this.props.type!=null ? this.props.type.title :""}></input>
                     <button className="Save" onClick={this.props.type != null ? ()=> this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
                     <button className="Close" onClick={this.props.closePopup}>Close</button>
                 </div>
@@ -27,7 +27,8 @@ class NewVocabularyType extends Component {
     handleNameChange(e) {
         this.setState(
             {
-                item: { id: this.state.item.id, title: e.target.value}
+                item: { id: this.props.type ? this.props.type.id : this.state.item.id, 
+                    title: e.target.value}
             }
         )
     }

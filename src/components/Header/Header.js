@@ -3,7 +3,7 @@ import './Header.css'
 import mainLogo from '../../resources/logo.png'
 import profilIcon from '../../resources/account_icon.png'
 import { Redirect, withRouter } from "react-router-dom";
-import { isLogin } from "../../pages/Login/Login.js";
+import { isLogin, isAdmin } from "../../pages/Login/Login.js";
 
 
 class Header extends Component{
@@ -21,6 +21,7 @@ class Header extends Component{
 
     render(){
         const isAuthenticated = isLogin();
+        let isAdminAccount = isAdmin();
         let loginOrLogOut;
         if(!isAuthenticated)
             loginOrLogOut = <a href='/login'>Log In</a> ;
@@ -39,7 +40,7 @@ class Header extends Component{
                         <div className="Header_Horizontal_Line"></div>
                         <div className="Header_Item">
                             <ul className="Item_Manage">
-                                {isAuthenticated ? <a href="/admin">Manage</a>:""}
+                                {isAdminAccount ? <a href="/admin">Manage</a>:""}
                             </ul>
                             <ul className="Item_LearnEnglish">
                                 <a href="/">LEARN ENGLISH</a>

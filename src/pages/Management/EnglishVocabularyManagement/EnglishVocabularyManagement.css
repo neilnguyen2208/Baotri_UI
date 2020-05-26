@@ -124,6 +124,10 @@
     vertical-align: middle;
 }
 
+.VocabularyManagement .Content .Content_Row .Content_Row_Items .Add:hover {
+    cursor: pointer;
+}
+
 .VocabularyManagement .Content .VocabularyManagement_Footer{
     position: relative;
     background-color: darkorange;

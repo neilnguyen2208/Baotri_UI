@@ -26,7 +26,7 @@ class AddNewWord extends Component {
                     <input className="Name" type="text" onChange={this.handleContentChange} placeholder="Word Name" defaultValue={word ? word.content:""}></input>
                     <input className="Pronounce" placeholder="Spelling" onChange={this.handleSpellingChange} defaultValue={word ? word.spelling:""}></input>
                     <input className="Soundfile" type="text" placeholder="Audio url" onChange={this.handleAudioURLChange} defaultValue ={word ? word.spellingAudioURL:""}></input>
-                    <textarea className="Meaning" placeholder="Meaning" onChange={this.handleDescriptionChange} defaultValue={word ? word.description:""}></textarea>
+                    <input className="Meaning" type="text" placeholder="Meaning" onChange={this.handleDescriptionChange} defaultValue={word ? word.description:""}></input>
                     <button className="Save" onClick={word ? ()=>this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
                     <button className="Close" onClick={this.props.closePopup}>Close</button>
                 </div>

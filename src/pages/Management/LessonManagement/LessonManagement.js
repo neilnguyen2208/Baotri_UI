@@ -101,7 +101,7 @@ class LessonManagement extends Component {
         }
     }
 
-    async editVocabularyLesson(item) {
+    editVocabularyLesson (item) {
         this.newClass = item;
         //await fetch()
         console.log(item);

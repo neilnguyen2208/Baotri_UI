@@ -15,26 +15,25 @@ class EnglishVocabularyManagement extends Component {
         this.state = {
             items: [
             ],
-            showPopup: false
+            showPopup: false,
+            isEdit: false,
+            editableItem: {}
         }
     }
 
-    componentDidMount() {
-        fetch(window.location.pathname.replace("admin", "api/v1"))
-          .then(response => response.json())
-          // ...then we update the users state
-          .then(data =>
-           this.setState({
-               items: data
-           })
-          );
+    async componentDidMount() {
+        let response = await fetch(window.location.pathname.replace("admin", "api/v1"))
+        let data = await response.json();
+        this.setState({
+            items: data
+        })
     }
     render() {
 
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <VocabularyManagementItem item={item} handleDelete = {this.deleteVocabularyType.bind(this)} handleEdit = {this.editVocabularyType.bind(this)}></VocabularyManagementItem>
+                    <VocabularyManagementItem item={item} handleDelete = {this.deleteVocabularyType.bind(this)} handleEdit = {this.editClick.bind(this)}></VocabularyManagementItem>
                 </div>
             );
         })
@@ -53,7 +52,7 @@ class EnglishVocabularyManagement extends Component {
                         <AdminMenu></AdminMenu>
                         <div className="Content_Row_Title">Choose a Category</div>
                         <div className="Content_Row_Items">
-                            <div className="Item Add" onClick={this.showAddPopup.bind(this)}>+ Thêm danh mục</div>
+                            <div className="Item Add" onClick={this.showAddPopup.bind(this)}>+ Add New Category</div>
                            {cards}
                         </div>
                    </div>
@@ -62,7 +61,9 @@ class EnglishVocabularyManagement extends Component {
                     </div>
                 </div>
                 {
-                    this.state.showPopup ? <NewVocabularyType handleEdit={this.editVocabularyType.bind(this)} type ={this.type?this.type:null} handleSave ={this.saveNewVocabularyType.bind(this)} closePopup = {this.showAddPopup.bind(this)}></NewVocabularyType>
+                    this.state.showPopup ? <NewVocabularyType  handleEdit={this.editVocabularyType.bind(this)} 
+                    type ={this.type?this.type:null} handleSave ={this.saveNewVocabularyType.bind(this)} 
+                    closePopup = {this.showAddPopup.bind(this)}></NewVocabularyType>
                     : null
                 }
             </div>
@@ -75,31 +76,70 @@ class EnglishVocabularyManagement extends Component {
         })
     }
 
-    saveNewVocabularyType (item) {
-        if(item.title != "")
-            this.state.items.push(item);
-        this.setState({
-            showPopup: !this.state.showPopup
-        })
-    }
-
-    deleteVocabularyType (item) {
-        if(window.confirm("Are yor want to delete this type?")){
-            this.state.items.splice(this.state.items.indexOf(item), 1);
-            console.log(this.state.items);
+    async saveNewVocabularyType (item) {
+        if(item.title === "") {
+            alert("Name must be not null!");
+            return;
+        }
+        const requestOption = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }
+        let response = await fetch("/api/v1/vocabCategories", requestOption);
+        let data = await response.json();
+        if(data) {
+            this.state.items.push(data);
             this.setState({
-                items:  this.state.items
-            });
+                showPopup: !this.state.showPopup,
+                isEdit: false
+            })   
+            alert("Insert success!")
+        }
+        else {
+            alert("Error!")
         }
     }
 
-    async editVocabularyType(item) {
+    async deleteVocabularyType (item) {
+        if(window.confirm("Are you want to delete this type?")){     
+            let url = '/api/v1/vocabCategories/' + item.id;
+            await fetch(url, {method: "DELETE"});
+            this.state.items.splice(this.state.items.indexOf(item), 1);
+            this.setState({isEdit: false});
+            alert("Delete success!");
+        }
+    }
+
+    editClick(item) {
         this.type = item;
-        //await fetch()
-        console.log(item);
         this.setState({
-            showPopup: !this.state.showPopup
+            showPopup: !this.state.showPopup,
         });
+    }
+
+    async editVocabularyType(item) {
+        let url = '/api/v1/vocabCategories/' + item.id;
+        const requestPutOption = {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }
+        let newItem = await (await fetch(url, requestPutOption)).json();
+        let index = this.state.items.indexOf(this.type);
+        console.log("index: " + index);
+        console.log("item: " + newItem);
+        if(index!=-1) {
+            this.state.items[index] = newItem;
+        }
+        this.setState({showPopup: !this.state.showPopup});
+        alert("Update success!");
     }
 }
 

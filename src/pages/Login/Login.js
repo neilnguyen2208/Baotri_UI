@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import './Login.css';
 import mailIcon from '../../resources/mail.svg'
 import passwordIcon from '../../resources/lock.svg'
+import jwt_decode from 'jwt-decode'
 import { withRouter, Redirect} from 'react-router';
 
 class Login extends Component {
@@ -114,8 +115,6 @@ class Login extends Component {
             .then((data) => {
                 localStorage.setItem("token", data.accessToken);
                 console.log(data.accessToken);
-                let jwtParsed = parseJwt(data.accessToken);
-                console.log("jwt" + jwtParsed.username);
             })
             .then(()=> this.setState({}));
         }
@@ -139,8 +138,6 @@ class Login extends Component {
                 .then((data) => {
                     localStorage.setItem("token", data.accessToken);
                     console.log(data.accessToken);
-                    let jwtParsed = parseJwt(data.accessToken);
-                    console.log("jwt" + jwtParsed);
                 })
                 .then(()=> this.setState({}));
             }
@@ -190,19 +187,23 @@ class Login extends Component {
 
 }
 
-export function  isLogin(){
+export function  isLogin() {
     const token = localStorage.getItem('token');
     return token && token.length>10;
 }
 
-export function parseJwt (token) {
-    var base64Url = token.split('.')[1];
-    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-    }).join(''));
-
-    return JSON.parse(jsonPayload).toString();
-};
+export function isAdmin() {
+    let token = localStorage.getItem('token');
+    if(!token||token.length<10)
+        return;
+    let jwtParsed = jwt_decode(token);
+    let roles = [];
+    roles = jwtParsed.roles;
+    if(roles.length>0) {
+        console.log(roles[0].authority == "ROLE_ADMIN");
+        return roles[0].authority === "ROLE_ADMIN";
+    }
+    return false;
+}
 
 export default withRouter(Login);
