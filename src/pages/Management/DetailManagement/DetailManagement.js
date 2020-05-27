@@ -93,6 +93,7 @@ class DetailManagement extends Component {
 
     async saveNewVocabulary (item) {
         let pathName = window.location.pathname;
+        let token = localStorage.getItem("token");
         let path = pathName.split("/");
         console.log(path + "title: " + item.title);
         if(path.length<1 || item.title == "") {
@@ -105,7 +106,8 @@ class DetailManagement extends Component {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify(item)
         }
@@ -131,6 +133,7 @@ class DetailManagement extends Component {
 
     async handleEditWord(item) {
         let pathName = window.location.pathname;
+        let token = localStorage.getItem("token");
         let path = pathName.split("/");
         console.log(path + "title: " + item.title);
         if(path.length<1 || item.title == "") {
@@ -148,7 +151,8 @@ class DetailManagement extends Component {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify(this.state.items)
         }
@@ -163,8 +167,15 @@ class DetailManagement extends Component {
     async deleteVocabulary (item) {
         if(window.confirm("Are yor want to delete this lesson?")){
             let url = '/api/v1/vocabLessons/' + item.id;
+            let token = localStorage.getItem("token");
+            let requestOption = {
+                method: "DELETE",
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            }
             try{
-                await fetch(url, {method: "DELETE"});
+                await fetch(url, requestOption);
                 this.state.items.splice(this.state.items.indexOf(item), 1);
                 this.setState({
                     items:  this.state.items

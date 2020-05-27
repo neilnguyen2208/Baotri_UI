@@ -84,6 +84,7 @@ class LessonManagement extends Component {
     }
     
     async saveNewVocabularyClass (item) {
+        let token = localStorage.getItem("token");
         let pathName = window.location.pathname;
         let path = pathName.split("/");
         console.log(path + "title: " + item.title);
@@ -97,12 +98,15 @@ class LessonManagement extends Component {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify(item)
         }
         try {
-            let data = await (await fetch(url, requestOption)).json();
+            let response = await fetch(url, requestOption);
+            let data = await response.json();
+            console.log("data: " + JSON.stringify(data));
             this.state.items.push(data)
             this.setState({
                 showPopup: !this.state.showPopup
@@ -118,8 +122,11 @@ class LessonManagement extends Component {
     async deleteVocabularyLesson (item) {
         if(window.confirm("Are yor want to delete this lesson?")){
             let url = '/api/v1/vocabLessons/' + item.id;
+            let token = localStorage.getItem("token");
             try{
-                await fetch(url, {method: "DELETE"});
+                await fetch(url, {method: "DELETE", headers: {
+                    'Authorization': 'Bearer ' + token
+                }});
                 this.state.items.splice(this.state.items.indexOf(item), 1);
                 this.setState({
                     items:  this.state.items
@@ -147,12 +154,14 @@ class LessonManagement extends Component {
             return;
         }
         let url = '/api/v1/vocabLessons/' + item.id;
+        let token = localStorage.getItem("token");
         console.log("url: " + url);
         const requestOption = {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
             },
             body: JSON.stringify(item)
         }
