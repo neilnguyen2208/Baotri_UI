@@ -12,9 +12,6 @@ class LessonManagementItem extends Component{
         }
     }
 
-    async componentDidMount(){
-        await fetch(window.location.pathname);
-    }
     render() {
         const {title} = this.props.item;
         return (
@@ -33,7 +30,7 @@ class LessonManagementItem extends Component{
 
     handleClick (event, category){
         let title = this.props.item.title.split(' ').join('');
-        let toPath = decodeURI("/admin/vocabLessons/" + this.props.item.id);
+        let toPath = "/admin/vocabLessons/" + this.props.item.id;
         // const toPath="/vocabulary/id/id";
         this.props.history.push(toPath, {title: this.props.item.title});
     }

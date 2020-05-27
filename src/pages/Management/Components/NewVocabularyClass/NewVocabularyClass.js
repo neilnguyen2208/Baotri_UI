@@ -7,9 +7,9 @@ class NewVocabularyClass extends Component {
         this.handleImageURLChange = this.handleImageURLChange.bind(this);
         this.state = {
             item: {
-                id: 1,
-                title: "",
-                imageURL: ""
+                id: this.props.newClass ? this.props.newClass.id : 1,
+                title: this.props.newClass ? this.props.newClass.title : "",
+                imageURL: this.props.newClass ? this.props.newClass.imageURL : "" 
             }
         }
     }
@@ -41,8 +41,8 @@ class NewVocabularyClass extends Component {
     handleImageURLChange(e) {
         this.setState(
             {
-                item: { id: this.state.item.id, 
-                title: this.state.item.title, 
+                item: { id: this.state.item.id,
+                    title: this.state.item.title, 
                 imageURL: e.target.value}
             }
         )

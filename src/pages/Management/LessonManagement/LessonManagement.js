@@ -24,7 +24,7 @@ class LessonManagement extends Component {
           // ...then we update the users state
           .then(data =>
            this.setState({
-               items: data
+               items: data,
            })
           );
     }
@@ -42,7 +42,7 @@ class LessonManagement extends Component {
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <LessonManagementItem handleDelete={this.deleteVocabularyLesson.bind(this)}  handleEdit={this.editVocabularyLesson.bind(this)} item={item}></LessonManagementItem>
+                    <LessonManagementItem handleDelete={this.deleteVocabularyLesson.bind(this)}  handleEdit={this.editClick.bind(this)} item={item}></LessonManagementItem>
                 </div>
             );
         })
@@ -83,25 +83,56 @@ class LessonManagement extends Component {
         })
     }
     
-    saveNewVocabularyClass (item) {
-        if(item.title != "")
-            this.state.items.push(item);
-        this.setState({
-            showPopup: !this.state.showPopup
-        })
+    async saveNewVocabularyClass (item) {
+        let pathName = window.location.pathname;
+        let path = pathName.split("/");
+        console.log(path + "title: " + item.title);
+        if(path.length<1 || item.title == "") {
+            alert("Invalid Lesson!");
+            return;
+        }
+        let url = '/api/v1/vocabCategories/' + path[path.length-1] +'/lessons';
+        console.log("url: " + url);
+        const requestOption = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }
+        try {
+            let data = await (await fetch(url, requestOption)).json();
+            this.state.items.push(data)
+            this.setState({
+                showPopup: !this.state.showPopup
+            })   
+            alert("Insert success!");
+        }
+        catch (e) {
+            alert("Insert fail!") ;
+        }
+
     }
 
-    deleteVocabularyLesson (item) {
+    async deleteVocabularyLesson (item) {
         if(window.confirm("Are yor want to delete this lesson?")){
-            this.state.items.splice(this.state.items.indexOf(item), 1);
-            console.log(this.state.items);
-            this.setState({
-                items:  this.state.items
-            });
+            let url = '/api/v1/vocabLessons/' + item.id;
+            try{
+                await fetch(url, {method: "DELETE"});
+                this.state.items.splice(this.state.items.indexOf(item), 1);
+                this.setState({
+                    items:  this.state.items
+                });
+                alert("Delete success!");
+            }
+            catch(e) {
+                alert("Delete fail!");
+            }
         }
     }
 
-    editVocabularyLesson (item) {
+    editClick (item) {
         this.newClass = item;
         //await fetch()
         console.log(item);
@@ -109,6 +140,32 @@ class LessonManagement extends Component {
             showPopup: !this.state.showPopup
         });
     }
+
+    async editVocabularyLesson (item) {
+        if(item.title == "") {
+            alert("Invalid Lesson Name!");
+            return;
+        }
+        let url = '/api/v1/vocabLessons/' + item.id;
+        console.log("url: " + url);
+        const requestOption = {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }
+        let newItem = await (await fetch(url, requestOption)).json();
+        console.log("new item: " + JSON.stringify(newItem));
+        let index = this.state.items.indexOf(this.newClass);
+        if(index!=-1) {
+            this.state.items[index] = newItem;
+        }
+        this.setState({showPopup: !this.state.showPopup});
+        alert("Update success!");
+    }
+
 }
 
 export default withRouter(LessonManagement);

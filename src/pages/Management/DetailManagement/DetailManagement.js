@@ -21,15 +21,15 @@ class DetailManagement extends Component {
         }
     }
 
-    componentDidMount() {
-        fetch(window.location.pathname.replace("admin", "api/v1"))
+    async componentDidMount() {
+        await fetch(window.location.pathname.replace("admin", "api/v1"))
           .then(response => response.json())
+          // ...then we update the users state
           .then(data =>
            this.setState({
-               items: data
+               items: data,
            })
           );
-        console.log("items: " + this.state.items);
     }
 
     render() {
@@ -37,7 +37,7 @@ class DetailManagement extends Component {
         let cards = this.state.items.map((item)=>{
             return(
                 <div className="Item" key={item.id}>
-                    <LessonDetailManagementItem item={item} audio={this.audio} handleDelete={this.deleteVocabulary.bind(this)} handleEdit={this.editVocabulary.bind(this)}></LessonDetailManagementItem>
+                    <LessonDetailManagementItem item={item} audio={this.audio} handleDelete={this.deleteVocabulary.bind(this)} handleEdit={this.editClick.bind(this)}></LessonDetailManagementItem>
                 </div>
             );
         })
@@ -77,7 +77,7 @@ class DetailManagement extends Component {
                    </div>
                 </div>
                 {
-                    this.state.showPopup ? <AddNewWord handleSave={this.saveNewVocabulary.bind(this)} closePopup={this.showAddPopup.bind(this)}></AddNewWord>
+                    this.state.showPopup ? <AddNewWord word = {this.word} handleSave={this.saveNewVocabulary.bind(this)} handleEdit = {this.handleEditWord.bind(this)} closePopup={this.showAddPopup.bind(this)}></AddNewWord>
                     : null
                 }
             </div>
@@ -86,34 +86,95 @@ class DetailManagement extends Component {
 
     
     showAddPopup () {
-        console.log(this.state.items);
         this.setState({
-            items: this.state.items,
             showPopup: !this.state.showPopup
         })
     }
 
-    saveNewVocabulary (item) {
-        console.log("vocab: " + this.state.items);
-        if(item.title != "")
-            this.state.items.push(item);
-            console.log(this.state.items);
-        this.setState({
-            items: this.state.items,
-            showPopup: !this.state.showPopup
-        })
+    async saveNewVocabulary (item) {
+        let pathName = window.location.pathname;
+        let path = pathName.split("/");
+        console.log(path + "title: " + item.title);
+        if(path.length<1 || item.title == "") {
+            alert("Invalid Lesson!");
+            return;
+        }
+        let url = '/api/v1/vocabLessons/' + path[path.length-1] + '/content';
+        console.log("url: " + url);
+        const requestOption = {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(item)
+        }
+        try {
+            let data = await (await fetch(url, requestOption)).json();
+            this.state.items.push(data)
+            this.setState({
+                showPopup: !this.state.showPopup
+            })   
+            alert("Insert success!");
+        }
+        catch (e) {
+            alert("Insert fail!") ;
+        }
     }
 
-    editVocabulary (item) {
+    editClick (item) {
         this.setState({
-            items: this.state.items,
             showPopup: !this.state.showPopup
         })
+        this.word = item;
     }
 
-    deleteVocabulary (item) {
-        this.state.items.splice(item);
-        this.setState();
+    async handleEditWord(item) {
+        let pathName = window.location.pathname;
+        let path = pathName.split("/");
+        console.log(path + "title: " + item.title);
+        if(path.length<1 || item.title == "") {
+            alert("Invalid Lesson!");
+            return;
+        }
+        let url = '/api/v1/vocabLessons/' + path[path.length-1] + '/content';
+        console.log("url: " + url);
+        let index = this.state.items.indexOf(this.word);
+        if(index!=-1) {
+            console.log(index);
+            this.state.items[index] = item;
+        }
+        const requestOption = {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.state.items)
+        }
+        console.log("item: " + JSON.stringify(this.state.items));
+        let response = await fetch(url, requestOption);
+        let newItem = await response.json();
+        console.log("new item: " + JSON.stringify(newItem));
+        this.setState({showPopup: !this.state.showPopup});
+        alert("Update success!");
+    }
+
+    async deleteVocabulary (item) {
+        if(window.confirm("Are yor want to delete this lesson?")){
+            let url = '/api/v1/vocabLessons/' + item.id;
+            try{
+                await fetch(url, {method: "DELETE"});
+                this.state.items.splice(this.state.items.indexOf(item), 1);
+                this.setState({
+                    items:  this.state.items
+                });
+                alert("Delete success!");
+            }
+            catch(e) {
+                alert("Delete fail!");
+            }
+        }
     }
 }
 

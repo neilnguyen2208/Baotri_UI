@@ -110,18 +110,23 @@ class Login extends Component {
                 body: JSON.stringify({ username: this.state.username, password: this.state.password })
             };
             console.log(requestOptions);
-            fetch('api/v1/auth/login', requestOptions)
-                .then(response => response.json())
-                .then((data) => {
-                    localStorage.setItem("token", data.accessToken);
-                    console.log(data.accessToken);
+            let response = await fetch('api/v1/auth/login', requestOptions);
+            if(!response.ok) {
+                this.setState({
+                    isCorrectPassword: false
                 })
-                .then(() => this.setState({}));
+                return;
+            }
+            else {
+                let data = await response.json();
+                localStorage.setItem("token", data.accessToken);
+                this.setState({})
+            }
         }
         //sign up
         else {
             //password and retype password not match
-            if (this.canSignUp) {
+            if(this.canSignUp()) {
                 this.setState({
                     isCorrectPassword: false
                 })
@@ -130,24 +135,29 @@ class Login extends Component {
                 const requestOptions = {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username: this.state.username, password: this.state.password, })
+                    body: JSON.stringify({ username: this.state.username, password: this.state.password, email: this.state.email, displayname: this.state.displayname })
                 };
                 console.log(requestOptions);
-                fetch('api/v1/auth/register', requestOptions)
-                    .then(response => response.json())
-                    .then((data) => {
-                        localStorage.setItem("token", data.accessToken);
-                        console.log(data.accessToken);
+                let response = await fetch('api/v1/auth/register', requestOptions);
+                if(!response.ok) {
+                    this.setState({
+                        isCorrectPassword: false
                     })
-                    .then(() => this.setState({}));
+                    return;
+                }
+                else {
+                    let data = await response.json();
+                    localStorage.setItem("token", data.accessToken);
+                    this.setState({})
+                }
             }
         }
     }
-
-    canSignUp() {
-        return this.state.password != this.state.repassword ||
-            !this.state.email || !this.state.displayname
-            || !this.state.password || this.state.repassword;
+    
+    canSignUp () {
+        return (this.state.password != this.state.repassword) || 
+        this.state.email=="" || this.state.displayname==""
+        || this.state.password ==""|| this.state.repassword == "";
     }
 
     handleEmailChange = (event) => {
