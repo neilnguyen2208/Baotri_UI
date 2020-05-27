@@ -33,15 +33,14 @@ class Admin_GrammarFormExample extends Component {
     //update grammar example
     updateGrammarExample = (e) => {
         e.preventDefault();
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarExamples_PutDTO))
         fetch('/api/v1/grammarForms/' + this.props.example_form_ID + '/examples', {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            //     'Authorization': `Bearer ${token}`
-            // },
             body: JSON.stringify(this.state.GrammarExamples_PutDTO)
         })
             .then(response => {
@@ -64,20 +63,22 @@ class Admin_GrammarFormExample extends Component {
 
     deleteGrammarExample = (e) => {
         e.preventDefault();
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
+
         console.log(JSON.stringify(this.state.GrammarExamples_PutDTO));
         for (var i = 0; i < this.state.GrammarExamples_PutDTO.length; i++) {
             if (this.state.GrammarExamples_PutDTO[i].id === this.props.example_id)
                 this.state.GrammarExamples_PutDTO.splice(i, 1);
         }
+
         console.log(JSON.stringify(this.state.GrammarExamples_PutDTO));
         fetch('/api/v1/grammarForms/' + this.props.example_form_ID + '/examples', {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            //     'Authorization': `Bearer ${token}`
-            // },
+
             body: JSON.stringify(this.state.GrammarExamples_PutDTO)
         })
             .then(response => {
@@ -93,7 +94,6 @@ class Admin_GrammarFormExample extends Component {
                 } // window.location.reload();
             })
             .catch(error => {
-
                 console.log("Error:" + error);
             })
     }

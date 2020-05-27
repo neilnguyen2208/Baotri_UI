@@ -30,15 +30,14 @@ class Admin_GrammarFormNote extends Component {
     //update grammar note
     updateGrammarNote = (e) => {
         e.preventDefault();
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarNotes_PutDTO))
         fetch('/api/v1/grammarForms/' + this.props.note_form_ID + '/notes', {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            //     'Authorization': `Bearer ${token}`
-            // },
             body: JSON.stringify(this.state.GrammarNotes_PutDTO)
         })
             .then(response => {
@@ -61,7 +60,7 @@ class Admin_GrammarFormNote extends Component {
 
     deleteGrammarNote = (e) => {
         e.preventDefault();
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarNotes_PutDTO));
         for (var i = 0; i < this.state.GrammarNotes_PutDTO.length; i++) {
             if (this.state.GrammarNotes_PutDTO[i].id === this.props.note_id)
@@ -71,10 +70,9 @@ class Admin_GrammarFormNote extends Component {
         fetch('/api/v1/grammarForms/' + this.props.note_form_ID + '/notes', {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            //     'Authorization': `Bearer ${token}`
-            // },
             body: JSON.stringify(this.state.GrammarNotes_PutDTO)
         })
             .then(response => {

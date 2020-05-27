@@ -56,7 +56,7 @@ class Admin_GrammarManagement extends Component {
         e.preventDefault();
 
         //lấy token từ localStorage:
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
 
         //POST yêu cầu server thêm danh mục ngữ pháp.
 
@@ -65,7 +65,7 @@ class Admin_GrammarManagement extends Component {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    //     'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarCategory_CreateDTO)
             }

@@ -56,14 +56,14 @@ class Admin_GrammarCategoryItem extends Component {
     //PUT Grammar Category Item
     updateGrammarCategory = e => {
         e.preventDefault();
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         console.log(this.state.GrammarCategory_UpdateDTO);
         fetch('/api/v1/grammarCategories/' + this.state.GrammarCategory_UpdateDTO.id,
             {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarCategory_UpdateDTO)
             }
@@ -89,13 +89,13 @@ class Admin_GrammarCategoryItem extends Component {
     deleteGrammarCategoryHandler = e => {
         e.preventDefault();
         // console.log(this.props.item.id);
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
 
         fetch('/api/v1/grammarCategories/' + this.state.GrammarCategory_UpdateDTO.id, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             },
 
         })
@@ -122,14 +122,14 @@ class Admin_GrammarCategoryItem extends Component {
     addGrammarContentSummary = e => {
         e.preventDefault();
         // console.log(this.props.item.id);
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         this.state.GrammarContentSummary_CreateDTO.categoryID = this.props.item.id;
         console.log(this.state.GrammarContentSummary_CreateDTO);
         fetch('/api/v1/grammarCategories/' + this.props.item.id + '/grammar', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(this.state.GrammarContentSummary_CreateDTO)
         })
@@ -331,7 +331,7 @@ class Admin_GrammarCategoryItem extends Component {
     changeAddGrammarContentSummaryTitleHandler = e => {
         this.state.GrammarContentSummary_CreateDTO.grammarTitle = e.target.value;
         console.log(this.state.GrammarContentSummary_CreateDTO);
-    }   
+    }
 
     changeAddGrammarContentSummaryDescriptionHandler = e => {
         this.state.GrammarContentSummary_CreateDTO.grammarDescription = e.target.value;

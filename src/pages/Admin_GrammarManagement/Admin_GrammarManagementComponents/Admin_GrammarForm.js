@@ -39,14 +39,14 @@ class Admin_GrammarForm extends Component {
     updateGrammarForm = e => {
         e.preventDefault();
         //lấy token từ localStorage:
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarForm_UpdateDTO));
         fetch('/api/v1/grammarForms/' + this.props.form_ID,
             {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarForm_UpdateDTO)
             }
@@ -71,14 +71,14 @@ class Admin_GrammarForm extends Component {
     deleteGrammarForm = e => {
         e.preventDefault();
         //lấy token từ localStorage:
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
 
         fetch('/api/v1/grammarForms/' + this.props.form_ID,
             {
                 method: "DELETE",
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 }
             }
         )

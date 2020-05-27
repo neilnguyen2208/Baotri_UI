@@ -35,14 +35,13 @@ class Admin_GrammarCategoryListItem extends Component {
         // console.log(this.GrammarDetail_UpdateDTO);
         e.preventDefault();
         // console.log(this.props.item.id);
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         fetch('/api/v1/grammar/' + this.props.item.grammarID, {
             method: "PATCH",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            //     'Authorization': `Bearer ${token}`
-            // },
             body: JSON.stringify(this.state.GrammarDetail_UpdateDTO)
         })
             .then(response => {
@@ -67,12 +66,12 @@ class Admin_GrammarCategoryListItem extends Component {
     //DELETE Grammar Detail
     deleteGrammarDetail = e => {
         e.preventDefault();
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
         fetch('/api/v1/grammar/' + this.props.item.grammarID, {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`
             }
         })
             .then(response => {

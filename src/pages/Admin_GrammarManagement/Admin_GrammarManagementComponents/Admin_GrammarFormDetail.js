@@ -55,14 +55,14 @@ class Admin_GrammarFormDetail extends Component {
         let requestFormID = parseInt(this.props.form_ID, 10);
         console.log(requestFormID);
         //get token to request to server
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
 
         fetch('/api/v1/grammarForms/' + requestFormID + '/examples',
             {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarExamples_PutDTO)
             }
@@ -94,14 +94,14 @@ class Admin_GrammarFormDetail extends Component {
         let requestFormID = parseInt(this.props.form_ID, 10);
         console.log(requestFormID);
         //get token to request to server
-        let token = localStorage.token;
+        let token = localStorage.getItem('token');
 
         fetch('/api/v1/grammarForms/' + requestFormID + '/notes/',
             {
                 method: "PUT",
                 headers: {
                     'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(this.state.GrammarNotes_PutDTO)
             }
