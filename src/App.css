@@ -84,6 +84,24 @@
   color: #211f60;
 }
 
+.Simple_Changable_Text_Input {
+  width: 100%;
+  padding: 6px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  color: #363636;
+}
+
 .Simple_Label {
   font-family: Barlow Condensed;
   font-style: normal;
@@ -127,6 +145,10 @@
   border-radius: 20px;
   background: #211f60;
   outline: none !important;
+}
+
+.Blue_Button:disabled {
+  background: #c4c4c4;
 }
 
 .White_Button {
