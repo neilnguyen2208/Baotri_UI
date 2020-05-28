@@ -7,6 +7,7 @@ import Header from "../../components/Header/Header.js";
 import Admin_Menu from '../../components/AdminMenu/AdminMenu';
 import jwt_decode from 'jwt-decode'
 import Popup from 'reactjs-popup'
+import { isLogin, isAdmin } from "../../pages/Login/Login.js";
 
 class Admin_AccountCenterComponent extends Component {
     constructor(props) {

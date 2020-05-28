@@ -176,6 +176,13 @@ class UserAccountManagement extends Component {
         }
     }
 
+    handleLogOut = () => {
+        localStorage.removeItem('token');
+        console.log('logout');
+        this.setState({});
+        window.location.href = '/';
+    }
+
     render() {
         let view;
         if (this.state.isUpdateInfo) {
@@ -293,7 +300,7 @@ class UserAccountManagement extends Component {
                                             {this.state.userInfo_PatchDTO.email}
                                         </div>
                                         <div className="Logout_Btn_Port">
-                                            <button className="Logout_Btn">Logout</button>
+                                            <button className="Logout_Btn" onClick={this.handleLogOut}>Logout</button>
                                         </div>
                                     </div>
 

@@ -73,7 +73,7 @@ function App() {
           <Route path="/admin/user" exact>
             <Admin_UserManagement></Admin_UserManagement>
           </Route>
-          <Route path="/admin/user/:id" exact>
+          <Route path="/user/:id" exact>
             <Admin_UserDetailManagement></Admin_UserDetailManagement>
           </Route>
           <Route path="/admin/vocabCategories" exact>

@@ -46,6 +46,13 @@ class AdminMenu extends Component {
             })
     }
 
+    handleLogOut = () => {
+        localStorage.removeItem('token');
+        console.log('logout');
+        this.setState({});
+        window.location.href = '/';
+    }
+
     render() {
         return (
             <div className="Admin_Menu">
@@ -56,7 +63,7 @@ class AdminMenu extends Component {
                     <div className="Admin_User_Name_Gmail_Port">
                         <div className="Admin_User_Name">{this.state.adminInfo_PatchDTO.displayName}</div>
                         <div className="Admin_Gmail">{this.state.adminInfo_PatchDTO.email}</div>
-                        <button className="Admin_Logout_Btn">Logout</button>
+                        <button className="Blue_Button" onClick={this.handleLogOut} >Logout</button>
                     </div>
                 </div>
                 <div className="Admin_Horizontal_Menu_Bar">
