@@ -1,30 +1,61 @@
 import React, { Component } from 'react';
 import './AdminMenu.css';
-
+import jwt_decode from 'jwt-decode'
 class AdminMenu extends Component {
     constructor(props) {
         super();
 
         this.state = {
-            info: {
-                "avatarUrl": "https://i.imgur.com/q54xYo3.png",
-                "displayName": "Nguyen Van Dong",
-                "userName": "tesla",
-                "gmail": "dongnv.since1999@gmail.com",
-                "password_length": 10
-            }
+            adminInfo_PatchDTO:
+            {
+                "displayName": "",
+                "userName": "",
+                "email": "",
+                "currentPassword": null,
+                "newPassword": null
+            },
+            avatarUrl: "https://i.imgur.com/q54xYo3.png"
         }
     }
+
+    componentDidMount() {
+        this.fetchInfo();
+    }
+
+    fetchInfo() {
+        let token = localStorage.getItem('token');
+        if (!token || token.length < 10)
+            return;
+        let jwtParsed = jwt_decode(token);
+        this.admin_id = jwtParsed.sub;
+
+        fetch('/api/v1/users/' + this.admin_id, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => response.json())
+            .then(response => {
+                this.state.adminInfo_PatchDTO = response;
+                // console.log(this.state.adminInfo_PatchDTO);
+                this.setState(this.state);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     render() {
         return (
             <div className="Admin_Menu">
                 <div className="Admin_Info_Port">
                     <div className="Admin_Avatar_Port">
-                        <img className="Admin_Avatar" src={this.state.info.avatarUrl} />
+                        <img className="Admin_Avatar" src={this.state.avatarUrl} />
                     </div>
                     <div className="Admin_User_Name_Gmail_Port">
-                        <div className="Admin_User_Name">{this.state.info.displayName}</div>
-                        <div className="Admin_Gmail">{this.state.info.gmail}</div>
+                        <div className="Admin_User_Name">{this.state.adminInfo_PatchDTO.displayName}</div>
+                        <div className="Admin_Gmail">{this.state.adminInfo_PatchDTO.email}</div>
                         <button className="Admin_Logout_Btn">Logout</button>
                     </div>
                 </div>

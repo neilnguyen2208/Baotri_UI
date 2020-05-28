@@ -65,7 +65,7 @@ class Header extends Component{
                             <ul className="Item_Profile_Picture">
                                 <img src={profilIcon}></img>
                                 <div className="Item_Profile_Picture_Dropdown">
-                                    <a href="/">Profile</a>
+                                    <a href="/user/">Profile</a>
                                     {loginOrLogOut}
                                 </div>
                             </ul>
