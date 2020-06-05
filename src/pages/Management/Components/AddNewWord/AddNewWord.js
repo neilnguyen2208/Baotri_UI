@@ -22,7 +22,7 @@ class AddNewWord extends Component {
         return(
             <div className="AddNewWord">
                 <div className="AddNewWordInner">
-                    <label>Add New Word</label>
+                    {word?<label>Edit Word</label> : <label>Add New Word</label>}
                     <input className="Name" type="text" onChange={this.handleContentChange} placeholder="Word Name" defaultValue={word ? word.content:""}></input>
                     <input className="Pronounce" placeholder="Spelling" onChange={this.handleSpellingChange} defaultValue={word ? word.spelling:""}></input>
                     <input className="Soundfile" type="text" placeholder="Audio url" onChange={this.handleAudioURLChange} defaultValue ={word ? word.spellingAudioURL:""}></input>

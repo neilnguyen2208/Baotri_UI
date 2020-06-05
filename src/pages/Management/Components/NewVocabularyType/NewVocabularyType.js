@@ -15,7 +15,7 @@ class NewVocabularyType extends Component {
         return(
             <div className="NewVocabularyType">
                 <div className="NewVocabularyTypeInner">
-                    <label>Add New Vocabulary Type</label>
+                    {this.props.type ? <label>Edit Vocabulary Type</label> : <label>Add New Vocabulary Type</label>}
                     <input className="Name" type="text" onChange={this.handleNameChange} placeholder="Name of new Vocabulary Category" defaultValue = {this.props.type!=null ? this.props.type.title :""}></input>
                     <button className="Save" onClick={this.props.type != null ? ()=> this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
                     <button className="Close" onClick={this.props.closePopup}>Close</button>

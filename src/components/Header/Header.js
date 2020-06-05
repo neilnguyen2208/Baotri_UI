@@ -22,6 +22,7 @@ class Header extends Component{
     render(){
         const isAuthenticated = isLogin();
         let isAdminAccount = isAdmin();
+        console.log("admin: " + isAdminAccount);
         let loginOrLogOut;
         if(!isAuthenticated)
             loginOrLogOut = <a href='/login'>Log In</a> ;
@@ -40,7 +41,7 @@ class Header extends Component{
                         <div className="Header_Horizontal_Line"></div>
                         <div className="Header_Item">
                             <ul className="Item_Manage">
-                                {isAdminAccount ? <a href="/admin">Manage</a>:""}
+                                {isAdminAccount ? <a href="/admin">MANAGE</a>: null}
                             </ul>
                             <ul className="Item_LearnEnglish">
                                 <a href="/">LEARN ENGLISH</a>

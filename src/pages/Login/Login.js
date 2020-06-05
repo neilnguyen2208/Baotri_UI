@@ -119,7 +119,7 @@ class Login extends Component {
             }
             else {
                 let data = await response.json();
-                localStorage.setItem("token", data.accessToken);
+                sessionStorage.setItem("token", data.accessToken);
                 this.setState({})
             }
         }
@@ -147,7 +147,7 @@ class Login extends Component {
                 }
                 else {
                     let data = await response.json();
-                    localStorage.setItem("token", data.accessToken);
+                    sessionStorage.setItem("token", data.accessToken);
                     this.setState({})
                 }
             }
@@ -198,21 +198,21 @@ class Login extends Component {
 }
 
 export function isLogin() {
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     return token && token.length > 10;
 }
 
 export function isAdmin() {
-    let token = localStorage.getItem('token');
+    let token = sessionStorage.getItem('token');
     if (!token || token.length < 10)
         return;
     let jwtParsed = jwt_decode(token);
     let roles = [];
     roles = jwtParsed.roles;
     console.log(roles);
-    if (roles.length > 0) {
+    if (roles.length > 1) {
         console.log(roles[0].authority == "ROLE_ADMIN");
-        return roles[0].authority === "ROLE_ADMIN";
+        return roles[0].authority === "ROLE_ADMIN" || roles [1].authority === "ROLE_ADMIN";
     }
     return false;
 }

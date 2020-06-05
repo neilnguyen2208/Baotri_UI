@@ -18,7 +18,7 @@ class NewVocabularyClass extends Component {
         return(
             <div className="NewVocabularyClass">
                 <div className="NewVocabularyClassInner">
-                    <label>Add New Class</label>
+                    {newClass ? <label>Edit Class</label> : <label>Add New Class</label>}
                     <input className="Name" type="text" onChange={this.handleNameChange} placeholder="Name " defaultValue={newClass ? newClass.title : ""}></input>
                     <input className="ImageURL" type="text" onChange={this.handleImageURLChange} placeholder="Image URL" defaultValue={newClass ? newClass.imageURL : ""}></input>
                     <button className="Save" onClick={ newClass ? ()=>this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
