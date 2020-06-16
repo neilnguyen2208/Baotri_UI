@@ -1,32 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+
 .Grammar_Category_Item {
-    position: relative;
-    width: 100%;
-    height: fit-content;
-    margin-bottom: 20px;
-    border: 1px solid #c4c4c4;
-    border-top: 5px #3366ff solid;
-    /* background: greenyellow; */
+    position      : relative;
+    width         : 100%;
+    height        : fit-content;
+    margin-bottom : 20px;
+    border        : 1px solid #c4c4c4;
+    border-top    : 5px #3366ff solid;
+    /* background : greenyellow; */
     padding-bottom: 10px;
 }
 
-.Grammar_Category_Item:hover{
+.Grammar_Category_Item:hover {
     box-shadow: 0px 0px 5px 1px #c4c4c4;
 }
 
-.Grammar_Category_Item .Grammar_Category_Item_Name {
-    position: relative;
-    width: 98%;
+.Grammar_Category_Item_Name {
+    position      : relative;
+    width         : 98%;
     padding-bottom: 5px;
-    padding-left: 2%;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 30px;
-    color: #3366ff;
-}
-
-.Grammar_Category_Item_Sub_Items {
- 
+    padding-left  : 2%;
+    font-family   : Open Sans;
+    font-style    : normal;
+    font-weight   : bold;
+    font-size     : 20px;
+    line-height   : 30px;
+    color         : #3366ff;
 }

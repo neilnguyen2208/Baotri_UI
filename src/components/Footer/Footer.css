@@ -1,27 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .Footer {
-    z-index   : -1;
+    box-sizing: border-box;
     position  : relative;
     width     : 100%;
-    height    : 300px;
-    min-height: 300px;
-
+    height    : 270px;
 }
 
 .Footer_1 {
-    position     : relative;
-    padding-left : 7%;
-    padding-right: 7%;
-    height       : 70%;
-    background   : #3366ff;
-    width        : 86%;
+    position  : relative;
+    height    : 60%;
+    min-height: 200px;
+    background: #3366ff;
 }
 
+.Contact_Us {
+    vertical-align: text-bottom;
+    font-family   : 'Open Sans', sans-serif;
+    font-weight   : 700;
+    font-size     : 23px;
+    line-height   : 33px;
+    align-items   : center;
+    color         : #FFFFFF;
+}
+
+.Under_Contact_Us {
+    font-family: 'Open Sans', sans-serif;
+    font-style : bold;
+    font-weight: 600;
+    font-size  : 13px;
+    color      : #FFFFFF;
+    position   : relative;
+    align-self : end;
+}
+
+.Icon_Image {
+    width : 25px;
+    height: 25px;
+}
+
+.Icon_Image:hover {
+    cursor: pointer;
+}
+
+.Icon_Contact_Port {
+    width          : 60px;
+    display        : flex;
+    margin-left    : 30px;
+    height         : fit-content;
+}
 
 .Footer_2 {
-    position     : relative;
-    height       : 30%;
-    padding-left : 7%;
-    width        : 86%;
-    padding-right: 7%;
-    background   : #3399ff;
+    position: relative;
+
+    background: #3399ff;
+}
+
+.Footer_Logo {
+    margin-top   : 10px;
+    width        : 200px;
+    height       : auto;
+    margin-bottom: 10px;
+}
+
+.Footer_Copyright {
+    margin-top   : auto;
+    margin-bottom: auto;
+    margin-left  : 20px;
+    font-family  : Open Sans;
+    font-style   : normal;
+    font-weight  : bold;
+    font-size    : 12px;
+    display      : flex;
+    color        : #FFFFFF;
 }

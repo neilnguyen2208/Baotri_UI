@@ -1,40 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap");
+
 .Grammar_Category_List_Item {
     text-decoration: unset;
-    position: relative;
-    margin-left: 2%;
-    vertical-align: top;
-    font-size: 16px;
-    line-height: 20px;
-    padding-top: 5px;
-    height: fit-content;
-    border-left: 5px #3366ff solid;
+    position       : relative;
+    margin-left    : 2%;
+    vertical-align : top;
+    font-size      : 16px;
+    line-height    : 20px;
+    padding-top    : 5px;
+    height         : fit-content;
+    border-left    : 5px #3366ff solid;
 }
+
 .Grammar_Category_List_Item_Name {
-    position: relative;
-    height: 20px;
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    left: 2%;
-    width: 96%;
+    position      : relative;
+    height        : 20px;
+    font-family   : "Open Sans";
+    font-style    : normal;
+    font-weight   : 700;
+    font-size     : 20px;
+    left          : 2%;
+    width         : 96%;
     vertical-align: top;
-    font-size: 16px;
-    line-height: 20px;
-    color: #363636;
-    text-align: left;
-    padding-top: 5px;
-    height: fit-content;
-    border-bottom: 1px #c4c4c4 solid;
+    font-size     : 16px;
+    line-height   : 20px;
+    color         : #363636;
+    text-align    : left;
+    padding-top   : 5px;
+    height        : fit-content;
+    border-bottom : 1px #c4c4c4 solid;
 }
 
 .Grammar_Category_List_Item:hover {
     background: #3366ff;
-    cursor: pointer;
+    cursor    : pointer;
 }
 
 .Grammar_Category_List_Item_Name:hover {
-    color: white;
+    color : white;
     cursor: pointer;
 }
