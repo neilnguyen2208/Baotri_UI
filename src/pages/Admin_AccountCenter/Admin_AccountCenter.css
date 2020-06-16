@@ -2,89 +2,91 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap");
 
 .Admin_Account_Center {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
+    position : absolute;
+    width    : 100%;
+    height   : 100%;
+    margin   : 0px;
+    padding  : 0px;
     min-width: 1200px;
+
 }
 
 .Admin_Account_Center_Header {
-    top: 0px;
-    width: 100%;
+    top   : 0px;
+    width : 100%;
     height: 10%;
     bottom: 0px;
-    left: 0px;
+    left  : 0px;
 }
 
 .Admin_Account_Center_Dock_Notification {
-    position: relative;
-    width: 100%;
-    height: 10%;
-    padding-left: 15px;
-    display: flex;
-    align-items: center;
+    position        : relative;
+    width           : 100%;
+    height          : 10%;
+    padding-left    : 15px;
+    display         : flex;
+    align-items     : center;
     background-color: gray;
 }
 
 .Admin_Account_Center_Main_Port {
-    top: 100px;
-    position: relative;
-    left: 6%;
-    width: 88%;
-    height: fit-content;
+    margin-top       : 100px;
+    position         : relative;
+    left             : 6%;
+    width            : 88%;
+    height           : fit-content;
     background-repeat: no-repeat;
-    padding-top: 0px;
-    border: 1px #c4c4c4 solid;
+    padding-top      : 0px;
+    border           : 1px #c4c4c4 solid;
+    background       : white;
 }
 
 .Admin_Account_Center_Horizontal_Menu_Bar_Main_Management_Port {
-    position: relative;
-    padding-left: 10px;
-    padding-right: 10px;
+    position      : relative;
+    padding-left  : 10px;
+    padding-right : 10px;
     padding-bottom: 20px;
 }
 
 .Admin_Account_Center_Management_Port {
-    height: fit-content;
-    border: #c4c4c4 solid 1px;
-    border-top: 0px;
-    padding-top: 10px;
+    height        : fit-content;
+    border        : #c4c4c4 solid 1px;
+    border-top    : 0px;
+    padding-top   : 10px;
     padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-height: 800px;
-    display: flex;
+    padding-left  : 20px;
+    padding-right : 20px;
+    min-height    : 800px;
+    display       : flex;
 }
 
 .Admin_Account_Center .Admin_Account_Center_Menu {
-    height: fit-content;
-    margin-top: 10px;
-    padding: 10px;
-    position: relative;
-    box-sizing: border-box;
-    border-left: 1px;
-    border-right: 1px;
+    height       : fit-content;
+    margin-top   : 10px;
+    padding      : 10px;
+    position     : relative;
+    box-sizing   : border-box;
+    border-left  : 1px;
+    border-right : 1px;
     border-bottom: 1px;
-    border-color: #c4c4c4;
-    border-top: 5px #3366ff;
-    border-style: solid;
-    font-family: "Barlow Condensed", "san-serif";
-    font-weight: 500;
-    font-size: 20px;
-    color: #363636;
-    width: 25%;
+    border-color : #c4c4c4;
+    border-top   : 5px #3366ff;
+    border-style : solid;
+    font-family  : "Barlow Condensed", "san-serif";
+    font-weight  : 500;
+    font-size    : 20px;
+    color        : #363636;
+    width        : 25%;
 }
 
 .Admin_Account_Center .Admin_Account_Center_Menu_Item {
-    display: flex;
-    position: relative;
+    display       : flex;
+    position      : relative;
     flex-direction: row;
-    padding-top: 5px;
-    height: fit-content;
-    user-select: none;
-    border: 1px white solid;
+    padding-top   : 5px;
+    height        : fit-content;
+    user-select   : none;
+    border        : 1px white solid;
 }
 
 .Admin_Account_Center .Admin_Account_Center_Menu_Item:hover {
@@ -94,67 +96,67 @@
 
 .Admin_Account_Center .Admin_Account_Center_Menu_Item:active {
     background: #c4c4c4;
-    cursor: pointer;
+    cursor    : pointer;
 }
 
 .Admin_Account_Center .Admin_Account_Center_Btn_Element {
-    align-self: center;
-    width: 8px;
-    height: 8px;
+    align-self   : center;
+    width        : 8px;
+    height       : 8px;
     padding-right: 5px;
 }
 
 .Admin_Account_Center_Show_Info_Port {
-    box-sizing: border-box;
-    margin: auto;
-    background: white;
-    padding: 10px;
-    border: 1px #c4c4c4 solid;
-    margin-top: 10px;
-    width: 100%;
+    box-sizing : border-box;
+    margin     : auto;
+    background : white;
+    padding    : 10px;
+    border     : 1px #c4c4c4 solid;
+    margin-top : 10px;
+    width      : 100%;
     margin-left: 10px;
 }
 
 .Admin_Account_Center .Admin_Account_Center_Show_Info_Sub_Port {
-    box-sizing: border-box;
-    margin: auto;
-    background: white;
-    padding: 10px;
-    border: 1px #c4c4c4 solid;
-    margin-top: 10px;
+    box-sizing   : border-box;
+    margin       : auto;
+    background   : white;
+    padding      : 10px;
+    border       : 1px #c4c4c4 solid;
+    margin-top   : 10px;
     margin-bottom: 10px;
-    width: 100%;
-    height: 100%;
+    width        : 100%;
+    height       : 100%;
 }
 
 .Admin_Account_Center .Admin_Account_Center_Label {
     font-family: Barlow Condensed;
-    font-style: normal;
+    font-style : normal;
     font-weight: 600;
-    font-size: 16px;
+    font-size  : 16px;
     line-height: 19px;
-    display: flex;
+    display    : flex;
     align-items: center;
-    text-align: right;
-    color: #363636;
+    text-align : right;
+    color      : #363636;
 }
 
 .Admin_Account_Center .Admin_Account_Center_Changable_Input {
-    width: 100%;
-    padding: 6px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
+    width        : 100%;
+    padding      : 6px 20px;
+    margin       : 8px 0;
+    display      : inline-block;
+    border       : 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 22px;
-    display: flex;
-    align-items: center;
-    color: #3366ff;
+    box-sizing   : border-box;
+    font-family  : Open Sans;
+    font-style   : normal;
+    font-weight  : bold;
+    font-size    : 16px;
+    line-height  : 22px;
+    display      : flex;
+    align-items  : center;
+    color        : #3366ff;
 }
 
 .Admin_Account_Center_Changable_Input:hover,
@@ -163,22 +165,22 @@
 }
 
 .Admin_Account_Center .Admin_Account_Center_Unchangable_Input {
-    width: 100%;
-    padding: 6px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
+    width        : 100%;
+    padding      : 6px 20px;
+    margin       : 8px 0;
+    display      : inline-block;
+    border       : 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 22px;
-    display: flex;
-    align-items: center;
-    color: #363636;
-    background: #c4c4c4;
+    box-sizing   : border-box;
+    font-family  : Open Sans;
+    font-style   : normal;
+    font-weight  : bold;
+    font-size    : 16px;
+    line-height  : 22px;
+    display      : flex;
+    align-items  : center;
+    color        : #363636;
+    background   : #c4c4c4;
 }
 
 .Admin_Account_Center_Save_Change_Info_Btn_Port {
@@ -186,26 +188,24 @@
 }
 
 .Admin_Account_Center_Save_Change_Info_Btn {
-    margin: auto;
-    box-sizing: border-box;
-    width: 120px;
-    height: 25px;
+    margin        : auto;
+    box-sizing    : border-box;
+    width         : 120px;
+    height        : 25px;
     vertical-align: auto;
-    border-radius: 5px;
-    background: #3366ff;
-    font-family: "Barlow Condensed", sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
-    color: #ffffff;
-    border: #ffffff;
-    text-align: center;
+    border-radius : 5px;
+    background    : #3366ff;
+    font-family   : "Barlow Condensed", sans-serif;
+    font-weight   : 600;
+    font-size     : 18px;
+    line-height   : 22px;
+    color         : #ffffff;
+    border        : #ffffff;
+    text-align    : center;
 }
+
 .Admin_Account_Center_Footer {
-    margin-top: 20px;
-    top: 100px;
-    position: relative;
-    bottom: 0px;
-    height: 10%;
-    width: 100%;
+    z-index   : -1;
+    margin-top: -50px;
+    position  : relative;
 }

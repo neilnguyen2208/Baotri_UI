@@ -1,126 +1,123 @@
 .Admin_Grammar_Management {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
+    position : absolute;
+    width    : 100%;
+    height   : 100%;
+    margin   : 0px;
+    padding  : 0px;
     min-width: 1200px;
 }
 
 .Admin_Grammar_Management_Header {
-    top: 0px;
-    width: 100%;
+    top   : 0px;
+    width : 100%;
     height: 10%;
     bottom: 0px;
-    left: 0px;
+    left  : 0px;
 }
 
 .Admin_Grammar_Management .Admin_Grammar_Management_Dock_Notification {
-    position: relative;
-    width: 100%;
-    height: 10%;
-    padding-left: 15px;
-    display: flex;
-    align-items: center;
+    position        : relative;
+    width           : 100%;
+    height          : 10%;
+    padding-left    : 15px;
+    display         : flex;
+    align-items     : center;
     background-color: gray;
 }
 
 .Admin_Grammar_Management_Main_Port {
-    top: 100px;
-    position: relative;
-    left: 6%;
-    width: 88%;
-    height: fit-content;
+    margin-top       : 100px;
+    position         : relative;
+    left             : 6%;
+    width            : 88%;
+    height           : fit-content;
     background-repeat: no-repeat;
-    padding-top: 0px;
-    border: 1px #c4c4c4 solid;
+    padding-top      : 0px;
+    border           : 1px #c4c4c4 solid;
+    background       : white;
 }
 
 .Admin_Grammar_Management_Horizontal_Menu_Bar_Main_Management_Port {
-    position: relative;
-    padding-left: 10px;
-    padding-right: 10px;
+    position      : relative;
+    padding-left  : 10px;
+    padding-right : 10px;
     padding-bottom: 20px;
 }
 
 .Admin_Grammar_Management_Port {
-    height: fit-content;
-    border: #c4c4c4 solid 1px;
-    border-top: 0px;
-    padding-top: 10px;
+    height        : fit-content;
+    border        : #c4c4c4 solid 1px;
+    border-top    : 0px;
+    padding-top   : 10px;
     padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    min-height: 800px;
+    padding-left  : 20px;
+    padding-right : 20px;
+    min-height    : 800px;
 }
 
 .Admin_Grammar_Management_Footer {
-    margin-top: 20px;
-    top: 100px;
-    position: relative;
-    bottom: 0px;
-    height: 10%;
-    width: 100%;
+    z-index   : -1;
+    margin-top: -50px;
+    position  : relative;
 }
 
 
 .Admin_Add_Grammar_Category_Item {
-    position: relative;
-    width: 100%;
+    position      : relative;
+    width         : 100%;
     padding-bottom: 10px;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 30px;
-    color: #3366ff;
-    border-left: 1px;
-    border-right: 1px;
-    border-color: #c4c4c4;
-    border-top: 5px #3366ff;
-    border-bottom: 1px #c4c4c4;
-    border-style: solid;
-    text-align: center;
-    padding-top: 5px;
-    margin-bottom: 20px;
+    font-family   : Open Sans;
+    font-style    : normal;
+    font-weight   : bold;
+    font-size     : 16px;
+    line-height   : 30px;
+    color         : #3366ff;
+    border-left   : 1px;
+    border-right  : 1px;
+    border-color  : #c4c4c4;
+    border-top    : 5px #3366ff;
+    border-bottom : 1px #c4c4c4;
+    border-style  : solid;
+    text-align    : center;
+    padding-top   : 5px;
+    margin-bottom : 20px;
 }
 
-.Admin_Add_Grammar_Category_Item:hover{
+.Admin_Add_Grammar_Category_Item:hover {
     box-shadow: 0px 0px 5px 1px #c4c4c4;
 }
 
 .Admin_Add_Grammar_Category_Item .Admin_Add_Grammar_Category_Item_Name {
-    position: relative;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 30px;
-    color: #3366ff;
-    border: #c4c4c4 1px solid;
-    text-align: center;
-    width: fit-content;
-    padding-left: 10px;
+    position     : relative;
+    font-family  : Open Sans;
+    font-style   : normal;
+    font-weight  : bold;
+    font-size    : 16px;
+    line-height  : 30px;
+    color        : #3366ff;
+    border       : #c4c4c4 1px solid;
+    text-align   : center;
+    width        : fit-content;
+    padding-left : 10px;
     padding-right: 10px;
     border-radius: 5px;
-    margin: auto;
-    user-select: none;
+    margin       : auto;
+    user-select  : none;
 }
 
 .Admin_Add_Grammar_Category_Item .Admin_Add_Grammar_Category_Item_Name:hover {
     background: #3366ff;
-    color: white;
-    border: #3366ff 1px solid;
+    color     : white;
+    border    : #3366ff 1px solid;
 }
 
 .Admin_Add_Grammar_Category_Item .Admin_Add_Grammar_Category_Item_Name:active {
     background: #3366ff;
-    color: white;
-    border: white 1px solid;
+    color     : white;
+    border    : white 1px solid;
 }
 
-.Add_Grammar_Category_Form
-{
-    margin: auto;
+.Add_Grammar_Category_Form {
+    margin   : auto;
     max-width: 400px;
 }
