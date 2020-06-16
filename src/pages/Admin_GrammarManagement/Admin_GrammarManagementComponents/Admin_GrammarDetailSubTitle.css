@@ -15,7 +15,7 @@
     font-weight: bold;
     font-size: 20px;
     line-height: 30px;
-    color: #211F60;
+    color: #3366ff;
     border-top: 0px;
     border-bottom: 0px;
     border-left: 1px;
@@ -28,12 +28,12 @@
     position: relative;
     width: 100%;
     height: 5px;
-    background: #211f60;
+    background: #3366ff;
     border-top: 0px;
     border-bottom: 0px;
     border-left: 1px;
     border-right: 1px;
-    border-color: #211F60;
+    border-color: #3366ff;
     border-style: solid;
 }
 

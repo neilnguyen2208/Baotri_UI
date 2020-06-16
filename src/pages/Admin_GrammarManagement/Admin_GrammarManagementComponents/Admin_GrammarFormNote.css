@@ -28,7 +28,7 @@
 }
 
 .admin_decoration_note_text {
-    background: #211f60;
+    background: #3366ff;
     position: relative;
     font-family: "Open Sans";
     font-style: bold;
@@ -36,7 +36,7 @@
     width: fit-content;
     border: 1px;
     border-style: solid;
-    border-color: #211f60;
+    border-color: #3366ff;
     font-size: 14px;
     color: #ffffff;
 }

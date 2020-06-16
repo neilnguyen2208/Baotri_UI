@@ -18,7 +18,7 @@
     color: #363636;
     text-align: left;
     box-shadow: 0px 1px #c4c4c4;
-    border-left: solid 5px #211f60;
+    border-left: solid 5px #3366ff;
     padding-left: 2%;
     margin-left: 2%;
     text-decoration: none;
@@ -29,7 +29,7 @@
 }
 
 .Admin_Grammar_Category_List_Item .Admin_Grammar_Category_List_Item_Name:hover {
-    background: #211f60;
+    background: #3366ff;
     color: white;
     cursor: pointer;
 }

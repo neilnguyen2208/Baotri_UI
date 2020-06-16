@@ -103,7 +103,7 @@
     border-right: 1px;
     border-bottom: 1px;
     border-color: #c4c4c4;
-    border-top: 5px #211f60;
+    border-top: 5px #3366ff;
     border-style: solid;
     font-family: "Barlow Condensed", "san-serif";
     font-weight: 500;
@@ -115,7 +115,7 @@
     box-sizing: border-box;
     height: fit-content;
     padding-bottom: 10px;
-    border-top: 5px #211f60;
+    border-top: 5px #3366ff;
     border-left: 1px #c4c4c4;
     border-right: 1px #c4c4c4;
     border-bottom: 1px #c4c4c4;
@@ -151,7 +151,7 @@
     font-weight: bold;
     font-size: 16px;
     align-items: center;
-    color: #211f60;
+    color: #3366ff;
 }
 
 .Admin_User_Detail_Management .User_Menu .Gmail {
@@ -263,7 +263,7 @@
     height: 25px;
     vertical-align: auto;
     border-radius: 5px;
-    background: #211f60;
+    background: #3366ff;
     font-family: "Barlow Condensed", sans-serif;
     font-weight: 600;
     font-size: 18px;
@@ -293,7 +293,7 @@
     line-height: 22px;
     display: flex;
     align-items: center;
-    color: #211f60;
+    color: #3366ff;
 }
 
 .Admin_User_Detail_Management .User_Menu .User_Show_Info_Port .Display_Name_Port .Display_Name_Input:hover,
@@ -331,7 +331,7 @@
     height: 25px;
     vertical-align: auto;
     border-radius: 5px;
-    background: #211f60;
+    background: #3366ff;
     font-family: "Barlow Condensed", sans-serif;
     font-weight: 600;
     font-size: 18px;

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import GrammarCategoryItem from '../../components/GrammarCategoryItem/GrammarCategoryItem.js';
-import { Container, Col, Row } from 'reactstrap';
 import Header from "../../components/Header/Header.js";
 import './Grammar.css'
 import Footer from "../../components/Footer/Footer.js";
@@ -12,10 +11,7 @@ class Grammar extends Component {
         super();
 
         this.state = {
-            "grammarCategories":
-                [
-
-                ]
+            "grammarCategories":[]
         }
     }
 
@@ -24,7 +20,7 @@ class Grammar extends Component {
             .then(response => response.json())
             .then(data =>
                 this.setState({
-                    grammarCategories : data
+                    grammarCategories: data
                 })
             );
     }
@@ -39,7 +35,7 @@ class Grammar extends Component {
             return (
                 <div className="Item">
                     <GrammarCategoryItem item={item}></GrammarCategoryItem>
-                    
+
                 </div>
             );
         })

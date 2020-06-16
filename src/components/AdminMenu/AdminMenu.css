@@ -1,6 +1,6 @@
 .Admin_Horizontal_Menu_Bar {
     display: flex;
-    border-bottom: 5px #211f60 solid;
+    border-bottom: 5px #3366ff solid;
 }
 
 .Admin_Horizontal_Menu_Item {
@@ -18,7 +18,7 @@
 }
 
 .Admin_Horizontal_Menu_Item:hover {
-    background: #211f60;
+    background: #3366ff;
     cursor: pointer;
 }
 
@@ -78,7 +78,7 @@ a:hover {
     font-weight: bold;
     font-size: 16px;
     align-items: center;
-    color: #211f60;
+    color: #3366ff;
     white-space: nowrap;
     overflow: hidden !important;
     text-overflow: ellipsis;
@@ -93,7 +93,7 @@ a:hover {
     vertical-align: auto;
     text-align: center;
     border-radius: 5px;
-    background: #211f60;
+    background: #3366ff;
     font-family: "Barlow Condensed", sans-serif;
     font-weight: 600;
     font-size: 18px;
@@ -101,7 +101,7 @@ a:hover {
     border: #ffffff;
     padding-left: 10px;
     padding-right: 10px;
-    border: 1px #211f60 solid;
+    border: 1px #3366ff solid;
     outline: none;
 }
 

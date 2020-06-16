@@ -5,7 +5,7 @@
     height: fit-content;
     margin-bottom: 20px;
     border: 1px solid #c4c4c4;
-    border-top: 5px #211f60 solid;
+    border-top: 5px #3366ff solid;
     /* background: greenyellow; */
     padding-bottom: 10px;
 }
@@ -24,7 +24,7 @@
     font-weight: bold;
     font-size: 20px;
     line-height: 30px;
-    color: #211f60;
+    color: #3366ff;
 }
 
 .Grammar_Category_Item_Sub_Items {

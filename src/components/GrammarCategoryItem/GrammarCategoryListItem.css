@@ -8,7 +8,7 @@
     line-height: 20px;
     padding-top: 5px;
     height: fit-content;
-    border-left: 5px #211f60 solid;
+    border-left: 5px #3366ff solid;
 }
 .Grammar_Category_List_Item_Name {
     position: relative;
@@ -30,7 +30,7 @@
 }
 
 .Grammar_Category_List_Item:hover {
-    background: #211f60;
+    background: #3366ff;
     cursor: pointer;
 }
 

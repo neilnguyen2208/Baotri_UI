@@ -73,11 +73,11 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 30px;
-    color: #211f60;
+    color: #3366ff;
     border-left: 1px;
     border-right: 1px;
     border-color: #c4c4c4;
-    border-top: 5px #211f60;
+    border-top: 5px #3366ff;
     border-bottom: 1px #c4c4c4;
     border-style: solid;
     text-align: center;
@@ -96,7 +96,7 @@
     font-weight: bold;
     font-size: 16px;
     line-height: 30px;
-    color: #211f60;
+    color: #3366ff;
     border: #c4c4c4 1px solid;
     text-align: center;
     width: fit-content;
@@ -108,13 +108,13 @@
 }
 
 .Admin_Add_Grammar_Category_Item .Admin_Add_Grammar_Category_Item_Name:hover {
-    background: #211f60;
+    background: #3366ff;
     color: white;
-    border: #211f60 1px solid;
+    border: #3366ff 1px solid;
 }
 
 .Admin_Add_Grammar_Category_Item .Admin_Add_Grammar_Category_Item_Name:active {
-    background: #211f60;
+    background: #3366ff;
     color: white;
     border: white 1px solid;
 }

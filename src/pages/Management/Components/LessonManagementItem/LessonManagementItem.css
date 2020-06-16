@@ -10,7 +10,7 @@
     border-right:  solid gray 1px;
     text-align: center;
     font-size: 16px;
-    color: #211F60;
+    color: #3366ff;
 }
 
 .LessonManagementItem .Content {
@@ -20,7 +20,7 @@
     border-radius: 2px;
     text-align: center;
     font-size: 16px;
-    color: #211F60;
+    color: #3366ff;
 }
 
 .LessonManagementItem .Content:hover {

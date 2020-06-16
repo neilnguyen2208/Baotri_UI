@@ -9,12 +9,12 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: 5px solid #211f60;
+    border-bottom: 5px solid #3366ff;
     margin-bottom: 10px;
 }
 
 .Popup_Title {
-    background: #211f60;
+    background: #3366ff;
     padding-left: 5px;
     padding-right: 5px;
     color: white;

@@ -4,7 +4,7 @@ import Header from "../../components/Header/Header.js";
 import Footer from "../../components/Footer/Footer.js";
 import PageTitle from "../../components/PageTitle/PageTitle.js"
 import Admin_Menu from '../../components/AdminMenu/AdminMenu';
-import Pagination from "../../components/Pagination/Pagination"
+// import Pagination from "../../components/Pagination/Pagination"
 import UserItem from './Admin_UserManagementComponents/UserItem/UserItem';
 
 class Admin_UserManagement extends Component {
@@ -82,7 +82,8 @@ class Admin_UserManagement extends Component {
                         {/* Menu_Main_Show_Port */}
                         <div className="Admin_User_Management_Port">
                             {userItemList}
-                            <Pagination></Pagination>
+                          
+                            {/* <Pagination></Pagination> */}
                         </div>
 
                     </div>

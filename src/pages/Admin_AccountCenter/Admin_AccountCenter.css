@@ -68,7 +68,7 @@
     border-right: 1px;
     border-bottom: 1px;
     border-color: #c4c4c4;
-    border-top: 5px #211f60;
+    border-top: 5px #3366ff;
     border-style: solid;
     font-family: "Barlow Condensed", "san-serif";
     font-weight: 500;
@@ -154,7 +154,7 @@
     line-height: 22px;
     display: flex;
     align-items: center;
-    color: #211f60;
+    color: #3366ff;
 }
 
 .Admin_Account_Center_Changable_Input:hover,
@@ -192,7 +192,7 @@
     height: 25px;
     vertical-align: auto;
     border-radius: 5px;
-    background: #211f60;
+    background: #3366ff;
     font-family: "Barlow Condensed", sans-serif;
     font-weight: 600;
     font-size: 18px;
