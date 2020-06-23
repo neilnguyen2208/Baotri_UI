@@ -33,7 +33,7 @@ class Admin_GrammarFormExample extends Component {
     //update grammar example
     updateGrammarExample = (e) => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarExamples_PutDTO))
         fetch('/api/v1/grammarForms/' + this.props.example_form_ID + '/examples', {
             method: "PUT",
@@ -63,7 +63,7 @@ class Admin_GrammarFormExample extends Component {
 
     deleteGrammarExample = (e) => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
 
         console.log(JSON.stringify(this.state.GrammarExamples_PutDTO));
         for (var i = 0; i < this.state.GrammarExamples_PutDTO.length; i++) {

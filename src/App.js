@@ -5,9 +5,9 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Link,
+  // Link,
 } from 'react-router-dom'
-import Header from './components/Header/Header';
+// import Header from './components/Header/Header';
 import Home from './pages/Home/Home.js'
 import AboutUs from './pages/AboutUs/AboutUs';
 import Grammar from './pages/Grammar/Grammar';
@@ -57,25 +57,26 @@ function App() {
           <Route path="/listening" exact>
             <EnglishListening></EnglishListening>
           </Route>
-          <Route path="/user">
+          <Route path="/user/">
             <UserAccountManagement></UserAccountManagement>
           </Route>
           <Route path="/home/:id">
             <EnglishListening></EnglishListening>
           </Route>
-          <Route path="/admin/" exact>
+          <Route path="/admin" exact>
             <Admin_AccountCenter></Admin_AccountCenter>
           </Route>
           <Route path="/admin/grammar" exact>
             <Admin_GrammarManagement></Admin_GrammarManagement>
           </Route>
-          <Route path="/admin/grammar/:id" exact component={Admin_GrammarDetailManagement}/>
-          <Route path="/admin/user" exact>
+          <Route path="/admin/grammar/:id" exact component={Admin_GrammarDetailManagement} />
+          
+          <Route path="/admin/user_management" exact>
             <Admin_UserManagement></Admin_UserManagement>
           </Route>
-          <Route path="/user/:id" exact>
-            <Admin_UserDetailManagement></Admin_UserDetailManagement>
-          </Route>
+
+          <Route path="/admin/user_management/:id" exact component={Admin_UserDetailManagement} />
+
           <Route path="/admin/vocabCategories" exact>
             <EnglishVocabularyManagement></EnglishVocabularyManagement>
           </Route>

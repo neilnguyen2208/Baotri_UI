@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from 'react'
 import './Admin_UserManagement.css'
 import Header from "../../components/Header/Header.js";
@@ -13,44 +14,59 @@ class Admin_UserManagement extends Component {
         this.state = {
             "users": [
                 {
+                    "id": 2,
                     "userName": "committedmember",
                     "roles": "user",
                     "IsAccountEnabled": true,
                     "email": "committedmember@gmail.com",
-                    "displayName": "Committed Member",
+                    "displayName": "Lưu Biêu Nghị",
                     "passwordLength": 60,
                     "reminders": 95
                 },
                 {
+                    "id": 3,
                     "userName": "committedmember",
                     "roles": "user",
                     "IsAccountEnabled": true,
                     "email": "committedmember@gmail.com",
-                    "displayName": "Committed Member",
+                    "displayName": "Đinh Hoàng Luôn",
                     "passwordLength": 60,
                     "reminders": 95
                 },
                 {
+                    "id": 4,
                     "userName": "committedmember",
                     "roles": "user",
                     "IsAccountEnabled": true,
                     "email": "committedmember@gmail.com",
-                    "displayName": "Committed Member",
+                    "displayName": "Nguyễn Văn Đông",
                     "passwordLength": 60,
                     "reminders": 95,
 
                 }
             ]
         }
+    }
 
+    componentDidMount() {
+        this.fetchData();
+    }
+
+    fetchData = () => {
+        // fetch()      
+    }
+
+    deleteUser = (id) => {
 
     }
+
 
     render() {
         let userItemList;
         userItemList = this.state.users.map((item) => {
             return (
                 <UserItem
+                    id={item.id}
                     avatar_url="https://i.imgur.com/q54xYo3.png"
                     display_name={item.displayName}
                     user_name={item.userName}
@@ -82,7 +98,7 @@ class Admin_UserManagement extends Component {
                         {/* Menu_Main_Show_Port */}
                         <div className="Admin_User_Management_Port">
                             {userItemList}
-                          
+
                             {/* <Pagination></Pagination> */}
                         </div>
 

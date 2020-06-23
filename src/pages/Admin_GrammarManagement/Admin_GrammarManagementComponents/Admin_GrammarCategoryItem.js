@@ -56,7 +56,7 @@ class Admin_GrammarCategoryItem extends Component {
     //PUT Grammar Category Item
     updateGrammarCategory = e => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         console.log(this.state.GrammarCategory_UpdateDTO);
         fetch('/api/v1/grammarCategories/' + this.state.GrammarCategory_UpdateDTO.id,
             {
@@ -89,7 +89,7 @@ class Admin_GrammarCategoryItem extends Component {
     deleteGrammarCategoryHandler = e => {
         e.preventDefault();
         // console.log(this.props.item.id);
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
 
         fetch('/api/v1/grammarCategories/' + this.state.GrammarCategory_UpdateDTO.id, {
             method: "DELETE",
@@ -122,7 +122,7 @@ class Admin_GrammarCategoryItem extends Component {
     addGrammarContentSummary = e => {
         e.preventDefault();
         // console.log(this.props.item.id);
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         this.state.GrammarContentSummary_CreateDTO.categoryID = this.props.item.id;
         console.log(this.state.GrammarContentSummary_CreateDTO);
         fetch('/api/v1/grammarCategories/' + this.props.item.id + '/grammar', {

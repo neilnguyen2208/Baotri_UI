@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from 'react'
 import delete_btn from '../../../resources/delete_btn.png'
 import './Admin_GrammarDetailManagement.css'
@@ -71,8 +72,8 @@ class Admin_GrammarDetailManagement extends Component {
     //POST new grammar form to serve
     addGrammarForm = e => {
         e.preventDefault();
-        //lấy token từ localStorage:
-        let token = localStorage.getItem('token');
+        //lấy token từ sessionStorage:
+        let token = sessionStorage.getItem('token');
 
         var requestFormID = this.props.match.params.id;
         //POST yêu cầu server thêm form ngữ pháp"

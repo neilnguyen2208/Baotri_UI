@@ -23,7 +23,7 @@ class AdminMenu extends Component {
     }
 
     fetchInfo() {
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         if (!token || token.length < 10)
             return;
         let jwtParsed = jwt_decode(token);
@@ -37,9 +37,8 @@ class AdminMenu extends Component {
         })
             .then(response => response.json())
             .then(response => {
-                this.state.adminInfo_PatchDTO = response;
                 // console.log(this.state.adminInfo_PatchDTO);
-                this.setState(this.state);
+                this.setState({ adminInfo_PatchDTO: response });
             })
             .catch(error => {
                 console.log(error);
@@ -47,7 +46,7 @@ class AdminMenu extends Component {
     }
 
     handleLogOut = () => {
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         console.log('logout');
         this.setState({});
         window.location.href = '/';
@@ -58,7 +57,7 @@ class AdminMenu extends Component {
             <div className="Admin_Menu">
                 <div className="Admin_Info_Port">
                     <div className="Admin_Avatar_Port">
-                        <img className="Admin_Avatar" src={this.state.avatarUrl} />
+                        <img alt="avatar" className="Admin_Avatar" src={this.state.avatarUrl} />
                     </div>
                     <div className="Admin_User_Name_Gmail_Port">
                         <div className="Admin_User_Name">{this.state.adminInfo_PatchDTO.displayName}</div>
@@ -80,7 +79,7 @@ class AdminMenu extends Component {
                         <a className="Admin_Horizontal_Menu_Item">Listening Manager</a>
                     </div>
                     <div className="Admin_Horizontal_Menu_Item" >
-                        <a href='/admin/user' className="Admin_Horizontal_Menu_Item">User Manager</a>
+                        <a href='/admin/user_management' className="Admin_Horizontal_Menu_Item">User Manager</a>
                     </div>
                     <div className="Admin_Horizontal_Menu_Item">
                         Chat Manager

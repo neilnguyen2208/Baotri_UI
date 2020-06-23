@@ -239,15 +239,16 @@
 }
 
 .User_Menu .User_Show_Info_Port .Remind_Port {
-    font-family: Barlow Condensed;
-    font-style : normal;
-    font-weight: 600;
-    font-size  : 18px;
-    line-height: 30px;
-    display    : flex;
-    align-items: center;
-    text-align : left;
-    color      : #363636;
+    font-family  : Barlow Condensed;
+    font-style   : normal;
+    font-weight  : 600;
+    font-size    : 18px;
+    line-height  : 30px;
+    display      : flex;
+    align-items  : center;
+    text-align   : left;
+    color        : #363636;
+    margin-bottom: 10px;    
 }
 
 .User_Menu .User_Show_Info_Port .Save_Change_Remind_Btn_Port {
@@ -351,6 +352,7 @@
     cursor : pointer;
     opacity: 90%;
 }
+
 
 @media (min-width: 0px) {
     .User_Menu {

@@ -55,7 +55,7 @@ class Admin_GrammarFormDetail extends Component {
         let requestFormID = parseInt(this.props.form_ID, 10);
         console.log(requestFormID);
         //get token to request to server
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
 
         fetch('/api/v1/grammarForms/' + requestFormID + '/examples',
             {
@@ -94,7 +94,7 @@ class Admin_GrammarFormDetail extends Component {
         let requestFormID = parseInt(this.props.form_ID, 10);
         console.log(requestFormID);
         //get token to request to server
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
 
         fetch('/api/v1/grammarForms/' + requestFormID + '/notes/',
             {

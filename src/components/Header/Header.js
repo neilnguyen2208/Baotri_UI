@@ -12,7 +12,7 @@ class Header extends Component{
     }
 
     handleLogOut = ()=>{
-        localStorage.removeItem('token');
+        sessionStorage.removeItem('token');
         console.log('logout')
         this.setState({})
     }

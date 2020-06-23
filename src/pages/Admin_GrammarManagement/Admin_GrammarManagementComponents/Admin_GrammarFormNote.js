@@ -30,7 +30,7 @@ class Admin_GrammarFormNote extends Component {
     //update grammar note
     updateGrammarNote = (e) => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarNotes_PutDTO))
         fetch('/api/v1/grammarForms/' + this.props.note_form_ID + '/notes', {
             method: "PUT",
@@ -60,7 +60,7 @@ class Admin_GrammarFormNote extends Component {
 
     deleteGrammarNote = (e) => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarNotes_PutDTO));
         for (var i = 0; i < this.state.GrammarNotes_PutDTO.length; i++) {
             if (this.state.GrammarNotes_PutDTO[i].id === this.props.note_id)

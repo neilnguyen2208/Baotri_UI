@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Container, Col, Row } from 'reactstrap';
+// import { Container, Col, Row } from 'reactstrap';
 import Header from "../../components/Header/Header.js";
 import './UserAccountManagement.css'
 import Footer from "../../components/Footer/Footer.js";
@@ -7,15 +7,38 @@ import PageTitle from "../../components/PageTitle/PageTitle.js"
 import btn_element from '../../resources/btn_element.png'
 import Popup from 'reactjs-popup'
 import jwt_decode from 'jwt-decode'
+import activated_checkbox from '../../resources/activated_checkbox.png'
+import deactivated_checkbox from '../../resources/deactivated_checkbox.png'
 
 class UserAccountManagement extends Component {
     constructor(props) {
         super(props);
+
+        //for token
+        this.user_ID = "";
+        this.role = "";
+        this.token = "";
+
+        //for popups
         this.notifyContent = "";
+
+        //for change pass world
         this.newPassword_ = "";
         this.newPassword_Confirm = "";
+        this.canUpdatePass = false;
+        this.canClickUpdatePass = false;
+
+        //for update user info
+        this.newDisplayName = "";
+        this.canUpdateInfo = false;
+
+        //for update remind setting
+        this.canClickUpdateRemindSetting = false;
 
         this.state = {
+            userInfo: {
+
+            },
             userInfo_PatchDTO: {
                 "displayName": "",
                 "userName": "",
@@ -26,14 +49,41 @@ class UserAccountManagement extends Component {
             "isUpdateInfo": true,
             "isChangePass": false,
             "isChangeRemind": false,
-            "canUpdateInfo": false,
-            "canUpdatePass": false,
-            "canClickUpdatePass": false,
             "avatar_URL": "https://i.imgur.com/q54xYo3.png",
             "user_ID": "",
-            "role": "",
             "password_length": 10,
-            "isLoadDone": false
+            "isLoadDone": false,
+            remindSetting_PutDTO: {
+                "days": -1
+            },
+            remindOptionsList: [
+                {
+                    "id": 0,
+                    "value": "Don't remind me!",
+                    "active": true
+                },
+                {
+                    "id": 1,
+                    "value": "Everyday",
+                    "active": false
+                },
+                {
+                    "id": 2,
+                    "value": "2 days",
+                    "active": false
+                },
+                {
+                    "id": 3,
+                    "value": "3 days",
+                    "active": false
+                },
+                {
+                    "id": 5,
+                    "value": "5 days",
+                    "active": false
+                }
+            ]
+
         }
     }
 
@@ -42,20 +92,16 @@ class UserAccountManagement extends Component {
     }
 
     fetchInfo() {
-        let token = localStorage.getItem('token');
-        if (!token || token.length < 10)
+        this.token = sessionStorage.getItem('token');
+        if (!this.token || this.token.length < 10)
             return;
-        let jwtParsed = jwt_decode(token);
+        let jwtParsed = jwt_decode(this.token);
         this.user_ID = jwtParsed.sub;
-        // console.log(jwtParsed);
-        this.state.role = jwtParsed.roles[0];
-        console.log("ROLE_ADMIN");
-        console.log(this.state.role.authority === "ROLE_ADMIN");
-
+        this.role = jwtParsed.roles[0];
         fetch('/api/v1/users/' + this.user_ID, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${this.token}`
             }
         })
             .then(response =>
@@ -63,9 +109,10 @@ class UserAccountManagement extends Component {
             )
             .then(response => {
                 // console.log(response);
-                this.state.userInfo_PatchDTO = response;
-                this.state.isLoadDone = true;
-                this.setState(this.state);
+                this.setState({
+                    userInfo: response,
+                    isLoadDone: true
+                });
             })
             .catch(error => {
                 console.log(error);
@@ -84,15 +131,15 @@ class UserAccountManagement extends Component {
         if (this.newPassword_ === this.newPassword_Confirm) {
             if (this.newPassword_.length <= 5) {
                 this.notifyContent = "The length of the new password must be at least 6!";
-                this.state.canUpdatePass = false;
+                this.canUpdatePass = false;
             }
             else {
-                this.state.canUpdatePass = true;
+                this.canUpdatePass = true;
             }
         }
         else {
             this.notifyContent = "New password and confirmation password must be the same!";
-            this.state.canUpdatePass = false;
+            this.canUpdatePass = false;
         }
     }
 
@@ -100,36 +147,41 @@ class UserAccountManagement extends Component {
         if (this.newPassword_ === null || this.newPassword_ === ""
             || this.currentPassword === null || this.currentPassword === ""
             || this.newPassword_Confirm === null || this.newPassword_Confirm === "") {
-            this.state.canClickUpdatePass = false;
+            this.canClickUpdatePass = false;
         }
         else {
-            this.state.canClickUpdatePass = true;
+            this.canClickUpdatePass = true;
+        }
+    }
+
+    checkDisplayNameEmptyField = (e) => {
+        if (this.newDisplayName === "" || this.newDisplayName === null) {
+            this.canUpdateInfo = false;
+        }
+        else {
+            this.canUpdateInfo = true;
         }
     }
 
     updateInfo = (e) => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
-        if (!token || token.length < 10)
-            return;
-        let jwtParsed = jwt_decode(token);
-        this.user_ID = jwtParsed.sub;
-        console.log(JSON.stringify(this.state.userInfo_PatchDTO));
         fetch('/api/v1/users/' + this.user_ID, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${this.token}`
             },
             body: JSON.stringify(this.state.userInfo_PatchDTO)
         })
             .then(response => {
                 console.log(response);
                 if (response.status === 200 || response.status === 204) {
+                    this.closeUpdateInfoConfirmationPopupHandler();
                     this.notifyContent = "Update info success!";
                     this.openNotifyPopupHandler();
                 }
                 else {
+                    this.closeUpdateInfoConfirmationPopupHandler();
                     this.notifyContent = "Update info failed!";
                     this.openNotifyPopupHandler();
                 }
@@ -141,24 +193,17 @@ class UserAccountManagement extends Component {
     }
 
     updatePassword = (e) => {
-
-        if (!this.state.canUpdatePass) {
+        if (!this.canUpdatePass) {
             this.openNormalNotifyPopupHandler();
         }
         else {
             e.preventDefault();
-            let token = localStorage.getItem('token');
-            if (!token || token.length < 10)
-                return;
-            let jwtParsed = jwt_decode(token);
-            this.user_ID = jwtParsed.sub;
-            console.log(JSON.stringify(this.state.userInfo_PatchDTO));
 
             fetch('/api/v1/users/' + this.user_ID, {
                 method: "PATCH",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${this.token}`
                 },
                 body: JSON.stringify(this.state.userInfo_PatchDTO)
             })
@@ -177,35 +222,112 @@ class UserAccountManagement extends Component {
     }
 
     handleLogOut = () => {
-        localStorage.removeItem('token');
-        console.log('logout');
+        sessionStorage.removeItem('token');
         this.setState({});
         window.location.href = '/';
     }
 
+
+    //for reminder
+    fetchReminderInfo = () => {
+        this.canClickUpdateRemindSetting = false;
+        fetch('/api/v1/users/' + this.user_ID + "/reminders", {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.token}`
+            }
+        })
+            .then(
+                response => {
+                    console.log(response);
+                    response.json();
+                })
+            .then((response) => {
+                console.log(response)
+                this.setState({ remindSetting_PutDTO: response });
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    activateRemindSelection = (remind_option_ID) => {
+        this.canClickUpdateRemindSetting = true;
+        this.setState({
+            remindSetting_PutDTO: {
+                days: remind_option_ID
+            }
+        })
+    }
+
+    updateRemindSetting = (e) => {
+        e.preventDefault();
+
+        fetch('/api/v1/users/' + this.user_ID + "/reminders", {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.token}`
+            },
+            body: JSON.stringify(this.state.remindSetting_PutDTO)
+        })
+            .then(response => {
+                console.log(response);
+                if (response.status === 200 || response.status === 204) {
+                    this.closeUpdateRemindConfirmationPopupHandler();
+                    this.notifyContent = "You have change your remind setting!";
+                    this.openNotifyPopupHandler();
+                }
+                else {
+                    this.closeUpdateRemindConfirmationPopupHandler();
+                    this.notifyContent = "Error!";
+                    this.openNotifyPopupHandler();
+                }
+            }
+            )
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
     render() {
+
+        let remindOptionsList = this.state.remindOptionsList.map(remindOption =>
+            <div className="Custom_Checkbox" key={remindOption.id} onClick={() => this.activateRemindSelection(remindOption.id)}>
+                {remindOption.id === this.state.remindSetting_PutDTO.days ?
+                    <img alt="o" src={activated_checkbox} className="Custom_Checkbox_Image" />
+                    :
+                    <img alt="o" src={deactivated_checkbox} className="Custom_Checkbox_Image" />
+                }
+                <div className="Custom_Checkbox_Label">
+                    {remindOption.value}
+                </div>
+            </div>
+        )
+
         let view;
         if (this.state.isUpdateInfo) {
             view = <div className="User_Show_Info_Port">
                 <div className="User_Show_Info_Sub_Port">
                     <div >
                         <div className="Label">Display name:</div>
-                        <input className="Changable_Input" type="text" defaultValue={this.state.userInfo_PatchDTO.displayName} onChange={this.changeDisplayNameHandler}></input>
+                        <input className="Changable_Input" type="text" defaultValue={this.state.userInfo.displayName} onChange={this.changeDisplayNameHandler}></input>
                     </div>
                     <div >
                         <div className="Label">Username:</div>
-                        <input className="Unchangable_Input" type="text" defaultValue={this.state.userInfo_PatchDTO.userName} readOnly></input>
+                        <input className="Unchangable_Input" type="text" defaultValue={this.state.userInfo.userName} readOnly></input>
                     </div>
                     <div>
                         <div className="Label">Email:</div>
-                        <input className="Unchangable_Input" type="text" defaultValue={this.state.userInfo_PatchDTO.email} readOnly></input>
+                        <input className="Unchangable_Input" type="text" defaultValue={this.state.userInfo.email} readOnly></input>
                     </div>
                     <div >
                         <div className="Label">Passwords:</div>
                         <input className="Unchangable_Input" type="text" defaultValue={this.generateHiddenPass()} readOnly></input>
                     </div>
-                    <div className="Save_Change_Info_Btn_Port" disabled={!this.state.canUpdateInfo}>
-                        <button className="Blue_Button" onClick={this.updateInfo} >Save changes</button>
+                    <div className="Save_Change_Info_Btn_Port" >
+                        <button className="Blue_Button" disabled={!this.canUpdateInfo} onClick={() => { this.notifyContent = "Do you want to update your information?"; this.openUpdateInfoConfirmationPopupHandler() }}>Save changes</button>
                     </div>
                 </div>
             </div>
@@ -228,7 +350,7 @@ class UserAccountManagement extends Component {
                                 <input className="Simple_Changable_Text_Input" type="password" defaultValue="" onChange={this.changeConfirmNewPasswordHandler}></input>
                             </div>
                             <div className="Save_Change_Info_Btn_Port">
-                                <button className="Blue_Button" disabled={!this.state.canClickUpdatePass} onClick={this.updatePassword}>Save password</button>
+                                <button className="Blue_Button" disabled={!this.canClickUpdatePass} onClick={this.updatePassword}>Save password</button>
                             </div>
                         </div>
                     </div>;
@@ -240,30 +362,9 @@ class UserAccountManagement extends Component {
                             <div className="Remind_Port">
                                 Choose a time step and we will announce you via mail.
                             </div>
-                            <div className="Remind_Port">
-                                <input type="checkbox" className="toggle-switch-checkbox" />
-                                 Don't remind me!
-                             </div>
-                            <div className="Remind_Port">
-                                <input type="checkbox" className="toggle-switch-checkbox" />
-                                1 Days
-                            </div>
-                            <div className="Remind_Port">
-                                <input type="checkbox" className="toggle-switch-checkbox" />
-                                 2 Days
-                                 </div>
-
-                            <div className="Remind_Port">
-                                <input type="checkbox" className="toggle-switch-checkbox" />
-                                 3 Days
-                                 </div>
-
-                            <div className="Remind_Port">
-                                <input type="checkbox" className="toggle-switch-checkbox" />
-                                 5 Days
-                                 </div>
+                            {remindOptionsList}
                             <div className="Save_Change_Remind_Btn_Port">
-                                <button className="Save_Change_Remind_Btn">Save setting</button>
+                                <button className="Blue_Button" disabled={!this.canClickUpdateRemindSetting} onClick={() => { this.notifyContent = "Do you want to change your remind setting?"; this.openUpdateRemindConfirmationPopupHandler() }}>Save setting</button>
                             </div>
                         </div>
                     </div>;
@@ -290,14 +391,14 @@ class UserAccountManagement extends Component {
                                 {/* Show info of account */}
                                 <div className="User_Info_Port">
                                     <div className="Avatar_Port">
-                                        <img className="Avatar" src={this.state.avatar_URL} />
+                                        <img alt="avatar" className="Avatar" src={this.state.avatar_URL} />
                                     </div>
                                     <div className="User_Name_Gmail_Port">
                                         <div className="User_Name">
-                                            {this.state.userInfo_PatchDTO.displayName}
+                                            {this.state.userInfo.displayName}
                                         </div>
                                         <div className="Gmail">
-                                            {this.state.userInfo_PatchDTO.email}
+                                            {this.state.userInfo.email}
                                         </div>
                                         <div className="Logout_Btn_Port">
                                             <button className="Logout_Btn" onClick={this.handleLogOut}>Logout</button>
@@ -308,17 +409,17 @@ class UserAccountManagement extends Component {
                                 {/* User Menu*/}
                                 <div className="User_Menu_Port" hidden={!this.state.isLoadDone} >
                                     <div className="Menu_Item" onClick={this.handleUpdate}>
-                                        <img className="Btn_Element" src={btn_element}></img>
+                                        <img alt="*" className="Btn_Element" src={btn_element}></img>
                                         <div> Update infomation</div>
                                     </div>
 
                                     <div className="Menu_Item" onClick={this.handleChangePass}>
-                                        <img className="Btn_Element" src={btn_element}></img>
+                                        <img alt="*" className="Btn_Element" src={btn_element}></img>
                                         <div>Change password</div>
                                     </div>
                                     <div className="Menu_Item" onClick={this.handleChangeRemind} >
-                                        <img className="Btn_Element" src={btn_element} hidden={this.state.role.authority === "ROLE_ADMIN"} ></img>
-                                        <div hidden={this.state.role.authority === "ROLE_ADMIN"}> Remind Setting</div>
+                                        <img alt="*" className="Btn_Element" src={btn_element} hidden={this.role.authority === "ROLE_ADMIN"} ></img>
+                                        <div hidden={this.role.authority === "ROLE_ADMIN"}> Remind Setting</div>
                                     </div>
                                 </div>
 
@@ -371,6 +472,54 @@ class UserAccountManagement extends Component {
                     </React.Fragment>
                 </Popup>
 
+                {/* Confirm update info Popup*/}
+                <Popup modal
+                    open={this.state.isUpdateInfoConfirmationPopupOpen}
+                    onOpen={this.openUpdateInfoConfirmationPopupHandler}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Align_Center">
+                            <div className="Height_30px"></div>
+                            <div className="Simple_Label">{this.notifyContent}</div>
+                            <div className="Height_30px"></div>
+                            <div className="Justify_Content_Space_Between">
+                                <button className="Blue_Button" onClick={(e) => this.updateInfo(e)}>
+                                    Verify
+                                </button>
+                                <button className="Red_Button" onClick={this.closeUpdateInfoConfirmationPopupHandler}>
+                                    Cancel
+                                </button>
+                            </div>
+                            <div className="Height_10px"></div>
+                        </div>
+                    </React.Fragment>
+                </Popup>
+
+                {/* Confirm update remind Popup*/}
+                <Popup modal
+                    open={this.state.isUpdateRemindConfirmationPopupOpen}
+                    onOpen={this.openUpdateRemindConfirmationPopupHandler}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Align_Center">
+                            <div className="Height_30px"></div>
+                            <div className="Simple_Label">{this.notifyContent}</div>
+                            <div className="Height_30px"></div>
+                            <div className="Justify_Content_Space_Between">
+                                <button className="Blue_Button" onClick={(e) => this.updateRemindSetting(e)}>
+                                    Verify
+                                </button>
+                                <button className="Red_Button" onClick={this.closeUpdateRemindConfirmationPopupHandler}>
+                                    Cancel
+                                </button>
+                            </div>
+                            <div className="Height_10px"></div>
+                        </div>
+                    </React.Fragment>
+                </Popup>
+
                 <div className="User_Account_Management_Footer">
                     <Footer ></Footer>
                 </div>
@@ -396,6 +545,7 @@ class UserAccountManagement extends Component {
     }
 
     handleChangeRemind = () => {
+        this.fetchReminderInfo();
         this.setState({
             "isUpdateInfo": false,
             "isChangePass": false,
@@ -406,29 +556,26 @@ class UserAccountManagement extends Component {
     //handle change info
     changeDisplayNameHandler = (e) => {
         this.state.userInfo_PatchDTO.displayName = e.target.value;
-        this.state.canUpdateInfo = true;
+        this.newDisplayName = e.target.value;
+        this.checkDisplayNameEmptyField();
         this.setState(this.state);
     }
 
     //handle popup:
     openNotifyPopupHandler = () => {
-        this.state.isNotifyPopupOpen = true;
-        this.setState(this.state);
+        this.setState({ isNotifyPopupOpen: true });
     }
 
     openNormalNotifyPopupHandler = () => {
-        this.state.isNormalNotifyPopupOpen = true;
-        this.setState(this.state);
+        this.setState({ isNormalNotifyPopupOpen: true });
     }
 
     closeNormalNotifyPopupHandler = () => {
-        this.state.isNormalNotifyPopupOpen = false;
-        this.setState(this.state);
+        this.setState({ isNormalNotifyPopupOpen: false });
     }
 
     closeNotifyPopupHandlerAndReload = () => {
-        this.state.isNotifyPopupOpen = false;
-        this.setState(this.state);
+        this.setState({ isNotifyPopupOpen: false });
         window.location.reload();
     }
 
@@ -444,7 +591,6 @@ class UserAccountManagement extends Component {
         this.checkValidNewPassword();
         this.checkPasswordEmptyField();
         this.setState(this.state);
-
     }
 
     changeConfirmNewPasswordHandler = (e) => {
@@ -454,6 +600,23 @@ class UserAccountManagement extends Component {
         this.checkPasswordEmptyField();
         this.setState(this.state);
     }
+
+    openUpdateInfoConfirmationPopupHandler = () => {
+        this.setState({ isUpdateInfoConfirmationPopupOpen: true });
+    }
+
+    closeUpdateInfoConfirmationPopupHandler = () => {
+        this.setState({ isUpdateInfoConfirmationPopupOpen: false });
+    }
+
+    openUpdateRemindConfirmationPopupHandler = () => {
+        this.setState({ isUpdateRemindConfirmationPopupOpen: true });
+    }
+
+    closeUpdateRemindConfirmationPopupHandler = () => {
+        this.setState({ isUpdateRemindConfirmationPopupOpen: false });
+    }
+
 
 }
 

@@ -81,7 +81,7 @@ class EnglishVocabularyManagement extends Component {
             alert("Name must be not null!");
             return;
         }
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         const requestOption = {
             method: 'POST',
             headers: {
@@ -109,7 +109,7 @@ class EnglishVocabularyManagement extends Component {
     async deleteVocabularyType (item) {
         if(window.confirm("Are you want to delete this type?")){     
             let url = '/api/v1/vocabCategories/' + item.id;
-            let token = localStorage.getItem("token");
+            let token = sessionStorage.getItem("token");
             await fetch(url, {method: "DELETE", headers: {'Authorization': 'Bearer ' + token}});
             this.state.items.splice(this.state.items.indexOf(item), 1);
             this.setState({isEdit: false});
@@ -126,7 +126,7 @@ class EnglishVocabularyManagement extends Component {
 
     async editVocabularyType(item) {
         let url = '/api/v1/vocabCategories/' + item.id;
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         const requestPutOption = {
             method: 'PUT',
             headers: {

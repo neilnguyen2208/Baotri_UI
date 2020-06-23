@@ -93,7 +93,7 @@ class DetailManagement extends Component {
 
     async saveNewVocabulary (item) {
         let pathName = window.location.pathname;
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         let path = pathName.split("/");
         console.log(path + "title: " + item.title);
         if(path.length<1 || item.title == "") {
@@ -133,7 +133,7 @@ class DetailManagement extends Component {
 
     async handleEditWord(item) {
         let pathName = window.location.pathname;
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         let path = pathName.split("/");
         console.log(path + "title: " + item.title);
         if(path.length<1 || item.title == "") {
@@ -167,7 +167,7 @@ class DetailManagement extends Component {
     async deleteVocabulary (item) {
         if(window.confirm("Are yor want to delete this lesson?")){
             let url = '/api/v1/vocabLessons/' + item.id;
-            let token = localStorage.getItem("token");
+            let token = sessionStorage.getItem("token");
             let requestOption = {
                 method: "DELETE",
                 headers: {

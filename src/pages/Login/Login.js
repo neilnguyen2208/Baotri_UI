@@ -111,7 +111,7 @@ class Login extends Component {
             };
             console.log(requestOptions);
             let response = await fetch('api/v1/auth/login', requestOptions);
-            if(!response.ok) {
+            if (!response.ok) {
                 this.setState({
                     isCorrectPassword: false
                 })
@@ -126,7 +126,7 @@ class Login extends Component {
         //sign up
         else {
             //password and retype password not match
-            if(this.canSignUp()) {
+            if (this.canSignUp()) {
                 this.setState({
                     isCorrectPassword: false
                 })
@@ -139,7 +139,7 @@ class Login extends Component {
                 };
                 console.log(requestOptions);
                 let response = await fetch('api/v1/auth/register', requestOptions);
-                if(!response.ok) {
+                if (!response.ok) {
                     this.setState({
                         isCorrectPassword: false
                     })
@@ -153,11 +153,11 @@ class Login extends Component {
             }
         }
     }
-    
-    canSignUp () {
-        return (this.state.password != this.state.repassword) || 
-        this.state.email=="" || this.state.displayname==""
-        || this.state.password ==""|| this.state.repassword == "";
+
+    canSignUp() {
+        return (this.state.password != this.state.repassword) ||
+            this.state.email == "" || this.state.displayname == ""
+            || this.state.password == "" || this.state.repassword == "";
     }
 
     handleEmailChange = (event) => {
@@ -209,10 +209,10 @@ export function isAdmin() {
     let jwtParsed = jwt_decode(token);
     let roles = [];
     roles = jwtParsed.roles;
-    console.log(roles);
+    // console.log(roles);
     if (roles.length > 1) {
-        console.log(roles[0].authority == "ROLE_ADMIN");
-        return roles[0].authority === "ROLE_ADMIN" || roles [1].authority === "ROLE_ADMIN";
+        console.log(roles[0].authority === "ROLE_ADMIN");
+        return roles[0].authority === "ROLE_ADMIN" || roles[1].authority === "ROLE_ADMIN";
     }
     return false;
 }

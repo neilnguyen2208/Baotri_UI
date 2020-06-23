@@ -44,7 +44,7 @@ class Admin_AccountCenterComponent extends Component {
     }
 
     fetchInfo() {
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         if (!token || token.length < 10)
             return;
         let jwtParsed = jwt_decode(token);
@@ -69,7 +69,7 @@ class Admin_AccountCenterComponent extends Component {
 
     updateInfo = (e) => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         if (!token || token.length < 10)
             return;
         let jwtParsed = jwt_decode(token);
@@ -108,7 +108,7 @@ class Admin_AccountCenterComponent extends Component {
         }
         else {
             e.preventDefault();
-            let token = localStorage.getItem('token');
+            let token = sessionStorage.getItem('token');
             if (!token || token.length < 10)
                 return;
             let jwtParsed = jwt_decode(token);

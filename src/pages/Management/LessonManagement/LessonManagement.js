@@ -84,7 +84,7 @@ class LessonManagement extends Component {
     }
     
     async saveNewVocabularyClass (item) {
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         let pathName = window.location.pathname;
         let path = pathName.split("/");
         console.log(path + "title: " + item.title);
@@ -122,7 +122,7 @@ class LessonManagement extends Component {
     async deleteVocabularyLesson (item) {
         if(window.confirm("Are yor want to delete this lesson?")){
             let url = '/api/v1/vocabLessons/' + item.id;
-            let token = localStorage.getItem("token");
+            let token = sessionStorage.getItem("token");
             try{
                 await fetch(url, {method: "DELETE", headers: {
                     'Authorization': 'Bearer ' + token
@@ -154,7 +154,7 @@ class LessonManagement extends Component {
             return;
         }
         let url = '/api/v1/vocabLessons/' + item.id;
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         console.log("url: " + url);
         const requestOption = {
             method: 'PUT',

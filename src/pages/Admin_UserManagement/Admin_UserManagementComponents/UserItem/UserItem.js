@@ -1,4 +1,4 @@
-import React, { Component, history } from 'react'
+import React, { Component } from 'react'
 import './UserItem.css'
 import edit_btn from "../../../../resources/edit_btn.png"
 import delete_btn from "../../../../resources/delete_btn.png"
@@ -13,16 +13,16 @@ class UserItem extends Component {
 
     handleEditUser = (e) => {
         e.stopPropagation();
-        document.location.href = "/admin/user/id";
+        document.location.href = "/admin/user_management/" + this.props.id;
     }
 
     handleBanUser = (e) => {
         e.stopPropagation();
-        console.log('delete');
+        console.log('You have banned user have id' + this.props.id);
     }
 
     handleClickUserItem = (e) => {
-        document.location.href = "/admin/user/id";
+        this.handleBanUser(e);
     }
 
     render() {
@@ -31,7 +31,7 @@ class UserItem extends Component {
             <div className="User_Item" onClick={this.handleClickUserItem}>
                 <div className="User_Item_Left_Port">
                     <div className="User_Item_Avatar_Port">
-                        <img className="User_Item_Avatar" src={this.props.avatar_url}></img>
+                        <img alt="avatar" className="User_Item_Avatar" src={this.props.avatar_url}></img>
                     </div>
                     <div className="User_Item_User_Name_Gmail_Port">
                         <div className="User_Item_Display_User_Name">
@@ -48,8 +48,8 @@ class UserItem extends Component {
                     </div>
                 </div>
                 <div className="Edit_Delete_Btn_Group">
-                    <img className="Edit_Btn" src={edit_btn} onClick={this.handleEditUser} />
-                    <img className="Delete_Btn" src={delete_btn} onClick={this.handleBanUser} />
+                    <img alt="Edit" className="Edit_Btn" src={edit_btn} onClick={this.handleEditUser} />
+                    <img alt="Delete" className="Delete_Btn" src={delete_btn} onClick={this.handleBanUser} />
                 </div>
             </div>
         );

@@ -1,7 +1,7 @@
 .App {
-  top: 0px;
+  top   : 0px;
   bottom: 0px;
-  width: 100%;
+  width : 100%;
   height: 100%;
 }
 
@@ -10,141 +10,141 @@
 }
 
 .Edit_Delete_Btn_Group {
-  margin-right: 5%;
-  display: flex;
+  margin-right   : 5%;
+  display        : flex;
   justify-content: space-between;
-  height: fit-content;
+  height         : fit-content;
 }
 
 .Edit_Btn {
-  width: 25px;
-  height: 25px;
+  width       : 25px;
+  height      : 25px;
   margin-right: 15px;
 }
 
 .Edit_Btn:hover {
   opacity: 90%;
-  cursor: pointer;
+  cursor : pointer;
 }
 
 .Edit_Btn:active {
-  opacity: 80%;
-  cursor: pointer;
+  opacity      : 80%;
+  cursor       : pointer;
   border-radius: 20px;
 }
 
 .Delete_Btn {
-  width: 25px;
+  width : 25px;
   height: 25px;
 }
 
 .Delete_Btn:hover {
   opacity: 90%;
-  cursor: pointer;
+  cursor : pointer;
 }
 
 .Delete_Btn:active {
-  opacity: 80%;
-  cursor: pointer;
+  opacity      : 80%;
+  cursor       : pointer;
   border-radius: 20px;
 }
 
 .Simple_Changable_Text_Input {
-  width: 100%;
-  padding: 3px 10px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+  width        : 100%;
+  padding      : 3px 10px;
+  margin       : 8px 0;
+  display      : inline-block;
+  border       : 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
-  font-family: Open Sans;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 25px;
-  display: flex;
-  align-items: center;
-  color: #363636;
+  box-sizing   : border-box;
+  font-family  : Open Sans;
+  font-weight  : 600;
+  font-size    : 16px;
+  line-height  : 25px;
+  display      : flex;
+  align-items  : center;
+  color        : #363636;
 }
 
 .Blue_Changable_Text_Input {
-  width: 100%;
-  padding: 6px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+  width        : 100%;
+  padding      : 6px 20px;
+  margin       : 8px 0;
+  display      : inline-block;
+  border       : 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 22px;
-  display: flex;
-  align-items: center;
-  color: #3366ff;
+  box-sizing   : border-box;
+  font-family  : Open Sans;
+  font-style   : normal;
+  font-weight  : bold;
+  font-size    : 16px;
+  line-height  : 22px;
+  display      : flex;
+  align-items  : center;
+  color        : #3366ff;
 }
 
 .Simple_Changable_Text_Input {
-  width: 100%;
-  padding: 6px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+  width        : 100%;
+  padding      : 6px 20px;
+  margin       : 8px 0;
+  display      : inline-block;
+  border       : 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
-  font-family: Open Sans;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 22px;
-  display: flex;
-  align-items: center;
-  color: #363636;
+  box-sizing   : border-box;
+  font-family  : Open Sans;
+  font-style   : normal;
+  font-weight  : bold;
+  font-size    : 16px;
+  line-height  : 22px;
+  display      : flex;
+  align-items  : center;
+  color        : #363636;
 }
 
 .Simple_Label {
   font-family: Barlow Condensed;
-  font-style: normal;
+  font-style : normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size  : 16px;
   line-height: 19px;
-  display: flex;
+  display    : flex;
   align-items: center;
-  text-align: right;
-  color: #363636;
-  margin: auto;
+  text-align : right;
+  color      : #363636;
+  margin     : auto;
 }
 
 .Blue_Button {
-  box-sizing: border-box;
-  width: 120px;
-  height: 25px;
+  box-sizing    : border-box;
+  width         : 120px;
+  height        : 25px;
   vertical-align: auto;
-  border-radius: 5px;
-  background: #3366ff;
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  color: #ffffff;
-  border: #ffffff;
-  text-align: center;
-  margin: auto;
-  outline: none !important;
+  border-radius : 5px;
+  background    : #3366ff;
+  font-family   : "Barlow Condensed", sans-serif;
+  font-weight   : 600;
+  font-size     : 18px;
+  line-height   : 22px;
+  color         : #ffffff;
+  border        : #ffffff;
+  text-align    : center;
+  margin        : auto;
+  outline       : none !important;
 }
 
 .Blue_Button:hover {
   opacity: 90%;
-  cursor: pointer;
+  cursor : pointer;
   outline: none !important;
 }
 
 .Blue_Button:active {
-  opacity: 80%;
-  cursor: pointer;
+  opacity      : 80%;
+  cursor       : pointer;
   border-radius: 20px;
-  background: #3366ff;
-  outline: none !important;
+  background   : #3366ff;
+  outline      : none !important;
 }
 
 .Blue_Button:disabled {
@@ -152,91 +152,91 @@
 }
 
 .White_Button {
-  box-sizing: border-box;
-  width: 120px;
-  height: 25px;
+  box-sizing    : border-box;
+  width         : 120px;
+  height        : 25px;
   vertical-align: auto;
-  border-radius: 5px;
-  background: white;
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  color: #363636;
-  border: #363636 1px solid;
-  text-align: center;
-  margin: auto;
-  outline: none;
+  border-radius : 5px;
+  background    : white;
+  font-family   : "Barlow Condensed", sans-serif;
+  font-weight   : 600;
+  font-size     : 18px;
+  line-height   : 22px;
+  color         : #363636;
+  border        : #363636 1px solid;
+  text-align    : center;
+  margin        : auto;
+  outline       : none;
 }
 
 .White_Button:hover {
   opacity: 90%;
-  cursor: pointer;
+  cursor : pointer;
   outline: none !important;
 }
 
 .White_Button:active {
-  opacity: 80%;
-  cursor: pointer;
+  opacity      : 80%;
+  cursor       : pointer;
   border-radius: 20px;
-  background: white;
-  outline: none !important;
+  background   : white;
+  outline      : none !important;
 }
 
 .Red_Button {
-  box-sizing: border-box;
-  width: 120px;
-  height: 25px;
+  box-sizing    : border-box;
+  width         : 120px;
+  height        : 25px;
   vertical-align: auto;
-  border-radius: 5px;
-  background: #fe3a3a;
-  font-family: "Barlow Condensed", sans-serif;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 22px;
-  color: #ffffff;
-  border: #ffffff;
-  text-align: center;
-  margin: auto;
+  border-radius : 5px;
+  background    : #fe3a3a;
+  font-family   : "Barlow Condensed", sans-serif;
+  font-weight   : 600;
+  font-size     : 18px;
+  line-height   : 22px;
+  color         : #ffffff;
+  border        : #ffffff;
+  text-align    : center;
+  margin        : auto;
 }
 
 .Red_Button:hover {
   opacity: 90%;
-  cursor: pointer;
+  cursor : pointer;
   outline: none !important;
 }
 
 .Red_Button:active {
-  opacity: 80%;
-  cursor: pointer;
+  opacity      : 80%;
+  cursor       : pointer;
   border-radius: 20px;
-  background: #fe3a3a;
-  outline: none !important;
+  background   : #fe3a3a;
+  outline      : none !important;
 }
 
 .Simple_Text_Area {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
-  border: 1px solid #ccc;
+  width        : 100%;
+  padding      : 10px;
+  margin       : 8px 0;
+  border       : 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
-  font-family: Open Sans;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 25px;
-  height: 100px;
-  color: #363636;
+  box-sizing   : border-box;
+  font-family  : Open Sans;
+  font-weight  : 600;
+  font-size    : 16px;
+  line-height  : 25px;
+  height       : 100px;
+  color        : #363636;
 }
 
 .Align_Right {
-  display: flex;
+  display        : flex;
   justify-content: flex-end;
 }
 
 .Align_Center {
-  display: flex;
-  flex-direction: column;
+  display        : flex;
+  flex-direction : column;
   justify-content: space-between;
 }
 
@@ -249,35 +249,65 @@
 }
 
 .Justify_Content_Space_Between {
-  display: flex;
+  display        : flex;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left   : 20px;
+  padding-right  : 20px;
 }
 
 .Justify_Content_Space_Between_Border {
-  width: 100%;
-  display: flex;
+  width          : 100%;
+  display        : flex;
   justify-content: space-between;
-  border-left: 1px #c4c4c4 solid;
-  border-right: 1px #c4c4c4 solid;
+  border-left    : 1px #c4c4c4 solid;
+  border-right   : 1px #c4c4c4 solid;
 }
 
 .Height_30px_Border {
-  width: 100%;
-  height: 30px;
-  border-left: 1px #c4c4c4 solid;
+  width       : 100%;
+  height      : 30px;
+  border-left : 1px #c4c4c4 solid;
   border-right: 1px #c4c4c4 solid;
 }
 
 .Height_10px_Border {
-  height: 10px;
-  width: 100%;
-  border-left: 1px #c4c4c4 solid;
+  height      : 10px;
+  width       : 100%;
+  border-left : 1px #c4c4c4 solid;
   border-right: 1px #c4c4c4 solid;
 }
 
 .Popup_Form_Max_Size {
   max-width: 400px;
-  margin: auto;
+  margin   : auto;
+}
+
+.Custom_Checkbox {
+  display: flex;
+  padding: 5px;
+}
+
+.Custom_Checkbox_Image {
+  width : 30px;
+  height: 30px;
+}
+
+.Custom_Checkbox_Label {
+  width          : 100%;
+  font-family    : Barlow Condensed;
+  font-style     : normal;
+  font-weight    : 600;
+  font-size      : 18px;
+  line-height    : 30px;
+  padding-left   : 5px;
+  text-align     : left;
+  /* background  : greenyellow; */
+  display        : flex;
+  color          : #363636;
+  margin         : auto;
+}
+
+.Custom_Checkbox:hover {
+  cursor: pointer;
+  opacity: 70%;
 }

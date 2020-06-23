@@ -38,8 +38,8 @@ class Admin_GrammarForm extends Component {
     //PATCH grammar form to serve
     updateGrammarForm = e => {
         e.preventDefault();
-        //lấy token từ localStorage:
-        let token = localStorage.getItem('token');
+        //lấy token từ sessionStorage:
+        let token = sessionStorage.getItem('token');
         console.log(JSON.stringify(this.state.GrammarForm_UpdateDTO));
         fetch('/api/v1/grammarForms/' + this.props.form_ID,
             {
@@ -70,8 +70,8 @@ class Admin_GrammarForm extends Component {
     //DELETE grammar form
     deleteGrammarForm = e => {
         e.preventDefault();
-        //lấy token từ localStorage:
-        let token = localStorage.getItem('token');
+        //lấy token từ sessionStorage:
+        let token = sessionStorage.getItem('token');
 
         fetch('/api/v1/grammarForms/' + this.props.form_ID,
             {

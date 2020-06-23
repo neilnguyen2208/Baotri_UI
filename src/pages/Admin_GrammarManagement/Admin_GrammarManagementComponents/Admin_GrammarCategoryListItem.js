@@ -35,7 +35,7 @@ class Admin_GrammarCategoryListItem extends Component {
         // console.log(this.GrammarDetail_UpdateDTO);
         e.preventDefault();
         // console.log(this.props.item.id);
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         fetch('/api/v1/grammar/' + this.props.item.grammarID, {
             method: "PATCH",
             headers: {
@@ -66,7 +66,7 @@ class Admin_GrammarCategoryListItem extends Component {
     //DELETE Grammar Detail
     deleteGrammarDetail = e => {
         e.preventDefault();
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         fetch('/api/v1/grammar/' + this.props.item.grammarID, {
             method: "DELETE",
             headers: {

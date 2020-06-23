@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from 'react'
 import './Admin_GrammarManagement.css'
 import Header from "../../../components/Header/Header.js";
@@ -14,19 +15,18 @@ import delete_btn from '../../../resources/delete_btn.png'
 class Admin_GrammarManagement extends Component {
     constructor(props) {
         super();
+        this.GrammarCategory_CreateDTO = {
+            "id": null,
+            "title": "",
+            "description": "",
+            "docGrammarContentSummary":
+                null
+        }
         this.notifyContent = "";
         this.state = {
             "grammarCategories":
                 [
                 ],
-            GrammarCategory_CreateDTO: {
-                "id": null,
-                "title": "",
-                "description": "",
-                "docGrammarContentSummary":
-                    null
-
-            },
             "isAddGrammarCategoryPopupOpen": false,
             "isNotifyPopupOpen": false
         }
@@ -45,8 +45,8 @@ class Admin_GrammarManagement extends Component {
         })
             .then(response => response.json())
             .then(response => {
-                this.state.grammarCategories = response;
-                this.setState(this.state);
+                // grammarCategories = response;
+                this.setState({ grammarCategories: response });
             }
             );
     }
@@ -55,8 +55,8 @@ class Admin_GrammarManagement extends Component {
     addGrammarCategory = e => {
         e.preventDefault();
 
-        //lấy token từ localStorage:
-        let token = localStorage.getItem('token');
+        //lấy token từ sessionStorage:
+        let token = sessionStorage.getItem('token');
 
         //POST yêu cầu server thêm danh mục ngữ pháp.
 
@@ -89,8 +89,8 @@ class Admin_GrammarManagement extends Component {
     render() {
 
         //bind data to post
-        let title = this.state.GrammarCategory_CreateDTO.title;
-        let description = this.state.GrammarCategory_CreateDTO.description;
+        // let title = this.state.GrammarCategory_CreateDTO.title;
+        // let description = this.state.GrammarCategory_CreateDTO.description;
 
         //list of grammar category item
         let items = this.state.grammarCategories.map(item =>
@@ -136,7 +136,7 @@ class Admin_GrammarManagement extends Component {
                                         <div className="Customize_Popup">
                                             <div className="Popup_Title_Bar">
                                                 <div className="Popup_Title">ADD GRAMMAR CATEGORY:</div>
-                                                <img className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarCategoryPopupHandler} />
+                                                <img alt="delete" className="Delete_Btn" src={delete_btn} onClick={this.closeAddGrammarCategoryPopupHandler} />
                                             </div>
                                         </div>
                                         <form className="Add_Grammar_Category_Form" onSubmit={this.addGrammarCategory} >
@@ -187,37 +187,32 @@ class Admin_GrammarManagement extends Component {
 
     // POST data to server: create an grammar category
     changeTitleHandler = e => {
-        this.state.GrammarCategory_CreateDTO.title = e.target.value;
+        this.GrammarCategory_CreateDTO.title = e.target.value;
     }
 
     changeDescriptionHandler = e => {
-        this.state.GrammarCategory_CreateDTO.description = e.target.value;
+        this.GrammarCategory_CreateDTO.description = e.target.value;
     }
 
     //handle close and open close add Grammar Category Popup:
     openAddGrammarCategoryPopupHandler = () => {
-        this.state.isAddGrammarCategoryPopupOpen = true;
-        this.setState(this.state);
+        this.setState({ isAddGrammarCategoryPopupOpen: true });
     }
 
     closeAddGrammarCategoryPopupHandler = () => {
-        this.state.isAddGrammarCategoryPopupOpen = false;
-        this.setState(this.state);
+        this.setState({ isAddGrammarCategoryPopupOpen: false });
     }
 
     openNotifyPopupHandler = () => {
-        this.state.isNotifyPopupOpen = true;
-        this.setState(this.state);
+        this.setState({ isNotifyPopupOpen: true });
     }
 
     closeNotifyPopupHandler = () => {
-        this.state.isNotifyPopupOpen = false;
-        this.setState(this.state);
+        this.setState({ isNotifyPopupOpen: false });
     }
 
     closeNotifyPopupHandlerAndReload = () => {
-        this.state.isNotifyPopupOpen = false;
-        this.setState(this.state);
+        this.setState({ isNotifyPopupOpen: false });
         window.location.reload();
     }
 }
