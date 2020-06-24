@@ -11,62 +11,62 @@ import UserItem from './Admin_UserManagementComponents/UserItem/UserItem';
 class Admin_UserManagement extends Component {
     constructor(props) {
         super();
+
+        this.token = "";
+
         this.state = {
             "users": [
                 {
-                    "id": 2,
+                    "userID": 2,
                     "userName": "committedmember",
                     "roles": "user",
                     "IsAccountEnabled": true,
                     "email": "committedmember@gmail.com",
                     "displayName": "Lưu Biêu Nghị",
                     "passwordLength": 60,
-                    "reminders": 95
-                },
-                {
-                    "id": 3,
-                    "userName": "committedmember",
-                    "roles": "user",
-                    "IsAccountEnabled": true,
-                    "email": "committedmember@gmail.com",
-                    "displayName": "Đinh Hoàng Luôn",
-                    "passwordLength": 60,
-                    "reminders": 95
-                },
-                {
-                    "id": 4,
-                    "userName": "committedmember",
-                    "roles": "user",
-                    "IsAccountEnabled": true,
-                    "email": "committedmember@gmail.com",
-                    "displayName": "Nguyễn Văn Đông",
-                    "passwordLength": 60,
-                    "reminders": 95,
-
+                    "reminder": 0
                 }
             ]
         }
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.fetchAllUserInfo();
     }
 
-    fetchData = () => {
-        // fetch()      
+    fetchAllUserInfo = () => {
+        this.token = sessionStorage.getItem('token');
+        fetch('/api/v1/users/', {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.token}`
+            }
+        })
+            .then(response =>
+                response.json()
+            )
+            .then(response => {
+                console.log(response);
+                this.setState({
+                    users: response
+                });
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     deleteUser = (id) => {
 
     }
 
-
     render() {
         let userItemList;
         userItemList = this.state.users.map((item) => {
             return (
                 <UserItem
-                    id={item.id}
+                    id={item.userID}
                     avatar_url="https://i.imgur.com/q54xYo3.png"
                     display_name={item.displayName}
                     user_name={item.userName}

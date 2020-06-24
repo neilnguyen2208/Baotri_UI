@@ -44,8 +44,8 @@ class Admin_UserDetailManagement extends Component {
             userInfo_PatchDTO: {
                 "id": "",
                 "displayName": "",
-                "userName": "",
-                "email": "",
+                "userName": null,
+                "email": null,
                 "currentPassword": null,
                 "newPassword": null
             },
@@ -334,11 +334,11 @@ class Admin_UserDetailManagement extends Component {
                     </div>
                     <div>
                         <div className="Label">Email:</div>
-                        <input className="Unchangable_Input" type="text" defaultValue={this.state.userInfo.email} readOnly></input>
+                        <input className="Changable_Input" type="text" defaultValue={this.state.userInfo.email} ></input>
                     </div>
                     <div >
                         <div className="Label">Passwords:</div>
-                        <input className="Unchangable_Input" type="text" defaultValue={this.generateHiddenPass()} readOnly></input>
+                        <input className="Changable_Input" type="text" defaultValue={this.generateHiddenPass()} ></input>
                     </div>
                     <div className="Save_Change_Info_Btn_Port" >
                         <button className="Blue_Button" disabled={!this.canUpdateInfo} onClick={() => { this.notifyContent = "Do you want to update your information?"; this.openUpdateUserInfoConfirmationPopupHandler() }}>Save changes</button>

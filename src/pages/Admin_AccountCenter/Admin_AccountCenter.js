@@ -189,11 +189,11 @@ class Admin_AccountCenterComponent extends Component {
 
                     {/*  gmail port*/}
                     <div className="Admin_Account_Center_Label">Email:</div>
-                    <input className="Admin_Account_Center_Unchangable_Input" type="text" defaultValue={this.state.adminInfo_PatchDTO.email} readOnly ></input>
+                    <input className="Admin_Account_Center_Changable_Input" type="text" defaultValue={this.state.adminInfo_PatchDTO.email} ></input>
 
                     {/* password port */}
                     <div className="Admin_Account_Center_Label">Passwords:</div>
-                    <input className="Admin_Account_Center_Unchangable_Input" type="text" defaultValue={this.generateHiddenPass()} readOnly></input>
+                    <input className="Admin_Account_Center_Changable_Input" type="text" defaultValue={this.generateHiddenPass()} ></input>
 
                     {/* save change port */}
                     <div className="Admin_Account_Center_Save_Change_Info_Btn_Port">

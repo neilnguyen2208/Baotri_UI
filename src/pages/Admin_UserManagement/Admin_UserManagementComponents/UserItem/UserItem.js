@@ -22,8 +22,8 @@ class UserItem extends Component {
     }
 
     handleClickUserItem = (e) => {
-        this.handleBanUser(e);
-    }
+        // this.handleBanUser(e);
+    }   
 
     render() {
 
