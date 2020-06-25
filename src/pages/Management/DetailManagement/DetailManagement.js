@@ -89,6 +89,7 @@ class DetailManagement extends Component {
         this.setState({
             showPopup: !this.state.showPopup
         })
+        this.word = null;
     }
 
     async saveNewVocabulary (item) {
@@ -122,13 +123,14 @@ class DetailManagement extends Component {
         catch (e) {
             alert("Insert fail!") ;
         }
+        this.word = null;
     }
 
     editClick (item) {
+        this.word = item;
         this.setState({
             showPopup: !this.state.showPopup
-        })
-        this.word = item;
+        })        
     }
 
     async handleEditWord(item) {

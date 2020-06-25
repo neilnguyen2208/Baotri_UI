@@ -70,10 +70,11 @@ class EnglishVocabularyManagement extends Component {
         )
     }
 
-    showAddPopup () {
+    showAddPopup () {    
         this.setState({
             showPopup: !this.state.showPopup
         })
+        this.type = null;
     }
 
     async saveNewVocabularyType (item) {
@@ -104,6 +105,7 @@ class EnglishVocabularyManagement extends Component {
         else {
             alert("Error!")
         }
+        this.type = null;
     }
 
     async deleteVocabularyType (item) {

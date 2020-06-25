@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './AddNewWord.css';
+import delete_btn from '../../../../resources/delete_btn.png';
 class AddNewWord extends Component {
     constructor(props) {
         super(props);
@@ -22,13 +23,15 @@ class AddNewWord extends Component {
         return(
             <div className="AddNewWord">
                 <div className="AddNewWordInner">
-                    {word?<label>Edit Word</label> : <label>Add New Word</label>}
+                    <div className="Popup_Title_Bar">
+                        <div className="Popup_Title">{word? "EDIT WORRD" :"ADD NEW WORD"}</div>
+                        <img className="Delete_Btn" src={delete_btn} onClick={this.props.closePopup} />
+                    </div>
                     <input className="Name" type="text" onChange={this.handleContentChange} placeholder="Word Name" defaultValue={word ? word.content:""}></input>
                     <input className="Pronounce" placeholder="Spelling" onChange={this.handleSpellingChange} defaultValue={word ? word.spelling:""}></input>
                     <input className="Soundfile" type="text" placeholder="Audio url" onChange={this.handleAudioURLChange} defaultValue ={word ? word.spellingAudioURL:""}></input>
                     <input className="Meaning" type="text" placeholder="Meaning" onChange={this.handleDescriptionChange} defaultValue={word ? word.description:""}></input>
                     <button className="Save" onClick={word ? ()=>this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
-                    <button className="Close" onClick={this.props.closePopup}>Close</button>
                 </div>
             </div>
         )

@@ -42,7 +42,7 @@
     width: 90%;
     margin-top: 10px;
     margin-left: 4%;
-    border-right: solid #000066 40px;
+    border-right: solid #3366ff 40px;
     border-top: solid gray 1px;
     border-left: solid gray 1px;
     border-bottom: solid gray 1px;
@@ -60,7 +60,7 @@
     margin-left: 5px;
 }
 .EnglishVocabularyLessonDetail .Content .Content_Row .Content_Row_Header .Header_Bold {
-    background-color: #000066;
+    background-color: #3366ff;
     color: white;
 }
 
@@ -68,7 +68,7 @@
     position: relative;
     display: inline-block;
     width: 100%;
-    background-color: #000066;
+    background-color: #3366ff;
     color: white;
     padding-left: 10px;
     font-size: 24px;

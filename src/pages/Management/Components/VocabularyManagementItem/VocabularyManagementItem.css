@@ -2,7 +2,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
-    border-bottom: solid #000066 5px;
+    border-bottom: solid #3366ff 5px;
     border-top:  solid gray 1px;
     border-left:  solid gray 1px;
     border-right:  solid gray 1px;
@@ -59,9 +59,9 @@ button {
 }
 
 .ManagementItem .LeftSide ._Item:hover {
-    color: #000066;
+    color: #3366ff;
     cursor: pointer;
     text-decoration: underline;
-    text-decoration-color: #000066;
+    text-decoration-color: #3366ff;
 }
 

@@ -43,7 +43,7 @@
     width: 90%;
     margin-top: 10px;
     margin-left: 4%;
-    border-right: solid #000066 40px;
+    border-right: solid #3366ff 40px;
     border-top: solid gray 1px;
     border-left: solid gray 1px;
     border-bottom: solid gray 1px;
@@ -61,7 +61,7 @@
     margin-left: 5px;
 }
 .VocabularyLesson .Content .Content_Row .Content_Row_Header .Header_Bold {
-    background-color: #000066;
+    background-color: #3366ff;
     color: white;
 }
 
@@ -78,7 +78,7 @@
     align-self: center;
     text-align: center;
     color: white;
-    background-color: #000066;
+    background-color: #3366ff;
 }
 
 .VocabularyLesson .Content .Content_Row .Content_Row_Items {

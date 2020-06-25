@@ -12,7 +12,7 @@
     position: relative;
     width: 80%;
     height: 60%;
-    background-color: #000066;
+    background-color: #3366ff;
     top: 20%;
     left: 10%;
     right: 10%;
@@ -119,7 +119,7 @@
 .Login .Content .RightSide .Right_Bound .Form .Login-Form a {
     position: relative;
     margin-bottom: 10px;
-    color: #000066;
+    color: #3366ff;
 }
 
 .Login .Content .RightSide .Right_Bound .Form .Login-Form button {
@@ -128,7 +128,7 @@
     font-family: Barlow Condensed;
     min-height: 30px;
     min-width: 100px;
-    background-color: #000066;
+    background-color: #3366ff;
     color: white;
     font-size: 18px;
 }

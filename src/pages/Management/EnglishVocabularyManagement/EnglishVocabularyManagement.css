@@ -43,7 +43,7 @@
     width: 90%;
     margin-top: 10px;
     margin-left: 4%;
-    border-right: solid #000066 40px;
+    border-right: solid #3366ff 40px;
     border-top: solid gray 1px;
     border-left: solid gray 1px;
     border-bottom: solid gray 1px;
@@ -72,7 +72,7 @@
     margin-left: 5px;
 }
 .VocabularyManagement .Content .Content_Row .Content_Row_Header .Header_Bold {
-    background-color: #000066;
+    background-color: #3366ff;
     color: white;
 }
 
@@ -119,7 +119,7 @@
     border-top: solid 1px gray;
     border-left: solid 1px gray;
     border-right: solid 1px gray;
-    border-bottom: solid 5px #000066;
+    border-bottom: solid 5px #3366ff;
     text-align: center;
     vertical-align: middle;
 }

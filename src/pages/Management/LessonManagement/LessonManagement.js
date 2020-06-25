@@ -81,6 +81,7 @@ class LessonManagement extends Component {
         this.setState({
             showPopup: !this.state.showPopup
         })
+        this.newClass = null;
     }
     
     async saveNewVocabularyClass (item) {
@@ -116,7 +117,7 @@ class LessonManagement extends Component {
         catch (e) {
             alert("Insert fail!") ;
         }
-
+        this.newClass = null;
     }
 
     async deleteVocabularyLesson (item) {

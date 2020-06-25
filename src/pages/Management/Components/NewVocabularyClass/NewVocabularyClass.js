@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './NewVocabularyClass.css';
+import delete_btn from '../../../../resources/delete_btn.png';
 class NewVocabularyClass extends Component {
     constructor(props) {
         super(props);        
@@ -18,11 +19,13 @@ class NewVocabularyClass extends Component {
         return(
             <div className="NewVocabularyClass">
                 <div className="NewVocabularyClassInner">
-                    {newClass ? <label>Edit Class</label> : <label>Add New Class</label>}
+                <div className="Popup_Title_Bar">
+                        <div className="Popup_Title">{newClass? "EDIT VOCABULARY CLASS" :"ADD NEW VOCABULARY CLASS"}</div>
+                        <img className="Delete_Btn" src={delete_btn} onClick={this.props.closePopup} />
+                    </div>
                     <input className="Name" type="text" onChange={this.handleNameChange} placeholder="Name " defaultValue={newClass ? newClass.title : ""}></input>
                     <input className="ImageURL" type="text" onChange={this.handleImageURLChange} placeholder="Image URL" defaultValue={newClass ? newClass.imageURL : ""}></input>
                     <button className="Save" onClick={ newClass ? ()=>this.props.handleEdit(this.state.item) : () =>this.props.handleSave(this.state.item)}>Save</button>
-                    <button className="Close" onClick={this.props.closePopup}>Close</button>
                 </div>
             </div>
         )
