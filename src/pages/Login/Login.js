@@ -14,6 +14,8 @@ class Login extends Component {
             forgot_pasword: false,
             username: "",
             password: "",
+            username_signup: "",
+            password_signup: "",
             repassword: "",
             email: "",
             displayname: "",
@@ -21,6 +23,8 @@ class Login extends Component {
         }
         this.handleUsernameChange.bind(this);
         this.handlePasswordChange.bind(this);
+        this.handleUsernameSignupChange.bind(this);
+        this.handlePasswordSignupChange.bind(this);
         this.handleDisplayNameChange.bind(this);
         this.handleEmailChange.bind(this);
         this.handleClick.bind(this);
@@ -58,12 +62,12 @@ class Login extends Component {
                                         </div>
                                         : signup ?
                                             <div className="Login-Form">
-                                                <input type="text" placeholder="Username" onChange={this.handleUsernameChange}></input>
+                                                <input type="text" placeholder="Username" onChange={this.handleUsernameSignupChange}></input>
                                                 <input type="text" placeholder="Email" onChange={this.handleEmailChange}></input>
                                                 <input type="text" placeholder="Display Name" onChange={this.handleDisplayNameChange}></input>
-                                                <input type="password" placeholder="Password" onChange={this.handlePasswordChange}></input>
+                                                <input type="password" placeholder="Password" onChange={this.handlePasswordSignupChange}></input>
                                                 <input type="password" placeholder="Retype Password" onChange={this.handleRePasswordChange}></input>
-                                                {this.state.isCorrectPassword ? "" : <label>Password not match or missing information!</label>}
+                                                {this.state.isCorrectPassword ? "" : <label>Password not match / missing information/ username created!</label>}
                                                 <button onClick={this.handleClick}>Sign Up</button>
                                             </div>
                                             : <div>Forgot Password</div>
@@ -84,10 +88,27 @@ class Login extends Component {
         )
     }
 
+    handleUsernameSignupChange = (event) => {
+        this.setState(
+            {
+                username_signup: event.target.value
+            }
+        )
+    }
+
     handlePasswordChange = (event) => {
         this.setState(
             {
                 password: event.target.value
+            }
+        )
+
+    }
+
+    handlePasswordSignupChange = (event) => {
+        this.setState(
+            {
+                password_signup: event.target.value
             }
         )
 
@@ -120,7 +141,10 @@ class Login extends Component {
             else {
                 let data = await response.json();
                 sessionStorage.setItem("token", data.accessToken);
-                this.setState({})
+                this.setState({
+                    login: !this.state.login,
+                    signup: !this.state.signup
+                })
             }
         }
         //sign up
@@ -135,7 +159,7 @@ class Login extends Component {
                 const requestOptions = {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username: this.state.username, password: this.state.password, email: this.state.email, displayname: this.state.displayname })
+                    body: JSON.stringify({ username: this.state.username_signup, password: this.state.password_signup, email: this.state.email, displayname: this.state.displayname })
                 };
                 console.log(requestOptions);
                 let response = await fetch('api/v1/auth/register', requestOptions);
@@ -143,12 +167,17 @@ class Login extends Component {
                     this.setState({
                         isCorrectPassword: false
                     })
+                    console.log("signup");
                     return;
                 }
                 else {
                     let data = await response.json();
                     sessionStorage.setItem("token", data.accessToken);
-                    this.setState({})
+                    console.log(data);
+                    this.setState({
+                        login: !this.state.login,
+                        signup: !this.state.signup
+                    })
                 }
             }
         }

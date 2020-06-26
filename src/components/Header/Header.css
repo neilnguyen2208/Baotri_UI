@@ -1,10 +1,53 @@
-.Header{
+.Header_Wrapper {
+    background-image: url('../../resources/cover.png');
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
     width: 100%;
     height: 100%;
-    background-color: white;
     text-decoration-color: black;
     box-sizing: border-box;
+}
+
+.Header{
+    position: relative;
+    width: 90%;
+    height: 15%;
+    top: 10%;
+    text-decoration-color: black;
+    box-sizing: border-box;
+}
+
+.Header_Dock {
+    position: absolute;
+    width: 100%;
+    top: 48%;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: white;
+}
+
+.Header_Inline_Dock {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+}
+
+.Header_Explore {
+    color: white;
+    background: rgba(51, 102, 255, 0.5);
+    width: 460px;
+    margin-top: 10px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    text-align: center;
 }
 
 .Header .Header_Navigation{
@@ -14,12 +57,12 @@
 }
 
 .Header .Header_Navigation .Header_Logo{
+    background-color: white;
     position: relative;
     display: inline-block;
-    width: 10%;
+    width: 30%;
     min-width: 100px;
     height: 100%;
-    padding-left: 10px;
 }
 
 .Header .Header_Navigation .Header_Logo .Header_Logo_Image{
@@ -31,34 +74,19 @@
 }
 
 
-.Header .Header_Navigation .Header_Vertical_Line{
-    margin-left: 50px;
-    height: 100%;
-    float: left; 
-    border-left: solid black 1px; 
-}
-
 .Header .Header_Navigation  .Header_Row{
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-.Header .Header_Navigation  .Header_Row .Header_Horizontal_Line{
-    position: absolute;
-    border-bottom: solid black 1px;
-    width: 100%;
-    height: 30%;
-}
-
 .Header .Header_Navigation  .Header_Row .Header_Item{
     position: absolute;
     display: flex;
     width: 100%;
-    align-items: center;
+    align-items: top;
     justify-content: left;
-    height: 65%;
-    top: 35%;
+    height: 100%;
     left: 0px !important;
 }
 
@@ -71,12 +99,6 @@
     color: black;
 }
 
-.Header .Header_Navigation  .Header_Row .Header_Item ul:hover a{
-    text-decoration: underline;
-    text-decoration-color: #000066;
-    color: #000066;
-}
-
 .Header .Header_Navigation  .Header_Row .Header_Item ul{
     margin: 0px;
     position: relative;
@@ -84,13 +106,14 @@
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item ul:hover{
-    border-top: solid #000066 3px !important;
+    border-top: solid #3366ff 5px !important;
     cursor: pointer;
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item [class*=Item_]{
     position: relative;
     display: inline-block;
+    background-color:  rgba(255, 255, 255, 0.5);
     width: 18%;
     margin: 0px;
     padding: 0px;
@@ -100,8 +123,8 @@
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_LearnEnglish {
-    align-items: center;
-    align-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item ul.Item_LearnEnglish:hover a {
@@ -137,10 +160,8 @@
 }
 
 .Header .Header_Navigation  .Header_Row .Header_Item [class*='Item_'] [class*='Item_'] a:hover {
-    color: #000066;
+    color: #3366ff;
     background-color: #f1f1f1;
-    text-decoration: underline;
-    text-decoration-color: #000066;
     cursor: pointer;
 }
 
@@ -154,9 +175,8 @@
 .Header .Header_Navigation  .Header_Row .Header_Item .Item_Profile_Picture{
     position: relative;
     display: inline-block;
-    align-self: center;
-    margin-left: 10px;
-    width: 5%;
+    align-self: flex-start;
+    width: 10%;
     height: 100%;
 }
 
