@@ -61,6 +61,12 @@
     font-family: Barlow Condensed;
 }
 
+.Chat .Content .Content_Row .LeftSide .delete, img {
+    width: 20px;
+    height: 20px;
+}
+
+
 .Chat .Content .Content_Row .LeftSide .user_sent, .time {
     margin-top: 5px !important;
     margin-bottom: 5px !important;

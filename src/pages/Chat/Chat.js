@@ -4,6 +4,7 @@ import {isAdmin, isLogin, getUserID} from '../../pages/Login/Login.js';
 import './Chat.css'
 import Footer from '../../components/Footer/Footer';
 import { Redirect } from 'react-router-dom';
+import delete_btn from '../../resources/delete_btn.png';
 
 class Chat extends Component{
     constructor(props) {
@@ -89,8 +90,22 @@ class Chat extends Component{
         this.isPosting = false;
     }
 
+    async deleteMessage(item) {
+        this.isPosting = true;
+        let url = "/api/v1/roomChat?message=" + item.id;
+        if(window.confirm("Do you want to delete the message \"" + item.content + "\"")) {
+            let token = sessionStorage.getItem("token");
+            let response = await fetch(url, {method: "DELETE", headers: {
+                'Authorization': 'Bearer ' + token
+            }});   
+        }
+        this.isPosting = false;
+        this.fetchData();
+    }
+
     render() {
         const isAuthenticated = isLogin();
+        const isAdminAccount = isAdmin();
         if(!isAuthenticated) {
             return (<Redirect to="/login"></Redirect>);
         }
@@ -101,6 +116,7 @@ class Chat extends Component{
             if(item.userSentID == userID) {
                 return(
                 <section className="RightSide" key={item.id}>
+                    <img className="delete" onClick={()=>this.deleteMessage(item)} src={delete_btn} ></img>
                     <label className="user_sent">{item.userSentName}</label><br></br>
                     <label className="content">{item.content}</label><br></br>
                     <label className="time">{item.timeStamp}</label><br></br>
@@ -108,7 +124,8 @@ class Chat extends Component{
             }
             return (
                 <section className="LeftSide" key={item.id}>
-                   <label className="user_sent">{item.userSentName}</label><br></br>
+                    <img className="delete" onClick={()=>this.deleteMessage(item)} src= {delete_btn}></img>
+                    <label className="user_sent">{item.userSentName}</label><br></br>
                     <label className="content">{item.content}</label><br></br>
                     <label className="time">{item.timeStamp}</label><br></br>
                 </section>
