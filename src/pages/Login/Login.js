@@ -131,6 +131,8 @@ class Login extends Component {
                 body: JSON.stringify({ username: this.state.username, password: this.state.password })
             };
             console.log(requestOptions);
+            sessionStorage.setItem("username", this.state.username);
+            console.log("username: " + this.state.username);
             let response = await fetch('api/v1/auth/login', requestOptions);
             if (!response.ok) {
                 this.setState({
@@ -162,6 +164,8 @@ class Login extends Component {
                     body: JSON.stringify({ username: this.state.username_signup, password: this.state.password_signup, email: this.state.email, displayname: this.state.displayname })
                 };
                 console.log(requestOptions);
+                sessionStorage.setItem("username", this.state.username_signup);
+                console.log("ussername: " + this.state.username_signup);
                 let response = await fetch('api/v1/auth/register', requestOptions);
                 if (!response.ok) {
                     this.setState({

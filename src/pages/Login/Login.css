@@ -107,6 +107,8 @@
     padding-left: 10px;
     font-family: Barlow;
     font-size: 14px;
+    background-color: transparent !important; 
+    background: none !important;
 }
 
 .Login .Content .RightSide .Right_Bound .Form .Login-Form label {

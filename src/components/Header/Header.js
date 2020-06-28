@@ -58,7 +58,7 @@ class Header extends Component{
                                 <a href="#">CHAT</a>
                                 <div className="Item_Chat_Dropdown">
                                     <a href="/">1 vs 1</a>
-                                    <a href="/">Room Chat</a>
+                                    <a href="/chat">Room Chat</a>
                                 </div>
                             </ul>
                             {isAdminAccount ? <ul className="Item_"><a href="/admin">MANAGE</a></ul> : null}

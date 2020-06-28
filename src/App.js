@@ -27,6 +27,7 @@ import Admin_GrammarManagement from "./pages/Admin_GrammarManagement/Admin_Gramm
 import Admin_GrammarDetailManagement from "./pages/Admin_GrammarManagement/Admin_GrammarDetailManagement/Admin_GrammarDetailManagement"
 import Admin_UserManagement from "./pages/Admin_UserManagement/Admin_UserManagement"
 import Admin_UserDetailManagement from "./pages/Admin_UserManagement/Admin_UserDetailManagement"
+import Chat from './pages/Chat/Chat';
 function App() {
   return (
     <div className="App">
@@ -37,6 +38,9 @@ function App() {
           </Route>
           <Route path="/" exact>
             <Home></Home>
+          </Route>
+          <Route path="/chat" exact>
+            <Chat></Chat>
           </Route>
           <Route path="/aboutus" exact>
             <AboutUs></AboutUs>
