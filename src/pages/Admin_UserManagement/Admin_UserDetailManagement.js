@@ -29,7 +29,9 @@ class Admin_UserDetailManagement extends Component {
 
         //for update user info
         this.newDisplayName = "";
-        this.canUpdateInfo = false;
+        this.isDisplayNameOK = false;
+        this.newEmail = "";
+        this.isEmailOK = false;
 
         //for fetching information of this user.
         this.user_ID = "";
@@ -43,7 +45,7 @@ class Admin_UserDetailManagement extends Component {
             },
             userInfo_PatchDTO: {
                 "id": "",
-                "displayName": "",
+                "displayName": null,
                 "userName": null,
                 "email": null,
                 "currentPassword": null,
@@ -117,6 +119,9 @@ class Admin_UserDetailManagement extends Component {
                     userInfo: response,
                     isLoadDone: true
                 });
+
+                this.newDisplayName = response.displayName;
+                this.newEmail = response.email;
             })
             .catch(error => {
                 console.log(error);
@@ -155,15 +160,6 @@ class Admin_UserDetailManagement extends Component {
         }
         else {
             this.canClickUpdatePass = true;
-        }
-    }
-
-    checkDisplayNameEmptyField = (e) => {
-        if (this.newDisplayName === "" || this.newDisplayName === null) {
-            this.canUpdateInfo = false;
-        }
-        else {
-            this.canUpdateInfo = true;
         }
     }
 
@@ -258,6 +254,33 @@ class Admin_UserDetailManagement extends Component {
         })
     }
 
+    checkDisplayNameEmptyField = () => {
+        console.log("Display name checked!" + this.newDisplayName + " " + this.newEmail);
+        if (this.newDisplayName === "" || this.newDisplayName === null) {
+            this.isDisplayNameOK = false;
+            console.log("display name: FALSE ");
+            return;
+        }
+        this.isDisplayNameOK = true;
+    }
+
+    checkValidateEmail = () => {
+        console.log("Email checked!" + this.newDisplayName + " " + this.newEmail);
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(re.test(String(this.newEmail).toLowerCase()));
+        if (!(re.test(String(this.newEmail).toLowerCase()))) {
+            this.isEmailOK = false;
+            console.log("email: FALSE 1");
+            return;
+        }
+        if (this.newEmail === "" || this.newEmail === null) {
+            this.isEmailOK = false;
+            console.log("email: FALSE 2");
+            return;
+        }
+        this.isEmailOK = true;
+    }
+
     updateRemindSetting = (e) => {
         e.preventDefault();
 
@@ -290,19 +313,81 @@ class Admin_UserDetailManagement extends Component {
 
     handleBanUser = (e) => {
         e.preventDefault();
-        this.notifyContent = "Do you want to ban this user!";
-        this.openBanUserConfirmationPopupHandler();
+        let token = sessionStorage.getItem('token');
+        if (!token || token.length < 10)
+            return;
+
+        fetch('/api/v1/users/' + this.user_ID + "/ban?status=1", {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                response.json();
+                console.log(response);
+
+                //bug 403 but OK
+                this.notifyContent = "Ban user success!";
+                this.closeVerifyBannedPopupHandler();
+                this.openNotifyPopupHandler();
+            })
+        // .then(response => {
+        //     // console.log(response);
+        //     // if (response.currentPassword === null) {
+        //     //     this.notifyContent = "Your current password is wrong!";
+        //     //     this.openNormalNotifyPopupHandler();
+        //     // }
+        //     // else {
+        //     //     this.notifyContent = "Update password success!";
+        //     //     this.openNotifyPopupHandler();
+        //     // }
+        // })
+
+
+        console.log('You have banned user have id' + this.props.id);
+
     }
 
-    banUser = (e) => {
 
-        console.log("Đã ban user!");
+    handleUnbanUser = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
 
-        //call api ở đây.   
+        let token = sessionStorage.getItem('token');
+        if (!token || token.length < 10)
+            return;
 
-        this.notifyContent = "This user have banned!";
-        this.closeBanUserConfirmationPopupHandler();
-        this.openNotifyPopupHandler();
+        fetch('/api/v1/users/' + this.user_ID + "/ban?status=0", {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(response => {
+                response.json();
+                console.log(response);
+
+                //bug 403 but OK
+                this.notifyContent = "Unban user success!";
+                this.closeVerifyUnbannedPopupHandler();
+                this.openNotifyPopupHandler();
+            })
+        // .then(response => {
+        //     // if (response.currentPassword === null) {
+        //     //     this.notifyContent = "Your current password is wrong!";
+        //     //     this.openNormalNotifyPopupHandler();
+        //     // }
+        //     // else {
+        //     //     this.notifyContent = "Update password success!";
+        //     //     this.openNotifyPopupHandler();
+        //     // }
+        // })
+
+
+        console.log('You have banned user have id' + this.props.id);
     }
 
     render() {
@@ -334,17 +419,17 @@ class Admin_UserDetailManagement extends Component {
                     </div>
                     <div>
                         <div className="Label">Email:</div>
-                        <input className="Changable_Input" type="text" defaultValue={this.state.userInfo.email} ></input>
+                        <input className="Changable_Input" type="text" defaultValue={this.state.userInfo.email} onChange={this.changeEmailHandler}></input>
                     </div>
                     <div >
                         <div className="Label">Passwords:</div>
-                        <input className="Changable_Input" type="text" defaultValue={this.generateHiddenPass()} ></input>
+                        <input className="Unchangable_Input" type="text" defaultValue={this.generateHiddenPass()} readOnly ></input>
                     </div>
                     <div className="Save_Change_Info_Btn_Port" >
-                        <button className="Blue_Button" disabled={!this.canUpdateInfo} onClick={() => { this.notifyContent = "Do you want to update your information?"; this.openUpdateUserInfoConfirmationPopupHandler() }}>Save changes</button>
+                        <button className="Blue_Button" disabled={(!(this.isDisplayNameOK) || !(this.isEmailOK))} onClick={() => { this.notifyContent = "Do you want to update your information?"; this.openUpdateUserInfoConfirmationPopupHandler() }}>Save changes</button>
                     </div>
                 </div>
-            </div>
+            </div >
         }
         else {
             if (this.state.isChangePass) {
@@ -416,7 +501,12 @@ class Admin_UserDetailManagement extends Component {
                                             {this.state.userInfo.email}
                                         </div>
                                         <div className="Ban_Btn_Port">
-                                            <button className="Red_Button" onClick={this.handleBanUser}>Ban</button>
+                                            {console.log(this.state.userInfo.isAccountEnabled)}
+                                            {this.state.userInfo.isAccountEnabled ?
+                                                <button className="Red_Button" onClick={this.openVerifyBannedPopupHandler}>Ban</button>
+                                                : <button className="Red_Button" style={{ background: "#3afe3a" }} onClick={this.openVerifyUnbannedPopupHandler}>Unban</button>
+                                            }
+
                                         </div>
                                     </div>
 
@@ -450,6 +540,7 @@ class Admin_UserDetailManagement extends Component {
                     open={this.state.isNotifyPopupOpen}
                     onOpen={this.openNotifyPopupHandler}
                     closeOnDocumentClick={false}
+
                 >
                     <React.Fragment>
                         <div className="Align_Center">
@@ -558,7 +649,54 @@ class Admin_UserDetailManagement extends Component {
                         </div>
                     </React.Fragment>
                 </Popup>
+                {/* Confirm Banned info Popup*/}
+                <Popup modal
+                    open={this.state.isVerifyBannedPopupOpen}
+                    onOpen={this.openVerifyBannedPopupHandler}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Align_Center">
+                            <div className="Height_30px"></div>
+                            <div className="Simple_Label">{this.notifyContent}</div>
+                            <div className="Height_30px"></div>
+                            <div className="Justify_Content_Space_Between">
+                                <button className="Blue_Button" onClick={(e) => this.handleBanUser(e)}>
+                                    Verify
+                                </button>
+                                <button className="Red_Button" onClick={this.closeVerifyBannedPopupHandler}>
+                                    Cancel
+                                </button>
+                            </div>
+                            <div className="Height_10px"></div>
+                        </div>
+                    </React.Fragment>
+                </Popup>
 
+                {/* Confirm Unban info Popup*/}
+                <Popup modal
+                    open={this.state.isVerifyUnbannedPopupOpen}
+                    onOpen={this.openVerifyUnbanPopupHandler}
+                    closeOnDocumentClick={false}
+                >
+                    <React.Fragment>
+                        <div className="Align_Center">
+                            <div className="Height_30px"></div>
+                            <div className="Simple_Label">{this.notifyContent}</div>
+                            <div className="Height_30px"></div>
+                            <div className="Justify_Content_Space_Between">
+                                <button className="Blue_Button" onClick={(e) => this.handleUnbanUser(e)}>
+                                    Verify
+                                </button>
+                                <button className="Red_Button" onClick={this.closeVerifyUnbannedPopupHandler}>
+                                    Cancel
+                                </button>
+                            </div>
+                            <div className="Height_10px"></div>
+                        </div>
+                    </React.Fragment>
+
+                </Popup>
                 <div className="User_Account_Management_Footer">
                     <Footer ></Footer>
                 </div>
@@ -596,6 +734,16 @@ class Admin_UserDetailManagement extends Component {
     changeDisplayNameHandler = (e) => {
         this.state.userInfo_PatchDTO.displayName = e.target.value;
         this.newDisplayName = e.target.value;
+        this.checkDisplayNameEmptyField();
+        this.checkValidateEmail();
+        this.setState(this.state);
+    }
+
+    changeEmailHandler = (e) => {
+        this.state.userInfo_PatchDTO.email = e.target.value;
+        this.newEmail = e.target.value;
+        // console.log(this.newEmail);
+        this.checkValidateEmail();
         this.checkDisplayNameEmptyField();
         this.setState(this.state);
     }
@@ -662,6 +810,29 @@ class Admin_UserDetailManagement extends Component {
 
     closeUpdateRemindConfirmationPopupHandler = () => {
         this.setState({ isUpdateRemindConfirmationPopupOpen: false });
+    }
+
+    //verify ban and unban popup:
+    openVerifyBannedPopupHandler = () => {
+        this.notifyContent = "Do you want to ban this user?";
+        this.state.isVerifyBannedPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeVerifyBannedPopupHandler = () => {
+        this.state.isVerifyBannedPopupOpen = false;
+        this.setState(this.state);
+    }
+
+    openVerifyUnbannedPopupHandler = () => {
+        this.notifyContent = "Do you want to UNBAN this user?";
+        this.state.isVerifyUnbannedPopupOpen = true;
+        this.setState(this.state);
+    }
+
+    closeVerifyUnbannedPopupHandler = () => {
+        this.state.isVerifyUnbannedPopupOpen = false;
+        this.setState(this.state);
     }
 
 }

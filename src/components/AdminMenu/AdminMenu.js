@@ -67,7 +67,7 @@ class AdminMenu extends Component {
                 </div>
                 <div className="Admin_Horizontal_Menu_Bar">
                     <div >
-                        <a href="./" className="Admin_Horizontal_Menu_Item">Account Center</a>
+                        <a href="/admin" className="Admin_Horizontal_Menu_Item">Account Center</a>
                     </div>
                     <div >
                         <a href='/admin/grammar' className="Admin_Horizontal_Menu_Item">Grammar Manager</a>

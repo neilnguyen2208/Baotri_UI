@@ -10,6 +10,11 @@ import jwt_decode from 'jwt-decode'
 import activated_checkbox from '../../resources/activated_checkbox.png'
 import deactivated_checkbox from '../../resources/deactivated_checkbox.png'
 
+import { ClickAwayListener } from '@material-ui/core';
+
+import dropdown_btn from '../../resources/dropdown_icon.png'
+import white_dropdown_btn from '../../resources/white_dropdown_icon.png'
+
 class UserAccountManagement extends Component {
     constructor(props) {
         super(props);
@@ -30,7 +35,11 @@ class UserAccountManagement extends Component {
 
         //for update user info
         this.newDisplayName = "";
-        this.canUpdateInfo = false;
+        this.isDisplayNameOK = false;
+        this.newEmail = "";
+        this.isEmailOK = false;
+
+        // this.canUpdateInfo = false;
 
         //for update remind setting
         this.canClickUpdateRemindSetting = false;
@@ -54,36 +63,737 @@ class UserAccountManagement extends Component {
             "password_length": 10,
             "isLoadDone": false,
             remindSetting_PutDTO: {
-                "days": -1
+                "monday": -1,
+                "tuesday": -1,
+                "wednesday": -1,
+                "thursday": -1,
+                "friday": -1,
+                "saturday": -1,
+                "sunday": -1
             },
             remindOptionsList: [
                 {
-                    "id": 0,
-                    "value": "Don't remind me!",
-                    "active": true
+                    mapName: "monday",
+                    name: "Monday", curValue: {
+                        id: 24,
+                        value: "None"
+                    }, values: [
+
+                        {
+                            id: 0,
+                            value: "00:00"
+                        }, {
+                            id: 1,
+                            value: "01:00"
+                        },
+                        {
+                            id: 2,
+                            value: "02:00"
+                        },
+                        {
+                            id: 3,
+                            value: "03:00"
+                        },
+                        {
+                            id: 4,
+                            value: "04:00"
+                        },
+                        {
+                            id: 5,
+                            value: "05:00"
+                        },
+                        {
+                            id: 6,
+                            value: "06:00"
+                        },
+                        {
+                            id: 7,
+                            value: "07:00"
+                        },
+                        {
+                            id: 8,
+                            value: "08:00"
+                        },
+                        {
+                            id: 9,
+                            value: "09:00"
+                        },
+                        {
+                            id: 10,
+                            value: "10:00"
+                        },
+                        {
+                            id: 11,
+                            value: "11:00"
+                        },
+                        {
+                            id: 12,
+                            value: "12:00"
+                        }, {
+                            id: 13,
+                            value: "13:00"
+                        },
+                        {
+                            id: 14,
+                            value: "14:00"
+                        },
+                        {
+                            id: 15,
+                            value: "15:00"
+                        },
+                        {
+                            id: 16,
+                            value: "16:00"
+                        },
+                        {
+                            id: 17,
+                            value: "17:00"
+                        },
+                        {
+                            id: 18,
+                            value: "18:00"
+                        },
+                        {
+                            id: 19,
+                            value: "19:00"
+                        },
+                        {
+                            id: 20,
+                            value: "20:00"
+                        },
+                        {
+                            id: 21,
+                            value: "21:00"
+                        },
+                        {
+                            id: 22,
+                            value: "22:00"
+                        },
+                        {
+                            id: 23,
+                            value: "23:00"
+                        }
+                    ]
                 },
                 {
-                    "id": 1,
-                    "value": "Everyday",
-                    "active": false
+                    mapName: "tuesday",
+                    name: "Tuesday", curValue: {
+                        id: 24,
+                        value: "None"
+                    }, values: [
+
+                        {
+                            id: 0,
+                            value: "00:00"
+                        }, {
+                            id: 1,
+                            value: "01:00"
+                        },
+                        {
+                            id: 2,
+                            value: "02:00"
+                        },
+                        {
+                            id: 3,
+                            value: "03:00"
+                        },
+                        {
+                            id: 4,
+                            value: "04:00"
+                        },
+                        {
+                            id: 5,
+                            value: "05:00"
+                        },
+                        {
+                            id: 6,
+                            value: "06:00"
+                        },
+                        {
+                            id: 7,
+                            value: "07:00"
+                        },
+                        {
+                            id: 8,
+                            value: "08:00"
+                        },
+                        {
+                            id: 9,
+                            value: "09:00"
+                        },
+                        {
+                            id: 10,
+                            value: "10:00"
+                        },
+                        {
+                            id: 11,
+                            value: "11:00"
+                        },
+                        {
+                            id: 12,
+                            value: "12:00"
+                        }, {
+                            id: 13,
+                            value: "13:00"
+                        },
+                        {
+                            id: 14,
+                            value: "14:00"
+                        },
+                        {
+                            id: 15,
+                            value: "15:00"
+                        },
+                        {
+                            id: 16,
+                            value: "16:00"
+                        },
+                        {
+                            id: 17,
+                            value: "17:00"
+                        },
+                        {
+                            id: 18,
+                            value: "18:00"
+                        },
+                        {
+                            id: 19,
+                            value: "19:00"
+                        },
+                        {
+                            id: 20,
+                            value: "20:00"
+                        },
+                        {
+                            id: 21,
+                            value: "21:00"
+                        },
+                        {
+                            id: 22,
+                            value: "22:00"
+                        },
+                        {
+                            id: 23,
+                            value: "23:00"
+                        }
+                    ]
                 },
                 {
-                    "id": 2,
-                    "value": "2 days",
-                    "active": false
+                    mapName: "wednesday",
+                    name: "Wednesday", curValue: {
+                        id: 24,
+                        value: "None"
+                    }, values: [
+
+                        {
+                            id: 0,
+                            value: "00:00"
+                        }, {
+                            id: 1,
+                            value: "01:00"
+                        },
+                        {
+                            id: 2,
+                            value: "02:00"
+                        },
+                        {
+                            id: 3,
+                            value: "03:00"
+                        },
+                        {
+                            id: 4,
+                            value: "04:00"
+                        },
+                        {
+                            id: 5,
+                            value: "05:00"
+                        },
+                        {
+                            id: 6,
+                            value: "06:00"
+                        },
+                        {
+                            id: 7,
+                            value: "07:00"
+                        },
+                        {
+                            id: 8,
+                            value: "08:00"
+                        },
+                        {
+                            id: 9,
+                            value: "09:00"
+                        },
+                        {
+                            id: 10,
+                            value: "10:00"
+                        },
+                        {
+                            id: 11,
+                            value: "11:00"
+                        },
+                        {
+                            id: 12,
+                            value: "12:00"
+                        }, {
+                            id: 13,
+                            value: "13:00"
+                        },
+                        {
+                            id: 14,
+                            value: "14:00"
+                        },
+                        {
+                            id: 15,
+                            value: "15:00"
+                        },
+                        {
+                            id: 16,
+                            value: "16:00"
+                        },
+                        {
+                            id: 17,
+                            value: "17:00"
+                        },
+                        {
+                            id: 18,
+                            value: "18:00"
+                        },
+                        {
+                            id: 19,
+                            value: "19:00"
+                        },
+                        {
+                            id: 20,
+                            value: "20:00"
+                        },
+                        {
+                            id: 21,
+                            value: "21:00"
+                        },
+                        {
+                            id: 22,
+                            value: "22:00"
+                        },
+                        {
+                            id: 23,
+                            value: "23:00"
+                        }
+                    ]
                 },
                 {
-                    "id": 3,
-                    "value": "3 days",
-                    "active": false
+                    mapName: "thursday",
+                    name: "Thursday", curValue: {
+                        id: 24,
+                        value: "None"
+                    }, values: [
+
+                        {
+                            id: 0,
+                            value: "00:00"
+                        }, {
+                            id: 1,
+                            value: "01:00"
+                        },
+                        {
+                            id: 2,
+                            value: "02:00"
+                        },
+                        {
+                            id: 3,
+                            value: "03:00"
+                        },
+                        {
+                            id: 4,
+                            value: "04:00"
+                        },
+                        {
+                            id: 5,
+                            value: "05:00"
+                        },
+                        {
+                            id: 6,
+                            value: "06:00"
+                        },
+                        {
+                            id: 7,
+                            value: "07:00"
+                        },
+                        {
+                            id: 8,
+                            value: "08:00"
+                        },
+                        {
+                            id: 9,
+                            value: "09:00"
+                        },
+                        {
+                            id: 10,
+                            value: "10:00"
+                        },
+                        {
+                            id: 11,
+                            value: "11:00"
+                        },
+                        {
+                            id: 12,
+                            value: "12:00"
+                        }, {
+                            id: 13,
+                            value: "13:00"
+                        },
+                        {
+                            id: 14,
+                            value: "14:00"
+                        },
+                        {
+                            id: 15,
+                            value: "15:00"
+                        },
+                        {
+                            id: 16,
+                            value: "16:00"
+                        },
+                        {
+                            id: 17,
+                            value: "17:00"
+                        },
+                        {
+                            id: 18,
+                            value: "18:00"
+                        },
+                        {
+                            id: 19,
+                            value: "19:00"
+                        },
+                        {
+                            id: 20,
+                            value: "20:00"
+                        },
+                        {
+                            id: 21,
+                            value: "21:00"
+                        },
+                        {
+                            id: 22,
+                            value: "22:00"
+                        },
+                        {
+                            id: 23,
+                            value: "23:00"
+                        }
+                    ]
                 },
                 {
-                    "id": 5,
-                    "value": "5 days",
-                    "active": false
+                    mapName: "friday",
+                    name: "Friday", curValue: {
+                        id: 24,
+                        value: "None"
+                    }, values: [
+
+                        {
+                            id: 0,
+                            value: "00:00"
+                        }, {
+                            id: 1,
+                            value: "01:00"
+                        },
+                        {
+                            id: 2,
+                            value: "02:00"
+                        },
+                        {
+                            id: 3,
+                            value: "03:00"
+                        },
+                        {
+                            id: 4,
+                            value: "04:00"
+                        },
+                        {
+                            id: 5,
+                            value: "05:00"
+                        },
+                        {
+                            id: 6,
+                            value: "06:00"
+                        },
+                        {
+                            id: 7,
+                            value: "07:00"
+                        },
+                        {
+                            id: 8,
+                            value: "08:00"
+                        },
+                        {
+                            id: 9,
+                            value: "09:00"
+                        },
+                        {
+                            id: 10,
+                            value: "10:00"
+                        },
+                        {
+                            id: 11,
+                            value: "11:00"
+                        },
+                        {
+                            id: 12,
+                            value: "12:00"
+                        }, {
+                            id: 13,
+                            value: "13:00"
+                        },
+                        {
+                            id: 14,
+                            value: "14:00"
+                        },
+                        {
+                            id: 15,
+                            value: "15:00"
+                        },
+                        {
+                            id: 16,
+                            value: "16:00"
+                        },
+                        {
+                            id: 17,
+                            value: "17:00"
+                        },
+                        {
+                            id: 18,
+                            value: "18:00"
+                        },
+                        {
+                            id: 19,
+                            value: "19:00"
+                        },
+                        {
+                            id: 20,
+                            value: "20:00"
+                        },
+                        {
+                            id: 21,
+                            value: "21:00"
+                        },
+                        {
+                            id: 22,
+                            value: "22:00"
+                        },
+                        {
+                            id: 23,
+                            value: "23:00"
+                        }
+                    ]
+                },
+                {
+                    mapName: "saturday",
+                    name: "Saturday", curValue: {
+                        id: 24,
+                        value: "None"
+                    }, values: [
+
+                        {
+                            id: 0,
+                            value: "00:00"
+                        }, {
+                            id: 1,
+                            value: "01:00"
+                        },
+                        {
+                            id: 2,
+                            value: "02:00"
+                        },
+                        {
+                            id: 3,
+                            value: "03:00"
+                        },
+                        {
+                            id: 4,
+                            value: "04:00"
+                        },
+                        {
+                            id: 5,
+                            value: "05:00"
+                        },
+                        {
+                            id: 6,
+                            value: "06:00"
+                        },
+                        {
+                            id: 7,
+                            value: "07:00"
+                        },
+                        {
+                            id: 8,
+                            value: "08:00"
+                        },
+                        {
+                            id: 9,
+                            value: "09:00"
+                        },
+                        {
+                            id: 10,
+                            value: "10:00"
+                        },
+                        {
+                            id: 11,
+                            value: "11:00"
+                        },
+                        {
+                            id: 12,
+                            value: "12:00"
+                        }, {
+                            id: 13,
+                            value: "13:00"
+                        },
+                        {
+                            id: 14,
+                            value: "14:00"
+                        },
+                        {
+                            id: 15,
+                            value: "15:00"
+                        },
+                        {
+                            id: 16,
+                            value: "16:00"
+                        },
+                        {
+                            id: 17,
+                            value: "17:00"
+                        },
+                        {
+                            id: 18,
+                            value: "18:00"
+                        },
+                        {
+                            id: 19,
+                            value: "19:00"
+                        },
+                        {
+                            id: 20,
+                            value: "20:00"
+                        },
+                        {
+                            id: 21,
+                            value: "21:00"
+                        },
+                        {
+                            id: 22,
+                            value: "22:00"
+                        },
+                        {
+                            id: 23,
+                            value: "23:00"
+                        }
+                    ]
+                },
+                {
+                    mapName: "sunday",
+                    name: "Sunday", curValue: {
+                        id: 24,
+                        value: "None"
+                    }, values: [
+
+                        {
+                            id: 0,
+                            value: "00:00"
+                        }, {
+                            id: 1,
+                            value: "01:00"
+                        },
+                        {
+                            id: 2,
+                            value: "02:00"
+                        },
+                        {
+                            id: 3,
+                            value: "03:00"
+                        },
+                        {
+                            id: 4,
+                            value: "04:00"
+                        },
+                        {
+                            id: 5,
+                            value: "05:00"
+                        },
+                        {
+                            id: 6,
+                            value: "06:00"
+                        },
+                        {
+                            id: 7,
+                            value: "07:00"
+                        },
+                        {
+                            id: 8,
+                            value: "08:00"
+                        },
+                        {
+                            id: 9,
+                            value: "09:00"
+                        },
+                        {
+                            id: 10,
+                            value: "10:00"
+                        },
+                        {
+                            id: 11,
+                            value: "11:00"
+                        },
+                        {
+                            id: 12,
+                            value: "12:00"
+                        }, {
+                            id: 13,
+                            value: "13:00"
+                        },
+                        {
+                            id: 14,
+                            value: "14:00"
+                        },
+                        {
+                            id: 15,
+                            value: "15:00"
+                        },
+                        {
+                            id: 16,
+                            value: "16:00"
+                        },
+                        {
+                            id: 17,
+                            value: "17:00"
+                        },
+                        {
+                            id: 18,
+                            value: "18:00"
+                        },
+                        {
+                            id: 19,
+                            value: "19:00"
+                        },
+                        {
+                            id: 20,
+                            value: "20:00"
+                        },
+                        {
+                            id: 21,
+                            value: "21:00"
+                        },
+                        {
+                            id: 22,
+                            value: "22:00"
+                        },
+                        {
+                            id: 23,
+                            value: "23:00"
+                        }
+                    ]
                 }
             ]
-
         }
     }
 
@@ -108,11 +818,13 @@ class UserAccountManagement extends Component {
                 response.json()
             )
             .then(response => {
-                // console.log(response);
+
                 this.setState({
                     userInfo: response,
                     isLoadDone: true
                 });
+                this.newDisplayName = response.displayName;
+                this.newEmail = response.email;
             })
             .catch(error => {
                 console.log(error);
@@ -154,13 +866,31 @@ class UserAccountManagement extends Component {
         }
     }
 
-    checkDisplayNameEmptyField = (e) => {
+    checkDisplayNameEmptyField = () => {
+        console.log("Display name checked!" + this.newDisplayName + " " + this.newEmail);
         if (this.newDisplayName === "" || this.newDisplayName === null) {
-            this.canUpdateInfo = false;
+            this.isDisplayNameOK = false;
+            console.log("display name: FALSE ");
+            return;
         }
-        else {
-            this.canUpdateInfo = true;
+        this.isDisplayNameOK = true;
+    }
+
+    checkValidateEmail = () => {
+        console.log("Email checked!" + this.newDisplayName + " " + this.newEmail);
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(re.test(String(this.newEmail).toLowerCase()));
+        if (!(re.test(String(this.newEmail).toLowerCase()))) {
+            this.isEmailOK = false;
+            console.log("email: FALSE 1");
+            return;
         }
+        if (this.newEmail === "" || this.newEmail === null) {
+            this.isEmailOK = false;
+            console.log("email: FALSE 2");
+            return;
+        }
+        this.isEmailOK = true;
     }
 
     updateInfo = (e) => {
@@ -227,7 +957,6 @@ class UserAccountManagement extends Component {
         window.location.href = '/';
     }
 
-
     //for reminder
     fetchReminderInfo = () => {
         this.canClickUpdateRemindSetting = false;
@@ -239,12 +968,21 @@ class UserAccountManagement extends Component {
             }
         })
             .then(
-                response => {
-                    console.log(response);
-                    response.json();
-                })
+                response => response.json())
             .then((response) => {
-                console.log(response)
+                console.log(response);
+                //mapping to show 
+                this.state.remindOptionsList.map(
+                    remindOption => {
+                        for (let i = 0; i <= 23; i++) {
+                            if (i === response[remindOption.mapName]) {
+                                console.log("OK");
+                                remindOption.curValue.value = remindOption.values[i].value;
+                            }
+                        }
+
+                    }
+                )
                 this.setState({ remindSetting_PutDTO: response });
             })
             .catch(error => {
@@ -273,7 +1011,7 @@ class UserAccountManagement extends Component {
             body: JSON.stringify(this.state.remindSetting_PutDTO)
         })
             .then(response => {
-                console.log(response);
+
                 if (response.status === 200 || response.status === 204) {
                     this.closeUpdateRemindConfirmationPopupHandler();
                     this.notifyContent = "You have change your remind setting!";
@@ -294,17 +1032,54 @@ class UserAccountManagement extends Component {
     render() {
 
         let remindOptionsList = this.state.remindOptionsList.map(remindOption =>
-            <div className="Custom_Checkbox" key={remindOption.id} onClick={() => this.activateRemindSelection(remindOption.id)}>
-                {remindOption.id === this.state.remindSetting_PutDTO.days ?
-                    <img alt="o" src={activated_checkbox} className="Custom_Checkbox_Image" />
-                    :
-                    <img alt="o" src={deactivated_checkbox} className="Custom_Checkbox_Image" />
-                }
-                <div className="Custom_Checkbox_Label">
-                    {remindOption.value}
+            <div style={{ display: "flex", marginBottom: "10px" }} key={remindOption.name}>
+                <div className="Simple_Label" style={{ height: "25px" }}>
+                    {remindOption.name}
                 </div>
+                <div style={{ width: "10px" }} ></div>
+                {
+                    <ClickAwayListener onClickAway={(e) => { this.closeAllChangeRoleDropdownCombobox(e, "user-role-parent-dropdown-combobox-" + remindOption.name, "user-role-parent-dropdown-combobox-text-" + remindOption.name, "user-role-dropdown-btn-element-" + remindOption.name, "user-role-dropdown-combobox-container-" + remindOption.name) }}>
+                        <div style={{ position: "relative", display: "flex", width: "100%" }}>
+                            <div style={{ position: "relative", display: "flex", justifyContent: "flex-end", width: "100%" }}>
+                                <div style={{ width: "140px" }}>
+                                    <div className="Parent_Dropdown_Combobox" id={"user-role-parent-dropdown-combobox-" + remindOption.name}
+                                        onClick={(e) => this.handleDropDownMenuClick(e, "user-role-parent-dropdown-combobox-" + remindOption.name, "user-role-parent-dropdown-combobox-text-" + remindOption.name, "user-role-dropdown-btn-element-" + remindOption.name, "user-role-dropdown-combobox-container-" + remindOption.name)}>
+                                        <div style={{ display: "flex", zIndex: 1 }}>
+                                            <div className="Vertical_Menu_Item_Text" id={"user-role-parent-dropdown-combobox-text-" + remindOption.name}>
+                                                {remindOption.curValue.value}
+                                            </div>
+                                        </div>
+                                        <img alt="v" className="Dropdown_Btn_Element" src={dropdown_btn} id={"user-role-dropdown-btn-element-" + remindOption.name} />
+                                    </div>
+
+                                    {/* {this.isAnyChangeRoleDropdownComboboxOpen ? ( */}
+                                    <div className="Dropdown_Combobox_Container" style={{ position: "absolute", zIndex: 2, maxHeight: "240px", overflow: "auto" }} id={"user-role-dropdown-combobox-container-" + remindOption.name}>
+                                        {
+                                            remindOption.values.map(detailRemindOption =>
+                                                remindOption.curValue.id === detailRemindOption.id ?
+                                                    <div className="Activated_Dropdown_Combobox_Sub_Item" id={"user-role-dropdown-combobox-sub-item-" + remindOption.name + detailRemindOption.id} value={detailRemindOption.value} key={detailRemindOption.id}>{detailRemindOption.value}</div>
+                                                    :
+                                                    <div className="Dropdown_Combobox_Sub_Item" id={"user-role-dropdown-combobox-sub-item-" + remindOption.name + detailRemindOption.id} value={detailRemindOption.value} key={detailRemindOption.id}
+                                                        onClick={() => this.handleDropDownMenuItemClick(remindOption.name, detailRemindOption.id, detailRemindOption.value)}>
+                                                        {detailRemindOption.value}
+                                                    </div>
+                                            )}
+
+                                        <div style={{ marginBottom: "10px" }} />
+                                    </div>
+                                    {/* ) :  */}
+                                    {/* <div id={"user-role-dropdown-combobox-container-" + remindOption.name}></div>} */}
+
+                                </div>
+                            </div>
+                        </div>
+                    </ClickAwayListener>
+
+                }
+
             </div>
         )
+
 
         let view;
         if (this.state.isUpdateInfo) {
@@ -320,14 +1095,14 @@ class UserAccountManagement extends Component {
                     </div>
                     <div>
                         <div className="Label">Email:</div>
-                        <input className="Changable_Input" type="text" defaultValue={this.state.userInfo.email}></input>
+                        <input className="Changable_Input" type="text" defaultValue={this.state.userInfo.email} onChange={this.changeEmailHandler}></input>
                     </div>
                     <div >
                         <div className="Label">Passwords:</div>
-                        <input className="Unchangable_Input" type="text" defaultValue={this.generateHiddenPass()}  readOnly></input>
+                        <input className="Unchangable_Input" type="text" defaultValue={this.generateHiddenPass()} readOnly></input>
                     </div>
                     <div className="Save_Change_Info_Btn_Port" >
-                        <button className="Blue_Button" disabled={!this.canUpdateInfo} onClick={() => { this.notifyContent = "Do you want to update your information?"; this.openUpdateInfoConfirmationPopupHandler() }}>Save changes</button>
+                        <button className="Blue_Button" disabled={(!(this.isDisplayNameOK) || !(this.isEmailOK))} onClick={() => { this.notifyContent = "Do you want to update your information?"; this.openUpdateInfoConfirmationPopupHandler() }}>Save changes</button>
                     </div>
                 </div>
             </div>
@@ -364,7 +1139,7 @@ class UserAccountManagement extends Component {
                             </div>
                             {remindOptionsList}
                             <div className="Save_Change_Remind_Btn_Port">
-                                <button className="Blue_Button" disabled={!this.canClickUpdateRemindSetting} onClick={() => { this.notifyContent = "Do you want to change your remind setting?"; this.openUpdateRemindConfirmationPopupHandler() }}>Save setting</button>
+                                <button className="Blue_Button" onClick={() => { this.notifyContent = "Do you want to change your remind setting?"; this.openUpdateRemindConfirmationPopupHandler() }}>Save setting</button>
                             </div>
                         </div>
                     </div>;
@@ -558,6 +1333,15 @@ class UserAccountManagement extends Component {
         this.state.userInfo_PatchDTO.displayName = e.target.value;
         this.newDisplayName = e.target.value;
         this.checkDisplayNameEmptyField();
+        this.checkValidateEmail();
+        this.setState(this.state);
+    }
+
+    changeEmailHandler = (e) => {
+        this.state.userInfo_PatchDTO.email = e.target.value;
+        this.newEmail = e.target.value;
+        this.checkValidateEmail();
+        this.checkDisplayNameEmptyField();
         this.setState(this.state);
     }
 
@@ -618,6 +1402,112 @@ class UserAccountManagement extends Component {
     }
 
 
+    handleDropDownMenuClick = (e, parent_id, show_text_id, dropdown_element_id, container_id) => {
+        e.preventDefault();
+
+        let parent_menu_item = document.getElementById(parent_id);
+        let dropdown_element = document.getElementById(dropdown_element_id);
+        let show_text = document.getElementById(show_text_id);
+        let dropdown_container = document.getElementById(container_id);
+
+        if (dropdown_container.style.display === "block") {
+            dropdown_container.style.display = "none";
+            parent_menu_item.style.background = "white";
+            parent_menu_item.style.paddingLeft = "0px";
+            show_text.style.color = "#363636";
+            dropdown_element.src = dropdown_btn;
+        }
+        else {
+            parent_menu_item.style.background = "#5279DB"
+            dropdown_container.style.display = "block";
+            parent_menu_item.style.paddingLeft = "10px";
+            show_text.style.color = "white";
+            dropdown_element.src = white_dropdown_btn;
+        }
+
+        this.isAnyChangeRoleDropdownComboboxOpen = true;
+        this.setState({});
+    }
+
+    handleDropDownMenuItemClick = (remindOptionName, detailRemindOptionID, detailRemindOptionValue) => {
+        //change current UI
+        let item_id = "user-role-dropdown-combobox-sub-item-" + remindOptionName + detailRemindOptionID;
+        let sub_dropdown_item = document.getElementById(item_id);
+
+        for (let i = 0; i <= 23; i++) {
+            let sub_dropdown_item_index_id = "user-role-dropdown-combobox-sub-item-" + remindOptionName + i;
+            let sub_dropdown_item_index = document.getElementById(sub_dropdown_item_index_id);
+            sub_dropdown_item_index.className = "Dropdown_Combobox_Sub_Item";
+        }
+
+        sub_dropdown_item.className = "Activated_Dropdown_Combobox_Sub_Item";
+
+        this.state.remindOptionsList.map(
+            remindOption => {
+                if (remindOption.name === remindOptionName) {
+                    remindOption.curValue.value = detailRemindOptionValue;
+
+                }
+            }
+        )
+
+        //close combobox
+        let parent_id = "user-role-parent-dropdown-combobox-" + remindOptionName;
+        let show_text_id = "user-role-parent-dropdown-combobox-text-" + remindOptionName;
+        let dropdown_element_id = "user-role-dropdown-btn-element-" + remindOptionName;
+        let container_id = "user-role-dropdown-combobox-container-" + remindOptionName;
+
+        let parent_menu_item = document.getElementById(parent_id);
+        let dropdown_element = document.getElementById(dropdown_element_id);
+        let show_text = document.getElementById(show_text_id);
+        let dropdown_container = document.getElementById(container_id);
+
+        if (dropdown_container.style.display === "block") {
+            dropdown_container.style.display = "none";
+            parent_menu_item.style.background = "white";
+            parent_menu_item.style.paddingLeft = "0px";
+            show_text.style.color = "#363636";
+            dropdown_element.src = dropdown_btn;
+        }
+
+        this.setState({});
+        if (remindOptionName === "Monday")
+            this.state.remindSetting_PutDTO['monday'] = detailRemindOptionID;
+        if (remindOptionName === "Tuesday")
+            this.state.remindSetting_PutDTO['tuesday'] = detailRemindOptionID;
+        if (remindOptionName === "Wednesday")
+            this.state.remindSetting_PutDTO['wednesday'] = detailRemindOptionID;
+        if (remindOptionName === "Thursday")
+            this.state.remindSetting_PutDTO['thursday'] = detailRemindOptionID;
+        if (remindOptionName === "Friday")
+            this.state.remindSetting_PutDTO['friday'] = detailRemindOptionID;
+        if (remindOptionName === "Saturday")
+            this.state.remindSetting_PutDTO['saturday'] = detailRemindOptionID;
+        if (remindOptionName === "Sunday")
+            this.state.remindSetting_PutDTO['sunday'] = detailRemindOptionID;
+
+
+    }
+
+
+
+    closeAllChangeRoleDropdownCombobox = (e, parent_id, show_text_id, dropdown_element_id, container_id) => {
+
+        let parent_menu_item = document.getElementById(parent_id);
+        let dropdown_element = document.getElementById(dropdown_element_id);
+        let show_text = document.getElementById(show_text_id);
+        let dropdown_container = document.getElementById(container_id);
+
+        if (dropdown_container.style.display === "block") {
+            dropdown_container.style.display = "none";
+            parent_menu_item.style.background = "white";
+            parent_menu_item.style.paddingLeft = "0px";
+            show_text.style.color = "#363636";
+            dropdown_element.src = dropdown_btn;
+        }
+
+        this.setState({})
+    }
 }
 
 export default UserAccountManagement;

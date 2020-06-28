@@ -1,13 +1,13 @@
 .User_Item {
-    box-sizing: border-box;
-    width: 60%;
-    height: 100px;
-    display: flex;
-    border: 1px solid #c4c4c4;
-    padding: 10px;
-    margin: auto;
+    box-sizing     : border-box;
+    width          : 60%;
+    height         : 100px;
+    display        : flex;
+    border         : 1px solid #c4c4c4;
+    padding        : 10px;
+    margin         : auto;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom  : 10px;
 }
 
 .User_Item:hover {
@@ -16,100 +16,109 @@
 
 .User_Item .User_Item_Avatar {
     object-fit: cover;
-    width: 80px;
-    height: 80px;
+    width     : 80px;
+    height    : 80px;
 }
 
 .User_Item .User_Item_User_Name_Gmail_Port {
     margin-left: 10px;
-    position: relative;
-    width: fit-content;
-    height: 80px;
+    position   : relative;
+    width      : fit-content;
+    height     : 80px;
 }
+
 .User_Item_Left_Port {
     display: flex;
 }
 
 .User_Item_Display_Name {
-    display: flex;
-    position: relative;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    align-items: center;
-    color: #3366ff;
-    white-space: nowrap;
-    overflow: hidden !important;
+    display      : flex;
+    position     : relative;
+    font-family  : Open Sans;
+    font-style   : normal;
+    font-weight  : bold;
+    font-size    : 16px;
+    align-items  : center;
+    color        : #3366ff;
+    white-space  : nowrap;
+    overflow     : hidden !important;
     text-overflow: ellipsis;
-    display: inline-block;
-    line-height: 20px;
+    display      : inline-block;
+    line-height  : 20px;
 }
 
 .User_Item_User_Name {
-    margin-left: 10px;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    align-items: center;
-    color: #3366ff;
-    white-space: nowrap;
-    overflow: hidden !important;
+    margin-left  : 10px;
+    font-family  : Open Sans;
+    font-style   : normal;
+    font-weight  : bold;
+    font-size    : 14px;
+    align-items  : center;
+    color        : #3366ff;
+    white-space  : nowrap;
+    overflow     : hidden !important;
     text-overflow: ellipsis;
-    display: inline-block;
-    line-height: 20px;
+    display      : inline-block;
+    line-height  : 20px;
 }
 
 .User_Item_Gmail {
-    position: relative;
-    font-family: Open Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    align-items: center;
-    line-height: 20px;
-    color: #363636;
-    white-space: nowrap;
-    overflow: hidden !important;
+    position     : relative;
+    font-family  : Open Sans;
+    font-style   : normal;
+    font-weight  : bold;
+    font-size    : 14px;
+    align-items  : center;
+    line-height  : 20px;
+    color        : #363636;
+    white-space  : nowrap;
+    overflow     : hidden !important;
     text-overflow: ellipsis;
-    display: inline-block;
+    display      : inline-block;
 }
 
 .User_Item_Btn_Group {
-    width: 65px;
+    width  : 65px;
     display: flex;
 }
 
 .User_Item_Edit_Btn {
-    width: 25px;
+    width : 25px;
     height: 25px;
-    left: 0;
+    left  : 0;
 }
 
 .User_Item_Edit_Btn:hover {
     opacity: 90%;
-    cursor: pointer;
+    cursor : pointer;
 }
 
 .User_Item_Edit_Btn:active {
-    opacity: 80%;
-    cursor: pointer;
+    opacity      : 80%;
+    cursor       : pointer;
     border-radius: 20px;
 }
+
 .User_Item_Delete_Btn {
-    width: 25px;
-    height: 25px;
+    width      : 25px;
+    height     : 25px;
     margin-left: 15px;
 }
 
 .User_Item_Delete_Btn:hover {
     opacity: 90%;
-    cursor: pointer;
+    cursor : pointer;
 }
 
 .User_Item_Delete_Btn:active {
-    opacity: 80%;
-    cursor: pointer;
+    opacity      : 80%;
+    cursor       : pointer;
     border-radius: 20px;
+}
+
+.Banned_Icon {
+    top     : 10px;
+    left    : 50%;
+    height  : 40px;
+    width   : auto;
 }

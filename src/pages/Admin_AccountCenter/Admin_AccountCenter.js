@@ -9,18 +9,28 @@ import jwt_decode from 'jwt-decode'
 import Popup from 'reactjs-popup'
 import { isLogin, isAdmin } from "../../pages/Login/Login.js";
 
+
+
 class Admin_AccountCenterComponent extends Component {
     constructor(props) {
         super(props);
         this.notifyContent = "";
         this.newPassword_ = "";
         this.newPassword_Confirm = "";
+        this.canClickUpdatePass = false;
+
+        //for update user info
+        this.newDisplayName = "";
+        this.isDisplayNameOK = false;
+        this.newEmail = "";
+        this.isEmailOK = false;
+
         this.state = {
             adminInfo_PatchDTO:
             {
-                "displayName": "",
+                "displayName": null,
                 "userName": "",
-                "email": "",
+                "email": null,
                 "currentPassword": null,
                 "newPassword": null
             }
@@ -33,9 +43,8 @@ class Admin_AccountCenterComponent extends Component {
             "passwordLength": 12,
             "isNotifyPopupOpen": false,
             "isNormalNotifyPopupOpen": false,
-            "canUpdateInfo": false,
             "canUpdatePass": false,
-            "canClickUpdatePass": false
+            // "canClickUpdatePass": false
         }
     }
 
@@ -61,6 +70,8 @@ class Admin_AccountCenterComponent extends Component {
                 this.state.adminInfo_PatchDTO = response;
                 // console.log(this.state.adminInfo_PatchDTO);
                 this.setState(this.state);
+                this.newDisplayName = response.displayName;
+                this.newEmail = response.email;
             })
             .catch(error => {
                 console.log(error);
@@ -157,11 +168,38 @@ class Admin_AccountCenterComponent extends Component {
         if (this.newPassword_ === null || this.newPassword_ === ""
             || this.currentPassword === null || this.currentPassword === ""
             || this.newPassword_Confirm === null || this.newPassword_Confirm === "") {
-            this.state.canClickUpdatePass = false;
+            this.canClickUpdatePass = false;
         }
         else {
-            this.state.canClickUpdatePass = true;
+            this.canClickUpdatePass = true;
         }
+    }
+
+    checkDisplayNameEmptyField = () => {
+        console.log("Display name checked!" + this.newDisplayName + " " + this.newEmail);
+        if (this.newDisplayName === "" || this.newDisplayName === null) {
+            this.isDisplayNameOK = false;
+            console.log("display name: FALSE ");
+            return;
+        }
+        this.isDisplayNameOK = true;
+    }
+
+    checkValidateEmail = () => {
+        console.log("Email checked!" + this.newDisplayName + " " + this.newEmail);
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        console.log(re.test(String(this.newEmail).toLowerCase()));
+        if (!(re.test(String(this.newEmail).toLowerCase()))) {
+            this.isEmailOK = false;
+            console.log("email: FALSE 1");
+            return;
+        }
+        if (this.newEmail === "" || this.newEmail === null) {
+            this.isEmailOK = false;
+            console.log("email: FALSE 2");
+            return;
+        }
+        this.isEmailOK = true;
     }
 
     //generate hiden pass
@@ -189,15 +227,15 @@ class Admin_AccountCenterComponent extends Component {
 
                     {/*  gmail port*/}
                     <div className="Admin_Account_Center_Label">Email:</div>
-                    <input className="Admin_Account_Center_Changable_Input" type="text" defaultValue={this.state.adminInfo_PatchDTO.email} ></input>
+                    <input className="Admin_Account_Center_Changable_Input" type="text" defaultValue={this.state.adminInfo_PatchDTO.email} onChange={this.changeEmailHandler} ></input>
 
                     {/* password port */}
                     <div className="Admin_Account_Center_Label">Passwords:</div>
-                    <input className="Admin_Account_Center_Changable_Input" type="text" defaultValue={this.generateHiddenPass()} ></input>
+                    <input className="Admin_Account_Center_Unchangable_Input" type="text" defaultValue={this.generateHiddenPass()} readOnly ></input>
 
                     {/* save change port */}
                     <div className="Admin_Account_Center_Save_Change_Info_Btn_Port">
-                        <button className="Blue_Button" onClick={this.updateInfo} disabled={!this.state.canUpdate}>Save change(s)</button>
+                        <button className="Blue_Button" onClick={this.updateInfo} disabled={(!(this.isDisplayNameOK) || !(this.isEmailOK))} >Save change(s)</button>
                     </div>
                 </div>
         }
@@ -218,7 +256,7 @@ class Admin_AccountCenterComponent extends Component {
                             <input className="Simple_Changable_Text_Input" type="password" onChange={this.changeConfirmNewPasswordHandler}></input>
                         </div>
                         <div className="Admin_Account_Center_Save_Change_Info_Btn_Port">
-                            <button className="Blue_Button" onClick={this.updatePassword} disabled={!this.state.canClickUpdatePass}>Save password</button>
+                            <button className="Blue_Button" onClick={this.updatePassword} disabled={!this.canClickUpdatePass}>Save password</button>
                         </div>
                     </div>;
             }
@@ -243,6 +281,7 @@ class Admin_AccountCenterComponent extends Component {
                     <PageTitle prevTitle="Manage" mainTitle="Your page"></PageTitle>
                     <div className="Admin_Account_Center_Horizontal_Menu_Bar_Main_Management_Port">
                         <Admin_Menu />
+
 
                         {/* Menu_Main_Show_Port */}
                         <div className="Admin_Account_Center_Management_Port">
@@ -338,11 +377,20 @@ class Admin_AccountCenterComponent extends Component {
     //handle change info
     changeDisplayNameHandler = (e) => {
         this.state.adminInfo_PatchDTO.displayName = e.target.value;
-        console.log(this.state.adminInfo_PatchDTO.displayName);
-        this.state.canUpdate = true;
+        this.newDisplayName = e.target.value;
+        this.checkDisplayNameEmptyField();
+        this.checkValidateEmail();
         this.setState(this.state);
     }
 
+    changeEmailHandler = (e) => {
+        this.state.adminInfo_PatchDTO.email = e.target.value;
+        this.newEmail = e.target.value;
+        // console.log(this.newEmail);
+        this.checkValidateEmail();
+        this.checkDisplayNameEmptyField();
+        this.setState(this.state);
+    }
     //change input info of update pass:
     /*  */
     changeCurrentPasswordHandler = (e) => {
