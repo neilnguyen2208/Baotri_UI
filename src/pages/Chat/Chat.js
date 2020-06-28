@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Header from "../../components/Header/Header.js";
-import {isAdmin, isLogin} from '../../pages/Login/Login.js';
+import {isAdmin, isLogin, getUserID} from '../../pages/Login/Login.js';
 import './Chat.css'
 import Footer from '../../components/Footer/Footer';
 import { Redirect } from 'react-router-dom';
@@ -9,11 +9,10 @@ class Chat extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            input: "",
             items: [
             ]
         }
-        this.handleInputChange = this.handleInputChange.bind(this);
+        this.isPosting = false;
         this.sendMessage = this.sendMessage.bind(this);
         setInterval(() => {
             this.getMessage();
@@ -21,6 +20,8 @@ class Chat extends Component{
     }
 
     async getMessage () {
+        if(this.isPosting)
+            return;
         let token = sessionStorage.getItem("token");
         let url = "/api/v1/roomChat";
         if(this.state.items.length > 0) {
@@ -74,19 +75,18 @@ class Chat extends Component{
     }
 
     async sendMessage () {
-        let message = this.state.input;
-        let token = sessionStorage.getItem("token");
-        let response = await fetch("/api/v1/roomChat", { method: "POST", body: message, headers: {
-            'Authorization': 'Bearer ' + token
-        }});
-        let responseMessage = await response.json();
-        console.log("Post: " + JSON.stringify(responseMessage));
-        this.getMessage();
-        this.setState({input: ""});
-    }
-
-    handleInputChange(event) {
-        this.setState({input: event.target.value});
+        let message = document.getElementById("input").value;
+        if(message!="") {
+            this.isPosting = true;
+            let token = sessionStorage.getItem("token");
+            let response = await fetch("/api/v1/roomChat", { method: "POST", body: message, headers: {
+                'Authorization': 'Bearer ' + token
+            }});
+            let responseMessage = await response.json();
+            document.getElementById("input").value = "";
+            console.log("Post: " + JSON.stringify(responseMessage));
+        }
+        this.isPosting = false;
     }
 
     render() {
@@ -94,22 +94,23 @@ class Chat extends Component{
         if(!isAuthenticated) {
             return (<Redirect to="/login"></Redirect>);
         }
-        let userName = sessionStorage.getItem("username");
+        // let userName = sessionStorage.getItem("username");
+        let userID = getUserID();
         let cards = this.state.items.map((item) => {
-            console.log("username: "+userName + "/" + item.userSentName);
-            if(item.userSentName === userName) {
+            console.log("username: "+userID + "/" + item.userSentID);
+            if(item.userSentID == userID) {
                 return(
                 <section className="RightSide" key={item.id}>
-                    <text>{item.userSentName}</text><br></br>
-                    <label>{item.content}</label><br></br>
-                    <text>{item.timeStamp}</text><br></br>
+                    <label className="user_sent">{item.userSentName}</label><br></br>
+                    <label className="content">{item.content}</label><br></br>
+                    <label className="time">{item.timeStamp}</label><br></br>
                 </section>)
             }
             return (
                 <section className="LeftSide" key={item.id}>
-                   <text>{item.userSentName}</text><br></br>
-                    <label>{item.content}</label><br></br>
-                    <text>{item.timeStamp}</text><br></br>
+                   <label className="user_sent">{item.userSentName}</label><br></br>
+                    <label className="content">{item.content}</label><br></br>
+                    <label className="time">{item.timeStamp}</label><br></br>
                 </section>
             );
         })
@@ -128,7 +129,7 @@ class Chat extends Component{
                        {cards}
                    </div>
                    <div className="Chat_Send">
-                        <textarea id="input" value={this.state.input} className="Chat_Input" onChange={this.handleInputChange}></textarea>
+                        <textarea id="input" value={this.state.input} className="Chat_Input"></textarea>
                         <button className="Send" onClick={this.sendMessage}>Send</button>
                    </div>
                    <div className="Chat_Footer">

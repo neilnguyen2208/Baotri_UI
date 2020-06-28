@@ -61,14 +61,20 @@
     font-family: Barlow Condensed;
 }
 
-.Chat .Content .Content_Row .LeftSide label {
+.Chat .Content .Content_Row .LeftSide .user_sent, .time {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    color: black;
+}
+
+.Chat .Content .Content_Row .LeftSide .content {
     background-color: gray;
+    color: white;
     font-size: 16px;
     padding:  5px;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
     font-size: 16px;
-    border-radius: 10% !important;
 }
 
 .Chat .Content .Content_Row .RightSide {
@@ -78,20 +84,19 @@
     color: #3366ff;
 }
 
-.Chat .Content .Content_Row .RightSide text {
+.Chat .Content .Content_Row .RightSide .user_sent, .time {
     margin-top: 5px !important;
     margin-bottom: 5px !important;
     color: black;
 }
 
-.Chat .Content .Content_Row .RightSide label {
+.Chat .Content .Content_Row .RightSide .content {
     background-color: #3366ff;
     color: white;
     padding:  5px;
     margin-top: 5px !important;
     margin-bottom: 5px !important;
     font-size: 16px;
-    border-radius: 10% !important;
 }
 
 .Chat .Content .Notice {

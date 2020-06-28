@@ -235,6 +235,14 @@ export function isLogin() {
     return token && token.length > 10;
 }
 
+export function getUserID() {
+    let token = sessionStorage.getItem('token');
+    if (!token || token.length < 10)
+        return;
+    let jwtParsed = jwt_decode(token);
+    return jwtParsed.sub;
+}
+
 export function isAdmin() {
     let token = sessionStorage.getItem('token');
     if (!token || token.length < 10)
