@@ -19,8 +19,7 @@ class Admin_GrammarManagement extends Component {
             "id": null,
             "title": "",
             "description": "",
-            "docGrammarContentSummary":
-                null
+            "docGrammarContentSummary": null
         }
         this.notifyContent = "";
         this.state = {
@@ -60,6 +59,8 @@ class Admin_GrammarManagement extends Component {
 
         //POST yêu cầu server thêm danh mục ngữ pháp.
 
+        // console.log(this.state)
+
         fetch('/api/v1/grammarCategories',
             {
                 method: 'POST',
@@ -67,7 +68,7 @@ class Admin_GrammarManagement extends Component {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 },
-                body: JSON.stringify(this.state.GrammarCategory_CreateDTO)
+                body: JSON.stringify(this.GrammarCategory_CreateDTO)
             }
         )
             .then(response => {
