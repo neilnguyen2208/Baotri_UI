@@ -120,7 +120,7 @@ class Admin_GrammarFormNote extends Component {
                         <React.Fragment>
                             <div className="Customize_Popup">
                                 <div className="Popup_Title_Bar">
-                                    <div className="Popup_Title">UPDATE EXAMPLE:</div>
+                                    <div className="Popup_Title">UPDATE NOTE:</div>
                                     <img className="Delete_Btn" src={delete_btn} onClick={this.closeUpdateGrammarNotePopupHandler} />
                                 </div>
                             </div>
