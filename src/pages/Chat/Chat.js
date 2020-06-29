@@ -116,7 +116,7 @@ class Chat extends Component{
             if(item.userSentID == userID) {
                 return(
                 <section className="RightSide" key={item.id}>
-                    <img className="delete" onClick={()=>this.deleteMessage(item)} src={delete_btn} ></img>
+                    {isAdminAccount && <img className="delete" onClick={()=>this.deleteMessage(item)} src={delete_btn} ></img> }
                     <label className="user_sent">{item.userSentName}</label><br></br>
                     <label className="content">{item.content}</label><br></br>
                     <label className="time">{item.timeStamp}</label><br></br>
@@ -124,7 +124,7 @@ class Chat extends Component{
             }
             return (
                 <section className="LeftSide" key={item.id}>
-                    <img className="delete" onClick={()=>this.deleteMessage(item)} src= {delete_btn}></img>
+                    {isAdminAccount && <img className="delete" onClick={()=>this.deleteMessage(item)} src= {delete_btn}></img>}
                     <label className="user_sent">{item.userSentName}</label><br></br>
                     <label className="content">{item.content}</label><br></br>
                     <label className="time">{item.timeStamp}</label><br></br>
