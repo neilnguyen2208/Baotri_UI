@@ -118,6 +118,7 @@ class Admin_UserManagement extends Component {
         userItemList = this.state.currentInteractList.map((item) => {
             return (
                 <UserItem
+                key = {item.userID}
                     id={item.userID}
                     avatar_url="https://i.imgur.com/q54xYo3.png"
                     display_name={item.displayName}
@@ -146,7 +147,7 @@ class Admin_UserManagement extends Component {
 
                 <div className="Admin_User_Management_Dock_Notification">
                     One of the most effective ways to improve your English Explorer a bit to find out what we do.
-            </div>
+                </div>
 
                 {/* Body Area */}
                 <div className="Admin_User_Management_Main_Port">
@@ -216,9 +217,6 @@ class Admin_UserManagement extends Component {
                 <div className="Admin_User_Management_Footer">
                     <Footer ></Footer>
                 </div>
-
-
-
             </div >
 
         );

@@ -10,7 +10,7 @@ class Footer extends Component {
         return (
             <div className="Footer">
                 <div className="Footer_1">
-                    <div style={{ "min-height": "50px", "height": "15%" }}> </div>
+                    <div style={{ "minHeight": "50px", "height": "15%" }}> </div>
                     <div style={{
                         width: "88%",
                         position: "absolute",
