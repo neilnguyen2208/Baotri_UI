@@ -36,7 +36,7 @@
   <h3 align="center">English Learning Website for Busy People</h3>
 
   <p align="center">
-    Hệ thống học tiếng Anh tiện lợi nhất cho người đi làm (Backend)
+    Hệ thống học tiếng Anh tiện lợi nhất cho người đi làm (Frontend)
     <br />
     <a href="https://github.com/dongnvsince1999/Baotri_UI/archive/master.zip"><strong>Tải source code ngay »</strong></a>
     <br>
