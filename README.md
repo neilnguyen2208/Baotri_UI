@@ -228,4 +228,4 @@ Source code được release theo giấy phép GPLv3.
 [license-url]: https://github.com/dongnvsince1999/Baotri_UI/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com
-[product-screenshot]: https://github.com/dongnvsince1999/Baotri_UI/src/screenshot.png
+[product-screenshot]: https://raw.githubusercontent.com/mirushi/EnglishLearningWeb/master/images/screenshot-homepage.png
