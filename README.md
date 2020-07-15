@@ -95,7 +95,7 @@ Ngoài ra, ở khía cạnh người quản lý cho nội dung của Website (ad
 Để sản phẩm có thể chạy tốt và hiệu quả trên nhiều nền tảng khác nhau, nhóm đã nghiên cứu và phát triển BackEnd dựa trên các công nghệ hỗ trợ cross-platform tối đa.
 * [Spring](https://spring.io/)
 * [Hibernate ORM](https://hibernate.org/orm/)
-
+* [NodeJS](https://nodejs.org/en/)
 
 <!-- GETTING STARTED -->
 ## Hướng dẫn cài đặt và sử dụng
@@ -215,16 +215,16 @@ Source code được release theo giấy phép GPLv3.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/mirushi/EnglishLearningWeb.svg?style=flat-square
-[contributors-url]: https://github.com/mirushi/EnglishLearningWeb/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/mirushi/EnglishLearningWeb.svg?style=flat-square
+[contributors-shield]: https://img.shields.io/github/contributors/dongnvsince1999/Baotri_UI.svg?style=flat-square
+[contributors-url]: https://github.com/dongnvsince1999/Baotri_UI/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/dongnvsince1999/Baotri_UI.svg?style=flat-square
 [forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/mirushi/EnglishLearningWeb.svg?style=flat-square
-[stars-url]: https://github.com/mirushi/EnglishLearningWeb/stargazers
-[issues-shield]: https://img.shields.io/github/issues/mirushi/EnglishLearningWeb.svg?style=flat-square
-[issues-url]: https://github.com/mirushi/EnglishLearningWeb/issues
-[license-shield]: https://img.shields.io/github/license/mirushi/EnglishLearningWeb.svg?style=flat-square
-[license-url]: https://github.com/mirushi/EnglishLearningWeb/blob/master/LICENSE.txt
+[stars-shield]: https://img.shields.io/github/stars/dongnvsince1999/Baotri_UI.svg?style=flat-square
+[stars-url]: https://github.com/dongnvsince1999/Baotri_UI/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dongnvsince1999/Baotri_UI.svg?style=flat-square
+[issues-url]: https://github.com/dongnvsince1999/Baotri_UI/issues
+[license-shield]: https://img.shields.io/github/license/dongnvsince1999/Baotri_UI.svg?style=flat-square
+[license-url]: https://github.com/dongnvsince1999/Baotri_UI/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com
-[product-screenshot]: https://github.com/mirushi/EnglishLearningWeb/raw/master/images/screenshot-homepage.png
+[product-screenshot]: https://github.com/dongnvsince1999/Baotri_UI/raw/master/images/screenshot-homepage.png
