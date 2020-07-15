@@ -120,11 +120,15 @@ git clone https://github.com/mirushi/EnglishLearningWeb.git
 6. Phải chuột vào project vừa import, chọn "Run As -> Spring Boot App".
 #### Phía Frontend
 1. Cài đặt NodeJS
-2. Vào trong thư mục Baotri_UI, mở cmd và gõ lệnh:
+2. Clone project: 
+```sh
+git clone https://github.com/dongnvsince1999/Baotri_UI.git
+```
+3. Trong project, mở thư mục Baotri_UI, mở cmd và gõ lệnh:
 ```sh
 npm install
 ```
-3. Sau đó gõ lệnh:
+4. Sau đó gõ lệnh:
 ```sh
 npm start
 ```
