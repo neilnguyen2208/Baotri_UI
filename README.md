@@ -38,18 +38,18 @@
   <p align="center">
     Hệ thống học tiếng Anh tiện lợi nhất cho người đi làm (Backend)
     <br />
-    <a href="https://github.com/mirushi/EnglishLearningWeb/archive/master.zip"><strong>Tải source code ngay »</strong></a>
+    <a href="https://github.com/dongnvsince1999/Baotri_UI/archive/master.zip"><strong>Tải source code ngay »</strong></a>
     <br>
-    <a href="https://github.com/mirushi/EnglishLearningWeb/blob/master/documents/Nhom04_CuoiKy.pdf"><strong>Xem báo cáo »</strong></a>
+    <a href="https://github.com/dongnvsince1999/Baotri_UI/documents/Nhom04_CuoiKy.pdf"><strong>Xem báo cáo »</strong></a>
     <br>
-    <a href="https://github.com/dongnvsince1999/Baotri_UI"><strong>Source code Backend »</strong></a>
+    <a href="https://github.com/mirushi/EnglishLearningWeb"><strong>Source code Backend »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/mirushi/EnglishLearningWeb">Xem Demo</a>
+    <a href="https://github.com/dongnvsince1999/Baotri_UI">Xem Demo</a>
     ·
-    <a href="https://github.com/mirushi/EnglishLearningWeb/issues">Báo lỗi</a>
+    <a href="https://github.com/dongnvsince1999/Baotri_UI/issues">Báo lỗi</a>
     ·
-    <a href="https://github.com/mirushi/EnglishLearningWeb/issues">Yêu cầu tính năng</a>
+    <a href="https://github.com/dongnvsince1999/Baotri_UI/issues">Yêu cầu tính năng</a>
   </p>
 </p>
 
