@@ -106,9 +106,9 @@ Ngoài ra, ở khía cạnh người quản lý cho nội dung của Website (ad
 Phần hướng dẫn sau sử dụng Spring Tools Suite 4 (Eclipse) và được thực hiện trên hệ điều hành Windows. Các hệ điều hành khác có thể thực hiện tương tự.
 * [Spring Tools Suite 4](https://spring.io/tools)
 * [JDK 8](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=hotspot)
-
+* [NodeJS](https://nodejs.org/en/)
 ### Cài đặt
-
+#### Phía Backend
 1. Tải và cài đặt Spring Tools Suite (cài đặt mặc định là đủ dùng).
 2. Clone repository
 ```sh
@@ -118,7 +118,16 @@ git clone https://github.com/mirushi/EnglishLearningWeb.git
 4. Maven -> Existing Maven Projects
 5. Ở mục Root Directory, chọn đến thư mục project chứa file pom.xml vừa clone về
 6. Phải chuột vào project vừa import, chọn "Run As -> Spring Boot App".
-
+#### Phía Frontend
+1. Cài đặt NodeJS
+2. Vào trong thư mục Baotri_UI, mở cmd và gõ lệnh:
+```sh
+npm install
+```
+3. Sau đó gõ lệnh:
+```sh
+npm start
+```
 <!-- USAGE EXAMPLES -->
 ## Sử dụng hệ thống
 
