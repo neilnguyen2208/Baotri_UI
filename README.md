@@ -29,7 +29,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/dongnv/Baotri_UI">
+  <a href="https://github.com/dongnvsince1999/Baotri_UI">
     <img src="src/resources/logo.png" alt="Logo" width="550" height="180">
   </a>
 
@@ -76,7 +76,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Giới thiệu về dự án
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/mirushi/EnglishLearningWeb)
+[![Product Name Screen Shot][product-screenshot]](https://github.com/dongnvsince1999/Baotri_UI)
 
 Để đáp ứng yêu cầu học Anh Văn của người đi làm, chúng tôi thiết kế và xây dựng hệ thống trang Web cho phép người dùng tự học tiếng Anh ở bất cứ nơi đâu, bất kì khi nào. Hơn hết, chúng tôi nhắm vào đối tượng khách hàng chính là người đi làm, với những tính năng ưu việt từ Website đã được tối ưu hoá để mang lại trải nghiệm người dùng tối đa như :
 
@@ -96,6 +96,7 @@ Ngoài ra, ở khía cạnh người quản lý cho nội dung của Website (ad
 * [Spring](https://spring.io/)
 * [Hibernate ORM](https://hibernate.org/orm/)
 * [NodeJS](https://nodejs.org/en/)
+* [ReactJS](https://reactjs.org/)
 
 <!-- GETTING STARTED -->
 ## Hướng dẫn cài đặt và sử dụng
@@ -227,4 +228,4 @@ Source code được release theo giấy phép GPLv3.
 [license-url]: https://github.com/dongnvsince1999/Baotri_UI/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com
-[product-screenshot]: https://github.com/dongnvsince1999/Baotri_UI/raw/master/images/screenshot-homepage.png
+[product-screenshot]: https://github.com/dongnvsince1999/Baotri_UI/src/screenshot.png
