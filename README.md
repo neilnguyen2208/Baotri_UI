@@ -40,7 +40,7 @@
     <br />
     <a href="https://github.com/dongnvsince1999/Baotri_UI/archive/master.zip"><strong>Tải source code ngay »</strong></a>
     <br>
-    <a href="https://github.com/dongnvsince1999/Baotri_UI/documents/Nhom04_CuoiKy.pdf"><strong>Xem báo cáo »</strong></a>
+    <a href="https://github.com/dongnvsince1999/Baotri_UI/blob/master/documents/Nhom04_CuoiKy.pdf"><strong>Xem báo cáo »</strong></a>
     <br>
     <a href="https://github.com/mirushi/EnglishLearningWeb"><strong>Source code Backend »</strong></a>
     <br />
